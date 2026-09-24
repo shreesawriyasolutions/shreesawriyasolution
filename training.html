@@ -1,1 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Repair Training | Shree Sawriya Solutions</title>
+<meta name="description" content="Professional Mobile Repairing, iPhone Repair, Android Repair, Chip-Level Repair & Microsoldering Training at Shree Sawriya Solutions, Assandh.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
 
+/* NAVBAR */
+.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.navbar .logo { display: flex; align-items: center; gap: 10px; }
+.navbar .logo img { width: 38px; height: 38px; object-fit: contain; }
+.navbar .logo span { font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; }
+.nav-links { display: none; gap: 25px; font-size: 14px; color: #aaa; }
+.nav-links a:hover { color: #fff; }
+
+/* HERO */
+.hero { padding: 60px 20px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 400px; height: 400px; background-image: url('logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.04; pointer-events: none; }
+.hero .tag { display: inline-block; background: linear-gradient(90deg, #ff4444, #ff8800); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; }
+.hero h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; position: relative; }
+.hero h1 span { background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero .sub { color: #ffb800; font-size: 15px; font-weight: 600; margin-bottom: 20px; position: relative; }
+.hero p { color: #999; font-size: 14px; max-width: 600px; margin: 0 auto 20px; position: relative; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: #fff; color: #000; }
+.btn-primary:hover { background: #ddd; }
+.btn-outline { border: 1px solid #333; color: #fff; }
+.btn-outline:hover { border-color: #fff; }
+.btn-green { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
+.btn-green:hover { opacity: 0.9; }
+
+/* SECTION */
+section { padding: 60px 20px; }
+.section-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; }
+.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
+
+/* ABOUT */
+.about-box { max-width: 800px; margin: 0 auto; background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+.about-box h3 { color: #fff; font-size: 20px; margin-bottom: 15px; font-weight: 700; }
+.about-box p { color: #aaa; font-size: 14px; margin-bottom: 15px; line-height: 1.8; }
+.about-box ul { color: #aaa; font-size: 14px; line-height: 2; padding-left: 25px; margin-bottom: 15px; }
+.about-box ul li::marker { color: #fff; }
+
+/* COURSES */
+.courses-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1100px; margin: 0 auto; }
+.course-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 28px; transition: 0.3s; position: relative; overflow: hidden; }
+.course-card:hover { border-color: #444; transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+.course-card .num { position: absolute; top: 20px; right: 20px; font-size: 40px; font-weight: 900; color: #1a1a1a; letter-spacing: -2px; }
+.course-card .icon { font-size: 32px; margin-bottom: 15px; }
+.course-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+.course-card p { color: #999; font-size: 13px; line-height: 1.7; margin-bottom: 15px; }
+.course-card .badge { display: inline-block; background: #111; border: 1px solid #333; padding: 5px 12px; border-radius: 50px; font-size: 11px; color: #ccc; margin-right: 6px; margin-top: 5px; }
+
+/* LEVELS */
+.levels-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1000px; margin: 0 auto; }
+.level-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 30px; text-align: center; position: relative; }
+.level-card.l1 { border-top: 3px solid #4ade80; }
+.level-card.l2 { border-top: 3px solid #ffb800; }
+.level-card.l3 { border-top: 3px solid #ff4444; }
+.level-card .level-num { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; padding: 6px 14px; border-radius: 50px; margin-bottom: 15px; }
+.level-card.l1 .level-num { background: rgba(74,222,128,0.15); color: #4ade80; }
+.level-card.l2 .level-num { background: rgba(255,184,0,0.15); color: #ffb800; }
+.level-card.l3 .level-num { background: rgba(255,68,68,0.15); color: #ff4444; }
+.level-card h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.level-card .for { color: #888; font-size: 13px; margin-bottom: 20px; }
+.level-card ul { text-align: left; color: #aaa; font-size: 13px; line-height: 2; padding-left: 20px; }
+.level-card ul li::marker { color: #fff; }
+
+/* TRAINER */
+.trainer-box { max-width: 800px; margin: 0 auto; background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; }
+.trainer-box h3 { color: #fff; font-size: 20px; margin-bottom: 15px; }
+.trainer-box .cert { background: #111; border: 1px solid #333; border-left: 3px solid #ffb800; padding: 14px 18px; border-radius: 10px; color: #ccc; font-size: 13px; text-align: left; margin-bottom: 10px; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border: 1px solid #2a2a2a; border-radius: 24px; padding: 50px 30px; max-width: 900px; margin: 0 auto; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.cta-section h2 { font-size: 26px; font-weight: 800; margin-bottom: 15px; }
+.cta-section p { color: #aaa; font-size: 14px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-section .phone { font-size: 22px; font-weight: 800; color: #fff; margin: 20px 0; letter-spacing: 1px; }
+
+/* FOOTER */
+footer { text-align: center; padding: 40px 20px; border-top: 1px solid #222; background: #0a0a0a; }
+footer img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 12px; }
+footer h4 { color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
+
+/* FLOATING BUTTONS */
+.float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+.float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: 0.3s; }
+.float-btn:hover { transform: scale(1.1); }
+.float-wa { background: #25D366; color: #fff; font-size: 28px; }
+.float-call { background: #fff; color: #000; font-size: 22px; }
+
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .hero h1 { font-size: 42px; }
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+  .levels-grid { grid-template-columns: repeat(3, 1fr); }
+  .cta-section h2 { font-size: 32px; }
+}
+@media (min-width: 1024px) {
+  .courses-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Shree Sawriya Solutions">
+    <span>SHREE SAWRIYA SOLUTIONS</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="#courses">Courses</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="tag">🎓 PROFESSIONAL TRAINING</span>
+  <h1>Mobile Repair &<br><span>Chip-Level Training</span></h1>
+  <p class="sub">Learn. Practice. Repair. Build Your Career.</p>
+  <p>Practical mobile repairing training designed for beginners, technicians and mobile repair professionals who want to develop their skills in smartphone hardware, software diagnostics, motherboard repair, microsoldering and advanced chip-level troubleshooting.</p>
+  <p>Learn through practical training, real motherboard diagnosis and professional repair techniques.</p>
+  <div class="hero-buttons">
+    <a href="#cta" class="btn btn-primary">📚 Enquire About Training</a>
+    <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20training%20courses%20ke%20bare%20mein%20jaankari%20chahiye." class="btn btn-green">💬 WhatsApp Now</a>
+    <a href="tel:+919720076900" class="btn btn-outline">📞 Call Now</a>
+  </div>
+</div>
+
+<!-- ABOUT TRAINING -->
+<section style="background:#0d0d0d;">
+  <h2 class="section-title">About Our Training</h2>
+  <p class="section-sub">Practical Knowledge. Real Repair Skills.</p>
+  <div class="about-box">
+    <p>At <strong style="color:#fff;">Shree Sawriya Solutions</strong>, our training is focused on developing practical mobile repair and motherboard troubleshooting skills.</p>
+    <p>The training combines electronics fundamentals with hands-on practical work so that students can understand:</p>
+    <ul>
+      <li>How a mobile motherboard works</li>
+      <li>How to identify components</li>
+      <li>How to test components</li>
+      <li>How to find faults</li>
+      <li>How to read schematics</li>
+      <li>How to use boardview</li>
+      <li>How to diagnose short circuits</li>
+      <li>How to perform microsoldering</li>
+      <li>How to approach chip-level repairs</li>
+    </ul>
+    <p>The objective is to help students understand the diagnosis process, rather than simply replacing parts without identifying the actual fault.</p>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <h2 class="section-title">Our Training Courses</h2>
+  <p class="section-sub">8 Professional Courses — Beginner to Advanced Level</p>
+  <div class="courses-grid">
+
+    <div class="course-card">
+      <div class="num">01</div>
+      <div class="icon">📱</div>
+      <h3>Basic Mobile Repairing Course</h3>
+      <p>A beginner-friendly course designed for students and beginners who want to start learning mobile phone repairing from the fundamentals.</p>
+      <div><span class="badge">Beginner</span><span class="badge">Electronics</span><span class="badge">Basic Repairs</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">02</div>
+      <div class="icon">🤖</div>
+      <h3>Android Mobile Repairing Course</h3>
+      <p>Practical Android hardware and motherboard repair training for technicians who want to improve their troubleshooting skills.</p>
+      <div><span class="badge">Android</span><span class="badge">Motherboard</span><span class="badge">Diagnostics</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">03</div>
+      <div class="icon">🍎</div>
+      <h3>iPhone Hardware Repair Course</h3>
+      <p>Specialized practical training for technicians who want to understand iPhone hardware and motherboard-level troubleshooting.</p>
+      <div><span class="badge">iPhone</span><span class="badge">Hardware</span><span class="badge">Board-level</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">04</div>
+      <div class="icon">🔬</div>
+      <h3>Advanced Chip-Level Repair Course</h3>
+      <p>Advanced motherboard repair training for technicians who want to move beyond basic part replacement and learn systematic board-level troubleshooting.</p>
+      <div><span class="badge">Advanced</span><span class="badge">Chip-Level</span><span class="badge">Circuit Tracing</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">05</div>
+      <div class="icon">🧠</div>
+      <h3>iPhone Advanced Motherboard Repair</h3>
+      <p>Advanced practical training focused on iPhone motherboard diagnosis and repair with real-world repair cases.</p>
+      <div><span class="badge">iPhone</span><span class="badge">Advanced</span><span class="badge">Boardview</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">06</div>
+      <div class="icon">💻</div>
+      <h3>Mobile Software & Diagnostic Training</h3>
+      <p>Learn basic software troubleshooting and how to identify whether a mobile problem is related to software or hardware.</p>
+      <div><span class="badge">Software</span><span class="badge">Diagnostics</span><span class="badge">DFU Mode</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">07</div>
+      <div class="icon">⚡</div>
+      <h3>Microsoldering & SMD Repair Course</h3>
+      <p>Precision motherboard repair training focused on microsoldering and SMD component work with microscope practice.</p>
+      <div><span class="badge">Microsoldering</span><span class="badge">SMD</span><span class="badge">Reballing</span></div>
+    </div>
+
+    <div class="course-card">
+      <div class="num">08</div>
+      <div class="icon">📋</div>
+      <h3>Professional Repair Workflow Training</h3>
+      <p>Learn how technical repair skills can be applied in a professional repair environment with proper customer handling.</p>
+      <div><span class="badge">Workflow</span><span class="badge">Customer Care</span><span class="badge">Quality</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRAINING LEVELS -->
+<section style="background:#0d0d0d;">
+  <h2 class="section-title">Training Levels</h2>
+  <p class="section-sub">Choose the level that fits your experience</p>
+  <div class="levels-grid">
+
+    <div class="level-card l1">
+      <span class="level-num">LEVEL 1</span>
+      <h3>BEGINNER</h3>
+      <p class="for">For New Students</p>
+      <ul>
+        <li>Basic electronics</li>
+        <li>Mobile hardware</li>
+        <li>Components</li>
+        <li>Tools</li>
+        <li>Basic soldering</li>
+        <li>Basic diagnosis</li>
+        <li>Common mobile repairs</li>
+      </ul>
+    </div>
+
+    <div class="level-card l2">
+      <span class="level-num">LEVEL 2</span>
+      <h3>INTERMEDIATE</h3>
+      <p class="for">For Existing Technicians</p>
+      <ul>
+        <li>Motherboard diagnosis</li>
+        <li>Multimeter testing</li>
+        <li>DC power supply</li>
+        <li>Schematic</li>
+        <li>Boardview</li>
+        <li>Component testing</li>
+        <li>Circuit tracing</li>
+      </ul>
+    </div>
+
+    <div class="level-card l3">
+      <span class="level-num">LEVEL 3</span>
+      <h3>ADVANCEDct</h3>
+      <p class="for">For Experienced Technicians</p>
+      <ul>
+        <li>Chip-level repair</li>
+        <li>Microsoldering</li>
+        <li>Advanced diagnostics</li>
+        <li>iPhone motherboard repair</li>
+        <li>Complex fault diagnosis</li>
+        <li>IC-level troubleshooting</li>
+        <li>Track and pad repair</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section>
+  <h2 class="section-title">Trainer & Training Background</h2>
+  <p class="section-sub">Professional training by certified technician</p>
+  <div class="trainer-box">
+    <h3>Professional Training Background</h3>
+    <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Training is provided under <strong style="color:#fff;">Shree Sawriya Solutions</strong> with a focus on practical smartphone repair, motherboard diagnosis and chip-level troubleshooting.</p>
+    <div class="cert">🎓 <strong>iPhone Training:</strong> Certified by Kewal Mobile</div>
+    <div class="cert">🎓 <strong>Android Training:</strong> Training by We Fix It, India</div>
+    <div class="cert">🎓 <strong>Advanced Training Experience:</strong> Practical exposure to smartphone motherboard diagnosis, microsoldering, iPhone hardware troubleshooting and advanced chip-level repair.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="a">
+  <div class="cta-section">
+    <h2>Ready to Learn Mobile Repairing?</h2>
+    <p>Develop practical skills in smartphone repair, motherboard diagnosis, microsoldering and chip-level troubleshooting with Shree Sawriya Solutions.</p>
+    <p style="color:#fff; font-weight:600;">Start Your Training Journey Today.</p>
+    <div class="phone">📞 +91 97200 76900</div>
+    <div class="hero-buttons">
+      <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20training%20courses%20ke%20bare%20mein%20jaankari%20chahiye." class="btn btn-green">💬 WhatsApp Now</a>
+      <a href="tel:+919720076900" class="btn btn-outline">📞 Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo.png" alt="Shree Sawriya Solutions">
+  <h4>SHREE SAWRIYA SOLUTIONS</h4>
+  <p>Mobile Repair | iPhone Repair | Android Repair | Chip-Level Repair | Microsoldering Training</p>
+  <p>Salwan Chowk, Karnal Road, Assandh, Haryana</p>
+  <p style="margin-top:10px;">📞 +91 97200 76900</p>
+  <p style="color:#333; font-size:11px; margin-top:15px;">© 2025 Shree Sawriya Solutions. All Rights Reserved.</p>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20training%20courses%20ke%20bare%20mein%20jaankari%20chahiye." class="float-btn float-wa" title="WhatsApp">💬</a>
+  <a href="tel:+919720076900" class="float-btn float-call" title="Call">📞</a>
+</div>
+
+</body>
+</html>
