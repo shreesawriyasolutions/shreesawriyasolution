@@ -1,11 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Shree Sawriya Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Sawriya Solutions | Mobile Repair & Chip-Level Training in Assandh</title>
+<meta name="description" content="Shree Sawriya Solutions - iPhone Repair, Android Repair, Chip-Level Repair, Second-Hand Smartphones, Accessories & Chip-Level Training in Assandh, Karnal, Haryana.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAVBAR */
+.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.logo { font-weight: 800; font-size: 18px; letter-spacing: 1px; }
+.logo span { color: #fff; }
+.nav-links { display: none; gap: 25px; font-size: 14px; color: #aaa; }
+.nav-links a:hover { color: #fff; }
+
+/* HERO */
+.hero { padding: 80px 20px 60px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); }
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; }
+.hero h1 span { background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { color: #999; font-size: 15px; max-width: 500px; margin: 0 auto 30px; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: #fff; color: #000; }
+.btn-primary:hover { background: #ddd; }
+.btn-outline { border: 1px solid #333; color: #fff; }
+.btn-outline:hover { border-color: #fff; }
+
+/* SECTION */
+section { padding: 60px 20px; }
+.section-title { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 10px; }
+.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
+
+/* SERVICES */
+.services-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1000px; margin: 0 auto; }
+.service-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 25px; transition: 0.3s; }
+.service-card:hover { border-color: #444; transform: translateY(-3px); }
+.service-icon { font-size: 28px; margin-bottom: 12px; }
+.service-card h3 { font-size: 17px; margin-bottom: 8px; font-weight: 700; }
+.service-card p { color: #888; font-size: 13px; }
+
+/* ABOUT */
+.about { max-width: 700px; margin: 0 auto; text-align: center; color: #aaa; font-size: 15px; }
+.about strong { color: #fff; }
+
+/* CONTACT */
+.contact-box { background: #111; border: 1px solid #222; border-radius: 20px; padding: 30px; max-width: 500px; margin: 0 auto; text-align: center; }
+.contact-box h3 { margin-bottom: 20px; font-size: 20px; }
+.contact-row { margin: 15px 0; color: #ccc; font-size: 14px; }
+.contact-row strong { color: #fff; display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.contact-row a { color: #fff; font-weight: 600; }
+
+/* FOOTER */
+footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; color: #666; font-size: 12px; }
+
+/* FLOATING BUTTONS */
+.float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+.float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: 0.3s; }
+.float-btn:hover { transform: scale(1.1); }
+.float-wa { background: #25D366; color: #fff; font-size: 28px; }
+.float-call { background: #fff; color: #000; font-size: 22px; }
+
+/* MOBILE */
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .hero h1 { font-size: 48px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
 </head>
 <body>
-  <h1>SHREE SAWRIYA SOLUTIONS</h1>
-  <p>Website ban rahi hai... Jald aa rahe hain!</p>
-  <p>Phone: +91 97200 76900</p>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">SHREE SAWRIYA <span>SOLUTIONS</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Premium Mobile Repair &<br><span>Chip-Level Training</span></h1>
+  <p>Assandh, Haryana ki sabse trusted mobile repair shop. iPhone, Android, Chip-Level repair aur professional training — sab ek jagah.</p>
+  <div class="hero-buttons">
+    <a href="https://wa.me/919720076900" class="btn btn-primary">💬 WhatsApp Now</a>
+    <a href="tel:+919720076900" class="btn btn-outline">📞 Call Now</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">Professional solutions for all your mobile needs</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>iPhone Repair</h3>
+      <p>Screen replacement, battery, charging port, camera aur har tarah ki iPhone repair expert technicians dwara.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>Android Repair</h3>
+      <p>Saare Android phones ki repair — display, battery, motherboard, software aur hardware issues.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔬</div>
+      <h3>Chip-Level Repair</h3>
+      <p>Advanced chip-level repair with modern equipment. Dead phone, water damage, IC replacement — sab solutions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Second-Hand Smartphones</h3>
+      <p>Quality-checked pre-owned smartphones at best prices. Warranty ke saath trusted deals.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎧</div>
+      <h3>Accessories</h3>
+      <p>Original chargers, earphones, covers, tempered glass aur premium mobile accessories ki wide range.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎓</div>
+      <h3>Chip-Level Training</h3>
+      <p>Professional chip-level mobile repair training course. Practical knowledge aur certification ke saath.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#0d0d0d;">
+  <h2 class="section-title">About Us</h2>
+  <p class="section-sub">Trusted since years in Assandh</p>
+  <div class="about">
+    <p><strong>Shree Sawriya Solutions</strong> Assandh, Haryana ki ek premium mobile repair aur training center hai. Hum iPhone, Android, chip-level repair aur second-hand smartphone sales mein expert hain. Hamara maqsad hai customers ko <strong>quality service</strong>, <strong>genuine parts</strong> aur <strong>affordable prices</strong> dena.</p>
+    <br>
+    <p>Hum <strong>Chip-Level Training</strong> bhi provide karte hain un logon ke liye jo mobile repair field mein career banana chahte hain.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <p class="section-sub">Aaj hi humse sampark kijiye</p>
+  <div class="contact-box">
+    <h3>Get In Touch</h3>
+    <div class="contact-row">
+      <strong>Phone / WhatsApp</strong>
+      <a href="tel:+919720076900">+91 97200 76900</a>
+    </div>
+    <div class="contact-row">
+      <strong>Address</strong>
+      Salwan Chowk, Karnal Road,<br>Assandh, Haryana
+    </div>
+    <div style="margin-top:25px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wa.me/919720076900" class="btn btn-primary">💬 WhatsApp</a>
+      <a href="tel:+919720076900" class="btn btn-outline">📞 Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 Shree Sawriya Solutions. All Rights Reserved.<br>
+  Salwan Chowk, Karnal Road, Assandh, Haryana
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/919720076900" class="float-btn float-wa" title="WhatsApp">💬</a>
+  <a href="tel:+919720076900" class="float-btn float-call" title="Call">📞</a>
+</div>
+
 </body>
 </html>
