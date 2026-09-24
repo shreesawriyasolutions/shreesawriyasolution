@@ -146,6 +146,86 @@ footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; col
   </div>
 </section>
 
+  <!-- REPAIR STATUS CHECK -->
+<section id="status" style="background:#0d0d0d;">
+  <h2 class="section-title">Repair Status Check</h2>
+  <p class="section-sub">Apna mobile number daaliye aur apne phone ka status jaaniye</p>
+  
+  <div style="max-width:500px; margin:0 auto;">
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <input 
+        type="tel" 
+        id="phoneInput" 
+        placeholder="Apna 10-digit mobile number daaliye" 
+        maxlength="10"
+        style="flex:1; min-width:200px; padding:15px 20px; border-radius:50px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none;">
+      <button 
+        onclick="checkStatus()" 
+        style="padding:15px 30px; border-radius:50px; background:#fff; color:#000; font-weight:600; font-size:14px; border:none; cursor:pointer;">
+        Check Status
+      </button>
+    </div>
+    <div id="statusResult" style="margin-top:25px;"></div>
+  </div>
+</section>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwSZ1dExztkLrq3zJ74sJTtF5ra10Fss1Qj26QjbN-orghmyiZTeDL9q4QcYm0tUHAN/exec";
+
+async function checkStatus() {
+  const phone = document.getElementById('phoneInput').value.trim();
+  const resultDiv = document.getElementById('statusResult');
+  
+  if (phone.length !== 10 || isNaN(phone)) {
+    resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kripya 10-digit ka sahi mobile number daaliye.</div>';
+    return;
+  }
+  
+  resultDiv.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">Search kar rahe hain...</div>';
+  
+  try {
+    const response = await fetch(API_URL + "?phone=" + phone);
+    const data = await response.json();
+    
+    if (data.found) {
+      resultDiv.innerHTML = `
+        <div style="background:#111; border:1px solid #333; border-radius:16px; padding:25px; text-align:left;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+            <h3 style="font-size:18px; margin:0;">${data.customerName}</h3>
+            <span style="background:#fff; color:#000; padding:6px 14px; border-radius:50px; font-size:12px; font-weight:700;">${data.status}</span>
+          </div>
+          <div style="display:grid; gap:12px; font-size:14px;">
+            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
+              <span style="color:#888;">Phone Model</span>
+              <span style="color:#fff; font-weight:600;">${data.phoneModel}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
+              <span style="color:#888;">Entry Date</span>
+              <span style="color:#fff; font-weight:600;">${data.entryDate}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
+              <span style="color:#888;">Estimated Charges</span>
+              <span style="color:#fff; font-weight:600;">₹${data.estimateCharge}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
+              <span style="color:#888;">Estimated Delivery</span>
+              <span style="color:#fff; font-weight:600;">${data.estimateDelivery}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:10px 0;">
+              <span style="color:#888;">Notes</span>
+              <span style="color:#fff; font-weight:600; text-align:right; max-width:60%;">${data.notes}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      resultDiv.innerHTML = '<div style="background:#1a1a2a; border:1px solid #333355; border-radius:12px; padding:20px; color:#9999ff; text-align:center;">Is number ka koi record nahi mila. Kripya shop par sampark kijiye ya WhatsApp kariye.</div>';
+    }
+  } catch (error) {
+    resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kuch technical problem aa gayi. Thodi der baad try kijiye.</div>';
+  }
+}
+</script>
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact Us</h2>
