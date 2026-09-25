@@ -625,5 +625,55 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<script>
+// Translation Engine
+function translatePage(lang) {
+  var elements = document.querySelectorAll('[data-en]');
+  elements.forEach(function(el) {
+    var text = el.getAttribute('data-' + lang);
+    if (text) {
+      // Agar element ke andar koi child element hai (jaise <span>), toh sirf text badle
+      if (el.children.length === 0) {
+        el.textContent = text;
+      } else {
+        // Agar complex hai, toh pehla text node badle
+        var textNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
+        if (textNode) {
+          textNode.textContent = text;
+        } else {
+          el.textContent = text;
+        }
+      }
+    }
+  });
+  
+  // Placeholder translations for inputs
+  var inputs = document.querySelectorAll('[data-placeholder-en]');
+  inputs.forEach(function(el) {
+    var placeholder = el.getAttribute('data-placeholder-' + lang);
+    if (placeholder) {
+      el.setAttribute('placeholder', placeholder);
+    }
+  });
+  
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+}
+
+// Hook into existing setLang function
+var originalSetLang = window.setLang;
+window.setLang = function(lang) {
+  if (originalSetLang) originalSetLang(lang);
+  translatePage(lang);
+};
+
+// Apply on page load
+window.addEventListener('DOMContentLoaded', function() {
+  var savedLang = localStorage.getItem('preferredLang') || 'en';
+  setTimeout(function() {
+    translatePage(savedLang);
+  }, 600);
+});
+</script>
 </body>
 </html>
