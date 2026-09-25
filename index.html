@@ -6,38 +6,37 @@
 <title>Shree Sawriya Solutions | Mobile Repair & Chip-Level Training in Assandh</title>
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
-  <meta name="google-site-verification" content="ToXpQid_KaVN9CLMeX7rwioLNRlvV9qAGaGicJlsgmU" />
+<meta name="google-site-verification" content="ToXpQid_KaVN9CLMeX7rwioLNRlvV9qAGaGicJlsgmU" />
 <meta name="description" content="Shree Sawriya Solutions - iPhone Repair, Android Repair, Chip-Level Repair, Second-Hand Smartphones, Accessories & Chip-Level Training in Assandh, Karnal, Haryana.">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
 a { text-decoration: none; color: inherit; }
 
-/* NAVBAR */
-.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
 .logo { font-weight: 800; font-size: 18px; letter-spacing: 1px; }
-.logo span { color: #fff; }
 .nav-links { display: none; gap: 25px; font-size: 14px; color: #aaa; }
 .nav-links a:hover { color: #fff; }
 
-/* HERO */
-.hero { padding: 80px 20px 60px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); }
-.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; }
+.lang-switcher { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.lang-btn { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; border: 1px solid #333; background: transparent; color: #aaa; }
+.lang-btn.active { background: #fff; color: #000; border: none; }
+
+.hero { padding: 80px 20px 60px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); position: relative; overflow: hidden; }
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; position: relative; z-index: 1; }
 .hero h1 span { background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero p { color: #999; font-size: 15px; max-width: 500px; margin: 0 auto 30px; }
-.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero p { color: #999; font-size: 15px; max-width: 500px; margin: 0 auto 30px; position: relative; z-index: 1; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 .btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
 .btn-primary { background: #fff; color: #000; }
 .btn-primary:hover { background: #ddd; }
 .btn-outline { border: 1px solid #333; color: #fff; }
 .btn-outline:hover { border-color: #fff; }
 
-/* SECTION */
 section { padding: 60px 20px; }
 .section-title { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 10px; }
 .section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
 
-/* SERVICES */
 .services-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1000px; margin: 0 auto; }
 .service-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 25px; transition: 0.3s; }
 .service-card:hover { border-color: #444; transform: translateY(-3px); }
@@ -45,28 +44,23 @@ section { padding: 60px 20px; }
 .service-card h3 { font-size: 17px; margin-bottom: 8px; font-weight: 700; }
 .service-card p { color: #888; font-size: 13px; }
 
-/* ABOUT */
 .about { max-width: 700px; margin: 0 auto; text-align: center; color: #aaa; font-size: 15px; }
 .about strong { color: #fff; }
 
-/* CONTACT */
 .contact-box { background: #111; border: 1px solid #222; border-radius: 20px; padding: 30px; max-width: 500px; margin: 0 auto; text-align: center; }
 .contact-box h3 { margin-bottom: 20px; font-size: 20px; }
 .contact-row { margin: 15px 0; color: #ccc; font-size: 14px; }
 .contact-row strong { color: #fff; display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
 .contact-row a { color: #fff; font-weight: 600; }
 
-/* FOOTER */
 footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; color: #666; font-size: 12px; }
 
-/* FLOATING BUTTONS */
 .float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
 .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: 0.3s; }
 .float-btn:hover { transform: scale(1.1); }
 .float-wa { background: #25D366; color: #fff; font-size: 28px; }
 .float-call { background: #fff; color: #000; font-size: 22px; }
 
-/* MOBILE */
 @media (min-width: 768px) {
   .nav-links { display: flex; }
   .hero h1 { font-size: 48px; }
@@ -81,97 +75,68 @@ footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; col
 
 <!-- NAVBAR -->
 <nav class="navbar">
- <div class="logo" style="display:flex; align-items:center; gap:10px;">
-  <img src="logo.png" alt="Shree Sawriya Solutions" style="width:38px; height:38px; object-fit:contain;">
-  <span style="font-size:16px;">SHREE SAWRIYA <span style="color:#ccc;">SOLUTIONS</span></span>
-</div>
- <div class="nav-links">
-  <a href="#services" data-en="Services" data-hi="सेवाएं" data-pa="ਸੇਵਾਵਾਂ">Services</a>
-  <a href="#about" data-en="About" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About</a>
-  <a href="#contact" data-en="Contact" data-hi="संपर्क" data-pa="ਸੰਪਰਕ">Contact</a>
-</div>
+  <a href="index.html" class="logo" style="display:flex; align-items:center; gap:10px;">
+    <img src="logo.png" alt="Shree Sawriya Solutions" style="width:38px; height:38px; object-fit:contain;">
+    <span style="font-size:16px;">SHREE SAWRIYA <span style="color:#ccc;">SOLUTIONS</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#services" data-en="Services" data-hi="सेवाएं" data-pa="ਸੇਵਾਵਾਂ">Services</a>
+    <a href="#about" data-en="About" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About</a>
+    <a href="#contact" data-en="Contact" data-hi="संपर्क" data-pa="ਸੰਪਰਕ">Contact</a>
+  </div>
+  <div class="lang-switcher">
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+    <button onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिं</button>
+    <button onclick="setLang('pa')" id="btn-pa" class="lang-btn">ਪੰ</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.04; width:400px; height:400px; background-image:url('logo.png'); background-size:contain; background-repeat:no-repeat; background-position:center; pointer-events:none; z-index:0;"></div>
   <h1>
-  <span data-en="Premium Mobile Repair &" data-hi="प्रीमियम मोबाइल रिपेयर और" data-pa="ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ">Premium Mobile Repair &</span>
-  <br>
-  <span data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</span>
-</h1>
- <p data-en="Assandh, Haryana's trusted mobile repair shop. iPhone, Android, Chip-Level repair and professional training — All on One place." data-hi="असंध, हरियाणा की सबसे भरोसेमंद मोबाइल रिपेयर शॉप। आईफ़ोन , एंड्रॉयड , चिप-लेवल रिपेयर और प्रोफेशनल ट्रेनिंग — सब एक जगह।" data-pa="ਅਸੰਧ, ਹਰਿਆਣਾ ਦੀ ਸਭ ਤੋਂ ਭਰੋਸੇਮੰਦ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਦੁਕਾਨ। ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਪ੍ਰੋਫੈਸ਼ਨਲ ਟ੍ਰੇਨਿੰਗ — ਸਭ ਇੱਕ ਥਾਂ।">Assandh, Haryana ki sabse trusted mobile repair shop. iPhone, Android, Chip-Level repair aur professional training — sab ek jagah.</p>
+    <span data-en="Premium Mobile Repair &" data-hi="प्रीमियम मोबाइल रिपेयर और" data-pa="ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ">Premium Mobile Repair &</span>
+    <br>
+    <span data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</span>
+  </h1>
+  <p data-en="Assandh, Haryana's trusted mobile repair shop. iPhone, Android, Chip-Level repair and professional training — All on One place." data-hi="असंध, हरियाणा की सबसे भरोसेमंद मोबाइल रिपेयर शॉप। आईफ़ोन, एंड्रॉयड, चिप-लेवल रिपेयर और प्रोफेशनल ट्रेनिंग — सब एक जगह।" data-pa="ਅਸੰਧ, ਹਰਿਆਣਾ ਦੀ ਸਭ ਤੋਂ ਭਰੋਸੇਮੰਦ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਦੁਕਾਨ। ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਪ੍ਰੋਫੈਸ਼ਨਲ ਟ੍ਰੇਨਿੰਗ — ਸਭ ਇੱਕ ਥਾਂ।">Assandh, Haryana's trusted mobile repair shop.</p>
   <div class="hero-buttons">
-    <a href="https://wa.me/919720076900?text=..." class="btn btn-primary" data-en="💬 WhatsApp Now" data-hi="💬 WhatsApp करें" data-pa="💬 WhatsApp ਕਰੋ">💬 WhatsApp Now</a>
-   <a href="tel:+919720076900" class="btn btn-outline" data-en="📞 Call Now" data-hi="📞 कॉल करें" data-pa="📞 ਕਾਲ ਕਰੋ">📞 Call Now</a>
+    <a href="https://wa.me/919720076900" class="btn btn-primary" data-en="💬 WhatsApp Now" data-hi="💬 WhatsApp करें" data-pa="💬 WhatsApp ਕਰੋ">💬 WhatsApp Now</a>
+    <a href="tel:+919720076900" class="btn btn-outline" data-en="📞 Call Now" data-hi="📞 कॉल करें" data-pa="📞 ਕਾਲ ਕਰੋ">📞 Call Now</a>
   </div>
-  <div style="margin-top:15px;">
- <a href="https://instagram.com/mister_ankush" target="_blank" data-en="Follow @mister_ankush" data-hi="फॉलो करें @mister_ankush" data-pa="ਫਾਲੋ ਕਰੋ @mister_ankush" ...>Follow @mister_ankush</a>
-</div>
-  <div style="margin-top:12px;">
-<a href="https://youtube.com/@shreesawriyasolutions" target="_blank" data-en="Subscribe @shreesawriyasolutions" data-hi="सब्सक्राइब करें @shreesawriyasolutions" data-pa="ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ @shreesawriyasolutions" ...>Subscribe @shreesawriyasolutions</a>
-</div>
 </div>
 
 <!-- FREE DIAGNOSIS OFFER -->
 <section id="offer" style="background:linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); padding:70px 20px;">
   <div style="max-width:1000px; margin:0 auto;">
-    
     <div style="text-align:center; margin-bottom:40px;">
-      <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:8px 20px; border-radius:50px; font-size:12px; font-weight:700; letter-spacing:2px; margin-bottom:20px;">🔥 LIMITED TIME OFFER</span>
-      <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:15px; letter-spacing:-0.5px;">FREE Phone Diagnosis</h2>
-      <p style="color:#aaa; font-size:15px; max-width:500px; margin:0 auto;">Apne phone ki complete checkup karwaiye — bilkul muft! Koi hidden charges nahi.</p>
+      <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:8px 20px; border-radius:50px; font-size:12px; font-weight:700; letter-spacing:2px; margin-bottom:20px;" data-en="🔥 LIMITED TIME OFFER" data-hi="🔥 सीमित समय का ऑफर" data-pa="🔥 ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">🔥 LIMITED TIME OFFER</span>
+      <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:15px; letter-spacing:-0.5px;" data-en="FREE Phone Diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫੋਨ ਡਾਇਗਨੋਸਿਸ">FREE Phone Diagnosis</h2>
+      <p style="color:#aaa; font-size:15px; max-width:500px; margin:0 auto;" data-en="Get your phone checked completely — absolutely free! No hidden charges." data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त! कोई छिपा शुल्क नहीं।" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ! ਕੋਈ ਲੁਕਿਆ ਖਰਚਾ ਨਹੀਂ।">Apne phone ki complete checkup karwaiye — bilkul muft!</p>
     </div>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:25px; align-items:start;">
-      
-      <!-- LEFT: WHAT WE CHECK -->
-      <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:24px; padding:30px; box-shadow:0 15px 40px rgba(0,0,0,0.5);">
-        <h3 style="color:#fff; font-size:18px; margin-bottom:20px; font-weight:700;">✓ Kya-Kya Check Hoga?</h3>
+      <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:24px; padding:30px;">
+        <h3 style="color:#fff; font-size:18px; margin-bottom:20px; font-weight:700;" data-en="✓ What Will Be Checked?" data-hi="✓ क्या-क्या चेक होगा?" data-pa="✓ ਕੀ-ਕੀ ਚੈੱਕ ਹੋਵੇਗਾ?">✓ Kya-Kya Check Hoga?</h3>
         <div style="display:grid; gap:14px;">
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Battery Health Check
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Screen & Display Test
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Charging Port & Cable Check
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Software Diagnostics
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Water Damage Check
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span>
-            Camera & Speaker Test
-          </div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Battery Health Check" data-hi="बैटरी हेल्थ चेक" data-pa="ਬੈਟਰੀ ਹੈਲਥ ਚੈੱਕ">Battery Health Check</span></div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Screen & Display Test" data-hi="स्क्रीन और डिस्प्ले टेस्ट" data-pa="ਸਕਰੀਨ ਅਤੇ ਡਿਸਪਲੇ ਟੈਸਟ">Screen & Display Test</span></div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Charging Port Check" data-hi="चार्जिंग पोर्ट चेक" data-pa="ਚਾਰਜਿੰਗ ਪੋਰਟ ਚੈੱਕ">Charging Port Check</span></div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Software Diagnostics" data-hi="सॉफ्टवेयर डायग्नोस्टिक्स" data-pa="ਸੌਫਟਵੇਅਰ ਡਾਇਗਨੋਸਟਿਕਸ">Software Diagnostics</span></div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Water Damage Check" data-hi="वाटर डैमेज चेक" data-pa="ਪਾਣੀ ਨੁਕਸਾਨ ਚੈੱਕ">Water Damage Check</span></div>
+          <div style="display:flex; align-items:center; gap:12px; color:#ccc; font-size:14px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:#fff; color:#000; border-radius:50%; font-size:12px; font-weight:700;">✓</span><span data-en="Camera & Speaker Test" data-hi="कैमरा और स्पीकर टेस्ट" data-pa="ਕੈਮਰਾ ਅਤੇ ਸਪੀਕਰ ਟੈਸਟ">Camera & Speaker Test</span></div>
         </div>
-        <p style="color:#888; font-size:12px; margin-top:20px; font-style:italic;">* Complete diagnosis ke baad hi repair suggest karenge — koi pressure nahi.</p>
       </div>
 
-      <!-- RIGHT: BOOKING FORM -->
-      <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:24px; padding:30px; box-shadow:0 15px 40px rgba(0,0,0,0.5);">
-        <h3 style="color:#fff; font-size:18px; margin-bottom:20px; font-weight:700;">📅 Book Your Time Slot</h3>
-        
+      <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:24px; padding:30px;">
+        <h3 style="color:#fff; font-size:18px; margin-bottom:20px; font-weight:700;" data-en="📅 Book Your Time Slot" data-hi="📅 अपना समय बुक करें" data-pa="📅 ਆਪਣਾ ਸਮਾਂ ਬੁੱਕ ਕਰੋ">📅 Book Your Time Slot</h3>
         <div style="display:grid; gap:14px;">
-          <input type="text" id="bookingName" placeholder="Aapka Naam" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
-          
+          <input type="text" id="bookingName" placeholder="Your Name" data-placeholder-en="Your Name" data-placeholder-hi="आपका नाम" data-placeholder-pa="ਤੁਹਾਡਾ ਨਾਮ" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
           <input type="tel" id="bookingPhone" placeholder="Mobile Number (10 digit)" maxlength="10" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
-          
-          <input type="text" id="bookingModel" placeholder="Phone Model (e.g. iPhone 12)" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
-          
+          <input type="text" id="bookingModel" placeholder="Phone Model" data-placeholder-en="Phone Model (e.g. iPhone 12)" data-placeholder-hi="फोन मॉडल (जैसे iPhone 12)" data-placeholder-pa="ਫੋਨ ਮਾਡਲ (ਜਿਵੇਂ iPhone 12)" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
           <input type="date" id="bookingDate" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
-          
           <select id="bookingTime" style="padding:14px 18px; border-radius:12px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none; width:100%;">
-            <option value="">Time Slot Chuniye</option>
+            <option value="">Select Time Slot</option>
             <option value="10:00 AM – 12:00 PM">10:00 AM – 12:00 PM</option>
             <option value="12:00 PM – 02:00 PM">12:00 PM – 02:00 PM</option>
             <option value="02:00 PM – 04:00 PM">02:00 PM – 04:00 PM</option>
@@ -179,14 +144,8 @@ footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; col
             <option value="06:00 PM – 08:00 PM">06:00 PM – 08:00 PM</option>
           </select>
         </div>
-
-        <button onclick="bookOnWhatsApp()" style="margin-top:20px; width:100%; padding:16px; border-radius:50px; background:linear-gradient(90deg, #25D366, #128C7E); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer; box-shadow:0 8px 20px rgba(37,211,102,0.3); display:flex; align-items:center; justify-content:center; gap:10px;">
-          💬 Book on WhatsApp
-        </button>
-        
-        <p style="color:#666; font-size:12px; text-align:center; margin-top:15px;">Click karne par WhatsApp khulega — booking message auto-ready hoga.</p>
+        <button onclick="bookOnWhatsApp()" style="margin-top:20px; width:100%; padding:16px; border-radius:50px; background:linear-gradient(90deg, #25D366, #128C7E); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer;">💬 Book on WhatsApp</button>
       </div>
-
     </div>
   </div>
 </section>
@@ -198,25 +157,11 @@ function bookOnWhatsApp() {
   var model = document.getElementById('bookingModel').value.trim();
   var date = document.getElementById('bookingDate').value;
   var time = document.getElementById('bookingTime').value;
-  
-  if (!name || !phone || !date || !time) {
-    alert('Kripya Naam, Mobile Number, Date aur Time Slot zaroor bhariye.');
-    return;
-  }
-  
-  if (phone.length !== 10 || isNaN(phone)) {
-    alert('Kripya 10-digit ka sahi mobile number daaliye.');
-    return;
-  }
-  
-  var message = "🔧 *FREE Phone Diagnosis Booking*\n\n";
-  message += "👤 Naam: " + name + "\n";
-  message += "📱 Mobile: " + phone + "\n";
+  if (!name || !phone || !date || !time) { alert('Kripya saari details bhariye.'); return; }
+  if (phone.length !== 10 || isNaN(phone)) { alert('Kripya 10-digit ka sahi mobile number daaliye.'); return; }
+  var message = "🔧 *FREE Phone Diagnosis Booking*\n\n👤 Naam: " + name + "\n📱 Mobile: " + phone + "\n";
   if (model) message += "📞 Phone Model: " + model + "\n";
-  message += "📅 Date: " + date + "\n";
-  message += "⏰ Time Slot: " + time + "\n\n";
-  message += "Kripya meri booking confirm kijiye.";
-  
+  message += "📅 Date: " + date + "\n⏰ Time Slot: " + time + "\n\nKripya meri booking confirm kijiye.";
   var url = "https://wa.me/919720076900?text=" + encodeURIComponent(message);
   window.open(url, '_blank');
 }
@@ -224,72 +169,42 @@ function bookOnWhatsApp() {
 
 <!-- SERVICES -->
 <section id="services">
-  <h2 class="section-title">Our Services</h2>
-  <p class="section-sub">Professional solutions for all your mobile needs</p>
+  <h2 class="section-title" data-en="Our Services" data-hi="हमारी सेवाएं" data-pa="ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ">Our Services</h2>
+  <p class="section-sub" data-en="Professional solutions for all your mobile needs" data-hi="आपकी सभी मोबाइल जरूरतों के लिए प्रोफेशनल समाधान" data-pa="ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਮੋਬਾਈਲ ਲੋੜਾਂ ਲਈ ਪ੍ਰੋਫੈਸ਼ਨਲ ਹੱਲ">Professional solutions for all your mobile needs</p>
   <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">📱</div>
-      <h3>iPhone Repair</h3>
-      <p>Screen replacement, Battery, Charging port, Camera aur har tarah ki iPhone repair expert technicians dwara.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🤖</div>
-      <h3>Android Repair</h3>
-      <p>Saare Android phones ki repair — Display, Battery, Motherboard, Software aur Hardware issues.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔬</div>
-      <h3>Chip-Level Repair</h3>
-      <p>Advanced chip-level repair with modern equipment. Dead phone, Water damage, IC replacement — sab solutions.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📦</div>
-      <h3>Second-Hand Smartphones</h3>
-      <p>Quality-checked pre-owned smartphones at best prices. Warranty ke saath trusted deals.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🎧</div>
-      <h3>Accessories</h3>
-      <p>Original chargers, Earphones, Covers, Tempered glass aur premium mobile accessories ki wide range.</p>
-    </div>
- <a href="training.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
-  <div class="service-icon">🎓</div>
-  <h3>Chip-Level Training</h3>
-  <p>Professional chip-level mobile repair training course. Practical knowledge aur certification ke saath.</p>
-  <p style="color:#fff; font-weight:600; margin-top:12px; font-size:13px;">View Course Details →</p>
-</a>
+    <div class="service-card"><div class="service-icon">📱</div><h3 data-en="iPhone Repair" data-hi="आईफोन रिपेयर" data-pa="ਆਈਫੋਨ ਰਿਪੇਅਰ">iPhone Repair</h3><p data-en="Screen replacement, Battery, Charging port, Camera and all types of iPhone repair by expert technicians." data-hi="स्क्रीन रिप्लेसमेंट, बैटरी, चार्जिंग पोर्ट, कैमरा और हर तरह की आईफोन रिपेयर एक्सपर्ट टेक्नीशियन द्वारा।" data-pa="ਸਕਰੀਨ ਬਦਲਣਾ, ਬੈਟਰੀ, ਚਾਰਜਿੰਗ ਪੋਰਟ, ਕੈਮਰਾ ਅਤੇ ਹਰ ਤਰ੍ਹਾਂ ਦੀ ਆਈਫੋਨ ਰਿਪੇਅਰ ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ ਦੁਆਰਾ।">Screen replacement, Battery, Charging port, Camera aur har tarah ki iPhone repair.</p></div>
+    <div class="service-card"><div class="service-icon">🤖</div><h3 data-en="Android Repair" data-hi="एंड्रॉयड रिपेयर" data-pa="ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ">Android Repair</h3><p data-en="All Android phones repair — Display, Battery, Motherboard, Software and Hardware issues." data-hi="सभी एंड्रॉयड फोन की रिपेयर — डिस्प्ले, बैटरी, मदरबोर्ड, सॉफ्टवेयर और हार्डवेयर समस्याएं।" data-pa="ਸਾਰੇ ਐਂਡਰਾਇਡ ਫੋਨਾਂ ਦੀ ਰਿਪੇਅਰ — ਡਿਸਪਲੇ, ਬੈਟਰੀ, ਮਦਰਬੋਰਡ, ਸੌਫਟਵੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆਵਾਂ।">Saare Android phones ki repair.</p></div>
+    <div class="service-card"><div class="service-icon">🔬</div><h3 data-en="Chip-Level Repair" data-hi="चिप-लेवल रिपेयर" data-pa="ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ">Chip-Level Repair</h3><p data-en="Advanced chip-level repair with modern equipment. Dead phone, Water damage, IC replacement." data-hi="आधुनिक उपकरणों के साथ एडवांस्ड चिप-लेवल रिपेयर। डेड फोन, वाटर डैमेज, आईसी रिप्लेसमेंट।" data-pa="ਆਧੁਨਿਕ ਸਾਜ਼ੋ-ਸਮਾਨ ਨਾਲ ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ। ਡੈੱਡ ਫੋਨ, ਪਾਣੀ ਨੁਕਸਾਨ, ਆਈਸੀ ਬਦਲਣਾ।">Advanced chip-level repair with modern equipment.</p></div>
+    <div class="service-card"><div class="service-icon">📦</div><h3 data-en="Second-Hand Smartphones" data-hi="सेकंड-हैंड स्मार्टफोन" data-pa="ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ">Second-Hand Smartphones</h3><p data-en="Quality-checked pre-owned smartphones at best prices with warranty." data-hi="वारंटी के साथ बेस्ट प्राइस पर क्वालिटी-चेक्ड सेकंड-हैंड स्मार्टफोन।" data-pa="ਵਾਰੰਟੀ ਨਾਲ ਸਭ ਤੋਂ ਵਧੀਆ ਕੀਮਤ 'ਤੇ ਕੁਆਲਿਟੀ-ਚੈੱਕਡ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ।">Quality-checked pre-owned smartphones at best prices.</p></div>
+    <div class="service-card"><div class="service-icon">🎧</div><h3 data-en="Accessories" data-hi="एक्सेसरीज़" data-pa="ਐਕਸੈਸਰੀਜ਼">Accessories</h3><p data-en="Original chargers, Earphones, Covers, Tempered glass and premium mobile accessories." data-hi="ओरिजिनल चार्जर, ईयरफोन, कवर, टेम्पर्ड ग्लास और प्रीमियम मोबाइल एक्सेसरीज़।" data-pa="ਅਸਲ ਚਾਰਜਰ, ਈਅਰਫੋਨ, ਕਵਰ, ਟੈਂਪਰਡ ਗਲਾਸ ਅਤੇ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼।">Original chargers, Earphones, Covers, Tempered glass.</p></div>
+    <a href="training.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
+      <div class="service-icon">🎓</div>
+      <h3 data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</h3>
+      <p data-en="Professional chip-level mobile repair training course. Practical knowledge with certification." data-hi="प्रोफेशनल चिप-लेवल मोबाइल रिपेयर ट्रेनिंग कोर्स। सर्टिफिकेशन के साथ प्रैक्टिकल नॉलेज।" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਚਿਪ-ਲੈਵਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟ੍ਰੇਨਿੰਗ ਕੋਰਸ। ਸਰਟੀਫਿਕੇਸ਼ਨ ਨਾਲ ਪ੍ਰੈਕਟੀਕਲ ਗਿਆਨ।">Professional chip-level mobile repair training course.</p>
+      <p style="color:#fff; font-weight:600; margin-top:12px; font-size:13px;" data-en="View Course Details →" data-hi="कोर्स की जानकारी देखें →" data-pa="ਕੋਰਸ ਦੀ ਜਾਣਕਾਰੀ ਦੇਖੋ →">View Course Details →</p>
+    </a>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" style="background:#0d0d0d;">
-  <h2 class="section-title">About Us</h2>
-  <p class="section-sub">Trusted since years in Assandh</p>
+  <h2 class="section-title" data-en="About Us" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About Us</h2>
+  <p class="section-sub" data-en="Trusted since years in Assandh" data-hi="असंध में सालों से भरोसेमंद" data-pa="ਅਸੰਧ ਵਿੱਚ ਸਾਲਾਂ ਤੋਂ ਭਰੋਸੇਮੰਦ">Trusted since years in Assandh</p>
   <div class="about">
-    <p><strong>Shree Sawriya Solutions</strong> Assandh, Haryana ki ek premium mobile repair aur training center hai. Hum iPhone, Android, chip-level repair aur second-hand smartphone sales mein expert hain. Hamara maqsad hai customers ko <strong>quality service</strong>, <strong>genuine parts</strong> aur <strong>affordable prices</strong> dena.</p>
+    <p data-en="Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana. We are experts in iPhone, Android, chip-level repair and second-hand smartphone sales. Our goal is to provide customers with quality service, genuine parts and affordable prices." data-hi="श्री सावरिया सॉल्यूशंस असंध, हरियाणा में एक प्रीमियम मोबाइल रिपेयर और ट्रेनिंग सेंटर है। हम आईफोन, एंड्रॉयड, चिप-लेवल रिपेयर और सेकंड-हैंड स्मार्टफोन बिक्री में विशेषज्ञ हैं। हमारा लक्ष्य है ग्राहकों को क्वालिटी सर्विस, असली पार्ट्स और वाजिब कीमतें देना।" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਅਸੰਧ, ਹਰਿਆਣਾ ਵਿੱਚ ਇੱਕ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ ਟ੍ਰੇਨਿੰਗ ਸੈਂਟਰ ਹੈ। ਅਸੀਂ ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ ਵਿਕਰੀ ਵਿੱਚ ਮਾਹਿਰ ਹਾਂ। ਸਾਡਾ ਟੀਚਾ ਹੈ ਗਾਹਕਾਂ ਨੂੰ ਕੁਆਲਿਟੀ ਸੇਵਾ, ਅਸਲੀ ਪਾਰਟਸ ਅਤੇ ਵਾਜਬ ਕੀਮਤਾਂ ਦੇਣਾ।">Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana.</p>
     <br>
-    <p>Hum <strong>Chip-Level Training</strong> bhi provide karte hain un logon ke liye jo mobile repair field mein career banana chahte hain.</p>
+    <p data-en="We also provide Chip-Level Training for those who want to build a career in the mobile repair field." data-hi="हम उन लोगों के लिए चिप-लेवल ट्रेनिंग भी प्रदान करते हैं जो मोबाइल रिपेयर फील्ड में करियर बनाना चाहते हैं।" data-pa="ਅਸੀਂ ਉਹਨਾਂ ਲੋਕਾਂ ਲਈ ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ ਜੋ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਖੇਤਰ ਵਿੱਚ ਕਰੀਅਰ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ।">We also provide Chip-Level Training for those who want to build a career in the mobile repair field.</p>
   </div>
 </section>
 
-  <!-- REPAIR STATUS CHECK -->
+<!-- REPAIR STATUS CHECK -->
 <section id="status" style="background:#0d0d0d;">
-  <h2 class="section-title">Repair Status Check</h2>
-  <p class="section-sub">Apna mobile number daaliye aur apne phone ka status jaaniye</p>
-  
+  <h2 class="section-title" data-en="Repair Status Check" data-hi="रिपेयर स्टेटस चेक" data-pa="ਰਿਪੇਅਰ ਸਟੇਟਸ ਚੈੱਕ">Repair Status Check</h2>
+  <p class="section-sub" data-en="Enter your mobile number and check your phone's status" data-hi="अपना मोबाइल नंबर डालें और अपने फोन का स्टेटस जानें" data-pa="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ ਅਤੇ ਆਪਣੇ ਫੋਨ ਦਾ ਸਟੇਟਸ ਜਾਣੋ">Enter your mobile number and check your phone's status</p>
   <div style="max-width:500px; margin:0 auto;">
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <input 
-        type="tel" 
-        id="phoneInput" 
-        placeholder="Apna 10-digit mobile number daaliye" 
-        maxlength="10"
-        style="flex:1; min-width:200px; padding:15px 20px; border-radius:50px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none;">
-      <button 
-        onclick="checkStatus()" 
-        style="padding:15px 30px; border-radius:50px; background:#fff; color:#000; font-weight:600; font-size:14px; border:none; cursor:pointer;">
-        Check Status
-      </button>
+      <input type="tel" id="phoneInput" placeholder="Enter 10-digit mobile number" data-placeholder-en="Enter 10-digit mobile number" data-placeholder-hi="10-अंकों का मोबाइल नंबर डालें" data-placeholder-pa="10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ" maxlength="10" style="flex:1; min-width:200px; padding:15px 20px; border-radius:50px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none;">
+      <button onclick="checkStatus()" data-en="Check Status" data-hi="स्टेटस चेक करें" data-pa="ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ" style="padding:15px 30px; border-radius:50px; background:#fff; color:#000; font-weight:600; font-size:14px; border:none; cursor:pointer;">Check Status</button>
     </div>
     <div id="statusResult" style="margin-top:25px;"></div>
   </div>
@@ -297,244 +212,92 @@ function bookOnWhatsApp() {
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwSZ1dExztkLrq3zJ74sJTtF5ra10Fss1Qj26QjbN-orghmyiZTeDL9q4QcYm0tUHAN/exec";
-
 async function checkStatus() {
   const phone = document.getElementById('phoneInput').value.trim();
   const resultDiv = document.getElementById('statusResult');
-  
-  if (phone.length !== 10 || isNaN(phone)) {
-    resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kripya 10-digit ka sahi mobile number daaliye.</div>';
-    return;
-  }
-  
+  if (phone.length !== 10 || isNaN(phone)) { resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kripya 10-digit ka sahi mobile number daaliye.</div>'; return; }
   resultDiv.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">Search kar rahe hain...</div>';
-  
   try {
     const response = await fetch(API_URL + "?phone=" + phone);
     const data = await response.json();
-    
     if (data.found) {
-      resultDiv.innerHTML = `
-        <div style="background:#111; border:1px solid #333; border-radius:16px; padding:25px; text-align:left;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
-            <h3 style="font-size:18px; margin:0;">${data.customerName}</h3>
-            <span style="background:#fff; color:#000; padding:6px 14px; border-radius:50px; font-size:12px; font-weight:700;">${data.status}</span>
-          </div>
-          <div style="display:grid; gap:12px; font-size:14px;">
-            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
-              <span style="color:#888;">Phone Model</span>
-              <span style="color:#fff; font-weight:600;">${data.phoneModel}</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
-              <span style="color:#888;">Entry Date</span>
-              <span style="color:#fff; font-weight:600;">${data.entryDate}</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
-              <span style="color:#888;">Estimated Charges</span>
-              <span style="color:#fff; font-weight:600;">₹${data.estimateCharge}</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;">
-              <span style="color:#888;">Estimated Delivery</span>
-              <span style="color:#fff; font-weight:600;">${data.estimateDelivery}</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:10px 0;">
-              <span style="color:#888;">Notes</span>
-              <span style="color:#fff; font-weight:600; text-align:right; max-width:60%;">${data.notes}</span>
-            </div>
-          </div>
-        </div>
-      `;
+      resultDiv.innerHTML = `<div style="background:#111; border:1px solid #333; border-radius:16px; padding:25px; text-align:left;"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;"><h3 style="font-size:18px; margin:0;">${data.customerName}</h3><span style="background:#fff; color:#000; padding:6px 14px; border-radius:50px; font-size:12px; font-weight:700;">${data.status}</span></div><div style="display:grid; gap:12px; font-size:14px;"><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Phone Model</span><span style="color:#fff; font-weight:600;">${data.phoneModel}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Entry Date</span><span style="color:#fff; font-weight:600;">${data.entryDate}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Estimated Charges</span><span style="color:#fff; font-weight:600;">₹${data.estimateCharge}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Estimated Delivery</span><span style="color:#fff; font-weight:600;">${data.estimateDelivery}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0;"><span style="color:#888;">Notes</span><span style="color:#fff; font-weight:600; text-align:right; max-width:60%;">${data.notes}</span></div></div></div>`;
     } else {
-      resultDiv.innerHTML = '<div style="background:#1a1a2a; border:1px solid #333355; border-radius:12px; padding:20px; color:#9999ff; text-align:center;">Is number ka koi record nahi mila. Kripya shop par sampark kijiye ya WhatsApp kariye.</div>';
+      resultDiv.innerHTML = '<div style="background:#1a1a2a; border:1px solid #333355; border-radius:12px; padding:20px; color:#9999ff; text-align:center;">Is number ka koi record nahi mila. Kripya shop par sampark kijiye.</div>';
     }
   } catch (error) {
     resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kuch technical problem aa gayi. Thodi der baad try kijiye.</div>';
   }
 }
 </script>
+
 <!-- REVIEWS -->
 <section id="reviews" style="background:#0a0a0a;">
-  <h2 class="section-title">Customer Reviews</h2>
-  <p class="section-sub">Hamare customers kya kehte hain</p>
-  
+  <h2 class="section-title" data-en="Customer Reviews" data-hi="ग्राहक समीक्षाएं" data-pa="ਗਾਹਕ ਸਮੀਖਿਆਵਾਂ">Customer Reviews</h2>
+  <p class="section-sub" data-en="What our customers say" data-hi="हमारे ग्राहक क्या कहते हैं" data-pa="ਸਾਡੇ ਗਾਹਕ ਕੀ ਕਹਿੰਦੇ ਹਨ">What our customers say</p>
   <div style="max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
-    
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">R</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Rahul Sharma</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
+    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">R</div><div><h4 style="color:#fff; font-size:15px; margin:0;">Rahul Sharma</h4><p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p></div></div>
       <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"iPhone ki screen 1 ghante mein theek kar di. Bahut professional kaam hai. Highly recommended!"</p>
+      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;" data-en="iPhone screen fixed in 1 hour. Very professional work. Highly recommended!" data-hi="आईफोन की स्क्रीन 1 घंटे में ठीक हो गई। बहुत प्रोफेशनल काम है। जरूर आएं!" data-pa="ਆਈਫੋਨ ਦੀ ਸਕਰੀਨ 1 ਘੰਟੇ ਵਿੱਚ ਠੀਕ ਹੋ ਗਈ। ਬਹੁਤ ਪ੍ਰੋਫੈਸ਼ਨਲ ਕੰਮ ਹੈ। ਜ਼ਰੂਰ ਆਓ!">iPhone screen fixed in 1 hour.</p>
     </div>
-
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">P</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Priya Verma</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
+    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">P</div><div><h4 style="color:#fff; font-size:15px; margin:0;">Priya Verma</h4><p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p></div></div>
       <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Chip-level repair bahut accha karte hain. Meri dead phone wapas chal padi. Thank you!"</p>
+      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;" data-en="Excellent chip-level repair. My dead phone came back to life. Thank you!" data-hi="बेहतरीन चिप-लेवल रिपेयर। मेरा डेड फोन वापस चल पड़ा। धन्यवाद!" data-pa="ਸ਼ਾਨਦਾਰ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ। ਮੇਰਾ ਡੈੱਡ ਫੋਨ ਵਾਪਸ ਚੱਲ ਪਿਆ। ਧੰਨਵਾਦ!">Excellent chip-level repair.</p>
     </div>
-
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">A</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Amit Kumar</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
+    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">A</div><div><h4 style="color:#fff; font-size:15px; margin:0;">Amit Kumar</h4><p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p></div></div>
       <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Honest pricing aur quality service. Mobile accessories bhi genuine milte hain. Best shop in Assandh."</p>
+      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;" data-en="Honest pricing and quality service. Genuine mobile accessories. Best shop in Assandh." data-hi="ईमानदार कीमत और क्वालिटी सर्विस। असली मोबाइल एक्सेसरीज़। असंध की सबसे अच्छी दुकान।" data-pa="ਇਮਾਨਦਾਰ ਕੀਮਤ ਅਤੇ ਕੁਆਲਿਟੀ ਸੇਵਾ। ਅਸਲੀ ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼। ਅਸੰਧ ਦੀ ਸਭ ਤੋਂ ਵਧੀਆ ਦੁਕਾਨ।">Honest pricing and quality service.</p>
     </div>
-
-  </div>
-
-  <div style="text-align:center; margin-top:40px;">
-    <a href="https://maps.app.goo.gl/6Hu9M1SWLeBWEQGi8" target="_blank" class="btn btn-primary">⭐ Google Par Reviews Dekhein</a>
   </div>
 </section>
 
-  <!-- ABOUT ME - PROFESSIONAL -->
+<!-- ABOUT ME -->
 <section id="about-me" style="background:linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); padding:80px 20px;">
-  <h2 class="section-title">About Me</h2>
-  <p class="section-sub">Meet the expert behind Shree Sawriya Solutions</p>
-  
+  <h2 class="section-title" data-en="About Me" data-hi="मेरे बारे में" data-pa="ਮੇਰੇ ਬਾਰੇ">About Me</h2>
+  <p class="section-sub" data-en="Meet the expert behind Shree Sawriya Solutions" data-hi="श्री सावरिया सॉल्यूशंस के पीछे के विशेषज्ञ से मिलें" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਪਿੱਛੇ ਮਾਹਿਰ ਨੂੰ ਮਿਲੋ">Meet the expert behind Shree Sawriya Solutions</p>
   <div style="max-width:1000px; margin:0 auto;">
     <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:28px; padding:40px; box-shadow:0 20px 60px rgba(0,0,0,0.6); display:flex; gap:40px; align-items:center; flex-wrap:wrap;">
-      
-      <!-- PHOTO -->
       <div style="flex:1; min-width:260px; text-align:center;">
-        <div style="position:relative; display:inline-block;">
-          <div style="position:absolute; inset:-8px; background:linear-gradient(135deg, #fff, #666, #fff); border-radius:24px; opacity:0.15; filter:blur(15px);"></div>
-          <img src="owner.jpeg" alt="Owner - Shree Sawriya Solutions" style="position:relative; width:100%; max-width:280px; border-radius:20px; border:2px solid #444; display:block; box-shadow:0 15px 40px rgba(0,0,0,0.7);">
-        </div>
-        <div style="margin-top:20px;">
-          <h3 style="font-size:18px; color:#fff; font-weight:700; margin-bottom:5px;">Expert Technician</h3>
-          <p style="color:#888; font-size:13px;">10+ Years Experience</p>
-        </div>
+        <img src="owner.jpeg" alt="Owner" style="width:100%; max-width:280px; border-radius:20px; border:2px solid #444; display:block; margin:0 auto; box-shadow:0 15px 40px rgba(0,0,0,0.7);">
+        <div style="margin-top:20px;"><h3 style="font-size:18px; color:#fff; font-weight:700; margin-bottom:5px;" data-en="Expert Technician" data-hi="एक्सपर्ट टेक्नीशियन" data-pa="ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ">Expert Technician</h3><p style="color:#888; font-size:13px;" data-en="10+ Years Experience" data-hi="10+ साल का अनुभव" data-pa="10+ ਸਾਲ ਦਾ ਤਜਰਬਾ">10+ Years Experience</p></div>
       </div>
-      
-      <!-- DETAILS -->
       <div style="flex:1.6; min-width:300px;">
-        <h3 style="font-size:24px; margin-bottom:18px; color:#fff; font-weight:800; letter-spacing:-0.5px;">Professional Mobile Repair Technician</h3>
-        
-        <p style="color:#aaa; font-size:14px; margin-bottom:15px; line-height:1.8;">
-          I am a professional Mobile Repair Technician and Electronics Specialist with <strong style="color:#fff;">10+ years of experience</strong> in the smartphone and consumer electronics industry.
-        </p>
-        <p style="color:#aaa; font-size:14px; margin-bottom:25px; line-height:1.8;">
-          My expertise includes iPhone and Android smartphone repair, advanced diagnostics, motherboard-level troubleshooting, chip-level repair, component-level fault finding, and hardware problem solving.
-        </p>
-        
-        <!-- CERTIFICATIONS -->
-        <h4 style="font-size:15px; margin-bottom:14px; color:#fff; font-weight:700; display:flex; align-items:center; gap:8px;">
-          <span style="display:inline-block; width:4px; height:18px; background:linear-gradient(180deg, #fff, #888); border-radius:2px;"></span>
-          Training & Certifications
-        </h4>
+        <h3 style="font-size:24px; margin-bottom:18px; color:#fff; font-weight:800;" data-en="Professional Mobile Repair Technician" data-hi="प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ">Professional Mobile Repair Technician</h3>
+        <p style="color:#aaa; font-size:14px; margin-bottom:15px; line-height:1.8;" data-en="I am a professional Mobile Repair Technician with 10+ years of experience in the smartphone and consumer electronics industry." data-hi="मैं 10+ साल के अनुभव वाला प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन हूं, स्मार्टफोन और कंज्यूमर इलेक्ट्रॉनिक्स इंडस्ट्री में।" data-pa="ਮੈਂ 10+ ਸਾਲ ਦੇ ਤਜਰਬੇ ਵਾਲਾ ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ ਹਾਂ, ਸਮਾਰਟਫੋਨ ਅਤੇ ਕੰਜ਼ਿਊਮਰ ਇਲੈਕਟ੍ਰੋਨਿਕਸ ਉਦਯੋਗ ਵਿੱਚ।">I am a professional Mobile Repair Technician with 10+ years of experience.</p>
+        <p style="color:#aaa; font-size:14px; margin-bottom:25px; line-height:1.8;" data-en="My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting, chip-level repair, and hardware problem solving." data-hi="मेरी विशेषज्ञता में आईफोन और एंड्रॉयड रिपेयर, एडवांस्ड डायग्नोस्टिक्स, मदरबोर्ड-लेवल ट्रबलशूटिंग, चिप-लेवल रिपेयर और हार्डवेयर समस्या समाधान शामिल है।" data-pa="ਮੇਰੀ ਮੁਹਾਰਤ ਵਿੱਚ ਆਈਫੋਨ ਅਤੇ ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ, ਐਡਵਾਂਸਡ ਡਾਇਗਨੋਸਟਿਕਸ, ਮਦਰਬੋਰਡ-ਲੈਵਲ ਟਰਬਲਸ਼ੂਟਿੰਗ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆ ਹੱਲ ਸ਼ਾਮਲ ਹੈ।">My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting.</p>
+        <h4 style="font-size:15px; margin-bottom:14px; color:#fff; font-weight:700;" data-en="🎓 Training & Certifications" data-hi="🎓 ट्रेनिंग और सर्टिफिकेशन" data-pa="🎓 ਟ੍ਰੇਨਿੰਗ ਅਤੇ ਸਰਟੀਫਿਕੇਸ਼ਨ">🎓 Training & Certifications</h4>
         <div style="display:grid; gap:10px; margin-bottom:25px;">
-          <div style="background:linear-gradient(90deg, #1a1a1a, #151515); border:1px solid #2a2a2a; border-left:3px solid #fff; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">
-            🎓 iPhone Repair Training — Certified by Kewal Mobile  (Shankar Jethwani Sir)
-          </div>
-          <div style="background:linear-gradient(90deg, #1a1a1a, #151515); border:1px solid #2a2a2a; border-left:3px solid #aaa; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">
-            🎓 Android Mobile Repair Training —Certified by We Fix It  (Bilal Aakash Sir)
-          </div>
-          <div style="background:linear-gradient(90deg, #1a1a1a, #151515); border:1px solid #2a2a2a; border-left:3px solid #888; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">
-            🎓 Advanced Chip-Level & Motherboard Repair Training —Certified by Ranit Kapoor
-          </div>
-        </div>
-        
-        <!-- EXPERTISE -->
-        <h4 style="font-size:15px; margin-bottom:14px; color:#fff; font-weight:700; display:flex; align-items:center; gap:8px;">
-          <span style="display:inline-block; width:4px; height:18px; background:linear-gradient(180deg, #fff, #888); border-radius:2px;"></span>
-          Areas of Expertise
-        </h4>
-        <div style="display:flex; flex-wrap:wrap; gap:8px;">
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">iPhone Diagnostics</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Android Repair</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Chip-Level Repair</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Motherboard Repair</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">IC Troubleshooting</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Charging Section</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Display & Touch</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Face ID Repair</span>
-          <span style="background:#111; border:1px solid #333; padding:7px 15px; border-radius:50px; font-size:12px; color:#ccc;">Data-Safe Repair</span>
-        </div>
-        
-        <!-- QUOTE -->
-        <div style="margin-top:25px; padding:18px 20px; background:linear-gradient(90deg, #151515, transparent); border-left:3px solid #fff; border-radius:0 12px 12px 0;">
-          <p style="color:#bbb; font-size:13px; font-style:italic; line-height:1.7; margin:0;">
-            "I believe that every device has a solution when the fault is correctly diagnosed."
-          </p>
+          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #fff; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 iPhone Repair Training — Kewal Mobile</div>
+          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #aaa; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 Android Repair Training — We Fix It</div>
+          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #888; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 Advanced Chip-Level Repair Training</div>
         </div>
       </div>
-      
     </div>
   </div>
 </section>
+
 <!-- CONTACT -->
 <section id="contact">
-  <h2 class="section-title">Contact Us</h2>
-  <p class="section-sub">Aaj hi humse sampark kijiye</p>
+  <h2 class="section-title" data-en="Contact Us" data-hi="संपर्क करें" data-pa="ਸੰਪਰਕ ਕਰੋ">Contact Us</h2>
+  <p class="section-sub" data-en="Get in touch with us today" data-hi="आज ही हमसे संपर्क करें" data-pa="ਅੱਜ ਹੀ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ">Get in touch with us today</p>
   <div class="contact-box">
-    <h3>Get In Touch</h3>
-    <div class="contact-row">
-      <strong>Phone / WhatsApp</strong>
-      <a href="tel:+919720076900">+91 97200 76900</a>
-    </div>
-    <div class="contact-row">
-      <strong>Address</strong>
-      Salwan Chowk, Karnal Road,<br>Assandh, Haryana
-    </div>
-    <div class="contact-row">
-  <strong>Business Hours</strong>
-  <div style="margin-top:8px; color:#ccc; font-size:14px;">
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Monday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Tuesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Wednesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Thursday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Friday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Saturday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;">
-      <span>Sunday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span>
-    </div>
-  </div>
-</div>
+    <h3 data-en="Get In Touch" data-hi="संपर्क में रहें" data-pa="ਸੰਪਰਕ ਵਿੱਚ ਰਹੋ">Get In Touch</h3>
+    <div class="contact-row"><strong data-en="Phone / WhatsApp" data-hi="फोन / WhatsApp" data-pa="ਫੋਨ / WhatsApp">Phone / WhatsApp</strong><a href="tel:+919720076900">+91 97200 76900</a></div>
+    <div class="contact-row"><strong data-en="Address" data-hi="पता" data-pa="ਪਤਾ">Address</strong>Salwan Chowk, Karnal Road,<br>Assandh, Haryana</div>
+    <div class="contact-row"><strong data-en="Business Hours" data-hi="बिजनेस आवर्स" data-pa="ਬਿਜ਼ਨਸ ਆਵਰਸ">Business Hours</strong><div style="margin-top:8px; color:#ccc; font-size:14px;"><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Monday" data-hi="सोमवार" data-pa="ਸੋਮਵਾਰ">Monday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Tuesday" data-hi="मंगलवार" data-pa="ਮੰਗਲਵਾਰ">Tuesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Wednesday" data-hi="बुधवार" data-pa="ਬੁੱਧਵਾਰ">Wednesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Thursday" data-hi="गुरुवार" data-pa="ਵੀਰਵਾਰ">Thursday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Friday" data-hi="शुक्रवार" data-pa="ਸ਼ੁੱਕਰਵਾਰ">Friday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Saturday" data-hi="शनिवार" data-pa="ਸ਼ਨੀਵਾਰ">Saturday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Sunday" data-hi="रविवार" data-pa="ਐਤਵਾਰ">Sunday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div></div></div>
     <div style="margin-top:25px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20aapki%20services%20ke%20bare%20mein%20jaankari%20chahiye." class="btn btn-primary">💬 WhatsApp</a>
-      <a href="tel:+919720076900" class="btn btn-outline">📞 Call</a>
+      <a href="https://wa.me/919720076900" class="btn btn-primary" data-en="💬 WhatsApp" data-hi="💬 WhatsApp" data-pa="💬 WhatsApp">💬 WhatsApp</a>
+      <a href="tel:+919720076900" class="btn btn-outline" data-en="📞 Call" data-hi="📞 कॉल" data-pa="📞 ਕਾਲ">📞 Call</a>
     </div>
   </div>
   <div style="max-width:900px; margin:30px auto 0; border-radius:20px; overflow:hidden; border:1px solid #222;">
-    <iframe 
-      src="https://www.google.com/maps?q=29.521370,76.607462&hl=en&z=16&output=embed" 
-      width="100%" 
-      height="350" 
-      style="border:0; display:block;" 
-      allowfullscreen="" 
-      loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=29.521370,76.607462&hl=en&z=16&output=embed" width="100%" height="350" style="border:0; display:block;" allowfullscreen="" loading="lazy"></iframe>
   </div>
   <div style="text-align:center; margin-top:20px;">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=29.521370,76.607462" target="_blank" class="btn btn-primary">📍 Get Directions</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=29.521370,76.607462" target="_blank" class="btn btn-primary" data-en="📍 Get Directions" data-hi="📍 दिशा-निर्देश पाएं" data-pa="📍 ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼ ਪਾਓ">📍 Get Directions</a>
   </div>
 </section>
 
@@ -544,94 +307,68 @@ async function checkStatus() {
   <h3 style="color:#fff; font-size:16px; font-weight:700; letter-spacing:1px; margin-bottom:10px;">SHREE SAWRIYA SOLUTIONS</h3>
   <p style="color:#666; font-size:12px; margin-bottom:5px;">Salwan Chowk, Karnal Road, Assandh, Haryana</p>
   <p style="color:#666; font-size:12px; margin-bottom:20px;">📞 +91 97200 76900</p>
-  
   <div style="display:flex; justify-content:center; gap:12px; margin-bottom:25px;">
-    <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20aapki%20services%20ke%20bare%20mein%20jaankari%20chahiye." target="_blank" style="width:40px; height:40px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:18px;">💬</a>
-    <a href="tel:+919720076900" style="width:40px; height:40px; border-radius:50%; background:#fff; color:#000; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:16px;">📞</a>
-    <a href="https://instagram.com/mister_ankush" target="_blank" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:16px;">📷</a>
-    <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" style="width:40px; height:40px; border-radius:50%; background:#ff0000; color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:16px;">▶</a>
+    <a href="https://wa.me/919720076900" target="_blank" style="width:40px; height:40px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px;">💬</a>
+    <a href="tel:+919720076900" style="width:40px; height:40px; border-radius:50%; background:#fff; color:#000; display:flex; align-items:center; justify-content:center; font-size:16px;">📞</a>
+    <a href="https://instagram.com/mister_ankush" target="_blank" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px;">📷</a>
+    <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" style="width:40px; height:40px; border-radius:50%; background:#ff0000; color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px;">▶</a>
   </div>
-  
   <p style="color:#444; font-size:11px;">© 2025 Shree Sawriya Solutions. All Rights Reserved.</p>
 </footer>
 
 <!-- FLOATING BUTTONS -->
 <div class="float-btns">
-  <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20aapki%20services%20ke%20bare%20mein%20jaankari%20chahiye." class="float-btn float-wa" title="WhatsApp">💬</a>
-  <a href="tel:+919720076900" class="float-btn float-call" title="Call">📞</a>
+  <a href="https://wa.me/919720076900" class="float-btn float-wa">💬</a>
+  <a href="tel:+919720076900" class="float-btn float-call">📞</a>
 </div>
 
-  <!-- LANGUAGE POPUP -->
+<!-- LANGUAGE POPUP -->
 <div id="langPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px;">
   <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #333; border-radius:24px; padding:35px 25px; max-width:380px; width:100%; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,0.8);">
-    
-    <img src="logo.png" alt="Shree Sawriya Solutions" style="width:70px; height:70px; object-fit:contain; margin-bottom:15px;">
-    
+    <img src="logo.png" alt="Logo" style="width:70px; height:70px; object-fit:contain; margin-bottom:15px;">
     <h2 style="color:#fff; font-size:20px; font-weight:800; margin-bottom:5px;">SHREE SAWRIYA SOLUTIONS</h2>
-    <p style="color:#ffb800; font-size:12px; font-weight:600; margin-bottom:20px;">Pay. Collect Stamps. Unlock Rewards.</p>
-    
-    <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Kripya apni bhasha chuniye<br>Please select your language<br>ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ</p>
-    
+    <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Please select your language<br>Kripya apni bhasha chuniye<br>ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ</p>
     <div style="display:grid; gap:10px;">
       <button onclick="selectLang('en')" style="padding:16px; border-radius:14px; background:#fff; color:#000; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇬🇧 English</button>
       <button onclick="selectLang('hi')" style="padding:16px; border-radius:14px; background:linear-gradient(90deg, #ff8800, #ff4444); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇮🇳 हिन्दी</button>
       <button onclick="selectLang('pa')" style="padding:16px; border-radius:14px; background:linear-gradient(90deg, #138808, #0d5c05); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇮🇳 ਪੰਜਾਬੀ</button>
     </div>
-    
-    <p style="color:#444; font-size:10px; margin-top:20px;">You can change language anytime from the top menu</p>
   </div>
 </div>
 
 <script>
-function selectLang(lang) {
-  document.getElementById('langPopup').style.display = 'none';
-  localStorage.setItem('langSelected', 'yes');
+// LANGUAGE SYSTEM
+function setLang(lang) {
+  // Update button styles
+  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  var btn = document.getElementById('btn-' + lang);
+  if (btn) btn.classList.add('active');
+  
+  // Save preference
   localStorage.setItem('preferredLang', lang);
+  localStorage.setItem('langSelected', 'yes');
   
-  var btnEn = document.getElementById('btn-en');
-  var btnHi = document.getElementById('btn-hi');
-  var btnPa = document.getElementById('btn-pa');
+  // Translate page
+  translatePage(lang);
   
-  if (btnEn) {
-    btnEn.style.background = lang === 'en' ? '#fff' : 'transparent';
-    btnEn.style.color = lang === 'en' ? '#000' : '#aaa';
-    btnEn.style.border = lang === 'en' ? 'none' : '1px solid #333';
-  }
-  if (btnHi) {
-    btnHi.style.background = lang === 'hi' ? '#fff' : 'transparent';
-    btnHi.style.color = lang === 'hi' ? '#000' : '#aaa';
-    btnHi.style.border = lang === 'hi' ? 'none' : '1px solid #333';
-  }
-  if (btnPa) {
-    btnPa.style.background = lang === 'pa' ? '#fff' : 'transparent';
-    btnPa.style.color = lang === 'pa' ? '#000' : '#aaa';
-    btnPa.style.border = lang === 'pa' ? 'none' : '1px solid #333';
-  }
+  // Hide popup if open
+  var popup = document.getElementById('langPopup');
+  if (popup) popup.style.display = 'none';
 }
 
-window.addEventListener('DOMContentLoaded', function() {
-  var langSelected = localStorage.getItem('langSelected');
-  if (langSelected !== 'yes') {
-    setTimeout(function() {
-      var popup = document.getElementById('langPopup');
-      if (popup) popup.style.display = 'flex';
-    }, 500);
-  }
-});
-</script>
-<script>
-// Translation Engine
+function selectLang(lang) {
+  setLang(lang);
+}
+
 function translatePage(lang) {
   var elements = document.querySelectorAll('[data-en]');
   elements.forEach(function(el) {
     var text = el.getAttribute('data-' + lang);
     if (text) {
-      // Agar element ke andar koi child element hai (jaise <span>), toh sirf text badle
       if (el.children.length === 0) {
         el.textContent = text;
       } else {
-        // Agar complex hai, toh pehla text node badle
-        var textNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
+        var textNode = Array.from(el.childNodes).find(function(n) { return n.nodeType === 3; });
         if (textNode) {
           textNode.textContent = text;
         } else {
@@ -641,32 +378,34 @@ function translatePage(lang) {
     }
   });
   
-  // Placeholder translations for inputs
   var inputs = document.querySelectorAll('[data-placeholder-en]');
   inputs.forEach(function(el) {
     var placeholder = el.getAttribute('data-placeholder-' + lang);
-    if (placeholder) {
-      el.setAttribute('placeholder', placeholder);
-    }
+    if (placeholder) el.setAttribute('placeholder', placeholder);
   });
   
-  // Update html lang attribute
   document.documentElement.lang = lang;
 }
 
-// Hook into existing setLang function
-var originalSetLang = window.setLang;
-window.setLang = function(lang) {
-  if (originalSetLang) originalSetLang(lang);
-  translatePage(lang);
-};
-
-// Apply on page load
+// PAGE LOAD
 window.addEventListener('DOMContentLoaded', function() {
   var savedLang = localStorage.getItem('preferredLang') || 'en';
-  setTimeout(function() {
+  var langSelected = localStorage.getItem('langSelected');
+  
+  // Set active button
+  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  var btn = document.getElementById('btn-' + savedLang);
+  if (btn) btn.classList.add('active');
+  
+  // Show popup if not selected before
+  if (langSelected !== 'yes') {
+    setTimeout(function() {
+      var popup = document.getElementById('langPopup');
+      if (popup) popup.style.display = 'flex';
+    }, 500);
+  } else {
     translatePage(savedLang);
-  }, 600);
+  }
 });
 </script>
 </body>
