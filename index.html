@@ -106,6 +106,39 @@ footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; col
   </div>
 </div>
 
+  <!-- AUTO SLIDER -->
+<section style="padding:30px 20px 20px; background:#0a0a0a;">
+  <div id="slider" style="max-width:700px; margin:0 auto; position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 20px 50px rgba(0,0,0,0.5);">
+    
+    <!-- SLIDES CONTAINER -->
+    <div id="slidesContainer" style="display:flex; transition:transform 0.6s ease-in-out;">
+      
+      <!-- SLIDE 1: OFFER -->
+      <div class="slide" style="min-width:100%; padding:45px 30px; background:linear-gradient(135deg, #1a0a0a 0%, #2a0a0a 100%); text-align:center; box-sizing:border-box;">
+        <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔥 LIMITED TIME OFFER" data-hi="🔥 सीमित समय का ऑफर" data-pa="🔥 ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">🔥 LIMITED TIME OFFER</span>
+        <h2 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:10px;" data-en="FREE Phone Diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫੋਨ ਡਾਇਗਨੋਸਿਸ">FREE Phone Diagnosis</h2>
+        <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px; margin-left:auto; margin-right:auto;" data-en="Get your phone checked completely — absolutely free!" data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त!" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ!">Get your phone checked completely — absolutely free!</p>
+        <a href="booking.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none;" data-en="📅 Book Your Slot" data-hi="📅 अपना स्लॉट बुक करें" data-pa="📅 ਆਪਣਾ ਸਲਾਟ ਬੁੱਕ ਕਰੋ">📅 Book Your Slot</a>
+      </div>
+      
+      <!-- SLIDE 2: STATUS CHECK -->
+      <div class="slide" style="min-width:100%; padding:45px 30px; background:linear-gradient(135deg, #0a1a0a 0%, #0a2a0a 100%); text-align:center; box-sizing:border-box;">
+        <span style="display:inline-block; background:linear-gradient(90deg, #4ade80, #22c55e); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔧 REPAIR STATUS" data-hi="🔧 रिपेयर स्टेटस" data-pa="🔧 ਰਿਪੇਅਰ ਸਟੇਟਸ">🔧 REPAIR STATUS</span>
+        <h2 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:10px;" data-en="Check Repair Status" data-hi="रिपेयर स्टेटस चेक करें" data-pa="ਰਿਪੇਅਰ ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">Check Repair Status</h2>
+        <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px; margin-left:auto; margin-right:auto;" data-en="Enter your mobile number and check your phone status instantly." data-hi="अपना मोबाइल नंबर डालें और तुरंत अपने फोन का स्टेटस देखें।" data-pa="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ ਅਤੇ ਤੁਰੰਤ ਆਪਣੇ ਫੋਨ ਦਾ ਸਟੇਟਸ ਦੇਖੋ।">Enter your mobile number and check your phone status instantly.</p>
+        <a href="status.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none;" data-en="📱 Check Status" data-hi="📱 स्टेटस चेक करें" data-pa="📱 ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">📱 Check Status</a>
+      </div>
+      
+    </div>
+    
+    <!-- DOTS -->
+    <div style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;">
+      <span onclick="goToSlide(0)" id="dot-0" style="width:10px; height:10px; border-radius:50%; background:#fff; cursor:pointer; transition:0.3s;"></span>
+      <span onclick="goToSlide(1)" id="dot-1" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:0.3s;"></span>
+    </div>
+    
+  </div>
+</section>
 <!-- FREE DIAGNOSIS OFFER -->
 <section id="offer" style="background:linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); padding:70px 20px;">
   <div style="max-width:1000px; margin:0 auto;">
@@ -323,6 +356,74 @@ async function checkStatus() {
   <p style="color:#444; font-size:11px;">© 2025 Shree Sawriya Solutions. All Rights Reserved.</p>
 </footer>
 
+  <script>
+// AUTO SLIDER
+let currentSlide = 0;
+const totalSlides = 2;
+let slideInterval;
+
+function goToSlide(index) {
+  currentSlide = index;
+  const container = document.getElementById('slidesContainer');
+  if (container) {
+    container.style.transform = 'translateX(-' + (index * 100) + '%)';
+  }
+  // Update dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.getElementById('dot-' + i);
+    if (dot) {
+      dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)';
+    }
+  }
+  // Reset auto-slide timer
+  clearInterval(slideInterval);
+  startAutoSlide();
+}
+
+function nextSlide() {
+  const next = (currentSlide + 1) % totalSlides;
+  goToSlide(next);
+}
+
+function startAutoSlide() {
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+// Manual swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.getElementById('slider');
+  if (!slider) return;
+  
+  slider.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  slider.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  startAutoSlide();
+});
+
+function handleSwipe() {
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      // Swipe left - next slide
+      const next = (currentSlide + 1) % totalSlides;
+      goToSlide(next);
+    } else {
+      // Swipe right - previous slide
+      const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+      goToSlide(prev);
+    }
+  }
+}
+</script>
 <!-- FLOATING BUTTONS -->
 <div class="float-btns">
   <a href="https://wa.me/919720076900" class="float-btn float-wa">💬</a>
