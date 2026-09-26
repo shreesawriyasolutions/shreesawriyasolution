@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repair Status Check | Shree Sawriya Solutions</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; }
+.logo img { width: 38px; height: 38px; object-fit: contain; }
+.back-btn { color: #aaa; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+.lang-switcher { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.lang-btn { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; border: 1px solid #333; background: transparent; color: #aaa; }
+.lang-btn.active { background: #fff; color: #000; border: none; }
+.hero { padding: 50px 20px 30px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); }
+.hero .tag { display: inline-block; background: linear-gradient(90deg, #4ade80, #22c55e); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
+.hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+.hero p { color: #999; font-size: 14px; max-width: 500px; margin: 0 auto; }
+section { padding: 40px 20px; }
+.card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 30px; max-width: 550px; margin: 0 auto; }
+.search-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.search-row input { flex: 1; min-width: 200px; padding: 15px 20px; border-radius: 50px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
+.search-row button { padding: 15px 30px; border-radius: 50px; background: #fff; color: #000; font-weight: 600; font-size: 14px; border: none; cursor: pointer; }
+.result { margin-top: 25px; }
+.info-card { background: #111; border: 1px solid #333; border-radius: 16px; padding: 25px; text-align: left; }
+.status-badge { background: #fff; color: #000; padding: 6px 14px; border-radius: 50px; font-size: 12px; font-weight: 700; }
+.info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px; }
+.info-row:last-child { border-bottom: none; }
+.info-row .label { color: #888; }
+.info-row .value { color: #fff; font-weight: 600; }
+.float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+.float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+.float-wa { background: #25D366; color: #fff; font-size: 28px; }
+.float-call { background: #fff; color: #000; font-size: 22px; }
+.info-box { background: #1a1a2a; border: 1px solid #333355; border-radius: 12px; padding: 20px; color: #9999ff; text-align: center; font-size: 14px; }
+.error-box { background: #2a1a1a; border: 1px solid #553333; border-radius: 12px; padding: 20px; color: #ff9999; text-align: center; font-size: 14px; }
+</style>
+</head>
+<body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Shree Sawriya Solutions">
+    <span>SHREE SAWRIYA SOLUTIONS</span>
+  </a>
+  <a href="index.html" class="back-btn">← Home</a>
+  <div class="lang-switcher">
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+    <button onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिं</button>
+    <button onclick="setLang('pa')" id="btn-pa" class="lang-btn">ਪੰ</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="tag" data-en="🔧 REPAIR STATUS" data-hi="🔧 रिपेयर स्टेटस" data-pa="🔧 ਰਿਪੇਅਰ ਸਟੇਟਸ">🔧 REPAIR STATUS</span>
+  <h1 data-en="Check Your Phone Status" data-hi="अपने फोन का स्टेटस चेक करें" data-pa="ਆਪਣੇ ਫੋਨ ਦਾ ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">Check Your Phone Status</h1>
+  <p data-en="Enter your mobile number and check your repair status instantly" data-hi="अपना मोबाइल नंबर डालें और तुरंत रिपेयर स्टेटस देखें" data-pa="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ ਅਤੇ ਤੁਰੰਤ ਰਿਪੇਅਰ ਸਟੇਟਸ ਦੇਖੋ">Enter your mobile number and check your repair status instantly</p>
+</div>
+
+<!-- STATUS CHECK -->
+<section style="background:#0d0d0d;">
+  <div class="card">
+    <div class="search-row">
+      <input 
+        type="tel" 
+        id="phoneInput" 
+        placeholder="Enter 10-digit mobile number" 
+        data-placeholder-en="Enter 10-digit mobile number" 
+        data-placeholder-hi="10-अंकों का मोबाइल नंबर डालें" 
+        data-placeholder-pa="10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ" 
+        maxlength="10">
+      <button 
+        onclick="checkStatus()" 
+        data-en="Check Status" 
+        data-hi="स्टेटस चेक करें" 
+        data-pa="ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">Check Status</button>
+    </div>
+    <div id="statusResult" class="result"></div>
+  </div>
+</section>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/919720076900" class="float-btn float-wa">💬</a>
+  <a href="tel:+919720076900" class="float-btn float-call">📞</a>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwSZ1dExztkLrq3zJ74sJTtF5ra10Fss1Qj26QjbN-orghmyiZTeDL9q4QcYm0tUHAN/exec";
+
+async function checkStatus() {
+  const phone = document.getElementById('phoneInput').value.trim();
+  const resultDiv = document.getElementById('statusResult');
+  
+  if (phone.length !== 10 || isNaN(phone)) {
+    resultDiv.innerHTML = '<div class="error-box" data-en="Please enter a valid 10-digit mobile number." data-hi="कृपया 10 अंकों का सही मोबाइल नंबर डालें।" data-pa="ਕਿਰਪਾ ਕਰਕੇ 10 ਅੰਕਾਂ ਦਾ ਸਹੀ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ।">Please enter a valid 10-digit mobile number.</div>';
+    return;
+  }
+  
+  resultDiv.innerHTML = '<div style="text-align:center; color:#888; padding:20px;" data-en="Searching..." data-hi="खोज रहे हैं..." data-pa="ਖੋਜ ਰਹੇ ਹਾਂ...">Searching...</div>';
+  
+  try {
+    const response = await fetch(API_URL + "?phone=" + phone);
+    const data = await response.json();
+    
+    if (data.found) {
+      resultDiv.innerHTML = `
+        <div class="info-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+            <h3 style="font-size:18px; margin:0;">${data.customerName}</h3>
+            <span class="status-badge">${data.status}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Phone Model</span>
+            <span class="value">${data.phoneModel}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Entry Date</span>
+            <span class="value">${data.entryDate}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Estimated Charges</span>
+            <span class="value">₹${data.estimateCharge}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Estimated Delivery</span>
+            <span class="value">${data.estimateDelivery}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Notes</span>
+            <span class="value" style="text-align:right; max-width:60%;">${data.notes}</span>
+          </div>
+        </div>
+      `;
+    } else {
+      resultDiv.innerHTML = '<div class="info-box" data-en="No record found for this number. Please contact the shop." data-hi="इस नंबर का कोई रिकॉर्ड नहीं मिला। कृपया दुकान पर संपर्क करें।" data-pa="ਇਸ ਨੰਬਰ ਦਾ ਕੋਈ ਰਿਕਾਰਡ ਨਹੀਂ ਮਿਲਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਕਾਨ \'ਤੇ ਸੰਪਰਕ ਕਰੋ।">No record found for this number. Please contact the shop.</div>';
+    }
+  } catch (error) {
+    resultDiv.innerHTML = '<div class="error-box" data-en="Technical problem. Please try again later." data-hi="तकनीकी समस्या। कृपया बाद में पुनः प्रयास करें।" data-pa="ਤਕਨੀਕੀ ਸਮੱਸਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।">Technical problem. Please try again later.</div>';
+  }
+  
+  // Translate the result if needed
+  var savedLang = localStorage.getItem('preferredLang') || 'en';
+  if (savedLang !== 'en') translatePage(savedLang);
+}
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  var btn = document.getElementById('btn-' + lang);
+  if (btn) btn.classList.add('active');
+  localStorage.setItem('preferredLang', lang);
+  translatePage(lang);
+}
+
+function translatePage(lang) {
+  var elements = document.querySelectorAll('[data-en]');
+  elements.forEach(function(el) {
+    var text = el.getAttribute('data-' + lang);
+    if (text) {
+      if (el.children.length === 0) {
+        el.textContent = text;
+      } else {
+        var textNode = Array.from(el.childNodes).find(function(n) { return n.nodeType === 3; });
+        if (textNode) textNode.textContent = text;
+        else el.textContent = text;
+      }
+    }
+  });
+  var inputs = document.querySelectorAll('[data-placeholder-en]');
+  inputs.forEach(function(el) {
+    var placeholder = el.getAttribute('data-placeholder-' + lang);
+    if (placeholder) el.setAttribute('placeholder', placeholder);
+  });
+  document.documentElement.lang = lang;
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  var savedLang = localStorage.getItem('preferredLang') || 'en';
+  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  var btn = document.getElementById('btn-' + savedLang);
+  if (btn) btn.classList.add('active');
+  translatePage(savedLang);
+});
+</script>
+</body>
+</html>
