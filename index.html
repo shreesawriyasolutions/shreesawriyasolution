@@ -503,6 +503,49 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+  <script type="text/javascript">
+var Tawk_API = Tawk_API || {};
+Tawk_API.customStyle = {
+  visibility: {
+    desktop: { position: 'br', xOffset: 80, yOffset: 90 },
+    mobile: { position: 'br', xOffset: 80, yOffset: 90 }
+  }
+};
+Tawk_API.onLoad = function() {
+  setTimeout(function() {
+    var iframes = document.querySelectorAll('iframe');
+    iframes.forEach(function(iframe) {
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc) {
+          var style = doc.createElement('style');
+          style.innerHTML = `
+            .tawk-text-truncate,
+            .tawk-min-text,
+            .tawk-teaser-text,
+            .tawk-overlay,
+            .tawk-card__teaser,
+            .tawk-chat-teaser,
+            [class*="teaser"],
+            [class*="Teaser"] {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+            }
+            .tawk-min-container .tawk-min-text::after {
+              content: "Live Chat";
+              display: block;
+              visibility: visible;
+              font-weight: 600;
+            }
+          `;
+          doc.head.appendChild(style);
+        }
+      } catch(e) {}
+    });
+  }, 2000);
+};
+</script>
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
