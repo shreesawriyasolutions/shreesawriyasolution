@@ -594,6 +594,18 @@ Tawk_API.onLoad = function() {
             .tawk-overlay,
             .tawk-card__teaser,
             .tawk-chat-teaser,
+            .tawk-message-window,
+            .tawk-card--welcome,
+            .tawk-welcome-message,
+            .tawk-message-bubble,
+            .tawk-conversation-starter,
+            [class*="welcome"],
+            [class*="Welcome"],
+            [class*="conversation-starter"] {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+            }
             [class*="teaser"],
             [class*="Teaser"] {
               display: none !important;
