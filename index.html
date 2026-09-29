@@ -247,6 +247,121 @@ async function checkStatus() {
 }
 </script>
 
+<!-- PHOTO GALLERY SLIDESHOW -->
+<section id="gallery" style="background:#0d0d0d; padding:60px 20px;">
+  <h2 class="section-title" data-en="Our Work Gallery" data-hi="हमारा काम गैलरी" data-pa="ਸਾਡਾ ਕੰਮ ਗੈਲਰੀ">Our Work Gallery</h2>
+  <p class="section-sub" data-en="Real photos from our shop and work" data-hi="हमारी दुकान और काम की असली तस्वीरें" data-pa="ਸਾਡੀ ਦੁਕਾਨ ਅਤੇ ਕੰਮ ਦੀਆਂ ਅਸਲੀ ਤਸਵੀਰਾਂ">Real photos from our shop and work</p>
+  
+  <div style="max-width:900px; margin:0 auto; position:relative;">
+    <div id="gallerySlider" style="position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 20px 50px rgba(0,0,0,0.6); aspect-ratio:16/10; background:#111;">
+      <div id="gallerySlides" style="display:flex; transition:transform 0.6s ease-in-out; height:100%;">
+        <!-- Photos will load here from gallery.json -->
+      </div>
+      
+      <!-- Left Arrow -->
+      <button onclick="galleryPrev()" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">‹</button>
+      
+      <!-- Right Arrow -->
+      <button onclick="galleryNext()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">›</button>
+      
+      <!-- Dots -->
+      <div id="galleryDots" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+let galleryPhotos = [];
+let galleryIndex = 0;
+let galleryTimer;
+
+fetch('gallery.json')
+  .then(response => response.json())
+  .then(data => {
+    galleryPhotos = data.photos;
+    renderGallery();
+  })
+  .catch(error => console.log('Gallery error:', error));
+
+function renderGallery() {
+  const slidesContainer = document.getElementById('gallerySlides');
+  const dotsContainer = document.getElementById('galleryDots');
+  
+  if (!slidesContainer || galleryPhotos.length === 0) return;
+  
+  slidesContainer.innerHTML = '';
+  dotsContainer.innerHTML = '';
+  
+  galleryPhotos.forEach((photo, i) => {
+    const slide = document.createElement('div');
+    slide.style.cssText = 'min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#0a0a0a;';
+    slide.innerHTML = '<img src="' + photo + '" alt="Gallery" style="width:100%; height:100%; object-fit:contain;">';
+    slidesContainer.appendChild(slide);
+    
+    const dot = document.createElement('span');
+    dot.style.cssText = 'width:10px; height:10px; border-radius:50%; background:' + (i === 0 ? '#fff' : 'rgba(255,255,255,0.4)') + '; cursor:pointer; transition:0.3s;';
+    dot.onclick = () => galleryGoTo(i);
+    dotsContainer.appendChild(dot);
+  });
+  
+  galleryGoTo(0);
+  startGalleryAutoSlide();
+}
+
+function galleryGoTo(index) {
+  galleryIndex = index;
+  const slidesContainer = document.getElementById('gallerySlides');
+  if (slidesContainer) {
+    slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
+  }
+  const dots = document.querySelectorAll('#galleryDots span');
+  dots.forEach((dot, i) => {
+    dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)';
+  });
+}
+
+function galleryNext() {
+  if (galleryPhotos.length === 0) return;
+  galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
+  galleryGoTo(galleryIndex);
+  resetGalleryTimer();
+}
+
+function galleryPrev() {
+  if (galleryPhotos.length === 0) return;
+  galleryIndex = (galleryIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+  galleryGoTo(galleryIndex);
+  resetGalleryTimer();
+}
+
+function startGalleryAutoSlide() {
+  galleryTimer = setInterval(() => {
+    galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
+    galleryGoTo(galleryIndex);
+  }, 4000);
+}
+
+function resetGalleryTimer() {
+  clearInterval(galleryTimer);
+  startGalleryAutoSlide();
+}
+
+// Touch swipe support
+let galleryTouchStart = 0;
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.getElementById('gallerySlider');
+  if (slider) {
+    slider.addEventListener('touchstart', e => { galleryTouchStart = e.changedTouches[0].screenX; });
+    slider.addEventListener('touchend', e => {
+      const diff = galleryTouchStart - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) galleryNext();
+        else galleryPrev();
+      }
+    });
+  }
+});
+</script>
 <!-- REVIEWS -->
 <section id="reviews" style="background:#0a0a0a;">
   <h2 class="section-title" data-en="Customer Reviews" data-hi="ग्राहक समीक्षाएं" data-pa="ਗਾਹਕ ਸਮੀਖਿਆਵਾਂ">Customer Reviews</h2>
