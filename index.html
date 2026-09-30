@@ -105,40 +105,136 @@ footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; col
   </div>
 </div>
 
-  <!-- AUTO SLIDER -->
-<section style="padding:30px 20px 20px; background:#0a0a0a;">
-  <div id="slider" style="max-width:700px; margin:0 auto; position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 20px 50px rgba(0,0,0,0.5);">
+  <!-- CASHIFY-STYLE HERO SLIDER -->
+<section style="padding:20px; background:#0a0a0a;">
+  <div style="max-width:1100px; margin:0 auto; position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
     
-    <!-- SLIDES CONTAINER -->
-    <div id="slidesContainer" style="display:flex; transition:transform 0.6s ease-in-out;">
+    <!-- Slides Container -->
+    <div id="heroSlides" style="display:flex; transition:transform 0.6s ease-in-out; min-height:320px;">
       
-      <!-- SLIDE 1: OFFER -->
-      <div class="slide" style="min-width:100%; padding:45px 30px; background:linear-gradient(135deg, #1a0a0a 0%, #2a0a0a 100%); text-align:center; box-sizing:border-box;">
-        <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔥 LIMITED TIME OFFER" data-hi="🔥 सीमित समय का ऑफर" data-pa="🔥 ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">🔥 LIMITED TIME OFFER</span>
-        <h2 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:10px;" data-en="FREE Phone Diagnosis" data-hi="फ्री फोन चैकअप " data-pa="ਮੁਫ਼ਤ ਫੋਨ ਪੜਤਾਲ">FREE Phone Diagnosis</h2>
-        <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px; margin-left:auto; margin-right:auto;" data-en="Get your phone checked completely — absolutely free!" data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त!" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ!">Get your phone checked completely — absolutely free!</p>
-        <a href="booking.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none;" data-en="📅 Book Your Slot" data-hi="📅 अपना स्लॉट बुक करें" data-pa="📅 ਆਪਣਾ ਸਲਾਟ ਬੁੱਕ ਕਰੋ">📅 Book Your Slot</a>
+      <!-- SLIDE 1: FREE DIAGNOSIS -->
+      <div style="min-width:100%; background:linear-gradient(135deg, #1a0a0a 0%, #2a0a0a 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(255,68,68,0.2), transparent); border-radius:50%;"></div>
+        <div style="flex:1; position:relative; z-index:2;">
+          <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔥 LIMITED TIME OFFER" data-hi="🔥 सीमित समय का ऑफर" data-pa="🔥 ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">🔥 LIMITED TIME OFFER</span>
+          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="FREE Phone Diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫੋਨ ਡਾਇਗਨੋਸਿਸ">FREE Phone Diagnosis</h2>
+          <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px;" data-en="Get your phone checked completely — absolutely free!" data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त!" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ!">Get your phone checked completely — absolutely free!</p>
+          <a href="booking.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(255,68,68,0.3);" data-en="📅 Book Your Slot" data-hi="📅 अपना स्लॉट बुक करें" data-pa="📅 ਆਪਣਾ ਸਲਾਟ ਬੁੱਕ ਕਰੋ">📅 Book Your Slot</a>
+        </div>
+        <div style="flex-shrink:0; position:relative; z-index:2;">
+          <img src="logo.png" alt="Shree Sawriya" style="width:110px; height:110px; object-fit:contain; opacity:0.95;">
+        </div>
       </div>
       
-      <!-- SLIDE 2: STATUS CHECK -->
-      <div class="slide" style="min-width:100%; padding:45px 30px; background:linear-gradient(135deg, #0a1a0a 0%, #0a2a0a 100%); text-align:center; box-sizing:border-box;">
-        <span style="display:inline-block; background:linear-gradient(90deg, #4ade80, #22c55e); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔧 REPAIR STATUS" data-hi="🔧 रिपेयर स्टेटस" data-pa="🔧 ਰਿਪੇਅਰ ਸਟੇਟਸ">🔧 REPAIR STATUS</span>
-        <h2 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:10px;" data-en="Check Repair Status" data-hi="रिपेयर स्टेटस चेक करें" data-pa="ਰਿਪੇਅਰ ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">Check Repair Status</h2>
-        <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px; margin-left:auto; margin-right:auto;" data-en="Enter your mobile number and check your phone status instantly." data-hi="अपना मोबाइल नंबर डालें और तुरंत अपने फोन का स्टेटस देखें।" data-pa="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ ਅਤੇ ਤੁਰੰਤ ਆਪਣੇ ਫੋਨ ਦਾ ਸਟੇਟਸ ਦੇਖੋ।">Enter your mobile number and check your phone status instantly.</p>
-        <a href="status.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none;" data-en="📱 Check Status" data-hi="📱 स्टेटस चेक करें" data-pa="📱 ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ">📱 Check Status</a>
+      <!-- SLIDE 2: TRAINING DISCOUNT -->
+      <div style="min-width:100%; background:linear-gradient(135deg, #1a1200 0%, #2a1f00 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(255,184,0,0.2), transparent); border-radius:50%;"></div>
+        <div style="flex:1; position:relative; z-index:2;">
+          <span style="display:inline-block; background:linear-gradient(90deg, #ffb800, #ff8800); color:#000; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🎓 36% OFF — LIMITED TIME" data-hi="🎓 36% छूट — सीमित समय" data-pa="🎓 36% ਛੋਟ — ਸੀਮਤ ਸਮਾਂ">🎓 36% OFF — LIMITED TIME</span>
+          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="Advanced Chip-Level Repair Course" data-hi="एडवांस्ड चिप-लेवल रिपेयर कोर्स" data-pa="ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਕੋਰਸ">Advanced Chip-Level Repair Course</h2>
+          <p style="color:#ffb800; font-size:16px; font-weight:700; margin-bottom:25px;" data-en="₹79,999 → ₹51,000" data-hi="₹79,999 → ₹51,000" data-pa="₹79,999 → ₹51,000">₹79,999 → ₹51,000</p>
+          <a href="training.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(255,184,0,0.3);" data-en="💬 Enroll Now" data-hi="💬 अभी एनरोल करें" data-pa="💬 ਹੁਣ ਐਨਰੋਲ ਕਰੋ">💬 Enroll Now</a>
+        </div>
+        <div style="flex-shrink:0; position:relative; z-index:2;">
+          <img src="logo.png" alt="Shree Sawriya" style="width:110px; height:110px; object-fit:contain; opacity:0.95;">
+        </div>
+      </div>
+      
+      <!-- SLIDE 3: DOORSTEP DELIVERY -->
+      <div style="min-width:100%; background:linear-gradient(135deg, #0a1a0a 0%, #0a2a0a 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(74,222,128,0.2), transparent); border-radius:50%;"></div>
+        <div style="flex:1; position:relative; z-index:2;">
+          <span style="display:inline-block; background:linear-gradient(90deg, #4ade80, #22c55e); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🚚 DOORSTEP DELIVERY" data-hi="🚚 घर तक डिलीवरी" data-pa="🚚 ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">🚚 DOORSTEP DELIVERY</span>
+          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="After Repair, Delivery at Your Doorstep" data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">After Repair, Delivery at Your Doorstep</h2>
+          <p style="color:#4ade80; font-size:14px; font-weight:600; margin-bottom:25px;" data-en="Minimal Charges: ₹150 | Assandh + 5km" data-hi="न्यूनतम शुल्क: ₹150 | असंध + 5 किमी" data-pa="ਘੱਟੋ-ਘੱਟ ਖਰਚਾ: ₹150 | ਅਸੰਧ + 5 ਕਿਮੀ">Minimal Charges: ₹150 | Assandh + 5km</p>
+          <a href="tel:+919720076900" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(74,222,128,0.3);" data-en="📞 Call Now" data-hi="📞 कॉल करें" data-pa="📞 ਕਾਲ ਕਰੋ">📞 Call Now</a>
+        </div>
+        <div style="flex-shrink:0; position:relative; z-index:2;">
+          <img src="logo.png" alt="Shree Sawriya" style="width:110px; height:110px; object-fit:contain; opacity:0.95;">
+        </div>
       </div>
       
     </div>
     
-    <!-- DOTS -->
-    <div style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;">
-      <span onclick="goToSlide(0)" id="dot-0" style="width:10px; height:10px; border-radius:50%; background:#fff; cursor:pointer; transition:0.3s;"></span>
-      <span onclick="goToSlide(1)" id="dot-1" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:0.3s;"></span>
-    </div>
+    <!-- Left Arrow -->
+    <button onclick="heroPrev()" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">‹</button>
+    
+    <!-- Right Arrow -->
+    <button onclick="heroNext()" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">›</button>
+    
+    <!-- Dots -->
+    <div id="heroDots" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;"></div>
     
   </div>
 </section>
-<!-- DOORSTEP DELIVERY BANNER -->
+
+<script>
+// CASHIFY-STYLE HERO SLIDER
+let heroIndex = 0;
+const heroTotal = 3;
+let heroTimer;
+
+function heroGoTo(index) {
+  heroIndex = index;
+  const container = document.getElementById('heroSlides');
+  if (container) {
+    container.style.transform = 'translateX(-' + (index * 100) + '%)';
+  }
+  for (let i = 0; i < heroTotal; i++) {
+    const dot = document.getElementById('heroDot-' + i);
+    if (dot) {
+      dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)';
+      dot.style.width = (i === index) ? '24px' : '10px';
+      dot.style.borderRadius = (i === index) ? '5px' : '50%';
+    }
+  }
+  clearInterval(heroTimer);
+  heroStart();
+}
+
+function heroNext() {
+  const next = (heroIndex + 1) % heroTotal;
+  heroGoTo(next);
+}
+
+function heroPrev() {
+  const prev = (heroIndex - 1 + heroTotal) % heroTotal;
+  heroGoTo(prev);
+}
+
+function heroStart() {
+  heroTimer = setInterval(heroNext, 4000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const dotsContainer = document.getElementById('heroDots');
+  if (dotsContainer) {
+    for (let i = 0; i < heroTotal; i++) {
+      const dot = document.createElement('span');
+      dot.id = 'heroDot-' + i;
+      dot.style.cssText = 'width:' + (i === 0 ? '24px' : '10px') + '; height:10px; border-radius:' + (i === 0 ? '5px' : '50%') + '; background:' + (i === 0 ? '#fff' : 'rgba(255,255,255,0.4)') + '; cursor:pointer; transition:0.3s;';
+      dot.onclick = (function(idx) { return function() { heroGoTo(idx); }; })(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+  heroStart();
+  
+  // Touch swipe
+  let touchStartX = 0;
+  const slider = document.getElementById('heroSlides');
+  if (slider) {
+    slider.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; });
+    slider.addEventListener('touchend', function(e) {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) heroNext();
+        else heroPrev();
+      }
+    });
+  }
+});
+</script>
+  <!-- DOORSTEP DELIVERY BANNER -->
 <section style="padding:20px; background:#0a0a0a;">
   <div style="max-width:900px; margin:0 auto; background:linear-gradient(135deg, #0d1f0d 0%, #0a150a 100%); border:1px solid #4ade80; border-radius:24px; padding:35px 25px; text-align:center; box-shadow:0 15px 40px rgba(74,222,128,0.15);">
     
