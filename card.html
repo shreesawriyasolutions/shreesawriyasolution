@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankush - Shree Sawriya Solutions | Digital Card</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 28px; padding: 35px 25px; max-width: 420px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6); text-align: center; position: relative; overflow: hidden; }
+.card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,184,0,0.15), transparent); border-radius: 50%; }
+.card::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(74,222,128,0.15), transparent); border-radius: 50%; }
+
+.logo { width: 70px; height: 70px; object-fit: contain; margin-bottom: 15px; position: relative; z-index: 1; }
+.photo-wrapper { position: relative; z-index: 1; margin-bottom: 20px; display: inline-block; }
+.photo { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid #ffb800; box-shadow: 0 10px 30px rgba(255,184,0,0.3); }
+.name { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; position: relative; z-index: 1; }
+.designation { font-size: 13px; color: #ffb800; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px; position: relative; z-index: 1; }
+
+.divider { height: 1px; background: linear-gradient(90deg, transparent, #333, transparent); margin: 20px 0; position: relative; z-index: 1; }
+
+.info-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; text-align: left; position: relative; z-index: 1; }
+.info-icon { width: 36px; height: 36px; border-radius: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.info-text { font-size: 13px; color: #ccc; line-height: 1.4; word-break: break-word; }
+.info-text a { color: #ccc; text-decoration: none; }
+.info-text a:hover { color: #fff; }
+.info-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px; }
+
+.action-buttons { display: flex; gap: 10px; margin: 25px 0; position: relative; z-index: 1; }
+.action-btn { flex: 1; padding: 14px; border-radius: 50px; font-weight: 700; font-size: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; }
+.btn-wa { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
+.btn-call { background: #fff; color: #000; }
+.action-btn:hover { transform: translateY(-2px); }
+
+.qr-section { padding-top: 20px; border-top: 1px solid #222; position: relative; z-index: 1; }
+.qr-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.qr-img { width: 140px; height: 140px; background: #fff; padding: 10px; border-radius: 12px; }
+
+.share-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 12px 24px; border-radius: 50px; background: #1a1a1a; border: 1px solid #333; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; position: relative; z-index: 1; }
+.share-btn:hover { background: #222; }
+
+.footer-text { font-size: 10px; color: #444; margin-top: 25px; position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  
+  <img src="logo.png" alt="Shree Sawriya Solutions" class="logo">
+  
+  <div class="photo-wrapper">
+    <img src="owner.jpeg" alt="Ankush" class="photo">
+  </div>
+  
+  <h1 class="name">Ankush</h1>
+  <p class="designation">FOUNDER & EXPERT TECHNICIAN</p>
+  
+  <div class="divider"></div>
+  
+  <div class="info-row">
+    <div class="info-icon">📞</div>
+    <div class="info-text">
+      <span class="info-label">Phone</span>
+      <a href="tel:+919720076900">+91 97200 76900</a>
+    </div>
+  </div>
+  
+  <div class="info-row">
+    <div class="info-icon">✉️</div>
+    <div class="info-text">
+      <span class="info-label">Email</span>
+      <a href="mailto:support@shreesawriyasolutions.in">support@shreesawriyasolutions.in</a>
+    </div>
+  </div>
+  
+  <div class="info-row">
+    <div class="info-icon">🌐</div>
+    <div class="info-text">
+      <span class="info-label">Website</span>
+      <a href="https://shreesawriyasolutions.in" target="_blank">shreesawriyasolutions.in</a>
+    </div>
+  </div>
+  
+  <div class="info-row">
+    <div class="info-icon">📍</div>
+    <div class="info-text">
+      <span class="info-label">Address</span>
+      Salwan Chowk, Karnal Road, Assandh, Haryana
+    </div>
+  </div>
+  
+  <div class="action-buttons">
+    <a href="https://wa.me/919720076900" target="_blank" class="action-btn btn-wa">💬 WhatsApp</a>
+    <a href="tel:+919720076900" class="action-btn btn-call">📞 Call</a>
+  </div>
+  
+  <div class="qr-section">
+    <p class="qr-label">Scan to Visit Website</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://shreesawriyasolutions.in" alt="QR Code" class="qr-img">
+  </div>
+  
+  <a href="https://wa.me/?text=Check%20out%20Ankush's%20digital%20card%3A%20https://shreesawriyasolutions.in/card.html" target="_blank" class="share-btn">📤 Share This Card</a>
+  
+  <p class="footer-text">© 2025 Shree Sawriya Solutions</p>
+  
+</div>
+
+</body>
+</html>
