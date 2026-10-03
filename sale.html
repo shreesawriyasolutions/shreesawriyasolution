@@ -207,19 +207,34 @@ function loadSales() {
 }
 
 function updateSummary() {
+  // Aaj ki date nikaalo
   var today = new Date();
-  var todayStr = ('0' + today.getDate()).slice(-2) + '/' + ('0' + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
-  var todayIncome = 0, todayExpense = 0;
+  var todayDay = ('0' + today.getDate()).slice(-2);
+  var todayMonth = ('0' + (today.getMonth() + 1)).slice(-2);
+  var todayYear = today.getFullYear();
+  var todayStr1 = todayDay + '/' + todayMonth + '/' + todayYear;  // DD/MM/YYYY
+  var todayStr2 = todayYear + '-' + todayMonth + '-' + todayDay;  // YYYY-MM-DD
+  
+  var todayIncome = 0;
+  var todayExpense = 0;
   
   allSales.forEach(function(sale) {
     var saleDate = "";
+    
+    // Date ko string mein convert karo
     if (sale.date instanceof Date) {
       saleDate = ('0' + sale.date.getDate()).slice(-2) + '/' + ('0' + (sale.date.getMonth() + 1)).slice(-2) + '/' + sale.date.getFullYear();
     } else {
-      saleDate = (sale.date || "").toString();
+      saleDate = (sale.date || "").toString().trim();
     }
     
-    if (saleDate === todayStr) {
+    // Multiple formats check karo
+    var isToday = (saleDate === todayStr1) || 
+                  (saleDate === todayStr2) || 
+                  (saleDate.indexOf(todayStr1) !== -1) ||
+                  (saleDate.indexOf(todayStr2) !== -1);
+    
+    if (isToday) {
       todayIncome += parseFloat(sale.amountReceived) || 0;
       todayExpense += parseFloat(sale.expense) || 0;
     }
@@ -230,7 +245,6 @@ function updateSummary() {
   document.getElementById('todaySavings').textContent = '₹' + (todayIncome - todayExpense);
   document.getElementById('totalEntries').textContent = allSales.length;
 }
-
 function renderSales(sales) {
   var container = document.getElementById('saleList');
   if (!sales || sales.length === 0) {
