@@ -119,6 +119,36 @@ a { text-decoration: none; color: inherit; }
 <div id="toast"></div>
 
 <script>
+  <script>
+// ========== LOGIN PROTECTION ==========
+(function() {
+  var PASSWORD = "shree@2025#Stock";
+  var attempts = 0;
+  var maxAttempts = 5;
+  
+  var isLoggedIn = sessionStorage.getItem('stock_logged_in');
+  
+  if (isLoggedIn !== 'yes') {
+    var userPassword = prompt("🔐 Stock Management\n\nPlease enter the password:");
+    
+    while (userPassword !== PASSWORD && attempts < maxAttempts) {
+      attempts++;
+      if (attempts >= maxAttempts) {
+        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
+        return;
+      }
+      userPassword = prompt("❌ Wrong password! Attempts left: " + (maxAttempts - attempts) + "\n\nPlease try again:");
+    }
+    
+    if (userPassword === PASSWORD) {
+      sessionStorage.setItem('stock_logged_in', 'yes');
+    } else {
+      document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif;"><h2 style="color:#ff4444;">🔒 Access Denied</h2></div>';
+      return;
+    }
+  }
+})();
+</script>
 const API_URL = "https://script.google.com/macros/s/AKfycbzq5i57tFsW1djo4-6XdZ3yIQo8MvSycDh8hV2gKNemtHO8Tv3wCwRBHh2bWfzTdPROtQ/exec";
 const SECRET_KEY = "sawriya_stock_2025_secure";
 
