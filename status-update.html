@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status Update | Shree Sawriya Solutions</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; color: #fff; }
+.logo img { width: 34px; height: 34px; object-fit: contain; }
+.back-btn { color: #aaa; font-size: 13px; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+.page-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; text-align: center; }
+.page-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 30px; }
+
+.form-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+.form-box h3 { color: #fff; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+@media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
+.form-grid input, .form-grid select, .form-grid textarea {
+  padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 13px; outline: none; font-family: inherit;
+}
+.form-grid textarea { grid-column: 1 / -1; min-height: 60px; resize: vertical; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: #4ade80; }
+
+.btn { padding: 12px 24px; border-radius: 50px; font-weight: 700; font-size: 14px; cursor: pointer; border: none; font-family: inherit; }
+.btn-primary { background: linear-gradient(90deg, #4ade80, #22c55e); color: #000; }
+.btn-cancel { background: #333; color: #fff; margin-left: 10px; }
+.btn-small { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
+
+.search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+.search-box input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
+
+.customer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+.customer-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 20px; position: relative; }
+.customer-card h4 { color: #fff; font-size: 16px; margin-bottom: 6px; font-weight: 700; }
+.customer-card .phone-badge { display: inline-block; background: #111; border: 1px solid #333; padding: 3px 10px; border-radius: 50px; font-size: 11px; color: #4ade80; margin-bottom: 12px; font-weight: 600; }
+.customer-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #1a1a1a; }
+.customer-row:last-child { border-bottom: none; }
+.customer-row .lbl { color: #888; }
+.customer-row .val { color: #fff; font-weight: 600; text-align: right; }
+.status-badge { display: inline-block; padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; }
+.status-received { background: rgba(74,222,128,0.2); color: #4ade80; }
+.status-progress { background: rgba(255,184,0,0.2); color: #ffb800; }
+.status-pending { background: rgba(255,68,68,0.2); color: #ff4444; }
+.status-complete { background: rgba(74,222,128,0.3); color: #4ade80; }
+.status-delivered { background: rgba(100,100,100,0.3); color: #aaa; }
+.card-actions { display: flex; gap: 8px; margin-top: 15px; }
+.btn-edit { background: #1a1a1a; color: #fff; border: 1px solid #333; }
+
+.loading { text-align: center; padding: 40px; color: #888; }
+.empty { text-align: center; padding: 40px; color: #666; }
+
+#toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #22c55e; color: #000; padding: 12px 24px; border-radius: 50px; font-weight: 700; font-size: 14px; opacity: 0; transition: 0.3s; pointer-events: none; z-index: 9999; }
+#toast.show { opacity: 1; }
+#toast.error { background: #ff4444; color: #fff; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Shree Sawriya">
+    <span>STATUS UPDATE</span>
+  </a>
+  <a href="index.html" class="back-btn">← Home</a>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">Repair Status Update</h1>
+  <p class="page-sub">Update customer phone repair status</p>
+
+  <div class="form-box">
+    <h3 id="formTitle">➕ Add New Customer</h3>
+    <div class="form-grid">
+      <input type="tel" id="mobileNumber" placeholder="Mobile Number (10 digit) *" maxlength="10" required>
+      <input type="text" id="customerName" placeholder="Customer Name *" required>
+      <input type="text" id="phoneModel" placeholder="Phone Model (iPhone 12, etc.)">
+      <input type="text" id="entryDate" placeholder="Entry Date (DD/MM/YYYY)">
+      <select id="status">
+        <option value="">Select Status</option>
+        <option value="Received">Received</option>
+        <option value="Diagnosis Pending">Diagnosis Pending</option>
+        <option value="Repair in Progress">Repair in Progress</option>
+        <option value="Waiting for Parts">Waiting for Parts</option>
+        <option value="Repair Complete - Ready for Pickup">Repair Complete - Ready for Pickup</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+      <input type="text" id="estimateCharge" placeholder="Estimated Charges (₹)">
+      <input type="text" id="estimateDelivery" placeholder="Estimated Delivery Date">
+      <textarea id="notes" placeholder="Notes (optional)"></textarea>
+    </div>
+    <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Add Customer</button>
+    <button class="btn btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">Cancel</button>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by mobile number or name..." oninput="filterCustomers()">
+  </div>
+
+  <div id="customerList">
+    <div class="loading">Loading customers...</div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ========== LOGIN PROTECTION ==========
+var TEAM_PASSWORD = "Sahil@9896#";
+var MAX_ATTEMPTS = 5;
+
+(function() {
+  var isLoggedIn = sessionStorage.getItem('status_update_logged_in');
+  
+  if (isLoggedIn !== 'yes') {
+    var attempts = 0;
+    var enteredPassword = prompt("🔐 Status Update\n\nPlease enter your password:");
+    
+    while (enteredPassword !== TEAM_PASSWORD && attempts < MAX_ATTEMPTS) {
+      attempts++;
+      if (attempts >= MAX_ATTEMPTS) {
+        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Refresh the page to try again.</p></div></div>';
+        return;
+      }
+      enteredPassword = prompt("❌ Wrong password! Attempts left: " + (MAX_ATTEMPTS - attempts) + "\n\nPlease try again:");
+    }
+    
+    if (enteredPassword === TEAM_PASSWORD) {
+      sessionStorage.setItem('status_update_logged_in', 'yes');
+    } else {
+      document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif;"><h2 style="color:#ff4444;">🔒 Access Denied</h2></div>';
+      return;
+    }
+  }
+})();
+
+// ========== STATUS MANAGEMENT ==========
+var API_URL = "https://script.google.com/macros/s/AKfycbyJ08_NJpWpLIXfkTD3clbbMV5-k5hdv6uGY6VLZZo_2j9Q9V0qjTBatL97upWvlhab/exec";
+
+var allCustomers = [];
+var editingRow = null;
+
+function toast(msg, isError) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = isError ? 'show error' : 'show';
+  setTimeout(function() { el.className = ''; }, 3000);
+}
+
+function getStatusClass(status) {
+  if (!status) return 'status-received';
+  var s = status.toLowerCase();
+  if (s.indexOf('delivered') !== -1) return 'status-delivered';
+  if (s.indexOf('complete') !== -1 || s.indexOf('ready') !== -1) return 'status-complete';
+  if (s.indexOf('progress') !== -1) return 'status-progress';
+  if (s.indexOf('pending') !== -1 || s.indexOf('waiting') !== -1) return 'status-pending';
+  return 'status-received';
+}
+
+function setTodayDate() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  document.getElementById('entryDate').value = dd + '/' + mm + '/' + yyyy;
+}
+
+function loadCustomers() {
+  fetch(API_URL + "?action=getAll")
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.success) {
+        allCustomers = data.customers;
+        renderCustomers(allCustomers);
+      } else {
+        document.getElementById('customerList').innerHTML = '<div class="empty">Error loading customers</div>';
+      }
+    })
+    .catch(function(error) {
+      document.getElementById('customerList').innerHTML = '<div class="empty">Failed to connect</div>';
+      console.log(error);
+    });
+}
+
+function renderCustomers(customers) {
+  var container = document.getElementById('customerList');
+  if (!customers || customers.length === 0) {
+    container.innerHTML = '<div class="empty">No customers yet. Add your first customer above.</div>';
+    return;
+  }
+  var html = '<div class="customer-grid">';
+  customers.forEach(function(item) {
+    var statusClass = getStatusClass(item.status);
+    html += '<div class="customer-card">';
+    html += '<span class="phone-badge">📱 ' + (item.mobileNumber || '-') + '</span>';
+    html += '<h4>' + (item.customerName || 'Untitled') + '</h4>';
+    html += '<div class="customer-row"><span class="lbl">Model</span><span class="val">' + (item.phoneModel || '-') + '</span></div>';
+    html += '<div class="customer-row"><span class="lbl">Entry</span><span class="val">' + (item.entryDate || '-') + '</span></div>';
+    html += '<div class="customer-row"><span class="lbl">Status</span><span class="status-badge ' + statusClass + '">' + (item.status || '-') + '</span></div>';
+    html += '<div class="customer-row"><span class="lbl">Charges</span><span class="val">₹' + (item.estimateCharge || '0') + '</span></div>';
+    html += '<div class="customer-row"><span class="lbl">Delivery</span><span class="val">' + (item.estimateDelivery || '-') + '</span></div>';
+    if (item.notes) {
+      html += '<div class="customer-row"><span class="lbl">Notes</span><span class="val" style="max-width:60%;">' + item.notes + '</span></div>';
+    }
+    html += '<div class="card-actions">';
+    html += '<button class="btn btn-small btn-edit" onclick="editItem(' + item.row + ')">✏️ Update Status</button>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function filterCustomers() {
+  var query = document.getElementById('searchInput').value.toLowerCase();
+  if (!query) { renderCustomers(allCustomers); return; }
+  var filtered = allCustomers.filter(function(item) {
+    return (item.customerName || '').toLowerCase().indexOf(query) !== -1 ||
+           (item.mobileNumber || '').toString().indexOf(query) !== -1 ||
+           (item.phoneModel || '').toLowerCase().indexOf(query) !== -1;
+  });
+  renderCustomers(filtered);
+}
+
+function submitForm() {
+  var mobileNumber = document.getElementById('mobileNumber').value.trim();
+  var customerName = document.getElementById('customerName').value.trim();
+  var status = document.getElementById('status').value;
+  
+  if (!mobileNumber || !customerName || !status) {
+    toast('Please fill Mobile Number, Name, and Status', true);
+    return;
+  }
+  
+  if (mobileNumber.length !== 10 || isNaN(mobileNumber)) {
+    toast('Mobile number must be 10 digits', true);
+    return;
+  }
+  
+  var params = new URLSearchParams({
+    mobileNumber: mobileNumber,
+    customerName: customerName,
+    phoneModel: document.getElementById('phoneModel').value.trim(),
+    entryDate: document.getElementById('entryDate').value,
+    status: status,
+    estimateCharge: document.getElementById('estimateCharge').value.trim(),
+    estimateDelivery: document.getElementById('estimateDelivery').value.trim(),
+    notes: document.getElementById('notes').value.trim()
+  });
+  
+  if (editingRow) {
+    params.append('row', editingRow);
+    params.append('action', 'update');
+  } else {
+    params.append('action', 'add');
+  }
+  
+  var url = API_URL + '?' + params.toString();
+  
+  document.getElementById('submitBtn').textContent = 'Saving...';
+  fetch(url)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.success) {
+        toast(editingRow ? 'Status updated!' : 'Customer added!');
+        resetForm();
+        loadCustomers();
+      } else {
+        toast('Error: ' + (data.error || 'Unknown'), true);
+      }
+    })
+    .catch(function(error) {
+      toast('Connection error', true);
+    })
+    .finally(function() {
+      document.getElementById('submitBtn').textContent = editingRow ? 'Update Status' : 'Add Customer';
+    });
+}
+
+function editItem(row) {
+  var item = allCustomers.find(function(s) { return s.row === row; });
+  if (!item) return;
+  document.getElementById('mobileNumber').value = item.mobileNumber || '';
+  document.getElementById('customerName').value = item.customerName || '';
+  document.getElementById('phoneModel').value = item.phoneModel || '';
+  document.getElementById('entryDate').value = item.entryDate || '';
+  document.getElementById('status').value = item.status || '';
+  document.getElementById('estimateCharge').value = item.estimateCharge || '';
+  document.getElementById('estimateDelivery').value = item.estimateDelivery || '';
+  document.getElementById('notes').value = item.notes || '';
+  
+  editingRow = row;
+  document.getElementById('formTitle').textContent = '✏️ Update Status (Row ' + row + ')';
+  document.getElementById('submitBtn').textContent = 'Update Status';
+  document.getElementById('cancelBtn').style.display = 'inline-block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function cancelEdit() {
+  resetForm();
+}
+
+function resetForm() {
+  ['mobileNumber','customerName','phoneModel','status','estimateCharge','estimateDelivery','notes'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+  editingRow = null;
+  document.getElementById('formTitle').textContent = '➕ Add New Customer';
+  document.getElementById('submitBtn').textContent = 'Add Customer';
+  document.getElementById('cancelBtn').style.display = 'none';
+  setTodayDate();
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  setTodayDate();
+  loadCustomers();
+});
+</script>
+</body>
+</html>
