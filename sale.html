@@ -207,23 +207,40 @@ function loadSales() {
 }
 
 function updateSummary() {
+  var today = new Date();
+  var todayDay = ('0' + today.getDate()).slice(-2);
+  var todayMonth = ('0' + (today.getMonth() + 1)).slice(-2);
+  var todayYear = today.getFullYear();
+  var todayStr = todayDay + '/' + todayMonth + '/' + todayYear;
+  
   var todayIncome = 0;
   var todayExpense = 0;
-  var todaySavings = 0;
+  var totalIncome = 0;
+  var totalExpense = 0;
   
-  // Saari entries ka total nikaalo
   allSales.forEach(function(sale) {
     var amount = parseFloat(sale.amountReceived) || 0;
     var expense = parseFloat(sale.expense) || 0;
-    todayIncome += amount;
-    todayExpense += expense;
+    
+    totalIncome += amount;
+    totalExpense += expense;
+    
+    var saleDate = "";
+    if (sale.date instanceof Date) {
+      saleDate = ('0' + sale.date.getDate()).slice(-2) + '/' + ('0' + (sale.date.getMonth() + 1)).slice(-2) + '/' + sale.date.getFullYear();
+    } else {
+      saleDate = (sale.date || "").toString().trim();
+    }
+    
+    if (saleDate === todayStr) {
+      todayIncome += amount;
+      todayExpense += expense;
+    }
   });
-  
-  todaySavings = todayIncome - todayExpense;
   
   document.getElementById('todayIncome').textContent = '₹' + todayIncome;
   document.getElementById('todayExpense').textContent = '₹' + todayExpense;
-  document.getElementById('todaySavings').textContent = '₹' + todaySavings;
+  document.getElementById('todaySavings').textContent = '₹' + (todayIncome - todayExpense);
   document.getElementById('totalEntries').textContent = allSales.length;
 }
 function renderSales(sales) {
