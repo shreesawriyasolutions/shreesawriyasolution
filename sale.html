@@ -14,23 +14,19 @@ a { text-decoration: none; color: inherit; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; color: #fff; }
 .logo img { width: 34px; height: 34px; object-fit: contain; }
 .back-btn { color: #aaa; font-size: 13px; }
+.admin-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 6px 14px; border-radius: 50px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.admin-btn.active { background: linear-gradient(90deg, #4ade80, #22c55e); color: #000; border: none; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
 .page-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; text-align: center; }
 .page-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 30px; }
 
-/* SUMMARY CARDS */
-.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 25px; }
-.summary-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 18px; text-align: center; }
-.summary-card .label { font-size: 10px; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-.summary-card .value { font-size: 22px; font-weight: 800; }
-.summary-card.income .value { color: #4ade80; }
-.summary-card.expense .value { color: #ff6666; }
-.summary-card.savings .value { color: #ffb800; }
-.summary-card.total .value { color: #fff; }
+.mode-badge { text-align: center; margin-bottom: 20px; }
+.mode-badge span { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; }
+.mode-team { background: rgba(255,184,0,0.15); color: #ffb800; }
+.mode-admin { background: rgba(74,222,128,0.15); color: #4ade80; }
 
-/* FORM */
 .form-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 25px; margin-bottom: 25px; }
 .form-box h3 { color: #fff; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
@@ -46,23 +42,21 @@ a { text-decoration: none; color: inherit; }
 .btn-cancel { background: #333; color: #fff; margin-left: 10px; }
 .btn-small { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
 
-/* SEARCH */
-.search-box { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-.search-box input { flex: 1; min-width: 200px; padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
-.search-box button { padding: 12px 20px; border-radius: 10px; background: #1a1a1a; color: #fff; border: 1px solid #333; font-weight: 600; cursor: pointer; font-family: inherit; }
+.search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+.search-box input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
 
-/* SALE LIST */
-.sale-list { display: grid; gap: 12px; }
-.sale-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 18px; position: relative; }
-.sale-card .date-badge { display: inline-block; background: #1a1a1a; border: 1px solid #333; padding: 3px 10px; border-radius: 50px; font-size: 11px; color: #aaa; margin-bottom: 8px; }
-.sale-card h4 { color: #fff; font-size: 16px; margin-bottom: 10px; font-weight: 700; }
-.sale-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; }
+.stock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+.sale-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 20px; position: relative; }
+.sale-card h4 { color: #fff; font-size: 16px; margin-bottom: 6px; font-weight: 700; }
+.sale-card .date-badge { display: inline-block; background: #111; border: 1px solid #333; padding: 3px 10px; border-radius: 50px; font-size: 11px; color: #aaa; margin-bottom: 12px; }
+.sale-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #1a1a1a; }
+.sale-row:last-child { border-bottom: none; }
 .sale-row .lbl { color: #888; }
 .sale-row .val { color: #fff; font-weight: 600; }
-.sale-row .val.green { color: #4ade80; }
-.sale-row .val.red { color: #ff6666; }
-.sale-row .val.gold { color: #ffb800; font-weight: 700; }
-.card-actions { display: flex; gap: 8px; margin-top: 12px; }
+.val-green { color: #4ade80 !important; }
+.val-red { color: #ff6666 !important; }
+.val-gold { color: #ffb800 !important; }
+.card-actions { display: flex; gap: 8px; margin-top: 15px; }
 .btn-edit { background: #1a1a1a; color: #fff; border: 1px solid #333; }
 .btn-delete { background: #2a1a1a; color: #ff6666; border: 1px solid #553333; }
 
@@ -81,41 +75,26 @@ a { text-decoration: none; color: inherit; }
     <img src="logo.png" alt="Shree Sawriya">
     <span>DAILY SALE REGISTER</span>
   </a>
+  <button class="admin-btn" id="adminBtn" onclick="toggleAdmin()">⚙️ Admin Login</button>
   <a href="index.html" class="back-btn">← Home</a>
 </nav>
 
 <div class="container">
   <h1 class="page-title">Daily Sale Register</h1>
-  <p class="page-sub">Track your daily income, expense, and savings</p>
+  <p class="page-sub">Add your daily sales and expenses</p>
 
-  <!-- SUMMARY -->
-  <div class="summary-grid">
-    <div class="summary-card income">
-      <div class="label">Today Received</div>
-      <div class="value" id="todayIncome">₹0</div>
-    </div>
-    <div class="summary-card expense">
-      <div class="label">Today Expense</div>
-      <div class="value" id="todayExpense">₹0</div>
-    </div>
-    <div class="summary-card savings">
-      <div class="label">Today Savings</div>
-      <div class="value" id="todaySavings">₹0</div>
-    </div>
-    <div class="summary-card total">
-      <div class="label">Total Entries</div>
-      <div class="value" id="totalEntries">0</div>
-    </div>
+  <div class="mode-badge">
+    <span id="modeBadge" class="mode-team">👥 TEAM MODE — Add Only</span>
   </div>
 
-  <!-- ADD/EDIT FORM -->
   <div class="form-box">
     <h3 id="formTitle">➕ Add New Entry</h3>
     <div class="form-grid">
+      <input type="text" id="dateInput" placeholder="Date (DD/MM/YYYY)" readonly style="background:#0d0d0d; cursor:not-allowed;">
       <input type="text" id="customerName" placeholder="Customer Name (optional)">
       <input type="text" id="work" placeholder="Kaam / Sale *" required>
-      <input type="number" id="amountReceived" placeholder="Kitne Pese Liye (₹) *" required>
-      <input type="number" id="expense" placeholder="Kharcha (₹)">
+      <input type="number" id="received" placeholder="Kitne Pese Liye (₹) *" required>
+      <input type="number" id="expense" placeholder="Kharcha (₹) *" required>
       <select id="paymentMode">
         <option value="">Payment Mode</option>
         <option value="Cash">Cash</option>
@@ -130,14 +109,11 @@ a { text-decoration: none; color: inherit; }
     <button class="btn btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">Cancel</button>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search by customer or work..." oninput="filterSales()">
-    <button onclick="showAllSales()">Show All</button>
+    <input type="text" id="searchInput" placeholder="Search by customer, work, or notes..." oninput="filterSales()">
   </div>
 
-  <!-- SALE LIST -->
-  <div id="saleList">
+  <div id="salesList">
     <div class="loading">Loading sales...</div>
   </div>
 </div>
@@ -145,28 +121,38 @@ a { text-decoration: none; color: inherit; }
 <div id="toast"></div>
 
 <script>
-// ========== LOGIN PROTECTION ==========
+// ========== 2-PASSWORD LOGIN SYSTEM ==========
+var TEAM_PASSWORD = "Sahil@9896#";
+var ADMIN_PASSWORD = "Renu@9896#";
+var MAX_ATTEMPTS = 5;
+var isAdmin = false;
+
 (function() {
-  var PASSWORD = "Sahil@9896#";
-  var attempts = 0;
-  var maxAttempts = 5;
+  var mode = sessionStorage.getItem('sale_mode');
   
-  var isLoggedIn = sessionStorage.getItem('sale_logged_in');
-  
-  if (isLoggedIn !== 'yes') {
-    var userPassword = prompt("🔐 Daily Sale Register\n\nPlease enter the password:");
+  if (mode === 'admin') {
+    isAdmin = true;
+  } else if (mode === 'team') {
+    isAdmin = false;
+  } else {
+    var attempts = 0;
+    var enteredPassword = prompt("🔐 Daily Sale Register\n\nPlease enter your password:");
     
-    while (userPassword !== PASSWORD && attempts < maxAttempts) {
+    while (enteredPassword !== TEAM_PASSWORD && enteredPassword !== ADMIN_PASSWORD && attempts < MAX_ATTEMPTS) {
       attempts++;
-      if (attempts >= maxAttempts) {
-        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
+      if (attempts >= MAX_ATTEMPTS) {
+        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Refresh the page to try again.</p></div></div>';
         return;
       }
-      userPassword = prompt("❌ Wrong password! Attempts left: " + (maxAttempts - attempts) + "\n\nPlease try again:");
+      enteredPassword = prompt("❌ Wrong password! Attempts left: " + (MAX_ATTEMPTS - attempts) + "\n\nPlease try again:");
     }
     
-    if (userPassword === PASSWORD) {
-      sessionStorage.setItem('sale_logged_in', 'yes');
+    if (enteredPassword === ADMIN_PASSWORD) {
+      isAdmin = true;
+      sessionStorage.setItem('sale_mode', 'admin');
+    } else if (enteredPassword === TEAM_PASSWORD) {
+      isAdmin = false;
+      sessionStorage.setItem('sale_mode', 'team');
     } else {
       document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif;"><h2 style="color:#ff4444;">🔒 Access Denied</h2></div>';
       return;
@@ -174,8 +160,28 @@ a { text-decoration: none; color: inherit; }
   }
 })();
 
+function toggleAdmin() {
+  if (isAdmin) {
+    // Logout from admin
+    if (confirm("Logout from Admin Mode?")) {
+      sessionStorage.removeItem('sale_mode');
+      location.reload();
+    }
+  } else {
+    // Login as admin
+    var pass = prompt("🔐 Admin Login\n\nEnter Admin Password:");
+    if (pass === ADMIN_PASSWORD) {
+      isAdmin = true;
+      sessionStorage.setItem('sale_mode', 'admin');
+      location.reload();
+    } else {
+      alert("❌ Wrong admin password!");
+    }
+  }
+}
+
 // ========== SALE MANAGEMENT ==========
-var API_URL = "https://script.google.com/macros/s/AKfycbyjSgL3dFagvi0B2JN82tLYveeL4L2sRXXIaCxh5RwkcEYi9d78r_bi0XUQRf-JGibIDg/exec";
+var API_URL = "https://script.google.com/macros/s/AKfycbyIeaZqwY1yIpPrVYqmhbBqZsgofzjCKMCWEemIb7VrGONN8F-pfA2r2Ky-fPX9bs2Jxg/exec";
 var SECRET_KEY = "sawriya_sale_2025_secure";
 
 var allSales = [];
@@ -188,6 +194,31 @@ function toast(msg, isError) {
   setTimeout(function() { el.className = ''; }, 3000);
 }
 
+function setTodayDate() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  document.getElementById('dateInput').value = dd + '/' + mm + '/' + yyyy;
+}
+
+function updateUI() {
+  var adminBtn = document.getElementById('adminBtn');
+  var modeBadge = document.getElementById('modeBadge');
+  
+  if (isAdmin) {
+    adminBtn.textContent = '🚪 Logout Admin';
+    adminBtn.classList.add('active');
+    modeBadge.textContent = '👑 ADMIN MODE — Full Access';
+    modeBadge.className = 'mode-admin';
+  } else {
+    adminBtn.textContent = '⚙️ Admin Login';
+    adminBtn.classList.remove('active');
+    modeBadge.textContent = '👥 TEAM MODE — Add Only';
+    modeBadge.className = 'mode-team';
+  }
+}
+
 function loadSales() {
   fetch(API_URL + "?action=getAll&key=" + SECRET_KEY)
     .then(function(response) { return response.json(); })
@@ -195,57 +226,52 @@ function loadSales() {
       if (data.success) {
         allSales = data.sales;
         renderSales(allSales);
-        updateSummary();
       } else {
-        document.getElementById('saleList').innerHTML = '<div class="empty">Error loading sales</div>';
+        document.getElementById('salesList').innerHTML = '<div class="empty">Error loading sales</div>';
       }
     })
     .catch(function(error) {
-      document.getElementById('saleList').innerHTML = '<div class="empty">Failed to connect</div>';
+      document.getElementById('salesList').innerHTML = '<div class="empty">Failed to connect</div>';
       console.log(error);
     });
 }
 
-function updateSummary() {
-  var todayIncome = 0;
-  var todayExpense = 0;
-  var todaySavings = 0;
-  
-  // Saari entries ka total nikaalo
-  allSales.forEach(function(sale) {
-    var amount = parseFloat(sale.amountReceived) || 0;
-    var expense = parseFloat(sale.expense) || 0;
-    todayIncome += amount;
-    todayExpense += expense;
-  });
-  
-  todaySavings = todayIncome - todayExpense;
-  
-  document.getElementById('todayIncome').textContent = '₹' + todayIncome;
-  document.getElementById('todayExpense').textContent = '₹' + todayExpense;
-  document.getElementById('todaySavings').textContent = '₹' + todaySavings;
-  document.getElementById('totalEntries').textContent = allSales.length;
-}
 function renderSales(sales) {
-  var container = document.getElementById('saleList');
+  var container = document.getElementById('salesList');
   if (!sales || sales.length === 0) {
     container.innerHTML = '<div class="empty">No entries yet. Add your first entry above.</div>';
     return;
   }
-  var html = '<div class="sale-list">';
-  sales.slice().reverse().forEach(function(sale) {
-    var amount = parseFloat(sale.amountReceived) || 0;
-    var expense = parseFloat(sale.expense) || 0;
-    var savings = amount - expense;
+  
+  // Calculate totals
+  var totalReceived = 0;
+  var totalExpense = 0;
+  var totalSavings = 0;
+  sales.forEach(function(sale) {
+    totalReceived += parseFloat(sale.received) || 0;
+    totalExpense += parseFloat(sale.expense) || 0;
+    totalSavings += parseFloat(sale.savings) || 0;
+  });
+  
+  var html = '<div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #4ade80; border-radius:16px; padding:20px; margin-bottom:20px;">';
+  html += '<h3 style="color:#4ade80; font-size:16px; margin-bottom:15px; font-weight:700;">📊 TOTAL SUMMARY</h3>';
+  html += '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">';
+  html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL RECEIVED</p><p style="color:#4ade80; font-size:20px; font-weight:800;">₹' + totalReceived + '</p></div>';
+  html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL EXPENSE</p><p style="color:#ff6666; font-size:20px; font-weight:800;">₹' + totalExpense + '</p></div>';
+  html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL SAVINGS</p><p style="color:#ffb800; font-size:20px; font-weight:800;">₹' + totalSavings + '</p></div>';
+  html += '</div></div>';
+  
+  html += '<div class="stock-grid">';
+  sales.forEach(function(sale) {
     html += '<div class="sale-card">';
-    html += '<span class="date-badge">📅 ' + (sale.date || 'No date') + '</span>';
-    html += '<h4>' + (sale.work || 'No work') + '</h4>';
+    html += '<span class="date-badge">' + (sale.date || '-') + '</span>';
+    html += '<h4>' + (sale.work || 'Untitled') + '</h4>';
     if (sale.customerName) {
       html += '<div class="sale-row"><span class="lbl">Customer</span><span class="val">' + sale.customerName + '</span></div>';
     }
-    html += '<div class="sale-row"><span class="lbl">Received</span><span class="val green">₹' + amount + '</span></div>';
-    html += '<div class="sale-row"><span class="lbl">Expense</span><span class="val red">₹' + expense + '</span></div>';
-    html += '<div class="sale-row"><span class="lbl">Savings</span><span class="val gold">₹' + savings + '</span></div>';
+    html += '<div class="sale-row"><span class="lbl">Received</span><span class="val val-green">₹' + (sale.received || 0) + '</span></div>';
+    html += '<div class="sale-row"><span class="lbl">Expense</span><span class="val val-red">₹' + (sale.expense || 0) + '</span></div>';
+    html += '<div class="sale-row"><span class="lbl">Savings</span><span class="val val-gold">₹' + (sale.savings || 0) + '</span></div>';
     if (sale.paymentMode) {
       html += '<div class="sale-row"><span class="lbl">Payment</span><span class="val">' + sale.paymentMode + '</span></div>';
     }
@@ -253,10 +279,16 @@ function renderSales(sales) {
       html += '<div class="sale-row"><span class="lbl">Notes</span><span class="val">' + sale.notes + '</span></div>';
     }
     html += '<div class="sale-row"><span class="lbl">Entry By</span><span class="val">' + (sale.entryBy || '-') + '</span></div>';
-    html += '<div class="card-actions">';
-    html += '<button class="btn btn-small btn-edit" onclick="editSale(' + sale.row + ')">✏️ Edit</button>';
-    html += '<button class="btn btn-small btn-delete" onclick="deleteSale(' + sale.row + ')">🗑️ Delete</button>';
-    html += '</div></div>';
+    
+    // Only show Edit/Delete buttons in admin mode
+    if (isAdmin) {
+      html += '<div class="card-actions">';
+      html += '<button class="btn btn-small btn-edit" onclick="editItem(' + sale.row + ')">✏️ Edit</button>';
+      html += '<button class="btn btn-small btn-delete" onclick="deleteItem(' + sale.row + ')">🗑️ Delete</button>';
+      html += '</div>';
+    }
+    
+    html += '</div>';
   });
   html += '</div>';
   container.innerHTML = html;
@@ -265,41 +297,38 @@ function renderSales(sales) {
 function filterSales() {
   var query = document.getElementById('searchInput').value.toLowerCase();
   if (!query) { renderSales(allSales); return; }
-  var filtered = allSales.filter(function(sale) {
-    return (sale.customerName || '').toLowerCase().indexOf(query) !== -1 ||
-           (sale.work || '').toLowerCase().indexOf(query) !== -1 ||
-           (sale.notes || '').toLowerCase().indexOf(query) !== -1;
+  var filtered = allSales.filter(function(item) {
+    return (item.customerName || '').toLowerCase().indexOf(query) !== -1 ||
+           (item.work || '').toLowerCase().indexOf(query) !== -1 ||
+           (item.notes || '').toLowerCase().indexOf(query) !== -1;
   });
   renderSales(filtered);
 }
 
-function showAllSales() {
-  document.getElementById('searchInput').value = '';
-  renderSales(allSales);
-}
-
 function submitForm() {
   var work = document.getElementById('work').value.trim();
-  var amountReceived = document.getElementById('amountReceived').value.trim();
+  var received = document.getElementById('received').value.trim();
+  var expense = document.getElementById('expense').value.trim();
   var entryBy = document.getElementById('entryBy').value.trim();
   
-  if (!work || !amountReceived || !entryBy) {
+  if (!work || !received || !expense || !entryBy) {
     toast('Please fill all required fields (*)', true);
     return;
   }
   
   var params = new URLSearchParams({
     key: SECRET_KEY,
+    date: document.getElementById('dateInput').value,
     customerName: document.getElementById('customerName').value.trim(),
     work: work,
-    amountReceived: amountReceived,
-    expense: document.getElementById('expense').value || 0,
+    received: received,
+    expense: expense,
     paymentMode: document.getElementById('paymentMode').value,
     notes: document.getElementById('notes').value.trim(),
     entryBy: entryBy
   });
   
-  if (editingRow) {
+  if (editingRow && isAdmin) {
     params.append('row', editingRow);
     params.append('action', 'update');
   } else {
@@ -313,7 +342,7 @@ function submitForm() {
     .then(function(response) { return response.json(); })
     .then(function(data) {
       if (data.success) {
-        toast(editingRow ? 'Entry updated!' : 'Entry added! Savings: ₹' + data.savings);
+        toast(editingRow ? 'Entry updated!' : 'Entry added!');
         resetForm();
         loadSales();
       } else {
@@ -328,16 +357,20 @@ function submitForm() {
     });
 }
 
-function editSale(row) {
-  var sale = allSales.find(function(s) { return s.row === row; });
-  if (!sale) return;
-  document.getElementById('customerName').value = sale.customerName || '';
-  document.getElementById('work').value = sale.work || '';
-  document.getElementById('amountReceived').value = sale.amountReceived || '';
-  document.getElementById('expense').value = sale.expense || '';
-  document.getElementById('paymentMode').value = sale.paymentMode || '';
-  document.getElementById('entryBy').value = sale.entryBy || '';
-  document.getElementById('notes').value = sale.notes || '';
+function editItem(row) {
+  if (!isAdmin) {
+    toast('Only admin can edit entries', true);
+    return;
+  }
+  var item = allSales.find(function(s) { return s.row === row; });
+  if (!item) return;
+  document.getElementById('customerName').value = item.customerName || '';
+  document.getElementById('work').value = item.work || '';
+  document.getElementById('received').value = item.received || '';
+  document.getElementById('expense').value = item.expense || '';
+  document.getElementById('paymentMode').value = item.paymentMode || '';
+  document.getElementById('notes').value = item.notes || '';
+  document.getElementById('entryBy').value = item.entryBy || '';
   
   editingRow = row;
   document.getElementById('formTitle').textContent = '✏️ Edit Entry (Row ' + row + ')';
@@ -351,17 +384,21 @@ function cancelEdit() {
 }
 
 function resetForm() {
-  ['customerName','work','amountReceived','expense','entryBy','notes'].forEach(function(id) {
+  ['customerName','work','received','expense','paymentMode','notes','entryBy'].forEach(function(id) {
     document.getElementById(id).value = '';
   });
-  document.getElementById('paymentMode').value = '';
   editingRow = null;
   document.getElementById('formTitle').textContent = '➕ Add New Entry';
   document.getElementById('submitBtn').textContent = 'Add Entry';
   document.getElementById('cancelBtn').style.display = 'none';
+  setTodayDate();
 }
 
-function deleteSale(row) {
+function deleteItem(row) {
+  if (!isAdmin) {
+    toast('Only admin can delete entries', true);
+    return;
+  }
   if (!confirm('Are you sure you want to delete this entry?')) return;
   fetch(API_URL + "?action=delete&key=" + SECRET_KEY + "&row=" + row)
     .then(function(response) { return response.json(); })
@@ -378,7 +415,11 @@ function deleteSale(row) {
     });
 }
 
-window.addEventListener('DOMContentLoaded', loadSales);
+window.addEventListener('DOMContentLoaded', function() {
+  setTodayDate();
+  updateUI();
+  loadSales();
+});
 </script>
 </body>
 </html>
