@@ -20,7 +20,6 @@ a { text-decoration: none; color: inherit; }
 .page-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; text-align: center; }
 .page-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 30px; }
 
-/* FORM */
 .form-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 25px; margin-bottom: 25px; }
 .form-box h3 { color: #fff; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
@@ -36,11 +35,9 @@ a { text-decoration: none; color: inherit; }
 .btn-cancel { background: #333; color: #fff; margin-left: 10px; }
 .btn-small { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
 
-/* SEARCH */
 .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
 .search-box input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
 
-/* STOCK LIST */
 .stock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
 .stock-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 20px; position: relative; }
 .stock-card h4 { color: #fff; font-size: 16px; margin-bottom: 6px; font-weight: 700; }
@@ -79,7 +76,6 @@ a { text-decoration: none; color: inherit; }
   <h1 class="page-title">Stock Management</h1>
   <p class="page-sub">Add, edit, or delete stock items</p>
 
-  <!-- ADD/EDIT FORM -->
   <div class="form-box">
     <h3 id="formTitle">➕ Add New Stock</h3>
     <div class="form-grid">
@@ -105,12 +101,10 @@ a { text-decoration: none; color: inherit; }
     <button class="btn btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">Cancel</button>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search by product name..." oninput="filterStock()">
   </div>
 
-  <!-- STOCK LIST -->
   <div id="stockList">
     <div class="loading">Loading stock...</div>
   </div>
@@ -119,7 +113,6 @@ a { text-decoration: none; color: inherit; }
 <div id="toast"></div>
 
 <script>
-  <script>
 // ========== LOGIN PROTECTION ==========
 (function() {
   var PASSWORD = "shree@2025#Stock";
@@ -134,7 +127,7 @@ a { text-decoration: none; color: inherit; }
     while (userPassword !== PASSWORD && attempts < maxAttempts) {
       attempts++;
       if (attempts >= maxAttempts) {
-        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
+        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h =2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
         return;
       }
       userPassword = prompt("❌ Wrong password! Attempts left: " + (maxAttempts - attempts) + "\n\nPlease try again:");
@@ -148,7 +141,8 @@ a { text-decoration: none; color: inherit; }
     }
   }
 })();
-</script>
+
+// ========== STOCK MANAGEMENT ==========
 const API_URL = "https://script.google.com/macros/s/AKfycbzq5i57tFsW1djo4-6XdZ3yIQo8MvSycDh8hV2gKNemtHO8Tv3wCwRBHh2bWfzTdPROtQ/exec";
 const SECRET_KEY = "sawriya_stock_2025_secure";
 
@@ -187,7 +181,7 @@ function renderStock(stock) {
   let html = '<div class="stock-grid">';
   stock.forEach(item => {
     let qty = parseInt(item.quantity) || 0;
-    let qtyClass = qty > 10 ? 'qty-ok' : (qty > 0 ? 'qty-low' : 'qty-out');
+    let qtyClass qty > 10 ? 'qty-ok' : (qty > 0 ? 'qty-low' : 'qty-out');
     let qtyText = qty > 0 ? qty + ' in stock' : 'Out of stock';
     html += '<div class="stock-card">';
     html += '<h4>' + (item.productName || 'Untitled') + '</h4>';
