@@ -127,7 +127,7 @@ a { text-decoration: none; color: inherit; }
     while (userPassword !== PASSWORD && attempts < maxAttempts) {
       attempts++;
       if (attempts >= maxAttempts) {
-        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h =2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
+        document.body.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; padding:20px;"><div><h2 style="color:#ff4444;">🔒 Access Locked</h2><p style="color:#888; margin-top:10px;">Too many wrong attempts. Please refresh the page and try again later.</p></div></div>';
         return;
       }
       userPassword = prompt("❌ Wrong password! Attempts left: " + (maxAttempts - attempts) + "\n\nPlease try again:");
@@ -143,46 +143,47 @@ a { text-decoration: none; color: inherit; }
 })();
 
 // ========== STOCK MANAGEMENT ==========
-const API_URL = "https://script.google.com/macros/s/AKfycbzq5i57tFsW1djo4-6XdZ3yIQo8MvSycDh8hV2gKNemtHO8Tv3wCwRBHh2bWfzTdPROtQ/exec";
-const SECRET_KEY = "sawriya_stock_2025_secure";
+var API_URL = "https://script.google.com/macros/s/AKfycbzq5i57tFsW1djo4-6XdZ3yIQo8MvSycDh8hV2gKNemtHO8Tv3wCwRBHh2bWfzTdPROtQ/exec";
+var SECRET_KEY = "sawriya_stock_2025_secure";
 
-let allStock = [];
-let editingRow = null;
+var allStock = [];
+var editingRow = null;
 
 function toast(msg, isError) {
-  const el = document.getElementById('toast');
+  var el = document.getElementById('toast');
   el.textContent = msg;
   el.className = isError ? 'show error' : 'show';
-  setTimeout(() => { el.className = ''; }, 3000);
+  setTimeout(function() { el.className = ''; }, 3000);
 }
 
-async function loadStock() {
-  try {
-    const response = await fetch(API_URL + "?action=getAll&key=" + SECRET_KEY);
-    const data = await response.json();
-    if (data.success) {
-      allStock = data.stock;
-      renderStock(allStock);
-    } else {
-      document.getElementById('stockList').innerHTML = '<div class="empty">Error loading stock</div>';
-    }
-  } catch (error) {
-    document.getElementById('stockList').innerHTML = '<div class="empty">Failed to connect</div>';
-    console.log(error);
-  }
+function loadStock() {
+  fetch(API_URL + "?action=getAll&key=" + SECRET_KEY)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.success) {
+        allStock = data.stock;
+        renderStock(allStock);
+      } else {
+        document.getElementById('stockList').innerHTML = '<div class="empty">Error loading stock</div>';
+      }
+    })
+    .catch(function(error) {
+      document.getElementById('stockList').innerHTML = '<div class="empty">Failed to connect</div>';
+      console.log(error);
+    });
 }
 
 function renderStock(stock) {
-  const container = document.getElementById('stockList');
+  var container = document.getElementById('stockList');
   if (!stock || stock.length === 0) {
     container.innerHTML = '<div class="empty">No stock items yet. Add your first item above.</div>';
     return;
   }
-  let html = '<div class="stock-grid">';
-  stock.forEach(item => {
-    let qty = parseInt(item.quantity) || 0;
-    let qtyClass qty > 10 ? 'qty-ok' : (qty > 0 ? 'qty-low' : 'qty-out');
-    let qtyText = qty > 0 ? qty + ' in stock' : 'Out of stock';
+  var html = '<div class="stock-grid">';
+  stock.forEach(function(item) {
+    var qty = parseInt(item.quantity) || 0;
+    var qtyClass = qty > 10 ? 'qty-ok' : (qty > 0 ? 'qty-low' : 'qty-out');
+    var qtyText = qty > 0 ? qty + ' in stock' : 'Out of stock';
     html += '<div class="stock-card">';
     html += '<h4>' + (item.productName || 'Untitled') + '</h4>';
     html += '<span class="cat">' + (item.category || 'Uncategorized') + '</span>';
@@ -203,27 +204,27 @@ function renderStock(stock) {
 }
 
 function filterStock() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
+  var query = document.getElementById('searchInput').value.toLowerCase();
   if (!query) { renderStock(allStock); return; }
-  const filtered = allStock.filter(item => 
-    (item.productName || '').toLowerCase().includes(query) ||
-    (item.brand || '').toLowerCase().includes(query) ||
-    (item.model || '').toLowerCase().includes(query)
-  );
+  var filtered = allStock.filter(function(item) {
+    return (item.productName || '').toLowerCase().indexOf(query) !== -1 ||
+           (item.brand || '').toLowerCase().indexOf(query) !== -1 ||
+           (item.model || '').toLowerCase().indexOf(query) !== -1;
+  });
   renderStock(filtered);
 }
 
-async function submitForm() {
-  const productName = document.getElementById('productName').value.trim();
-  const quantity = document.getElementById('quantity').value.trim();
-  const updatedBy = document.getElementById('updatedBy').value.trim();
+function submitForm() {
+  var productName = document.getElementById('productName').value.trim();
+  var quantity = document.getElementById('quantity').value.trim();
+  var updatedBy = document.getElementById('updatedBy').value.trim();
   
   if (!productName || !quantity || !updatedBy) {
     toast('Please fill all required fields (*)', true);
     return;
   }
   
-  const params = new URLSearchParams({
+  var params = new URLSearchParams({
     key: SECRET_KEY,
     productName: productName,
     category: document.getElementById('category').value,
@@ -238,36 +239,37 @@ async function submitForm() {
     notes: document.getElementById('notes').value.trim()
   });
   
-  let url;
   if (editingRow) {
     params.append('row', editingRow);
     params.append('action', 'update');
-    url = API_URL + '?' + params.toString();
   } else {
     params.append('action', 'add');
-    url = API_URL + '?' + params.toString();
   }
   
-  try {
-    document.getElementById('submitBtn').textContent = 'Saving...';
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data.success) {
-      toast(editingRow ? 'Stock updated!' : 'Stock added!');
-      resetForm();
-      loadStock();
-    } else {
-      toast('Error: ' + (data.error || 'Unknown'), true);
-    }
-  } catch (error) {
-    toast('Connection error', true);
-  } finally {
-    document.getElementById('submitBtn').textContent = editingRow ? 'Update Stock' : 'Add Stock';
-  }
+  var url = API_URL + '?' + params.toString();
+  
+  document.getElementById('submitBtn').textContent = 'Saving...';
+  fetch(url)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.success) {
+        toast(editingRow ? 'Stock updated!' : 'Stock added!');
+        resetForm();
+        loadStock();
+      } else {
+        toast('Error: ' + (data.error || 'Unknown'), true);
+      }
+    })
+    .catch(function(error) {
+      toast('Connection error', true);
+    })
+    .finally(function() {
+      document.getElementById('submitBtn').textContent = editingRow ? 'Update Stock' : 'Add Stock';
+    });
 }
 
 function editItem(row) {
-  const item = allStock.find(s => s.row === row);
+  var item = allStock.find(function(s) { return s.row === row; });
   if (!item) return;
   document.getElementById('productName').value = item.productName || '';
   document.getElementById('category').value = item.category || '';
@@ -290,8 +292,8 @@ function editItem(row) {
 
 function convertDate(dateStr) {
   if (!dateStr) return '';
-  if (typeof dateStr === 'string' && dateStr.includes('/')) {
-    const parts = dateStr.split('/');
+  if (typeof dateStr === 'string' && dateStr.indexOf('/') !== -1) {
+    var parts = dateStr.split('/');
     if (parts.length === 3) return parts[2] + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
   }
   return '';
@@ -302,7 +304,7 @@ function cancelEdit() {
 }
 
 function resetForm() {
-  ['productName','brand','model','quantity','purchasePrice','sellingPrice','supplier','updatedBy','entryDate','notes'].forEach(id => {
+  ['productName','brand','model','quantity','purchasePrice','sellingPrice','supplier','updatedBy','entryDate','notes'].forEach(function(id) {
     document.getElementById(id).value = '';
   });
   document.getElementById('category').value = '';
@@ -312,23 +314,23 @@ function resetForm() {
   document.getElementById('cancelBtn').style.display = 'none';
 }
 
-async function deleteItem(row) {
+function deleteItem(row) {
   if (!confirm('Are you sure you want to delete this item?')) return;
-  try {
-    const response = await fetch(API_URL + "?action=delete&key=" + SECRET_KEY + "&row=" + row);
-    const data = await response.json();
-    if (data.success) {
-      toast('Stock deleted!');
-      loadStock();
-    } else {
-      toast('Error deleting', true);
-    }
-  } catch (error) {
-    toast('Connection error', true);
-  }
+  fetch(API_URL + "?action=delete&key=" + SECRET_KEY + "&row=" + row)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.success) {
+        toast('Stock deleted!');
+        loadStock();
+      } else {
+        toast('Error deleting', true);
+      }
+    })
+    .catch(function(error) {
+      toast('Connection error', true);
+    });
 }
 
-// Load stock on page load
 window.addEventListener('DOMContentLoaded', loadStock);
 </script>
 </body>
