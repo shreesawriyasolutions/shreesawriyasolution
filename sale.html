@@ -304,16 +304,28 @@ function setFilter(type) {
 }
 
 function parseDate(dateStr) {
-  // dateStr can be "DD/MM/YYYY" or "DD/MM/YYYY HH:mm"
+  // Handle empty
   if (!dateStr) return null;
-  var str = dateStr.toString().split(' ')[0];
-  var parts = str.split('/');
+  
+  var str = dateStr.toString().trim();
+  
+  // ISO format: 2026-04-09T18:30:00.000Z
+  if (str.indexOf('T') !== -1 || str.indexOf('-') !== -1) {
+    var d = new Date(str);
+    if (!isNaN(d.getTime())) {
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+  }
+  
+  // DD/MM/YYYY format
+  var firstPart = str.split(' ')[0];
+  var parts = firstPart.split('/');
   if (parts.length === 3) {
     return new Date(parts[2], parts[1] - 1, parts[0]);
   }
+  
   return null;
 }
-
 function applyFilter() {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
