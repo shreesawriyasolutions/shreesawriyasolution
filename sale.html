@@ -27,6 +27,16 @@ a { text-decoration: none; color: inherit; }
 .mode-team { background: rgba(255,184,0,0.15); color: #ffb800; }
 .mode-admin { background: rgba(74,222,128,0.15); color: #4ade80; }
 
+/* FILTER SECTION */
+.filter-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 20px; margin-bottom: 25px; }
+.filter-tabs { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+.filter-tab { padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid #333; background: transparent; color: #aaa; }
+.filter-tab.active { background: #fff; color: #000; border: none; }
+.filter-fields { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.filter-fields input { padding: 10px 14px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 13px; outline: none; }
+.filter-fields button { padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; background: linear-gradient(90deg, #4ade80, #22c55e); color: #000; }
+.filter-fields button.export-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; margin-left: auto; }
+
 .form-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 25px; margin-bottom: 25px; }
 .form-box h3 { color: #fff; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
@@ -45,10 +55,10 @@ a { text-decoration: none; color: inherit; }
 .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
 .search-box input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; }
 
-.stock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+.sale-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
 .sale-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; padding: 20px; position: relative; }
 .sale-card h4 { color: #fff; font-size: 16px; margin-bottom: 6px; font-weight: 700; }
-.sale-card .date-badge { display: inline-block; background: #111; border: 1px solid #333; padding: 3px 10px; border-radius: 50px; font-size: 11px; color: #aaa; margin-bottom: 12px; }
+.sale-card .date-badge { display: inline-block; background: #111; border: 1px solid #333; padding: 3px 10px; border-radius: 50px; font-size: 11px; color: #4ade80; margin-bottom: 12px; font-weight: 600; }
 .sale-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #1a1a1a; }
 .sale-row:last-child { border-bottom: none; }
 .sale-row .lbl { color: #888; }
@@ -81,12 +91,31 @@ a { text-decoration: none; color: inherit; }
 
 <div class="container">
   <h1 class="page-title">Daily Sale Register</h1>
-  <p class="page-sub">Add your daily sales and expenses</p>
+  <p class="page-sub">Add and track your daily sales</p>
 
   <div class="mode-badge">
     <span id="modeBadge" class="mode-team">👥 TEAM MODE — Add Only</span>
   </div>
 
+  <!-- FILTER SECTION -->
+  <div class="filter-box">
+    <div class="filter-tabs">
+      <button class="filter-tab active" id="tabToday" onclick="setFilter('today')">📅 Today</button>
+      <button class="filter-tab" id="tabSingle" onclick="setFilter('single')">📆 Single Date</button>
+      <button class="filter-tab" id="tabRange" onclick="setFilter('range')">📊 Date Range</button>
+      <button class="filter-tab" id="tabAll" onclick="setFilter('all')">🗂️ All Time</button>
+    </div>
+    <div class="filter-fields" id="filterFields" style="display:none;">
+      <input type="date" id="singleDate" style="display:none;">
+      <input type="date" id="fromDate" style="display:none;">
+      <span id="toLabel" style="display:none; color:#888; font-size:13px;">to</span>
+      <input type="date" id="toDate" style="display:none;">
+      <button onclick="applyFilter()">Apply</button>
+      <button class="export-btn" onclick="exportCSV()">📥 Export CSV</button>
+    </div>
+  </div>
+
+  <!-- ADD FORM -->
   <div class="form-box">
     <h3 id="formTitle">➕ Add New Entry</h3>
     <div class="form-grid">
@@ -109,10 +138,12 @@ a { text-decoration: none; color: inherit; }
     <button class="btn btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">Cancel</button>
   </div>
 
+  <!-- SEARCH -->
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search by customer, work, or notes..." oninput="filterSales()">
   </div>
 
+  <!-- SALES LIST -->
   <div id="salesList">
     <div class="loading">Loading sales...</div>
   </div>
@@ -162,13 +193,11 @@ var isAdmin = false;
 
 function toggleAdmin() {
   if (isAdmin) {
-    // Logout from admin
     if (confirm("Logout from Admin Mode?")) {
       sessionStorage.removeItem('sale_mode');
       location.reload();
     }
   } else {
-    // Login as admin
     var pass = prompt("🔐 Admin Login\n\nEnter Admin Password:");
     if (pass === ADMIN_PASSWORD) {
       isAdmin = true;
@@ -185,7 +214,9 @@ var API_URL = "https://script.google.com/macros/s/AKfycbyIeaZqwY1yIpPrVYqmhbBqZs
 var SECRET_KEY = "sawriya_sale_2025_secure";
 
 var allSales = [];
+var filteredSales = [];
 var editingRow = null;
+var currentFilter = 'today';
 
 function toast(msg, isError) {
   var el = document.getElementById('toast');
@@ -200,6 +231,7 @@ function setTodayDate() {
   var mm = String(today.getMonth() + 1).padStart(2, '0');
   var yyyy = today.getFullYear();
   document.getElementById('dateInput').value = dd + '/' + mm + '/' + yyyy;
+  return dd + '/' + mm + '/' + yyyy;
 }
 
 function updateUI() {
@@ -219,13 +251,123 @@ function updateUI() {
   }
 }
 
+function setFilter(type) {
+  currentFilter = type;
+  
+  // Update tab styles
+  ['tabToday', 'tabSingle', 'tabRange', 'tabAll'].forEach(function(id) {
+    document.getElementById(id).classList.remove('active');
+  });
+  
+  var fieldContainer = document.getElementById('filterFields');
+  var singleDate = document.getElementById('singleDate');
+  var fromDate = document.getElementById('fromDate');
+  var toDate = document.getElementById('toDate');
+  var toLabel = document.getElementById('toLabel');
+  
+  if (type === 'today') {
+    document.getElementById('tabToday').classList.add('active');
+    fieldContainer.style.display = 'none';
+    applyFilter();
+  } else if (type === 'single') {
+    document.getElementById('tabSingle').classList.add('active');
+    fieldContainer.style.display = 'flex';
+    singleDate.style.display = 'block';
+    fromDate.style.display = 'none';
+    toDate.style.display = 'none';
+    toLabel.style.display = 'none';
+    if (!singleDate.value) singleDate.value = new Date().toISOString().split('T')[0];
+    applyFilter();
+  } else if (type === 'range') {
+    document.getElementById('tabRange').classList.add('active');
+    fieldContainer.style.display = 'flex';
+    singleDate.style.display = 'none';
+    fromDate.style.display = 'block';
+    toDate.style.display = 'block';
+    toLabel.style.display = 'block';
+    if (!fromDate.value) {
+      var d = new Date();
+      d.setDate(d.getDate() - 7);
+      fromDate.value = d.toISOString().split('T')[0];
+    }
+    if (!toDate.value) toDate.value = new Date().toISOString().split('T')[0];
+    applyFilter();
+  } else if (type === 'all') {
+    document.getElementById('tabAll').classList.add('active');
+    fieldContainer.style.display = 'flex';
+    singleDate.style.display = 'none';
+    fromDate.style.display = 'none';
+    toDate.style.display = 'none';
+    toLabel.style.display = 'none';
+    applyFilter();
+  }
+}
+
+function parseDate(dateStr) {
+  // dateStr can be "DD/MM/YYYY" or "DD/MM/YYYY HH:mm"
+  if (!dateStr) return null;
+  var str = dateStr.toString().split(' ')[0];
+  var parts = str.split('/');
+  if (parts.length === 3) {
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+  }
+  return null;
+}
+
+function applyFilter() {
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  var filterStart = null;
+  var filterEnd = null;
+  
+  if (currentFilter === 'today') {
+    filterStart = new Date(today);
+    filterEnd = new Date(today);
+    filterEnd.setHours(23, 59, 59, 999);
+  } else if (currentFilter === 'single') {
+    var sd = document.getElementById('singleDate').value;
+    if (sd) {
+      filterStart = new Date(sd);
+      filterStart.setHours(0, 0, 0, 0);
+      filterEnd = new Date(sd);
+      filterEnd.setHours(23, 59, 59, 999);
+    }
+  } else if (currentFilter === 'range') {
+    var fd = document.getElementById('fromDate').value;
+    var td = document.getElementById('toDate').value;
+    if (fd && td) {
+      filterStart = new Date(fd);
+      filterStart.setHours(0, 0, 0, 0);
+      filterEnd = new Date(td);
+      filterEnd.setHours(23, 59, 59, 999);
+    }
+  }
+  // 'all' — no filter
+  
+  if (currentFilter === 'all') {
+    filteredSales = allSales.slice();
+  } else if (filterStart && filterEnd) {
+    filteredSales = allSales.filter(function(sale) {
+      var saleDate = parseDate(sale.date);
+      if (!saleDate) return false;
+      saleDate.setHours(0, 0, 0, 0);
+      return saleDate >= filterStart && saleDate <= filterEnd;
+    });
+  } else {
+    filteredSales = allSales.slice();
+  }
+  
+  renderSales(filteredSales);
+}
+
 function loadSales() {
   fetch(API_URL + "?action=getAll&key=" + SECRET_KEY)
     .then(function(response) { return response.json(); })
     .then(function(data) {
       if (data.success) {
         allSales = data.sales;
-        renderSales(allSales);
+        applyFilter();
       } else {
         document.getElementById('salesList').innerHTML = '<div class="empty">Error loading sales</div>';
       }
@@ -238,8 +380,9 @@ function loadSales() {
 
 function renderSales(sales) {
   var container = document.getElementById('salesList');
+  
   if (!sales || sales.length === 0) {
-    container.innerHTML = '<div class="empty">No entries yet. Add your first entry above.</div>';
+    container.innerHTML = '<div class="empty">No entries found for this filter.</div>';
     return;
   }
   
@@ -253,18 +396,24 @@ function renderSales(sales) {
     totalSavings += parseFloat(sale.savings) || 0;
   });
   
+  var filterLabel = '';
+  if (currentFilter === 'today') filterLabel = 'Today';
+  else if (currentFilter === 'single') filterLabel = 'Date: ' + document.getElementById('singleDate').value;
+  else if (currentFilter === 'range') filterLabel = document.getElementById('fromDate').value + ' to ' + document.getElementById('toDate').value;
+  else filterLabel = 'All Time';
+  
   var html = '<div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #4ade80; border-radius:16px; padding:20px; margin-bottom:20px;">';
-  html += '<h3 style="color:#4ade80; font-size:16px; margin-bottom:15px; font-weight:700;">📊 TOTAL SUMMARY</h3>';
+  html += '<h3 style="color:#4ade80; font-size:15px; margin-bottom:15px; font-weight:700;">📊 TOTAL SUMMARY — ' + filterLabel + '</h3>';
   html += '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">';
   html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL RECEIVED</p><p style="color:#4ade80; font-size:20px; font-weight:800;">₹' + totalReceived + '</p></div>';
   html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL EXPENSE</p><p style="color:#ff6666; font-size:20px; font-weight:800;">₹' + totalExpense + '</p></div>';
   html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL SAVINGS</p><p style="color:#ffb800; font-size:20px; font-weight:800;">₹' + totalSavings + '</p></div>';
   html += '</div></div>';
   
-  html += '<div class="stock-grid">';
+  html += '<div class="sale-grid">';
   sales.forEach(function(sale) {
     html += '<div class="sale-card">';
-    html += '<span class="date-badge">' + (sale.date || '-') + '</span>';
+    html += '<span class="date-badge">📅 ' + (sale.date || '-') + '</span>';
     html += '<h4>' + (sale.work || 'Untitled') + '</h4>';
     if (sale.customerName) {
       html += '<div class="sale-row"><span class="lbl">Customer</span><span class="val">' + sale.customerName + '</span></div>';
@@ -280,7 +429,6 @@ function renderSales(sales) {
     }
     html += '<div class="sale-row"><span class="lbl">Entry By</span><span class="val">' + (sale.entryBy || '-') + '</span></div>';
     
-    // Only show Edit/Delete buttons in admin mode
     if (isAdmin) {
       html += '<div class="card-actions">';
       html += '<button class="btn btn-small btn-edit" onclick="editItem(' + sale.row + ')">✏️ Edit</button>';
@@ -296,13 +444,36 @@ function renderSales(sales) {
 
 function filterSales() {
   var query = document.getElementById('searchInput').value.toLowerCase();
-  if (!query) { renderSales(allSales); return; }
-  var filtered = allSales.filter(function(item) {
+  if (!query) { renderSales(filteredSales); return; }
+  var result = filteredSales.filter(function(item) {
     return (item.customerName || '').toLowerCase().indexOf(query) !== -1 ||
            (item.work || '').toLowerCase().indexOf(query) !== -1 ||
            (item.notes || '').toLowerCase().indexOf(query) !== -1;
   });
-  renderSales(filtered);
+  renderSales(result);
+}
+
+function exportCSV() {
+  if (!filteredSales || filteredSales.length === 0) {
+    toast('No data to export', true);
+    return;
+  }
+  
+  var csv = 'Date,Customer,Work,Received,Expense,Savings,Payment,Notes,Entry By\n';
+  filteredSales.forEach(function(s) {
+    csv += '"' + (s.date || '') + '","' + (s.customerName || '') + '","' + (s.work || '') + '","' + (s.received || 0) + '","' + (s.expense || 0) + '","' + (s.savings || 0) + '","' + (s.paymentMode || '') + '","' + (s.notes || '') + '","' + (s.entryBy || '') + '"\n';
+  });
+  
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var link = document.createElement('a');
+  var url = URL.createObjectURL(blob);
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'sale_register_' + new Date().toISOString().split('T')[0] + '.csv');
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  toast('CSV exported!');
 }
 
 function submitForm() {
@@ -418,6 +589,7 @@ function deleteItem(row) {
 window.addEventListener('DOMContentLoaded', function() {
   setTodayDate();
   updateUI();
+  setFilter('today');
   loadSales();
 });
 </script>
