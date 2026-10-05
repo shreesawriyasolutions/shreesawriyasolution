@@ -302,18 +302,19 @@ function parseDate(dateStr) {
   if (!dateStr) return null;
   var str = dateStr.toString().trim();
   
-  // ISO format handling (safety)
-  if (str.indexOf('T') !== -1) {
-    var d = new Date(str);
-    if (!isNaN(d.getTime())) return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  }
-  
-  // DD/MM/YYYY format
+  // Format 1: DD/MM/YYYY (or DD/MM/YYYY HH:mm)
   var firstPart = str.split(' ')[0];
   var parts = firstPart.split('/');
   if (parts.length === 3) {
     return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
   }
+  
+  // Format 2: JavaScript Date string (Sun May 10 2026 ...)
+  var d = new Date(str);
+  if (!isNaN(d.getTime())) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+  
   return null;
 }
 
