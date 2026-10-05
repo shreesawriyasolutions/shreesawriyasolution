@@ -166,6 +166,7 @@ function showApp() {
   $('filterSection').classList.toggle('hidden', !canView);
   $('listSection').classList.toggle('hidden', !canView);
   $('noViewMsg').classList.toggle('hidden', canView);
+  $('exportBtn').classList.toggle('hidden', !isAdmin);
 
   if (canView) loadEntries();
 }
@@ -244,13 +245,57 @@ function renderTotals() {
   $('totCount').textContent = entries.length;
 }
 
-function renderList() {
+function getFilteredList() {
   const term = $('searchBox').value.trim().toLowerCase();
-  const list = entries.filter(function (r) {
+  return entries.filter(function (r) {
     if (!term) return true;
     const hay = [r.customer_name, r.sale_description, r.staff_name, r.notes].join(' ').toLowerCase();
     return hay.indexOf(term) !== -1;
   });
+}
+
+// ---------- CSV Download (sirf Admin) ----------
+function csvCell(v) {
+  let s = String(v == null ? '' : v);
+  if (/^[=+\-@]/.test(s)) s = "'" + s; // Excel formula se bachav
+  return '"' + s.replace(/"/g, '""') + '"';
+}
+
+$('exportBtn').addEventListener('click', function () {
+  if (!isAdmin) {
+    toast("You don't have permission to perform this action.", 'err');
+    return;
+  }
+  const list = getFilteredList();
+  if (list.length === 0) {
+    toast('Download karne ke liye koi entry nahi hai.', 'err');
+    return;
+  }
+
+  const head = ['Date', 'Kaam / Sale', 'Customer', 'Paise Liye', 'Kharcha', 'Profit', 'Payment Mode', 'Staff', 'Notes'];
+  const rows = list.map(function (r) {
+    return [
+      fmtDate(r.entry_date), r.sale_description, r.customer_name,
+      r.amount_received, r.expense, r.profit,
+      r.payment_mode, r.staff_name, r.notes
+    ].map(csvCell).join(',');
+  });
+
+  const csv = '\uFEFF' + [head.map(csvCell).join(',')].concat(rows).join('\r\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'sales-register-' + filterMode + '-' + todayStr() + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('CSV download ho gayi.', 'ok');
+});
+
+function renderList() {
+  const list = getFilteredList();
 
   if (list.length === 0) {
     $('entriesList').innerHTML = '<div class="card empty">Koi entry nahi mili.</div>';
