@@ -27,7 +27,6 @@ a { text-decoration: none; color: inherit; }
 .mode-team { background: rgba(255,184,0,0.15); color: #ffb800; }
 .mode-admin { background: rgba(74,222,128,0.15); color: #4ade80; }
 
-/* FILTER SECTION */
 .filter-box { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 20px; margin-bottom: 25px; }
 .filter-tabs { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
 .filter-tab { padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid #333; background: transparent; color: #aaa; }
@@ -97,7 +96,6 @@ a { text-decoration: none; color: inherit; }
     <span id="modeBadge" class="mode-team">👥 TEAM MODE — Add Only</span>
   </div>
 
-  <!-- FILTER SECTION -->
   <div class="filter-box">
     <div class="filter-tabs">
       <button class="filter-tab active" id="tabToday" onclick="setFilter('today')">📅 Today</button>
@@ -115,7 +113,6 @@ a { text-decoration: none; color: inherit; }
     </div>
   </div>
 
-  <!-- ADD FORM -->
   <div class="form-box">
     <h3 id="formTitle">➕ Add New Entry</h3>
     <div class="form-grid">
@@ -138,12 +135,10 @@ a { text-decoration: none; color: inherit; }
     <button class="btn btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">Cancel</button>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search by customer, work, or notes..." oninput="filterSales()">
   </div>
 
-  <!-- SALES LIST -->
   <div id="salesList">
     <div class="loading">Loading sales...</div>
   </div>
@@ -210,8 +205,8 @@ function toggleAdmin() {
 }
 
 // ========== SALE MANAGEMENT ==========
-var API_URL = "https://script.google.com/macros/s/AKfycbyIeaZqwY1yIpPrVYqmhbBqZsgofzjCKMCWEemIb7VrGONN8F-pfA2r2Ky-fPX9bs2Jxg/exec";
-var SECRET_KEY = "sawriya_sale_2025_secure";
+var API_URL = "https://script.google.com/macros/s/AKfycbxi7oqJCD8rlypjY64y6KE1gVzVCM0eaoq0tkxp89jScd0pWRaRnB_tlOsy_bNhgNC7/exec";
+var SECRET_KEY = "sawriya_sale_v2_2025";
 
 var allSales = [];
 var filteredSales = [];
@@ -254,7 +249,6 @@ function updateUI() {
 function setFilter(type) {
   currentFilter = type;
   
-  // Update tab styles
   ['tabToday', 'tabSingle', 'tabRange', 'tabAll'].forEach(function(id) {
     document.getElementById(id).classList.remove('active');
   });
@@ -303,59 +297,86 @@ function setFilter(type) {
   }
 }
 
+// Parse DD/MM/YYYY → Date object
 function parseDate(dateStr) {
-  // Handle empty
   if (!dateStr) return null;
-  
   var str = dateStr.toString().trim();
   
-  // ISO format: 2026-04-09T18:30:00.000Z
-  if (str.indexOf('T') !== -1 || str.indexOf('-') !== -1) {
+  // ISO format handling (safety)
+  if (str.indexOf('T') !== -1) {
     var d = new Date(str);
-    if (!isNaN(d.getTime())) {
-      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    }
+    if (!isNaN(d.getTime())) return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   }
   
   // DD/MM/YYYY format
   var firstPart = str.split(' ')[0];
   var parts = firstPart.split('/');
   if (parts.length === 3) {
-    return new Date(parts[2], parts[1] - 1, parts[0]);
+    return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
   }
-  
   return null;
 }
+
+// Convert date input (YYYY-MM-DD from HTML) to Date object
+function parseInputDate(str) {
+  if (!str) return null;
+  var parts = str.split('-');
+  if (parts.length === 3) {
+    return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  }
+  return null;
+}
+
+// Format Date to DD/MM/YYYY
+function formatDate(d) {
+  var dd = String(d.getDate()).padStart(2, '0');
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var yyyy = d.getFullYear();
+  return dd + '/' + mm + '/' + yyyy;
+}
+
 function applyFilter() {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
   
   var filterStart = null;
   var filterEnd = null;
+  var filterLabel = '';
   
   if (currentFilter === 'today') {
     filterStart = new Date(today);
     filterEnd = new Date(today);
     filterEnd.setHours(23, 59, 59, 999);
+    filterLabel = 'Today (' + formatDate(today) + ')';
   } else if (currentFilter === 'single') {
     var sd = document.getElementById('singleDate').value;
     if (sd) {
-      filterStart = new Date(sd);
-      filterStart.setHours(0, 0, 0, 0);
-      filterEnd = new Date(sd);
-      filterEnd.setHours(23, 59, 59, 999);
+      var sdDate = parseInputDate(sd);
+      if (sdDate) {
+        filterStart = new Date(sdDate);
+        filterStart.setHours(0, 0, 0, 0);
+        filterEnd = new Date(sdDate);
+        filterEnd.setHours(23, 59, 59, 999);
+        filterLabel = 'Date: ' + formatDate(sdDate);
+      }
     }
   } else if (currentFilter === 'range') {
     var fd = document.getElementById('fromDate').value;
     var td = document.getElementById('toDate').value;
     if (fd && td) {
-      filterStart = new Date(fd);
-      filterStart.setHours(0, 0, 0, 0);
-      filterEnd = new Date(td);
-      filterEnd.setHours(23, 59, 59, 999);
+      var fdDate = parseInputDate(fd);
+      var tdDate = parseInputDate(td);
+      if (fdDate && tdDate) {
+        filterStart = new Date(fdDate);
+        filterStart.setHours(0, 0, 0, 0);
+        filterEnd = new Date(tdDate);
+        filterEnd.setHours(23, 59, 59, 999);
+        filterLabel = formatDate(fdDate) + ' to ' + formatDate(tdDate);
+      }
     }
+  } else {
+    filterLabel = 'All Time';
   }
-  // 'all' — no filter
   
   if (currentFilter === 'all') {
     filteredSales = allSales.slice();
@@ -370,7 +391,7 @@ function applyFilter() {
     filteredSales = allSales.slice();
   }
   
-  renderSales(filteredSales);
+  renderSales(filteredSales, filterLabel);
 }
 
 function loadSales() {
@@ -390,7 +411,7 @@ function loadSales() {
     });
 }
 
-function renderSales(sales) {
+function renderSales(sales, filterLabel) {
   var container = document.getElementById('salesList');
   
   if (!sales || sales.length === 0) {
@@ -398,7 +419,6 @@ function renderSales(sales) {
     return;
   }
   
-  // Calculate totals
   var totalReceived = 0;
   var totalExpense = 0;
   var totalSavings = 0;
@@ -408,14 +428,8 @@ function renderSales(sales) {
     totalSavings += parseFloat(sale.savings) || 0;
   });
   
-  var filterLabel = '';
-  if (currentFilter === 'today') filterLabel = 'Today';
-  else if (currentFilter === 'single') filterLabel = 'Date: ' + document.getElementById('singleDate').value;
-  else if (currentFilter === 'range') filterLabel = document.getElementById('fromDate').value + ' to ' + document.getElementById('toDate').value;
-  else filterLabel = 'All Time';
-  
   var html = '<div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #4ade80; border-radius:16px; padding:20px; margin-bottom:20px;">';
-  html += '<h3 style="color:#4ade80; font-size:15px; margin-bottom:15px; font-weight:700;">📊 TOTAL SUMMARY — ' + filterLabel + '</h3>';
+  html += '<h3 style="color:#4ade80; font-size:15px; margin-bottom:15px; font-weight:700;">📊 TOTAL SUMMARY — ' + (filterLabel || '') + '</h3>';
   html += '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">';
   html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL RECEIVED</p><p style="color:#4ade80; font-size:20px; font-weight:800;">₹' + totalReceived + '</p></div>';
   html += '<div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; text-align:center;"><p style="color:#888; font-size:11px; margin-bottom:4px;">TOTAL EXPENSE</p><p style="color:#ff6666; font-size:20px; font-weight:800;">₹' + totalExpense + '</p></div>';
