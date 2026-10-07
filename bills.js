@@ -265,12 +265,20 @@ $('billForm').addEventListener('submit', async function (e) {
   const staff = $('bStaff').value.trim();
   const mobile = $('bMobile').value.replace(/\s/g, '');
   const amount = $('bAmount').value;
-  const billFile = $('bFile').files[0];
-  const idFile = $('bIdFile').files[0];
+  const billFiles = Array.from($('bFile').files);
+  const idFiles = Array.from($('bIdFile').files);
   const unlock = type === 'Unlocking Job';
 
-  if (!date || !party || !staff || !billFile) {
+  if (!date || !party || !staff || billFiles.length === 0) {
     toast('Please enter required information.', 'err');
+    return;
+  }
+  if (billFiles.length > 10) {
+    toast('Ek baar me maximum 10 bill files chun sakte ho.', 'err');
+    return;
+  }
+  if (unlock && idFiles.length > 4) {
+    toast('Maximum 4 ID files chun sakte ho.', 'err');
     return;
   }
   if (mobile && !/^\d{10}$/.test(mobile)) {
@@ -297,8 +305,20 @@ $('billForm').addEventListener('submit', async function (e) {
   $('uploadBtn').textContent = 'Uploading... please wait';
 
   try {
-    const billPath = await uploadOne(billFile, 'bill');
-    const idPath = (unlock && idFile) ? await uploadOne(idFile, 'id') : null;
+    const toUpload = [];
+    billFiles.forEach(function (f) { toUpload.push({ file: f, kind: 'bill' }); });
+    if (unlock) { idFiles.forEach(function (f) { toUpload.push({ file: f, kind: 'id' }); }); }
+
+    const billPaths = [];
+    const idPaths = [];
+    for (let i = 0; i < toUpload.length; i++) {
+      $('uploadBtn').textContent = 'Uploading ' + (i + 1) + ' / ' + toUpload.length + ' ...';
+      const p = await uploadOne(toUpload[i].file, toUpload[i].kind);
+      if (toUpload[i].kind === 'id') { idPaths.push(p); } else { billPaths.push(p); }
+    }
+    const billPath = billPaths[0];
+    const idPath = idPaths.length ? idPaths[0] : null;
+    const extraPaths = billPaths.slice(1).concat(idPaths.slice(1));
 
     const { error } = await db.from('bills').insert({
       bill_date: date,
@@ -312,6 +332,7 @@ $('billForm').addEventListener('submit', async function (e) {
       notes: $('bNotes').value.trim() || null,
       bill_file_path: billPath,
       id_file_path: idPath,
+      extra_file_paths: extraPaths,
       uploaded_by_name: staff
     });
     if (error) throw error;
@@ -413,6 +434,24 @@ function getFilteredList() {
   });
 }
 
+// Ek bill ki saari files (bill + ID + extra) ki list
+function allFiles(b) {
+  const out = [];
+  let billN = 0, idN = 0;
+  const paths = [b.bill_file_path, b.id_file_path].concat(b.extra_file_paths || []).filter(Boolean);
+  paths.forEach(function (p) {
+    const name = p.split('/').pop();
+    if (name.indexOf('id-') === 0) {
+      idN++;
+      out.push({ path: p, label: 'View ID' + (idN > 1 ? ' ' + idN : ''), cls: 'btn-ghost' });
+    } else {
+      billN++;
+      out.push({ path: p, label: 'View Bill' + (billN > 1 ? ' ' + billN : ''), cls: 'btn-blue' });
+    }
+  });
+  return out;
+}
+
 function typeClass(t) {
   if (t === 'Purchase Bill') return 'purchase';
   if (t === 'Sale Bill') return 'sale';
@@ -445,8 +484,9 @@ function renderList() {
     h += '</div>';
 
     h += '<div class="bill-actions">';
-    if (b.bill_file_path) h += '<button type="button" class="btn btn-blue" data-view="' + esc(b.id) + '" data-kind="bill">View Bill</button>';
-    if (b.id_file_path) h += '<button type="button" class="btn btn-ghost" data-view="' + esc(b.id) + '" data-kind="id">View ID</button>';
+    allFiles(b).forEach(function (f) {
+      h += '<button type="button" class="btn ' + f.cls + '" data-path="' + esc(f.path) + '">' + esc(f.label) + '</button>';
+    });
     h += '<button type="button" class="btn btn-del" data-del="' + esc(b.id) + '">DELETE</button>';
     h += '</div>';
     h += '</div>';
@@ -455,23 +495,20 @@ function renderList() {
 }
 
 $('billsList').addEventListener('click', function (e) {
-  const viewId = e.target.getAttribute('data-view');
+  const viewPath = e.target.getAttribute('data-path');
   const delId = e.target.getAttribute('data-del');
-  if (viewId) viewFile(viewId, e.target.getAttribute('data-kind'));
+  if (viewPath) viewFile(viewPath);
   if (delId) deleteBill(delId);
 });
 
 // ==========================================================
 //  VIEW FILE (private link, 60 second me expire)
 // ==========================================================
-async function viewFile(id, kind) {
+async function viewFile(path) {
   if (!isAdmin) {
     toast("You don't have permission to perform this action.", 'err');
     return;
   }
-  const b = bills.find(function (x) { return x.id === id; });
-  if (!b) return;
-  const path = kind === 'id' ? b.id_file_path : b.bill_file_path;
   if (!path) return;
 
   const w = window.open('', '_blank'); // popup block se bachne ke liye pehle khol do
@@ -501,7 +538,7 @@ async function deleteBill(id) {
   }
 
   if (b) {
-    const paths = [b.bill_file_path, b.id_file_path].filter(Boolean);
+    const paths = allFiles(b).map(function (f) { return f.path; });
     if (paths.length) { await db.storage.from(BUCKET).remove(paths); }
   }
 
