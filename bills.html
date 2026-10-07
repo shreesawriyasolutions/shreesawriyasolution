@@ -116,14 +116,14 @@
           <textarea id="bNotes" rows="2"></textarea>
 
           <div class="file-box">
-            <label for="bFile">Bill ki Photo ya PDF *</label>
-            <input id="bFile" type="file" accept="image/*,application/pdf">
-            <div class="hint">Phone me camera se seedha photo le sakte ho. Photo apne aap chhoti ho jati hai.</div>
+            <label for="bFile">Bill ki Photo ya PDF * (ek saath kai file chun sakte ho, max 10)</label>
+            <input id="bFile" type="file" accept="image/*,application/pdf" multiple>
+            <div class="hint">Ek se zyada file chunne ke liye gallery me sab select karo. Photo apne aap chhoti ho jati hai.</div>
           </div>
 
           <div id="idFileBox" class="file-box hidden">
-            <label for="bIdFile">Customer ID ki Photo (optional)</label>
-            <input id="bIdFile" type="file" accept="image/*,application/pdf">
+            <label for="bIdFile">Customer ID ki Photo (optional, aage-peeche dono chun sakte ho, max 4)</label>
+            <input id="bIdFile" type="file" accept="image/*,application/pdf" multiple>
             <div class="hint">Ye photo sirf Admin dekh payega. Aadhaar ho to masked copy lena behtar hai.</div>
           </div>
 
