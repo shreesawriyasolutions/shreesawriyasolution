@@ -333,7 +333,8 @@ async function checkStatus() {
   const phone = document.getElementById('phoneInput').value.trim();
   const resultDiv = document.getElementById('statusResult');
   if (phone.length !== 10 || isNaN(phone)) { resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kripya 10-digit ka sahi mobile number daaliye.</div>'; return; }
-  resultDiv.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">Search kar rahe hain...</div>';
+  window.location.href = 'track.html?m=' + phone;
+  return;
   try {
     const response = await fetch(API_URL + "?phone=" + phone);
     const data = await response.json();
