@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Track Your Repair | Shree Sawriya Solutions</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="track.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Shree Sawriya Solutions">
+      <span>SHREE SAWRIYA SOLUTIONS</span>
+    </a>
+    <a href="index.html" class="back">&larr; Home</a>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">REPAIR STATUS</span>
+    <h1>Apne Phone ka Status Dekhein</h1>
+    <p>Apna registered mobile number daalein. Aapke saare phones ka status ek saath dikhega.</p>
+  </header>
+
+  <main class="wrap">
+    <div class="box">
+      <form id="trackForm" novalidate>
+        <label for="mobile">Mobile Number</label>
+        <div class="row">
+          <input id="mobile" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10 digit mobile number">
+          <button type="submit" id="goBtn">Check Status</button>
+        </div>
+      </form>
+      <div class="note">Sirf wahi mobile number kaam karega jo dukaan par phone dete waqt likhwaya tha.</div>
+    </div>
+
+    <div id="result"></div>
+  </main>
+
+  <div class="float">
+    <a href="https://wa.me/919720076900" class="fb wa" aria-label="WhatsApp">WA</a>
+    <a href="tel:+919720076900" class="fb call" aria-label="Call">Call</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="track.js"></script>
+</body>
+</html>
