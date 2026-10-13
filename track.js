@@ -185,3 +185,13 @@ $('result').addEventListener('click', function (e) {
   head.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
   head.querySelector('.tap').textContent = isOpen ? 'Poori detail dekhne ke liye tap karein' : 'Chhupane ke liye tap karein';
 });
+
+// Home page se number lekar aaye to apne aap search karo (?m=9876543210)
+(function autoSearch() {
+  const m = new URLSearchParams(window.location.search).get('m');
+  if (!m || !/^\d{10}$/.test(m)) return;
+  $('mobile').value = m;
+  // Number ko address bar se hata do (history me na rahe)
+  try { window.history.replaceState({}, '', window.location.pathname); } catch (e) {}
+  $('trackForm').dispatchEvent(new Event('submit', { cancelable: true }));
+})();
