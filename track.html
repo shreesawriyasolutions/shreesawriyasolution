@@ -15,25 +15,32 @@
       <img src="logo.png" alt="Shree Sawriya Solutions">
       <span>SHREE SAWRIYA SOLUTIONS</span>
     </a>
-    <a href="index.html" class="back">&larr; Home</a>
+    <div class="nav-right">
+      <a href="index.html" class="back" data-i18n="back">&larr; Home</a>
+      <div class="lang">
+        <button type="button" class="lb active" data-lang="en">EN</button>
+        <button type="button" class="lb" data-lang="hi">हिं</button>
+        <button type="button" class="lb" data-lang="pa">ਪੰ</button>
+      </div>
+    </div>
   </nav>
 
   <header class="hero">
-    <span class="tag">REPAIR STATUS</span>
-    <h1>Apne Phone ka Status Dekhein</h1>
-    <p>Apna registered mobile number daalein. Aapke saare phones ka status ek saath dikhega.</p>
+    <span class="tag" data-i18n="tag">REPAIR STATUS</span>
+    <h1 data-i18n="h1">Check Your Phone Status</h1>
+    <p data-i18n="sub">Enter your registered mobile number. All your phones will show together.</p>
   </header>
 
   <main class="wrap">
     <div class="box">
       <form id="trackForm" novalidate>
-        <label for="mobile">Mobile Number</label>
+        <label for="mobile" data-i18n="label">Mobile Number</label>
         <div class="row">
-          <input id="mobile" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10 digit mobile number">
-          <button type="submit" id="goBtn">Check Status</button>
+          <input id="mobile" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" data-i18n-ph="ph" placeholder="10-digit mobile number">
+          <button type="submit" id="goBtn" data-i18n="btn">Check Status</button>
         </div>
       </form>
-      <div class="note">Sirf wahi mobile number kaam karega jo dukaan par phone dete waqt likhwaya tha.</div>
+      <div class="note" data-i18n="note">Only the mobile number given at the shop will work.</div>
     </div>
 
     <div id="result"></div>
