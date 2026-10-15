@@ -169,3 +169,15 @@ a { color: inherit; text-decoration: none; }
   .hero h1 { font-size: 21px; }
   .row button { width: 100%; }
 }
+/* ---------- Language buttons ---------- */
+.navbar { flex-wrap: wrap; }
+.nav-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.lang { display: flex; gap: 6px; }
+.lb {
+  min-width: 42px; min-height: 36px; padding: 6px 12px;
+  border-radius: 999px; border: 1px solid #333;
+  background: transparent; color: #aaa;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: inherit;
+}
+.lb.active { background: #fff; color: #000; border-color: #fff; }
