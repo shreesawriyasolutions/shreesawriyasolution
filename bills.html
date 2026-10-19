@@ -7,6 +7,24 @@
   <title>Bills Register | Shree Sawriya Solutions</title>
   <link rel="stylesheet" href="sale.css">
   <link rel="stylesheet" href="bills.css">
+  <style>
+    /* ===== Type cards: Purchase / Sale / Unlocking ===== */
+    .type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .type-card {
+      text-align: left; cursor: pointer; font: inherit; color: inherit;
+      background: #fff; border: 2px solid #e2e8f0; border-radius: 12px;
+      padding: 12px; transition: border-color .15s, box-shadow .15s;
+    }
+    .type-card:hover { border-color: #94a3b8; }
+    .type-card.active { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, .18); }
+    .type-card .tc-name { font-size: 13px; font-weight: 700; color: #475569; }
+    .type-card .tc-amount { font-size: 20px; font-weight: 800; margin-top: 4px; color: #16a34a; }
+    .type-card .tc-count { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .type-card.tc-purchase .tc-amount { color: #c2410c; }
+    .type-card.tc-sale .tc-amount { color: #16a34a; }
+    .type-card.tc-unlock .tc-amount { color: #2563eb; }
+    .type-card.tc-all .tc-amount { color: #0f172a; }
+  </style>
 </head>
 <body>
 
@@ -162,27 +180,17 @@
 
         <div id="periodLabel" class="period-label"></div>
 
+        <!-- Alag-alag type ke cards: click karne par sirf usi type ke bills dikhenge -->
+        <div id="typeCards" class="type-cards"></div>
+
         <div class="totals">
-          <div class="total-card"><div class="t-label">Total Bills</div><div class="t-value" id="totCount">0</div></div>
-          <div class="total-card"><div class="t-label">Total Amount</div><div class="t-value green" id="totAmount">₹0</div></div>
+          <div class="total-card"><div class="t-label" id="totCountLabel">Total Bills</div><div class="t-value" id="totCount">0</div></div>
+          <div class="total-card"><div class="t-label" id="totAmountLabel">Total Amount</div><div class="t-value green" id="totAmount">₹0</div></div>
         </div>
 
         <div class="card">
-          <div class="grid2">
-            <div>
-              <label for="typeFilter">Bill Type</label>
-              <select id="typeFilter">
-                <option value="">Sab</option>
-                <option>Purchase Bill</option>
-                <option>Sale Bill</option>
-                <option>Unlocking Job</option>
-              </select>
-            </div>
-            <div>
-              <label for="searchBox">Search</label>
-              <input id="searchBox" type="search" placeholder="Naam, mobile, IMEI, model ya notes" autocomplete="off">
-            </div>
-          </div>
+          <label for="searchBox">Search</label>
+          <input id="searchBox" type="search" placeholder="Naam, mobile, IMEI, model ya notes" autocomplete="off">
           <button type="button" id="exportBtn" class="btn btn-blue btn-block">Download CSV</button>
         </div>
 
