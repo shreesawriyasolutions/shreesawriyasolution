@@ -11,6 +11,13 @@ const BUCKET = 'bills';
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
 
+// Bill ke 3 type (cards isi list se bante hain)
+const BILL_TYPES = [
+  { value: 'Purchase Bill', title: 'Purchase (Kharid)', cls: 'tc-purchase', totalLabel: 'Abhi tak ki Purchasing' },
+  { value: 'Sale Bill',     title: 'Sale (Bikri)',      cls: 'tc-sale',     totalLabel: 'Abhi tak ki Sale' },
+  { value: 'Unlocking Job', title: 'Unlocking',         cls: 'tc-unlock',   totalLabel: 'Abhi tak ki Unlocking' }
+];
+
 // ---------- Chhote helper functions ----------
 function $(id) { return document.getElementById(id); }
 
@@ -60,7 +67,10 @@ let profile = null;
 let currentUser = null;
 let loginRole = 'staff';
 let filterMode = 'all';
-let bills = [];
+let allBills = [];       // chune hue time period ke saare bills (teeno type)
+let bills = [];          // selectedType ke hisaab se filter hue bills
+let selectedType = '';   // '' = Sab, warna 'Purchase Bill' / 'Sale Bill' / 'Unlocking Job'
+let periodBase = '';
 let isAdmin = false;
 
 // ==========================================================
@@ -119,6 +129,8 @@ $('logoutBtn').addEventListener('click', async function () {
   profile = null;
   currentUser = null;
   bills = [];
+  allBills = [];
+  selectedType = '';
   $('appView').classList.add('hidden');
   $('loginView').classList.remove('hidden');
 });
@@ -372,8 +384,16 @@ document.querySelectorAll('.filter-btn').forEach(function (btn) {
 
 $('singleDate').addEventListener('change', loadBills);
 $('applyRange').addEventListener('click', loadBills);
-$('typeFilter').addEventListener('change', loadBills);
 $('searchBox').addEventListener('input', renderList);
+
+// Type card par click: sirf usi type ke bills dikhao (dobara click = Sab)
+$('typeCards').addEventListener('click', function (e) {
+  const card = e.target.closest('[data-type]');
+  if (!card) return;
+  const t = card.getAttribute('data-type');
+  selectedType = (t === selectedType) ? '' : t;
+  applyType();
+});
 
 async function loadBills() {
   if (!isAdmin) return;
@@ -404,18 +424,51 @@ async function loadBills() {
     label = 'All Time (saare bills)';
   }
 
-  const tf = $('typeFilter').value;
-  if (tf) {
-    q = q.eq('bill_type', tf);
-    label += ' | ' + tf;
-  }
-  $('periodLabel').textContent = label;
+  periodBase = label;
 
+  // Teeno type ek saath aate hain, taaki har card ka total alag dikha sake
   const { data, error } = await q;
   if (error) { toast(errorMessage(error), 'err'); return; }
-  bills = data || [];
+  allBills = data || [];
+  applyType();
+}
+
+// selectedType ke hisaab se list, cards aur totals update karo
+function applyType() {
+  bills = selectedType
+    ? allBills.filter(function (b) { return b.bill_type === selectedType; })
+    : allBills.slice();
+
+  $('periodLabel').textContent = periodBase + (selectedType ? ' | ' + selectedType : '');
+  renderTypeCards();
   renderTotals();
   renderList();
+}
+
+function renderTypeCards() {
+  let allTotal = 0;
+  allBills.forEach(function (b) { allTotal += Number(b.amount) || 0; });
+
+  let h = '';
+  BILL_TYPES.forEach(function (t) {
+    let count = 0, total = 0;
+    allBills.forEach(function (b) {
+      if (b.bill_type === t.value) { count++; total += Number(b.amount) || 0; }
+    });
+    h += '<button type="button" class="type-card ' + t.cls + (selectedType === t.value ? ' active' : '') + '" data-type="' + esc(t.value) + '">';
+    h += '<div class="tc-name">' + esc(t.title) + '</div>';
+    h += '<div class="tc-amount">' + money(total) + '</div>';
+    h += '<div class="tc-count">' + count + ' bill' + (count === 1 ? '' : 's') + '</div>';
+    h += '</button>';
+  });
+
+  h += '<button type="button" class="type-card tc-all' + (selectedType === '' ? ' active' : '') + '" data-type="">';
+  h += '<div class="tc-name">Sab Bills</div>';
+  h += '<div class="tc-amount">' + money(allTotal) + '</div>';
+  h += '<div class="tc-count">' + allBills.length + ' bill' + (allBills.length === 1 ? '' : 's') + '</div>';
+  h += '</button>';
+
+  $('typeCards').innerHTML = h;
 }
 
 function renderTotals() {
@@ -423,6 +476,16 @@ function renderTotals() {
   bills.forEach(function (b) { total += Number(b.amount) || 0; });
   $('totCount').textContent = bills.length;
   $('totAmount').textContent = money(total);
+
+  const t = BILL_TYPES.find(function (x) { return x.value === selectedType; });
+  const isAllTime = filterMode === 'all';
+  if (t) {
+    $('totCountLabel').textContent = t.title + ' - Bills';
+    $('totAmountLabel').textContent = isAllTime ? t.totalLabel : t.title + ' - Total Amount';
+  } else {
+    $('totCountLabel').textContent = 'Total Bills';
+    $('totAmountLabel').textContent = 'Total Amount';
+  }
 }
 
 function getFilteredList() {
@@ -528,7 +591,7 @@ async function viewFile(path) {
 async function deleteBill(id) {
   if (!confirm('Are you sure you want to delete this bill? File bhi hamesha ke liye delete ho jayegi.')) return;
 
-  const b = bills.find(function (x) { return x.id === id; });
+  const b = allBills.find(function (x) { return x.id === id; });
   const { data, error } = await db.from('bills').delete().eq('id', id).select();
 
   if (error) { toast(errorMessage(error), 'err'); return; }
