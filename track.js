@@ -38,6 +38,7 @@ const T = {
     tapOpen: 'Tap to see full details',
     tapClose: 'Tap to hide',
     ready: 'Your phone is ready. Please collect it from the shop.',
+    returnedMsg: 'This phone has been returned. Please contact the shop if you have any questions.',
     problem: 'Problem',
     receivedDate: 'Received Date',
     lastUpdated: 'Last Updated',
@@ -50,7 +51,8 @@ const T = {
       'Repair in Progress': 'Repair in Progress',
       'Waiting for Part': 'Waiting for Part',
       'Ready for Pickup': 'Ready for Pickup',
-      'Delivered': 'Delivered'
+      'Delivered': 'Delivered',
+      'Returned': 'Returned'
     },
     desc: {
       'Received': 'We have received your phone',
@@ -58,7 +60,8 @@ const T = {
       'Repair in Progress': 'Repair work is going on',
       'Waiting for Part': 'Waiting for a part to arrive',
       'Ready for Pickup': 'Phone is ready, please collect it from the shop',
-      'Delivered': 'Phone has been handed over'
+      'Delivered': 'Phone has been handed over',
+      'Returned': 'Phone has been returned'
     }
   },
   hi: {
@@ -83,6 +86,7 @@ const T = {
     tapOpen: 'पूरी जानकारी देखने के लिए टैप करें',
     tapClose: 'छिपाने के लिए टैप करें',
     ready: 'आपका फोन तैयार है। कृपया दुकान से ले जाएं।',
+    returnedMsg: 'यह फोन वापस कर दिया गया है। कोई सवाल हो तो कृपया दुकान पर संपर्क करें।',
     problem: 'समस्या',
     receivedDate: 'जमा करने की तारीख',
     lastUpdated: 'आखिरी अपडेट',
@@ -95,7 +99,8 @@ const T = {
       'Repair in Progress': 'रिपेयर चल रही है',
       'Waiting for Part': 'पार्ट का इंतज़ार',
       'Ready for Pickup': 'लेने के लिए तैयार',
-      'Delivered': 'डिलीवर हो गया'
+      'Delivered': 'डिलीवर हो गया',
+      'Returned': 'वापस किया गया'
     },
     desc: {
       'Received': 'आपका फोन हमें मिल गया है',
@@ -103,7 +108,8 @@ const T = {
       'Repair in Progress': 'रिपेयर का काम चल रहा है',
       'Waiting for Part': 'पार्ट आने का इंतज़ार है',
       'Ready for Pickup': 'फोन तैयार है, कृपया दुकान से ले जाएं',
-      'Delivered': 'फोन सौंप दिया गया है'
+      'Delivered': 'फोन सौंप दिया गया है',
+      'Returned': 'फोन वापस कर दिया गया है'
     }
   },
   pa: {
@@ -128,6 +134,7 @@ const T = {
     tapOpen: 'ਪੂਰੀ ਜਾਣਕਾਰੀ ਦੇਖਣ ਲਈ ਟੈਪ ਕਰੋ',
     tapClose: 'ਲੁਕਾਉਣ ਲਈ ਟੈਪ ਕਰੋ',
     ready: 'ਤੁਹਾਡਾ ਫ਼ੋਨ ਤਿਆਰ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਕਾਨ ਤੋਂ ਲੈ ਜਾਓ।',
+    returnedMsg: 'ਇਹ ਫ਼ੋਨ ਵਾਪਸ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਕੋਈ ਸਵਾਲ ਹੋਵੇ ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਦੁਕਾਨ ਤੇ ਸੰਪਰਕ ਕਰੋ।',
     problem: 'ਸਮੱਸਿਆ',
     receivedDate: 'ਜਮ੍ਹਾਂ ਕਰਨ ਦੀ ਤਾਰੀਖ਼',
     lastUpdated: 'ਆਖ਼ਰੀ ਅਪਡੇਟ',
@@ -140,7 +147,8 @@ const T = {
       'Repair in Progress': 'ਰਿਪੇਅਰ ਚੱਲ ਰਹੀ ਹੈ',
       'Waiting for Part': 'ਪਾਰਟ ਦੀ ਉਡੀਕ',
       'Ready for Pickup': 'ਲੈਣ ਲਈ ਤਿਆਰ',
-      'Delivered': 'ਡਿਲੀਵਰ ਹੋ ਗਿਆ'
+      'Delivered': 'ਡਿਲੀਵਰ ਹੋ ਗਿਆ',
+      'Returned': 'ਵਾਪਸ ਕੀਤਾ ਗਿਆ'
     },
     desc: {
       'Received': 'ਤੁਹਾਡਾ ਫ਼ੋਨ ਸਾਨੂੰ ਮਿਲ ਗਿਆ ਹੈ',
@@ -148,7 +156,8 @@ const T = {
       'Repair in Progress': 'ਰਿਪੇਅਰ ਦਾ ਕੰਮ ਚੱਲ ਰਿਹਾ ਹੈ',
       'Waiting for Part': 'ਪਾਰਟ ਆਉਣ ਦੀ ਉਡੀਕ ਹੈ',
       'Ready for Pickup': 'ਫ਼ੋਨ ਤਿਆਰ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਦੁਕਾਨ ਤੋਂ ਲੈ ਜਾਓ',
-      'Delivered': 'ਫ਼ੋਨ ਸੌਂਪ ਦਿੱਤਾ ਗਿਆ ਹੈ'
+      'Delivered': 'ਫ਼ੋਨ ਸੌਂਪ ਦਿੱਤਾ ਗਿਆ ਹੈ',
+      'Returned': 'ਫ਼ੋਨ ਵਾਪਸ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ'
     }
   }
 };
@@ -200,6 +209,7 @@ function statusClass(s) {
     case 'Repair in Progress': return 'st-progress';
     case 'Waiting for Part': return 'st-waiting';
     case 'Ready for Pickup': return 'st-ready';
+    case 'Returned': return 'st-returned';
     default: return 'st-delivered';
   }
 }
@@ -337,6 +347,12 @@ function card(r, open) {
   if (r.estimated_delivery) h += row(t('estDelivery'), fmtDate(r.estimated_delivery));
   if (r.public_note) h += row(t('noteRow'), r.public_note);
   h += '</div>';
+
+  if (r.status === 'Returned') {
+    h += '<div class="returned-banner">' + esc(t('returnedMsg')) + '</div>';
+    h += '</div></div>';
+    return h;
+  }
 
   h += '<div class="sec-title">' + esc(t('progress')) + '</div>';
   h += '<div class="tl">';

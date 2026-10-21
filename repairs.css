@@ -40,6 +40,7 @@
 .st-progress   { color: var(--amber); background: rgba(251,191,36,.12); border-color: rgba(251,191,36,.4); }
 .st-waiting    { color: #fb923c; background: rgba(251,146,60,.12); border-color: rgba(251,146,60,.4); }
 .st-ready      { color: var(--green); background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.4); }
+.st-returned   { color: #f87171; background: rgba(248,113,113,.12); border-color: rgba(248,113,113,.4); }
 .st-delivered  { color: var(--muted); background: rgba(154,163,181,.12); border-color: rgba(154,163,181,.35); }
 
 .code { font-weight: 800; letter-spacing: 1px; color: var(--green); }
