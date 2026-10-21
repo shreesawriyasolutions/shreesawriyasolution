@@ -539,17 +539,12 @@ function printJobsheet(id) {
   }, 300);
 }
 
-async function shareJobsheet(id) {
+function shareJobsheet(id) {
   const r = repairs.find(function (x) { return x.id === id; });
   if (!r) return;
   const c = r.customers || {};
-  const text = jobsheetText(r);
-  // Phone par share menu (WhatsApp, etc.); na ho to seedha customer ko WhatsApp
-  if (navigator.share) {
-    try { await navigator.share({ title: 'Jobsheet ' + r.repair_code, text: text }); return; }
-    catch (e) { if (e && e.name === 'AbortError') return; }
-  }
-  window.open('https://wa.me/91' + encodeURIComponent(c.mobile || '') + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  // Seedha customer ke WhatsApp number par chat khulti hai
+  window.open('https://wa.me/91' + encodeURIComponent(c.mobile || '') + '?text=' + encodeURIComponent(jobsheetText(r)), '_blank', 'noopener');
 }
 
 // ==========================================================
