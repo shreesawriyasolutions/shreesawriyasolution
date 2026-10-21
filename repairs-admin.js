@@ -473,7 +473,7 @@ $('repairList').addEventListener('click', function (e) {
 // ==========================================================
 const SHOP = {
   name: 'SHREE SAWRIYA SOLUTIONS',
-  addr: 'Salwan Chowk, Karnal Road, Assandh, Haryana',
+  addr: 'Post Office Wali Gali, Salwan Chowk, Assandh, Karnal',
   phone: '+91 97200 76900'
 };
 
@@ -497,7 +497,7 @@ function jobsheetHtml(r) {
   function row(l, v) { return v ? '<tr><td class="l">' + esc(l) + '</td><td>' + esc(v) + '</td></tr>' : ''; }
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Jobsheet ' + esc(r.repair_code) + '</title><style>' +
     '@page{size:A5;margin:10mm}*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;color:#000;font-size:13px;margin:0}' +
-    '.hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px}.hd h1{margin:0;font-size:18px;letter-spacing:1px}.hd div{font-size:12px;margin-top:2px}' +
+    '.lg{height:56px;width:auto;display:block;margin:0 auto 4px}.hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px}.hd h1{margin:0;font-size:18px;letter-spacing:1px}.hd div{font-size:12px;margin-top:2px}' +
     '.tt{text-align:center;font-weight:bold;font-size:15px;margin:10px 0;letter-spacing:2px}' +
     '.code{display:flex;justify-content:space-between;font-weight:bold;font-size:15px;margin-bottom:8px}' +
     'table{width:100%;border-collapse:collapse}td{border:1px solid #444;padding:6px 8px;vertical-align:top}td.l{width:36%;font-weight:bold;background:#f2f2f2}' +
@@ -505,7 +505,7 @@ function jobsheetHtml(r) {
     '.sig{display:flex;justify-content:space-between;margin-top:36px;font-size:12px}.sig div{border-top:1px solid #000;padding-top:4px;width:42%;text-align:center}' +
     '.trk{margin-top:12px;text-align:center;font-size:11px}' +
     '</style></head><body>' +
-    '<div class="hd"><h1>' + esc(SHOP.name) + '</h1><div>' + esc(SHOP.addr) + '</div><div>Phone / WhatsApp: ' + esc(SHOP.phone) + '</div></div>' +
+    '<div class="hd"><img class="lg" src="' + esc(location.origin + '/logo.png') + '" alt=""><h1>' + esc(SHOP.name) + '</h1><div>' + esc(SHOP.addr) + '</div><div>Phone / WhatsApp: ' + esc(SHOP.phone) + '</div></div>' +
     '<div class="tt">JOBSHEET</div>' +
     '<div class="code"><span>Repair ID: ' + esc(r.repair_code) + '</span><span>Date: ' + esc(fmtDate(r.received_date)) + '</span></div>' +
     '<table>' +
@@ -535,10 +535,15 @@ function printJobsheet(id) {
   document.body.appendChild(f);
   const d = f.contentWindow.document;
   d.open(); d.write(jobsheetHtml(r)); d.close();
-  setTimeout(function () {
+  function go() {
     try { f.contentWindow.focus(); f.contentWindow.print(); }
     catch (e) { toast('Print nahi ho paya. Dobara try karein.', 'err'); }
-  }, 300);
+  }
+  // Logo load hone ke baad hi print karein
+  const img = d.querySelector('img.lg');
+  let done = false;
+  function once() { if (!done) { done = true; setTimeout(go, 150); } }
+  if (img && !img.complete) { img.onload = once; img.onerror = once; setTimeout(once, 2000); } else { once(); }
 }
 
 function sendJobsheet(id, how) {
