@@ -436,6 +436,8 @@ function renderList() {
     h += '<div class="rep-actions">';
     h += '<button type="button" class="btn btn-ghost" data-act="history" data-id="' + esc(r.id) + '">Timeline</button>';
     h += '<button type="button" class="btn btn-ghost" data-act="cust" data-mobile="' + esc(c.mobile) + '">Customer History</button>';
+    h += '<button type="button" class="btn btn-ghost" data-act="print" data-id="' + esc(r.id) + '">Print Jobsheet</button>';
+    h += '<button type="button" class="btn btn-ghost" data-act="share" data-id="' + esc(r.id) + '">Share Jobsheet</button>';
     if (isAdmin) {
       h += '<button type="button" class="btn btn-edit" data-act="edit" data-id="' + esc(r.id) + '">EDIT</button>';
       h += '<button type="button" class="btn btn-del" data-act="delete" data-id="' + esc(r.id) + '">DELETE</button>';
@@ -458,9 +460,97 @@ $('repairList').addEventListener('click', function (e) {
     loadRepairs();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  if (act === 'print') printJobsheet(id);
+  if (act === 'share') shareJobsheet(id);
   if (act === 'edit') openEdit(id);
   if (act === 'delete') deleteRepair(id);
 });
+
+// ==========================================================
+//  JOBSHEET PRINT + SHARE
+// ==========================================================
+const SHOP = {
+  name: 'SHREE SAWRIYA SOLUTIONS',
+  addr: 'Salwan Chowk, Karnal Road, Assandh, Haryana',
+  phone: '+91 97200 76900'
+};
+
+function jobsheetText(r) {
+  const c = r.customers || {};
+  let t = '*' + SHOP.name + '*\n*JOBSHEET*\n\n' +
+    'Repair ID: ' + r.repair_code + '\n' +
+    'Date: ' + fmtDate(r.received_date) + '\n' +
+    'Customer: ' + (c.name || '') + ' (' + (c.mobile || '') + ')\n' +
+    'Phone: ' + r.device_model + '\n';
+  if (r.problem) t += 'Problem: ' + r.problem + '\n';
+  t += 'Status: ' + r.status + '\n';
+  if (r.estimated_charge != null) t += 'Estimate: ' + money(r.estimated_charge) + '\n';
+  if (r.estimated_delivery) t += 'Est. Delivery: ' + fmtDate(r.estimated_delivery) + '\n';
+  t += '\nStatus dekhne ke liye: ' + TRACK_LINK + '\n' + SHOP.name + ' | ' + SHOP.phone;
+  return t;
+}
+
+function jobsheetHtml(r) {
+  const c = r.customers || {};
+  function row(l, v) { return v ? '<tr><td class="l">' + esc(l) + '</td><td>' + esc(v) + '</td></tr>' : ''; }
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Jobsheet ' + esc(r.repair_code) + '</title><style>' +
+    '@page{size:A5;margin:10mm}*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;color:#000;font-size:13px;margin:0}' +
+    '.hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px}.hd h1{margin:0;font-size:18px;letter-spacing:1px}.hd div{font-size:12px;margin-top:2px}' +
+    '.tt{text-align:center;font-weight:bold;font-size:15px;margin:10px 0;letter-spacing:2px}' +
+    '.code{display:flex;justify-content:space-between;font-weight:bold;font-size:15px;margin-bottom:8px}' +
+    'table{width:100%;border-collapse:collapse}td{border:1px solid #444;padding:6px 8px;vertical-align:top}td.l{width:36%;font-weight:bold;background:#f2f2f2}' +
+    '.terms{margin-top:10px;font-size:11px}.terms div{margin-top:2px}' +
+    '.sig{display:flex;justify-content:space-between;margin-top:36px;font-size:12px}.sig div{border-top:1px solid #000;padding-top:4px;width:42%;text-align:center}' +
+    '.trk{margin-top:12px;text-align:center;font-size:11px}' +
+    '</style></head><body>' +
+    '<div class="hd"><h1>' + esc(SHOP.name) + '</h1><div>' + esc(SHOP.addr) + '</div><div>Phone / WhatsApp: ' + esc(SHOP.phone) + '</div></div>' +
+    '<div class="tt">JOBSHEET</div>' +
+    '<div class="code"><span>Repair ID: ' + esc(r.repair_code) + '</span><span>Date: ' + esc(fmtDate(r.received_date)) + '</span></div>' +
+    '<table>' +
+    row('Customer', c.name) + row('Mobile', c.mobile) + row('Phone Model', r.device_model) +
+    row('Problem', r.problem) + row('Status', r.status) +
+    (r.estimated_charge != null ? row('Estimated Charges', money(r.estimated_charge)) : '') +
+    (r.estimated_delivery ? row('Est. Delivery', fmtDate(r.estimated_delivery)) : '') +
+    row('Note', r.public_note) +
+    '</table>' +
+    '<div class="terms"><b>Dhyan dein:</b>' +
+    '<div>1. Phone lene ke liye ye Jobsheet saath layein.</div>' +
+    '<div>2. Repair ke baad final charges badal sakte hain, pehle bataya jayega.</div>' +
+    '<div>3. Phone ka data/backup customer ki zimmedari hai.</div></div>' +
+    '<div class="sig"><div>Customer Signature</div><div>Authorised Signature</div></div>' +
+    '<div class="trk">Repair status dekhein: ' + esc(TRACK_LINK) + '</div>' +
+    '</body></html>';
+}
+
+function printJobsheet(id) {
+  const r = repairs.find(function (x) { return x.id === id; });
+  if (!r) return;
+  const old = document.getElementById('printFrame');
+  if (old) old.remove();
+  const f = document.createElement('iframe');
+  f.id = 'printFrame';
+  f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;';
+  document.body.appendChild(f);
+  const d = f.contentWindow.document;
+  d.open(); d.write(jobsheetHtml(r)); d.close();
+  setTimeout(function () {
+    try { f.contentWindow.focus(); f.contentWindow.print(); }
+    catch (e) { toast('Print nahi ho paya. Dobara try karein.', 'err'); }
+  }, 300);
+}
+
+async function shareJobsheet(id) {
+  const r = repairs.find(function (x) { return x.id === id; });
+  if (!r) return;
+  const c = r.customers || {};
+  const text = jobsheetText(r);
+  // Phone par share menu (WhatsApp, etc.); na ho to seedha customer ko WhatsApp
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Jobsheet ' + r.repair_code, text: text }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  window.open('https://wa.me/91' + encodeURIComponent(c.mobile || '') + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+}
 
 // ==========================================================
 //  STATUS BADALNA (Staff + Admin)
