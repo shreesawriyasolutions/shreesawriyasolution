@@ -496,16 +496,25 @@ function jobsheetHtml(r) {
   const c = r.customers || {};
   function row(l, v) { return v ? '<tr><td class="l">' + esc(l) + '</td><td>' + esc(v) + '</td></tr>' : ''; }
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Jobsheet ' + esc(r.repair_code) + '</title><style>' +
+    '@import url(https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600&display=swap);' +
     '@page{size:A5;margin:10mm}*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;color:#000;font-size:13px;margin:0}' +
-    '.lg{height:56px;width:auto;display:block;margin:0 auto 4px}.hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px}.hd h1{margin:0;font-size:18px;letter-spacing:1px}.hd div{font-size:12px;margin-top:2px}' +
-    '.tt{text-align:center;font-weight:bold;font-size:15px;margin:10px 0;letter-spacing:2px}' +
+    '*{-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.hd{background:#0b0b0b;color:#fff;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:3px solid #d4af37}' +
+    '.lgw{width:84px;height:84px;overflow:hidden;flex:none;position:relative}.lgw img{position:absolute;width:160px;height:auto;left:-38px;top:-12px}' +
+    '.hx{flex:1;text-align:center}' +
+    '.hx h1{margin:0;font-family:"Cinzel Decorative",Georgia,serif;font-size:21px;line-height:1.15;color:#e6c25a;letter-spacing:1px;font-weight:700}' +
+    '.hx .tg{font-family:Cinzel,Georgia,serif;font-size:9px;letter-spacing:2.5px;color:#cfcfcf;margin-top:3px;text-transform:uppercase}' +
+    '.hx .ad{font-size:10.5px;color:#eee;margin-top:6px;line-height:1.4}' +
+    '.tt{text-align:center;font-family:Cinzel,Georgia,serif;font-weight:600;font-size:15px;margin:12px 0 10px;letter-spacing:4px}' +
     '.code{display:flex;justify-content:space-between;font-weight:bold;font-size:15px;margin-bottom:8px}' +
     'table{width:100%;border-collapse:collapse}td{border:1px solid #444;padding:6px 8px;vertical-align:top}td.l{width:36%;font-weight:bold;background:#f2f2f2}' +
     '.terms{margin-top:10px;font-size:11px}.terms div{margin-top:2px}' +
     '.sig{display:flex;justify-content:space-between;margin-top:36px;font-size:12px}.sig div{border-top:1px solid #000;padding-top:4px;width:42%;text-align:center}' +
     '.trk{margin-top:12px;text-align:center;font-size:11px}' +
     '</style></head><body>' +
-    '<div class="hd"><img class="lg" src="' + esc(location.origin + '/logo.png') + '" alt=""><h1>' + esc(SHOP.name) + '</h1><div>' + esc(SHOP.addr) + '</div><div>Phone / WhatsApp: ' + esc(SHOP.phone) + '</div></div>' +
+    '<div class="hd"><div class="lgw"><img class="lg" src="' + esc(location.origin + '/logo.png') + '" alt=""></div>' +
+    '<div class="hx"><h1>Shree Sawriya Solutions</h1><div class="tg">Mobile Repair &bull; Chip-Level &bull; Accessories</div>' +
+    '<div class="ad">' + esc(SHOP.addr) + '<br>Phone / WhatsApp: ' + esc(SHOP.phone) + '</div></div></div>' +
     '<div class="tt">JOBSHEET</div>' +
     '<div class="code"><span>Repair ID: ' + esc(r.repair_code) + '</span><span>Date: ' + esc(fmtDate(r.received_date)) + '</span></div>' +
     '<table>' +
@@ -543,7 +552,12 @@ function printJobsheet(id) {
   const img = d.querySelector('img.lg');
   let done = false;
   function once() { if (!done) { done = true; setTimeout(go, 150); } }
-  if (img && !img.complete) { img.onload = once; img.onerror = once; setTimeout(once, 2000); } else { once(); }
+  const logoReady = new Promise(function (res) {
+    if (!img || img.complete) res(); else { img.onload = res; img.onerror = res; }
+  });
+  const fontsReady = (d.fonts && d.fonts.ready) ? d.fonts.ready : Promise.resolve();
+  Promise.all([logoReady, fontsReady]).then(once);
+  setTimeout(once, 2500);
 }
 
 function sendJobsheet(id, how) {
