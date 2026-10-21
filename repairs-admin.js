@@ -7,7 +7,7 @@ const SUPABASE_KEY = 'sb_publishable_GKmljKQOjWzJ54FdZVPk_g_auEFS9VG';
 
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const STATUSES = ['Received', 'Diagnosing', 'Repair in Progress', 'Waiting for Part', 'Ready for Pickup', 'Delivered'];
+const STATUSES = ['Received', 'Diagnosing', 'Repair in Progress', 'Waiting for Part', 'Ready for Pickup', 'Delivered', 'Returned'];
 const TRACK_LINK = 'https://shreesawriyasolutions.in/track.html';
 
 // ---------- Chhote helper functions ----------
@@ -67,6 +67,7 @@ function statusClass(s) {
     case 'Repair in Progress': return 'st-progress';
     case 'Waiting for Part': return 'st-waiting';
     case 'Ready for Pickup': return 'st-ready';
+    case 'Returned': return 'st-returned';
     default: return 'st-delivered';
   }
 }
@@ -81,7 +82,7 @@ let repairs = [];
 (function fillSelects() {
   $('rStatus').innerHTML = STATUSES.map(function (s) { return '<option>' + s + '</option>'; }).join('');
   $('statusFilter').innerHTML =
-    '<option value="active">Sab chalu (Delivered chhodke)</option>' +
+    '<option value="active">Sab chalu (Delivered/Returned chhodke)</option>' +
     '<option value="all">Sab repairs</option>' +
     STATUSES.map(function (s) { return '<option value="' + s + '">' + s + '</option>'; }).join('');
 })();
@@ -211,6 +212,59 @@ $('rMobile').addEventListener('input', async function () {
 });
 
 // ==========================================================
+//  NAAM LIKHTE HI PURANE CUSTOMER KI SUGGESTION
+// ==========================================================
+let nameToken = 0;
+let nameTimer = null;
+const CUST_RE = /\((\d{10})\)\s*$/;
+
+function suggestCustomers(term) {
+  clearTimeout(nameTimer);
+  const clean = term.replace(/[%_\\,()]/g, ' ').trim();
+  if (clean.length < 2 || CUST_RE.test(term) || /^\d+$/.test(clean) || /^sss-?\d*$/i.test(clean)) {
+    if (clean.length < 2) $('custList').innerHTML = '';
+    return;
+  }
+  const token = ++nameToken;
+  nameTimer = setTimeout(async function () {
+    const { data, error } = await db.from('customers')
+      .select('name, mobile')
+      .ilike('name', '%' + clean + '%')
+      .order('name', { ascending: true })
+      .limit(8);
+    if (token !== nameToken || error) return;
+    $('custList').innerHTML = (data || []).map(function (c) {
+      return '<option value="' + esc(c.name + ' (' + c.mobile + ')') + '"></option>';
+    }).join('');
+  }, 250);
+}
+
+// Add form: naam par suggestion, chunte hi mobile + naam bhar jaye
+$('rName').addEventListener('input', function () {
+  if ($('rName').readOnly) return;
+  const v = $('rName').value;
+  const m = v.match(CUST_RE);
+  if (m) {
+    $('rMobile').value = m[1];
+    $('rMobile').dispatchEvent(new Event('input'));
+    return;
+  }
+  suggestCustomers(v);
+});
+
+// Search box: naam par suggestion, chunte hi us customer ki history khul jaye
+$('searchBox').addEventListener('input', function () {
+  const v = $('searchBox').value;
+  const m = v.match(CUST_RE);
+  if (m) {
+    $('searchBox').value = m[1];
+    loadRepairs();
+    return;
+  }
+  suggestCustomers(v);
+});
+
+// ==========================================================
 //  NAYA REPAIR ADD
 // ==========================================================
 $('repairForm').addEventListener('submit', async function (e) {
@@ -324,7 +378,7 @@ async function loadRepairs() {
     q = q.eq('repair_code', 'SSS-' + codeMatch[1].padStart(4, '0'));
     note = 'Repair ID search';
   } else {
-    if (sf === 'active') q = q.neq('status', 'Delivered');
+    if (sf === 'active') q = q.not('status', 'in', '(Delivered,Returned)');
     else if (sf !== 'all') q = q.eq('status', sf);
     textSearch = term !== '';
   }

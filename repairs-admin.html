@@ -65,7 +65,8 @@
             </div>
             <div>
               <label for="rName">Customer Name *</label>
-              <input id="rName" type="text" autocomplete="off">
+              <input id="rName" type="text" autocomplete="off" list="custList" placeholder="Purana customer ho to naam likhna shuru karo">
+              <datalist id="custList"></datalist>
             </div>
             <div>
               <label for="rModel">Phone Model *</label>
@@ -105,7 +106,7 @@
         <div class="grid2">
           <div>
             <label for="searchBox">Search (mobile, Repair ID, naam ya model)</label>
-            <input id="searchBox" type="search" autocomplete="off" placeholder="9876543210 ya SSS-0001">
+            <input id="searchBox" type="search" autocomplete="off" list="custList" placeholder="9876543210, SSS-0001 ya naam">
           </div>
           <div>
             <label for="statusFilter">Status Filter</label>
