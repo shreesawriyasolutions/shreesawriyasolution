@@ -437,7 +437,8 @@ function renderList() {
     h += '<button type="button" class="btn btn-ghost" data-act="history" data-id="' + esc(r.id) + '">Timeline</button>';
     h += '<button type="button" class="btn btn-ghost" data-act="cust" data-mobile="' + esc(c.mobile) + '">Customer History</button>';
     h += '<button type="button" class="btn btn-ghost" data-act="print" data-id="' + esc(r.id) + '">Print Jobsheet</button>';
-    h += '<button type="button" class="btn btn-ghost" data-act="share" data-id="' + esc(r.id) + '">Share Jobsheet</button>';
+    h += '<button type="button" class="btn btn-ghost" data-act="wa" data-id="' + esc(r.id) + '">WhatsApp Jobsheet</button>';
+    h += '<button type="button" class="btn btn-ghost" data-act="sms" data-id="' + esc(r.id) + '">SMS Jobsheet</button>';
     if (isAdmin) {
       h += '<button type="button" class="btn btn-edit" data-act="edit" data-id="' + esc(r.id) + '">EDIT</button>';
       h += '<button type="button" class="btn btn-del" data-act="delete" data-id="' + esc(r.id) + '">DELETE</button>';
@@ -461,7 +462,8 @@ $('repairList').addEventListener('click', function (e) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   if (act === 'print') printJobsheet(id);
-  if (act === 'share') shareJobsheet(id);
+  if (act === 'wa') sendJobsheet(id, 'wa');
+  if (act === 'sms') sendJobsheet(id, 'sms');
   if (act === 'edit') openEdit(id);
   if (act === 'delete') deleteRepair(id);
 });
@@ -475,7 +477,7 @@ const SHOP = {
   phone: '+91 97200 76900'
 };
 
-function jobsheetText(r) {
+function jobsheetText(r, plain) {
   const c = r.customers || {};
   let t = '*' + SHOP.name + '*\n*JOBSHEET*\n\n' +
     'Repair ID: ' + r.repair_code + '\n' +
@@ -487,7 +489,7 @@ function jobsheetText(r) {
   if (r.estimated_charge != null) t += 'Estimate: ' + money(r.estimated_charge) + '\n';
   if (r.estimated_delivery) t += 'Est. Delivery: ' + fmtDate(r.estimated_delivery) + '\n';
   t += '\nStatus dekhne ke liye: ' + TRACK_LINK + '\n' + SHOP.name + ' | ' + SHOP.phone;
-  return t;
+  return plain ? t.replace(/\*/g, '') : t;
 }
 
 function jobsheetHtml(r) {
@@ -539,12 +541,17 @@ function printJobsheet(id) {
   }, 300);
 }
 
-function shareJobsheet(id) {
+function sendJobsheet(id, how) {
   const r = repairs.find(function (x) { return x.id === id; });
   if (!r) return;
   const c = r.customers || {};
-  // Seedha customer ke WhatsApp number par chat khulti hai
-  window.open('https://wa.me/91' + encodeURIComponent(c.mobile || '') + '?text=' + encodeURIComponent(jobsheetText(r)), '_blank', 'noopener');
+  const mobile = encodeURIComponent(c.mobile || '');
+  // Dono option seedha customer ke number par khulte hain
+  if (how === 'sms') {
+    window.location.href = 'sms:+91' + mobile + '?body=' + encodeURIComponent(jobsheetText(r, true));
+  } else {
+    window.open('https://wa.me/91' + mobile + '?text=' + encodeURIComponent(jobsheetText(r)), '_blank', 'noopener');
+  }
 }
 
 // ==========================================================
