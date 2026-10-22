@@ -179,6 +179,7 @@ function showApp() {
 
   $('rDate').value = todayStr();
   $('exportBtn').classList.toggle('hidden', !isAdmin);
+  $('visitorsLink').classList.toggle('hidden', !isAdmin);
 
   loadRepairs();
 }
