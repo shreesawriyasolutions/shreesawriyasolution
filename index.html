@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A5A48">
 
 <!-- SEO Title & Meta Description -->
 <title>Mobile Repair Shop in Assandh | Shree Sawriya Solutions</title>
@@ -61,833 +62,710 @@
 }
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-
-/* --- BEST FADE EFFECT FOR OWNER PHOTO (4 SIDES) --- */
-.fade-photo {
-  /* Chaaron taraf se smooth fade */
-  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent),
-                      linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent),
-              linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  
-  /* Browser compatibility ke liye */
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  
-  /* Purane borders aur shadows hata diye taaki blend perfect ho */
-  border: none !important;
-  box-shadow: none !important;
-  
-  /* Photo ko thoda bright aur clear dikhane ke liye */
-  filter: brightness(1.05) contrast(1.05);
+:root{
+  --paper:#E6EFEB; --ink:#0B1612; --ink-2:#3F5149; --green:#0A5A48; --green-deep:#073D31; --signal:#F4C430; --wa:#1FA855;
+  --glass:rgba(255,255,255,.46); --glass-strong:rgba(255,255,255,.66); --edge:rgba(255,255,255,.75); --line:rgba(11,22,18,.12);
+  --shadow:0 24px 48px -24px rgba(7,61,49,.45);
+  --r-lg:26px; --r-md:18px;
+  --head:'Bricolage Grotesque','Hind',system-ui,sans-serif;
+  --body:'Hind','Noto Sans Gurmukhi',system-ui,sans-serif;
+  --blob-a:#34C49D; --blob-b:#F4C430; --blob-c:#7FD6E8; --blob-o:.62;
 }
-/* -------------------------------------------------- */
-
-.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
-.logo { font-weight: 800; font-size: 18px; letter-spacing: 1px; }
-.nav-links { display: none; gap: 25px; font-size: 14px; color: #aaa; }
-.nav-links a:hover { color: #fff; }
-
-.lang-switcher { display: flex; gap: 6px; align-items: center; margin-left: auto; }
-.lang-btn { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; border: 1px solid #333; background: transparent; color: #aaa; }
-.lang-btn.active { background: #fff; color: #000; border: none; }
-
-.hero { padding: 80px 20px 60px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); position: relative; overflow: hidden; }
-.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; position: relative; z-index: 1; }
-.hero h1 span { background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero p { color: #999; font-size: 15px; max-width: 500px; margin: 0 auto 30px; position: relative; z-index: 1; }
-.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-.btn-primary { background: #fff; color: #000; }
-.btn-primary:hover { background: #ddd; }
-.btn-outline { border: 1px solid #333; color: #fff; }
-.btn-outline:hover { border-color: #fff; }
-
-section { padding: 60px 20px; }
-.section-title { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 10px; }
-.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
-
-.services-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1000px; margin: 0 auto; }
-.service-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 25px; transition: 0.3s; }
-.service-card:hover { border-color: #444; transform: translateY(-3px); }
-.service-icon { font-size: 28px; margin-bottom: 12px; }
-.service-card h3 { font-size: 17px; margin-bottom: 8px; font-weight: 700; }
-.service-card p { color: #888; font-size: 13px; }
-
-.about { max-width: 700px; margin: 0 auto; text-align: center; color: #aaa; font-size: 15px; }
-.about strong { color: #fff; }
-
-.contact-box { background: #111; border: 1px solid #222; border-radius: 20px; padding: 30px; max-width: 500px; margin: 0 auto; text-align: center; }
-.contact-box h3 { margin-bottom: 20px; font-size: 20px; }
-.contact-row { margin: 15px 0; color: #ccc; font-size: 14px; }
-.contact-row strong { color: #fff; display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
-.contact-row a { color: #fff; font-weight: 600; }
-
-footer { text-align: center; padding: 30px 20px; border-top: 1px solid #222; color: #666; font-size: 12px; }
-
-@media (min-width: 768px) {
-  .nav-links { display: flex; }
-  .hero h1 { font-size: 48px; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+@media (prefers-color-scheme:dark){
+  :root{--paper:#08100E; --ink:#EEF4F1; --ink-2:#A6B9B0; --green:#38C29B; --green-deep:#041F19;
+    --glass:rgba(24,40,34,.5); --glass-strong:rgba(30,48,41,.72); --edge:rgba(255,255,255,.18); --line:rgba(255,255,255,.12);
+    --shadow:0 24px 48px -24px rgba(0,0,0,.7); --blob-a:#0E7C62; --blob-b:#8A6D0C; --blob-c:#0F5C73; --blob-o:.5}
 }
-@media (min-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
-}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:92px}
+@media (min-width:721px){body{padding-bottom:0}}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto;position:relative}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800}
+.lede{color:var(--ink-2);max-width:56ch}
+
+/* living background: gives the glass something to refract */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--paper)}
+.bg i{position:absolute;border-radius:50%;filter:blur(80px);opacity:var(--blob-o);will-change:transform}
+.bg i:nth-child(1){width:560px;height:560px;background:var(--blob-a);left:-12%;top:-10%;animation:drift 26s ease-in-out infinite alternate}
+.bg i:nth-child(2){width:420px;height:420px;background:var(--blob-b);right:-8%;top:34%;animation:drift 32s ease-in-out infinite alternate-reverse}
+.bg i:nth-child(3){width:520px;height:520px;background:var(--blob-c);left:30%;bottom:-18%;animation:drift 38s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(60px,-50px) scale(1.12)}}
+
+/* liquid glass surface */
+.glass{position:relative;background:var(--glass);backdrop-filter:blur(22px) saturate(190%);-webkit-backdrop-filter:blur(22px) saturate(190%);
+  border:1px solid var(--edge);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(255,255,255,.12),var(--shadow)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(155deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 70%,rgba(255,255,255,.18) 100%);opacity:.7}
+@media (prefers-color-scheme:dark){.glass::before{opacity:.18}}
+
+/* header */
+header.bar{position:sticky;top:10px;z-index:20;margin:10px auto 0;width:min(1120px,100% - 24px);border-radius:99px}
+.bar .in{display:flex;align-items:center;gap:16px;height:60px;padding:0 10px 0 16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--head);font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.brand img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+nav{margin-left:auto;display:flex;gap:4px}
+nav a{padding:8px 14px;border-radius:99px;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--ink);background:rgba(255,255,255,.4)}
+.lang{display:flex;border-radius:99px;padding:3px;background:rgba(255,255,255,.35);border:1px solid var(--edge)}
+.lang button{border:0;background:none;font:inherit;font-size:.85rem;padding:4px 11px;border-radius:99px;cursor:pointer;color:var(--ink-2)}
+.lang button[aria-pressed="true"]{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+@media (max-width:720px){nav{display:none}.lang{margin-left:auto}}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:99px;font:600 1rem var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.btn:active{transform:scale(.96)}
+.btn.wa{background:linear-gradient(180deg,#34C46C,#1A9A4D);color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 12px 24px -12px rgba(26,154,77,.8)}
+.btn.line{background:var(--glass);border-color:var(--edge);color:var(--ink);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
+.btn.line:hover{background:var(--glass-strong)}
+.btn.sig{background:linear-gradient(180deg,#FFD84F,#F0B90F);color:#1b1500;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.7),0 12px 24px -12px rgba(240,185,15,.9)}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;border:2px solid rgba(255,255,255,.9);background:rgba(255,255,255,.28);transform:translate(-50%,-50%) scale(0);animation:rip .75s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rip{to{transform:translate(-50%,-50%) scale(1);opacity:0}}
+
+/* hero + the water drop */
+.hero{position:relative;overflow:clip;padding:clamp(40px,7vw,88px) 0 clamp(44px,6vw,76px)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;z-index:1}
+@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.hero .wrap>*{min-width:0}
+.cracks{position:absolute;right:-6%;top:-8%;width:min(680px,92%);z-index:0;pointer-events:none;fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.2}
+.drop{position:absolute;left:0;top:0;width:168px;height:168px;margin:-84px 0 0 -84px;border-radius:50%;pointer-events:none;z-index:4;will-change:transform;
+  background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.85) 0,rgba(255,255,255,.18) 20%,rgba(255,255,255,0) 44%),radial-gradient(circle at 70% 82%,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);
+  backdrop-filter:blur(1.5px) saturate(170%);-webkit-backdrop-filter:blur(1.5px) saturate(170%);
+  backdrop-filter:url(#lens) saturate(170%);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.65),inset 12px 16px 26px rgba(255,255,255,.4),inset -14px -18px 30px rgba(7,61,49,.22),0 22px 36px -10px rgba(7,61,49,.4)}
+@media (max-width:640px){.drop{width:120px;height:120px;margin:-60px 0 0 -60px}}
+.open{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:500;padding:7px 16px 7px 13px;border-radius:99px;margin-bottom:22px}
+.open i{width:9px;height:9px;border-radius:50%;background:#8da39a}
+.open.on i{background:var(--wa);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(31,168,85,.55)}70%,100%{box-shadow:0 0 0 10px rgba(31,168,85,0)}}
+.hero h1{font-size:clamp(2.7rem,7.6vw,5.2rem);font-weight:800;margin-bottom:20px}
+.hero p{font-size:1.15rem;margin-bottom:30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.cta .btn{flex:none}
+
+.panel{border-radius:var(--r-lg);padding:8px}
+.panel .row{padding:18px;position:relative}
+.panel .row+.row{border-top:1px solid var(--line)}
+.tag{display:inline-block;background:var(--signal);color:#1b1500;font-weight:600;font-size:.8rem;padding:2px 11px;border-radius:99px;margin-bottom:8px}
+.panel h3{font-size:1.25rem;font-weight:600;margin-bottom:2px}
+.panel p{font-size:.95rem;margin:0;color:var(--ink-2)}
+.panel .price{font-family:var(--head);font-weight:800;font-size:1.6rem}
+form.status{display:flex;gap:8px;margin-top:12px}
+form.status input{flex:1;min-width:0;height:46px;border:1px solid var(--edge);border-radius:99px;padding:0 18px;font:inherit;background:rgba(255,255,255,.55);color:var(--ink);box-shadow:inset 0 2px 4px rgba(7,61,49,.12)}
+form.status button{position:relative;overflow:hidden;height:46px;padding:0 20px;border:0;border-radius:99px;background:linear-gradient(180deg,#14806A,#0A5A48);color:#fff;font:600 .95rem var(--body);cursor:pointer;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4)}
+
+/* sections */
+section{padding:clamp(48px,8vw,96px) 0}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:34px}
+
+.svc{border-radius:var(--r-lg);padding:6px 22px;overflow:hidden}
+.svc a,.svc div.item{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr) auto;gap:20px;align-items:baseline;padding:22px 6px;border-bottom:1px solid var(--line);text-decoration:none;position:relative;overflow:hidden}
+.svc a:last-child,.svc div.item:last-child{border-bottom:0}
+.svc a:hover{background:rgba(255,255,255,.35)}
+.svc h3{font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:600}
+.svc p{color:var(--ink-2)}
+.svc .go{font-weight:600;color:var(--green);white-space:nowrap}
+@media (max-width:640px){.svc a,.svc div.item{grid-template-columns:1fr;gap:4px}}
+
+.train{border-radius:var(--r-lg);padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;color:#EEF4F1;
+  background:linear-gradient(135deg,rgba(7,61,49,.93),rgba(10,90,72,.82));border:1px solid rgba(255,255,255,.28)}
+@media (max-width:820px){.train{grid-template-columns:1fr}}
+.train h2{color:#fff;margin-bottom:12px}
+.train p{color:#BFD3CB;max-width:48ch}
+.was{text-decoration:line-through;color:#93ADA3;font-size:1.2rem}
+.now{font-family:var(--head);font-weight:800;font-size:clamp(2.8rem,7vw,4.2rem);line-height:1;color:var(--signal)}
+.train .buy{display:flex;flex-direction:column;gap:14px;align-items:flex-start;position:relative}
+
+.rev{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 22px;margin:0 -4px}
+.rev figure{flex:0 0 min(360px,84%);scroll-snap-align:start;border-radius:var(--r-md);padding:22px}
+.rev blockquote{font-size:1rem;margin:10px 0 16px;position:relative}
+.rev figcaption{font-weight:600;font-size:.95rem;position:relative}
+.rev figcaption small{display:block;font-weight:400;color:var(--ink-2)}
+.stars{color:#E0A800;letter-spacing:2px;position:relative}
+
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,60px);align-items:center}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about img{border-radius:var(--r-lg);aspect-ratio:4/5;object-fit:cover;width:100%;background:rgba(255,255,255,.4);border:1px solid var(--edge);box-shadow:var(--shadow)}
+.about ul{list-style:none;padding:0;margin-top:18px;display:grid;gap:8px}
+.about li{padding-left:22px;position:relative;color:var(--ink-2)}
+.about li:before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--green)}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);border-radius:var(--r-lg);padding:clamp(22px,4vw,44px)}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+.contact dl{display:grid;gap:18px;position:relative}
+.contact dt{font-weight:600}
+.contact dd{margin:0;color:var(--ink-2)}
+.contact dd a{color:var(--green);font-weight:600}
+table.hours{border-collapse:collapse;width:100%;position:relative}
+table.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+table.hours td:last-child{text-align:right;color:var(--ink-2)}
+table.hours tr.today td{font-weight:600;color:var(--ink)}
+.contact h3{position:relative}
+footer{padding:28px 0 12px;color:var(--ink-2);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{margin-right:14px}
+
+.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:8px;padding:8px;border-radius:99px}
+.dock .btn{flex:1;min-height:48px;padding:0 12px}
+@media (max-width:720px){.dock{display:flex}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* ---------- additions for the live site ---------- */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lang button.active{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+section.tight{padding:0 0 clamp(36px,6vw,64px)}
+.status-msg{margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(255,80,80,.14);border:1px solid rgba(255,80,80,.35);color:#b3261e;font-size:.92rem}
+@media (prefers-color-scheme:dark){.status-msg{color:#ff9d96}}
+.panel .row p{margin-bottom:0}
+
+/* carousels */
+.carousel{position:relative;border-radius:var(--r-lg);overflow:hidden}
+.carousel .slides{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.carousel .slide{min-width:100%;position:relative}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--edge);background:var(--glass-strong);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;padding:0 0 3px}
+.arrow.prev{left:12px}.arrow.next{right:12px}
+.carousel.single .arrow,.carousel.single .dots{display:none}
+.dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;padding:7px 12px;border-radius:99px;background:var(--glass-strong);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--edge);z-index:3}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:color-mix(in srgb,var(--ink) 30%,transparent);cursor:pointer;transition:width .3s,background .3s}
+.dots button.on{width:24px;border-radius:5px;background:var(--ink)}
+.dots button{position:relative}
+.dots button::after{content:"";position:absolute;inset:-8px -4px}
+
+.slide:not(.photo){padding:clamp(28px,5vw,56px) clamp(60px,8vw,96px) clamp(54px,7vw,76px);min-height:300px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px}
+.slide h2{font-size:clamp(1.8rem,4.4vw,2.8rem);max-width:20ch}
+.slide p{color:var(--ink-2);max-width:44ch}
+.slide.s1{background:linear-gradient(120deg,rgba(244,196,48,.42),rgba(255,255,255,0) 72%)}
+.slide.s2{background:linear-gradient(120deg,rgba(52,196,157,.40),rgba(255,255,255,0) 72%)}
+.slide.s3{background:linear-gradient(120deg,rgba(127,214,232,.45),rgba(255,255,255,0) 72%)}
+.badge{display:inline-block;padding:5px 14px;border-radius:99px;font-weight:600;font-size:.82rem;background:var(--ink);color:var(--paper)}
+.price-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.price-line .was{color:var(--ink-2);font-size:1.15rem}
+.price-line .now{font-family:var(--head);font-weight:800;font-size:clamp(2rem,5vw,3rem);line-height:1}
+.price-line .save{padding:3px 12px;border-radius:99px;background:rgba(31,168,85,.18);color:#13803c;font-weight:600;font-size:.85rem}
+@media (prefers-color-scheme:dark){.price-line .save{color:#6ee09a}}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chips div{padding:10px 18px;border-radius:14px;background:var(--glass);border:1px solid var(--edge);display:flex;flex-direction:column}
+.chips small{font-size:.75rem;color:var(--ink-2)}
+.chips b{font-family:var(--head);font-size:1.15rem}
+@media (max-width:640px){.slide:not(.photo){padding:30px 24px 78px;min-height:340px}.arrow{width:38px;height:38px;top:auto;bottom:10px;transform:none;padding:0 0 3px}.arrow.prev{left:12px}.arrow.next{right:12px}.dots{bottom:16px}}
+
+.frame .slides{aspect-ratio:16/10}
+.slide.photo{background:rgba(7,18,14,.9);display:flex;align-items:center;justify-content:center}
+.slide.photo img{width:100%;height:100%;object-fit:contain}
+
+/* services extras */
+.svc .ok{color:var(--wa);font-weight:600}
+.svc .ok::before{content:"✓ "}
+
+/* about */
+.aboutus{border-radius:var(--r-lg);padding:clamp(22px,4vw,40px);display:grid;gap:14px;color:var(--ink-2)}
+.aboutus p{position:relative;max-width:78ch}
+.aboutme{border-radius:var(--r-lg);padding:clamp(22px,4vw,44px);display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);align-items:center}
+@media (max-width:760px){.aboutme{grid-template-columns:1fr}}
+.aboutme>*{position:relative}
+.who-photo img{border-radius:var(--r-md);width:100%;max-width:340px;margin:0 auto 16px;aspect-ratio:600/767;object-fit:cover;border:1px solid var(--edge);box-shadow:var(--shadow)}
+.who-photo{text-align:center}
+.who-photo h3{font-size:1.15rem}
+.who-photo p{color:var(--ink-2);font-size:.95rem}
+.aboutme h3.big{font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:12px}
+.aboutme .lede{margin-bottom:12px}
+.aboutme h4{font-family:var(--head);margin:20px 0 10px;font-size:1.05rem}
+.certs{list-style:none;padding:0;display:grid;gap:8px}
+.certs li{padding:11px 16px;border-radius:12px;background:rgba(255,255,255,.34);border:1px solid var(--edge);font-size:.95rem}
+@media (prefers-color-scheme:dark){.certs li{background:rgba(255,255,255,.06)}}
+
+/* reviews */
+.rev .who{display:flex;align-items:center;gap:12px;position:relative}
+.rev .av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:linear-gradient(135deg,var(--green),#34C49D);color:#fff}
+.rev .who b{display:block;font-size:.98rem}
+.rev .who small{color:var(--ink-2)}
+.rev .stars{margin-top:12px}
+.rev blockquote{margin-top:6px}
+.rev+.btn{margin-top:6px}
+
+/* contact */
+.contact dd{margin-bottom:0}
+.contact h3{margin-bottom:8px}
+.mapbox{margin-top:20px;border-radius:var(--r-lg);overflow:hidden;padding:0}
+.mapbox iframe{filter:saturate(.9)}
+
+/* footer */
+footer{padding:36px 0 18px}
+.foot{display:grid!important;gap:20px;justify-content:stretch!important}
+.foot .fb{display:flex;gap:14px;align-items:center}
+.foot .fb img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.foot .fb b{display:block;color:var(--ink);font-family:var(--head)}
+.foot .fb span{display:block}
+.foot a{color:inherit;text-decoration:underline;text-underline-offset:3px;margin:0}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.social a{text-decoration:none;padding:8px 18px;border-radius:99px;border:1px solid var(--edge);background:var(--glass);color:var(--ink);font-weight:500}
+.social a:hover{background:var(--glass-strong)}
+.copy{font-size:.85rem}
+
+/* language popup */
+#langPopup{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,14,11,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#langPopup[hidden]{display:none}
+.lp{width:min(380px,100%);border-radius:28px;padding:32px 24px;text-align:center;background:var(--glass-strong)}
+.lp>*{position:relative}
+.lp img{width:64px;height:64px;border-radius:50%;margin:0 auto 12px;object-fit:cover}
+.lp h2{font-size:1.15rem;margin-bottom:8px}
+.lp p{color:var(--ink-2);margin-bottom:20px;font-size:.95rem}
+.choices{display:grid;gap:10px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="30" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <!-- NAVBAR -->
-<nav class="navbar">
-  <a href="/" class="logo" style="display:flex; align-items:center; gap:10px;">
-    <img src="logo.png" alt="Shree Sawriya Solutions - Mobile Repair Shop Assandh" style="width:38px; height:38px; object-fit:contain;">
-    <span style="font-size:16px;">SHREE SAWRIYA <span style="color:#ccc;">SOLUTIONS</span></span>
-  </a>
-  <div class="nav-links">
-    <a href="#services" data-en="Services" data-hi="सेवाएं" data-pa="ਸੇਵਾਵਾਂ">Services</a>
-    <a href="#about" data-en="About" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About</a>
-    <a href="#contact" data-en="Contact" data-hi="संपर्क" data-pa="ਸੰਪਰਕ">Contact</a>
+<header class="bar glass">
+  <div class="in">
+    <a class="brand" href="/"><img src="logo.png" alt="Shree Sawriya Solutions - Mobile Repair Shop Assandh" width="34" height="34">Shree Sawriya Solutions</a>
+    <nav aria-label="Main">
+      <a href="#services" data-en="Services" data-hi="सेवाएं" data-pa="ਸੇਵਾਵਾਂ">Services</a>
+      <a href="#about" data-en="About" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About</a>
+      <a href="#contact" data-en="Contact" data-hi="संपर्क" data-pa="ਸੰਪਰਕ">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+      <button type="button" onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिं</button>
+      <button type="button" onclick="setLang('pa')" id="btn-pa" class="lang-btn">ਪੰ</button>
+    </div>
   </div>
-  <div class="lang-switcher">
-    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
-    <button onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिं</button>
-    <button onclick="setLang('pa')" id="btn-pa" class="lang-btn">ਪੰ</button>
-  </div>
-</nav>
+</header>
 
+<main id="top">
 <!-- HERO -->
-<div class="hero">
-  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.04; width:400px; height:400px; background-image:url('logo.png'); background-size:contain; background-repeat:no-repeat; background-position:center; pointer-events:none; z-index:0;"></div>
-  <h1>
-    <span data-en="Mobile Repair in Assandh &" data-hi="असंध में मोबाइल रिपेयर और" data-pa="ਅਸੰਧ ਵਿੱਚ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ">Mobile Repair in Assandh &</span>
-    <br>
-    <span data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</span>
-  </h1>
-  <p data-en="Assandh, Haryana's trusted mobile repair shop. iPhone, Android, Chip-Level repair and professional training — All on One place." data-hi="असंध, हरियाणा की सबसे भरोसेमंद मोबाइल रिपेयर शॉप। आईफ़ोन, एंड्रॉयड, चिप-लेवल रिपेयर और प्रोफेशनल ट्रेनिंग — सब एक जगह।" data-pa="ਅਸੰਧ, ਹਰਿਆਣਾ ਦੀ ਸਭ ਤੋਂ ਭਰੋਸੇਮੰਦ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਦੁਕਾਨ। ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਪ੍ਰੋਫੈਸ਼ਨਲ ਟ੍ਰੇਨਿੰਗ — ਸਭ ਇੱਕ ਥਾਂ।">Assandh, Haryana's trusted mobile repair shop.</p>
-  <div class="hero-buttons">
-    <a href="https://wa.me/919720076900" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:10px;" data-en="WhatsApp Now" data-hi="WhatsApp करें" data-pa="WhatsApp ਕਰੋ">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-    <a href="tel:+919720076900" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:10px;" data-en="Call Now" data-hi="कॉल करें" data-pa="ਕਾਲ ਕਰੋ">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-    </a>
-  </div>
-</div>
-
-<!-- CASHIFY-STYLE HERO SLIDER -->
-<section style="padding:20px; background:#0a0a0a;">
-  <div style="max-width:1100px; margin:0 auto; position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
-    
-    <!-- Slides Container -->
-    <div id="heroSlides" style="display:flex; transition:transform 0.6s ease-in-out; min-height:320px;">
-      
-      <!-- SLIDE 1: FREE DIAGNOSIS -->
-      <div style="min-width:100%; background:linear-gradient(135deg, #1a0a0a 0%, #2a0a0a 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
-        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(255,68,68,0.2), transparent); border-radius:50%;"></div>
-        <div style="flex:1; position:relative; z-index:2;">
-          <span style="display:inline-block; background:linear-gradient(90deg, #ff4444, #ff8800); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🔥 LIMITED TIME OFFER" data-hi="🔥 सीमित समय का ऑफर" data-pa="🔥 ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">🔥 LIMITED TIME OFFER</span>
-          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="FREE Phone Diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫੋਨ ਡਾਇਗਨੋਸਿਸ">FREE Phone Diagnosis</h2>
-          <p style="color:#aaa; font-size:14px; margin-bottom:25px; max-width:400px;" data-en="Get your phone checked completely — absolutely free!" data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त!" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ!">Get your phone checked completely — absolutely free!</p>
-          <a href="booking.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(255,68,68,0.3);" data-en="📅 Book Your Slot" data-hi="📅 अपना स्लॉट बुक करें" data-pa="📅 ਆਪਣਾ ਸਲਾਟ ਬੁੱਕ ਕਰੋ">📅 Book Your Slot</a>
-        </div>
-        <div style="flex-shrink:0; position:relative; z-index:2;">
-          <img src="logo.png" alt="Shree Sawriya Solutions - Mobile Repair Shop Assandh" style="width:110px; height:110px; object-fit:contain; mix-blend-mode:screen;">
-        </div>
+<section class="hero">
+  <svg class="cracks" viewBox="0 0 600 600" aria-hidden="true"><path d="M400 230 120 40M400 230 40 260M400 230 180 520M400 230 430 590M400 230 590 470M400 230 600 150M400 230 330 0M400 230 560 0M280 135 310 60M200 90 150 135M170 380 90 420M300 400 370 470M500 350 560 330M470 120 520 60"/><path d="M360 190 440 205 450 270 380 285Z" opacity=".7"/><path d="M320 150 470 170 500 300 400 330 300 270Z" opacity=".45"/><path d="M250 100 520 110 560 330 410 400 250 300Z" opacity=".25"/></svg>
+  <div class="drop" id="drop" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="open glass" id="open"><i></i><span id="openText">Assandh, Haryana</span></div>
+      <h1 data-en="Broken phone? Get it fixed in Assandh." data-hi="फोन खराब है? असंध में ठीक करवाएँ।" data-pa="ਫ਼ੋਨ ਖ਼ਰਾਬ ਹੈ? ਅਸੰਧ ਵਿੱਚ ਠੀਕ ਕਰਵਾਓ।">Broken phone? Get it fixed in Assandh.</h1>
+      <p class="lede" data-en="iPhone, Android and chip-level repair by a technician with 10+ years of experience. Free diagnosis before you pay anything." data-hi="iPhone, Android और चिप-लेवल रिपेयर, 10+ साल के अनुभवी टेक्नीशियन से। पैसे देने से पहले फ्री डायग्नोसिस।" data-pa="iPhone, Android ਅਤੇ ਚਿੱਪ-ਲੈਵਲ ਰਿਪੇਅਰ, 10+ ਸਾਲ ਦੇ ਤਜਰਬੇਕਾਰ ਟੈਕਨੀਸ਼ੀਅਨ ਤੋਂ। ਪੈਸੇ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਮੁਫ਼ਤ ਜਾਂਚ।">iPhone, Android and chip-level repair by a technician with 10+ years of experience. Free diagnosis before you pay anything.</p>
+      <div class="cta">
+        <a class="btn wa" href="https://wa.me/919720076900" target="_blank" rel="noopener" data-en="Message on WhatsApp" data-hi="WhatsApp पर मैसेज करें" data-pa="WhatsApp ਤੇ ਮੈਸੇਜ ਕਰੋ">Message on WhatsApp</a>
+        <a class="btn line" href="tel:+919720076900" data-en="Call +91 97200 76900" data-hi="कॉल करें +91 97200 76900" data-pa="ਕਾਲ ਕਰੋ +91 97200 76900">Call +91 97200 76900</a>
       </div>
-      
-      <!-- SLIDE 2: TRAINING DISCOUNT -->
-      <div style="min-width:100%; background:linear-gradient(135deg, #1a1200 0%, #2a1f00 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
-        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(255,184,0,0.2), transparent); border-radius:50%;"></div>
-        <div style="flex:1; position:relative; z-index:2;">
-          <span style="display:inline-block; background:linear-gradient(90deg, #ffb800, #ff8800); color:#000; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🎓 36% OFF — LIMITED TIME" data-hi="🎓 36% छूट — सीमित समय" data-pa="🎓 36% ਛੋਟ — ਸੀਮਤ ਸਮਾਂ">🎓 36% OFF — LIMITED TIME</span>
-          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="Advanced Chip-Level Repair Course" data-hi="एडवांस्ड चिप-लेवल रिपेयर कोर्स" data-pa="ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਕੋਰਸ">Advanced Chip-Level Repair Course</h2>
-          <div style="margin-bottom:25px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-            <span style="color:#888; font-size:18px; font-weight:700; text-decoration:line-through;" data-en="₹90,000" data-hi="₹90,000" data-pa="₹90,000">₹90,000</span>
-            <span style="color:#ffb800; font-size:26px; font-weight:900;" data-en="₹51,000" data-hi="₹51,000" data-pa="₹51,000">₹51,000</span>
-            <span style="background:rgba(74,222,128,0.2); color:#4ade80; padding:4px 12px; border-radius:50px; font-size:12px; font-weight:700;" data-en="Save ₹28,999" data-hi="₹28,999 बचाएं" data-pa="₹28,999 ਬਚਾਓ">Save ₹28,999</span>
+    </div>
+
+    <aside class="panel glass" aria-label="Offers and repair status">
+      <div class="row">
+        <span class="tag" data-en="Limited time" data-hi="सीमित समय" data-pa="ਸੀਮਤ ਸਮਾਂ">Limited time</span>
+        <h3 data-en="Free phone diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫ਼ੋਨ ਜਾਂਚ">Free phone diagnosis</h3>
+        <p data-en="We check your phone completely. No charge." data-hi="आपका फोन पूरा चेक करेंगे। कोई चार्ज नहीं।" data-pa="ਤੁਹਾਡਾ ਫ਼ੋਨ ਪੂਰਾ ਚੈੱਕ ਕਰਾਂਗੇ। ਕੋਈ ਚਾਰਜ ਨਹੀਂ।">We check your phone completely. No charge.</p>
+        <a class="btn sig" style="margin-top:14px;min-height:44px" href="booking.html" data-en="Book a slot" data-hi="स्लॉट बुक करें" data-pa="ਸਲਾਟ ਬੁੱਕ ਕਰੋ">Book a slot</a>
+      </div>
+      <div class="row">
+        <h3 data-en="Doorstep delivery after repair" data-hi="रिपेयर के बाद घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">Doorstep delivery after repair</h3>
+        <p data-en="Same day, within Assandh + 5 km." data-hi="उसी दिन, असंध + 5 किमी में।" data-pa="ਉਸੇ ਦਿਨ, ਅਸੰਧ + 5 ਕਿਮੀ ਵਿੱਚ।">Same day, within Assandh + 5 km.</p>
+        <span class="price">₹150</span>
+      </div>
+      <div class="row" id="status">
+        <h3 data-en="Check your repair status" data-hi="रिपेयर स्टेटस जाँचें" data-pa="ਰਿਪੇਅਰ ਦੀ ਸਥਿਤੀ ਵੇਖੋ">Check your repair status</h3>
+        <form class="status" id="statusForm" novalidate>
+          <label class="sr-only" for="phoneInput">Mobile number</label>
+          <input type="tel" id="phoneInput" inputmode="numeric" autocomplete="tel-national" maxlength="10" pattern="[0-9]{10}"
+            placeholder="Enter 10-digit mobile number"
+            data-placeholder-en="Enter 10-digit mobile number"
+            data-placeholder-hi="10-अंकों का मोबाइल नंबर डालें"
+            data-placeholder-pa="10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ">
+          <button type="submit" data-en="Check" data-hi="जाँचें" data-pa="ਵੇਖੋ">Check</button>
+        </form>
+        <div id="statusResult" role="status" aria-live="polite"></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- OFFERS CAROUSEL -->
+<section class="tight" aria-label="Offers">
+  <div class="wrap">
+    <div class="carousel glass" id="offers" role="region" aria-roledescription="carousel" aria-label="Offers">
+      <div class="slides">
+        <div class="slide s1">
+          <span class="badge" data-en="LIMITED TIME OFFER" data-hi="सीमित समय का ऑफर" data-pa="ਸੀਮਤ ਸਮੇਂ ਦੀ ਪੇਸ਼ਕਸ਼">LIMITED TIME OFFER</span>
+          <h2 data-en="FREE Phone Diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫੋਨ ਡਾਇਗਨੋਸਿਸ">FREE Phone Diagnosis</h2>
+          <p data-en="Get your phone checked completely — absolutely free!" data-hi="अपने फोन की पूरी जांच करवाइए — बिल्कुल मुफ्त!" data-pa="ਆਪਣੇ ਫੋਨ ਦੀ ਪੂਰੀ ਜਾਂਚ ਕਰਵਾਓ — ਬਿਲਕੁਲ ਮੁਫ਼ਤ!">Get your phone checked completely — absolutely free!</p>
+          <div class="cta"><a class="btn sig" href="booking.html" data-en="Book Your Slot" data-hi="अपना स्लॉट बुक करें" data-pa="ਆਪਣਾ ਸਲਾਟ ਬੁੱਕ ਕਰੋ">Book Your Slot</a></div>
+        </div>
+        <div class="slide s2">
+          <span class="badge" data-en="36% OFF — LIMITED TIME" data-hi="36% छूट — सीमित समय" data-pa="36% ਛੋਟ — ਸੀਮਤ ਸਮਾਂ">36% OFF — LIMITED TIME</span>
+          <h2 data-en="Advanced Chip-Level Repair Course" data-hi="एडवांस्ड चिप-लेवल रिपेयर कोर्स" data-pa="ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਕੋਰਸ">Advanced Chip-Level Repair Course</h2>
+          <div class="price-line"><s class="was">₹90,000</s><b class="now">₹51,000</b><span class="save" data-en="Save ₹28,999" data-hi="₹28,999 बचाएं" data-pa="₹28,999 ਬਚਾਓ">Save ₹28,999</span></div>
+          <div class="cta"><a class="btn sig" href="training.html" data-en="Enroll Now" data-hi="अभी एनरोल करें" data-pa="ਹੁਣ ਐਨਰੋਲ ਕਰੋ">Enroll Now</a></div>
+        </div>
+        <div class="slide s3">
+          <span class="badge" data-en="DOORSTEP DELIVERY" data-hi="घर तक डिलीवरी" data-pa="ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">DOORSTEP DELIVERY</span>
+          <h2 data-en="After Repair, Delivery at Your Doorstep" data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">After Repair, Delivery at Your Doorstep</h2>
+          <div class="chips">
+            <div><small data-en="MINIMAL CHARGES" data-hi="न्यूनतम शुल्क" data-pa="ਘੱਟੋ-ਘੱਟ ਖਰਚਾ">MINIMAL CHARGES</small><b>₹150</b></div>
+            <div><small data-en="AREA" data-hi="क्षेत्र" data-pa="ਖੇਤਰ">AREA</small><b data-en="Assandh + 5km" data-hi="असंध + 5 किमी" data-pa="ਅਸੰਧ + 5 ਕਿਮੀ">Assandh + 5km</b></div>
+            <div><small data-en="DELIVERY TIME" data-hi="डिलीवरी समय" data-pa="ਡਿਲੀਵਰੀ ਸਮਾਂ">DELIVERY TIME</small><b data-en="Same Day" data-hi="उसी दिन" data-pa="ਉਸੇ ਦਿਨ">Same Day</b></div>
           </div>
-          <a href="training.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(255,184,0,0.3);" data-en="💬 Enroll Now" data-hi="💬 अभी एनरोल करें" data-pa="💬 ਹੁਣ ਐਨਰੋਲ ਕਰੋ">💬 Enroll Now</a>
-        </div>
-        <div style="flex-shrink:0; position:relative; z-index:2;">
-          <img src="logo.png" alt="Shree Sawriya Solutions - Mobile Repair Shop Assandh" style="width:110px; height:110px; object-fit:contain; mix-blend-mode:screen;">
-        </div>
-      </div>
-      
-      <!-- SLIDE 3: DOORSTEP DELIVERY -->
-      <div style="min-width:100%; background:linear-gradient(135deg, #0a1a0a 0%, #0a2a0a 100%); padding:45px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-sizing:border-box; position:relative; overflow:hidden;">
-        <div style="position:absolute; top:-50px; right:100px; width:250px; height:250px; background:radial-gradient(circle, rgba(74,222,128,0.2), transparent); border-radius:50%;"></div>
-        <div style="flex:1; position:relative; z-index:2;">
-          <span style="display:inline-block; background:linear-gradient(90deg, #4ade80, #22c55e); color:#fff; padding:6px 16px; border-radius:50px; font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:15px;" data-en="🚚 DOORSTEP DELIVERY" data-hi="🚚 घर तक डिलीवरी" data-pa="🚚 ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">🚚 DOORSTEP DELIVERY</span>
-          <h2 style="font-size:32px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2;" data-en="After Repair, Delivery at Your Doorstep" data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">After Repair, Delivery at Your Doorstep</h2>
-          <p style="color:#4ade80; font-size:14px; font-weight:600; margin-bottom:25px;" data-en="Minimal Charges: ₹150 | Assandh + 5km" data-hi="न्यूनतम शुल्क: ₹150 | असंध + 5 किमी" data-pa="ਘੱਟੋ-ਘੱਟ ਖਰਚਾ: ₹150 | ਅਸੰਧ + 5 ਕਿਮੀ">Minimal Charges: ₹150 | Assandh + 5km</p>
-          <a href="tel:+919720076900" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; border-radius:50px; background:#fff; color:#000; font-weight:700; font-size:15px; text-decoration:none; box-shadow:0 10px 25px rgba(74,222,128,0.3);" data-en="📞 Call Now" data-hi="📞 कॉल करें" data-pa="📞 ਕਾਲ ਕਰੋ">📞 Call Now</a>
-        </div>
-        <div style="flex-shrink:0; position:relative; z-index:2;">
-          <img src="logo.png" alt="Shree Sawriya Solutions - Mobile Repair Shop Assandh" style="width:110px; height:110px; object-fit:contain; mix-blend-mode:screen;">
+          <div class="cta">
+            <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20Doorstep%20Delivery%20service%20ke%20bare%20mein%20jaankari%20chahiye." data-en="Book Delivery" data-hi="डिलीवरी बुक करें" data-pa="ਡਿਲੀਵਰੀ ਬੁੱਕ ਕਰੋ">Book Delivery</a>
+            <a class="btn line" href="tel:+919720076900" data-en="Call Now" data-hi="कॉल करें" data-pa="ਕਾਲ ਕਰੋ">Call Now</a>
+          </div>
         </div>
       </div>
-      
+      <button type="button" class="arrow prev" aria-label="Previous offer">‹</button>
+      <button type="button" class="arrow next" aria-label="Next offer">›</button>
+      <div class="dots"></div>
     </div>
-    
-    <!-- Left Arrow -->
-    <button onclick="heroPrev()" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10; transition:0.3s;" onmouseover="this.style.background='rgba(0,0,0,0.5)'; this.style.color='#fff';" onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.color='rgba(255,255,255,0.6)';">‹</button>
-    
-    <!-- Right Arrow -->
-    <button onclick="heroNext()" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10; transition:0.3s;" onmouseover="this.style.background='rgba(0,0,0,0.5)'; this.style.color='#fff';" onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.color='rgba(255,255,255,0.6)';">›</button>
-    
-    <!-- Dots -->
-    <div id="heroDots" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;"></div>
-    
   </div>
 </section>
 
-<script>
-// CASHIFY-STYLE HERO SLIDER
-let heroIndex = 0;
-const heroTotal = 3;
-let heroTimer;
-
-function heroGoTo(index) {
-  heroIndex = index;
-  const container = document.getElementById('heroSlides');
-  if (container) {
-    container.style.transform = 'translateX(-' + (index * 100) + '%)';
-  }
-  for (let i = 0; i < heroTotal; i++) {
-    const dot = document.getElementById('heroDot-' + i);
-    if (dot) {
-      dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)';
-      dot.style.width = (i === index) ? '24px' : '10px';
-      dot.style.borderRadius = (i === index) ? '5px' : '50%';
-    }
-  }
-  clearInterval(heroTimer);
-  heroStart();
-}
-
-function heroNext() {
-  const next = (heroIndex + 1) % heroTotal;
-  heroGoTo(next);
-}
-
-function heroPrev() {
-  const prev = (heroIndex - 1 + heroTotal) % heroTotal;
-  heroGoTo(prev);
-}
-
-function heroStart() {
-  heroTimer = setInterval(heroNext, 4000);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  const dotsContainer = document.getElementById('heroDots');
-  if (dotsContainer) {
-    for (let i = 0; i < heroTotal; i++) {
-      const dot = document.createElement('span');
-      dot.id = 'heroDot-' + i;
-      dot.style.cssText = 'width:' + (i === 0 ? '24px' : '10px') + '; height:10px; border-radius:' + (i === 0 ? '5px' : '50%') + '; background:' + (i === 0 ? '#fff' : 'rgba(255,255,255,0.4)') + '; cursor:pointer; transition:0.3s;';
-      dot.onclick = (function(idx) { return function() { heroGoTo(idx); }; })(i);
-      dotsContainer.appendChild(dot);
-    }
-  }
-  heroStart();
-  
-  // Touch swipe
-  let touchStartX = 0;
-  const slider = document.getElementById('heroSlides');
-  if (slider) {
-    slider.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; });
-    slider.addEventListener('touchend', function(e) {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) heroNext();
-        else heroPrev();
-      }
-    });
-  }
-});
-</script>
-
-<!-- DOORSTEP DELIVERY BANNER -->
-<section style="padding:20px; background:#0a0a0a;">
-  <div style="max-width:900px; margin:0 auto; background:linear-gradient(135deg, #0d1f0d 0%, #0a150a 100%); border:1px solid #4ade80; border-radius:24px; padding:35px 25px; text-align:center; box-shadow:0 15px 40px rgba(74,222,128,0.15);">
-    
-    <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:linear-gradient(135deg, #4ade80, #22c55e); border-radius:50%; margin-bottom:20px; box-shadow:0 10px 30px rgba(74,222,128,0.4);">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
-        <path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm1.5-9H17V12h4.46L19.5 9.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8l3 4v5h-2c0 1.66-1.34 3-3 3s-3-1.34-3-3H9c0 1.66-1.34 3-3 3s-3-1.34-3-3H1V6c0-1.11.89-2 2-2h14v4h3zM3 6v9h.76c.55-.61 1.35-1 2.24-1s1.69.39 2.24 1H15V6H3z"/>
-      </svg>
-    </div>
-    
-    <h2 style="font-size:24px; font-weight:800; color:#fff; margin-bottom:12px;" data-en="Doorstep Delivery Service" data-hi="घर तक डिलीवरी सेवा" data-pa="ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ ਸੇਵਾ">Doorstep Delivery Service</h2>
-    
-    <p style="color:#aaa; font-size:15px; margin-bottom:20px; max-width:600px; margin-left:auto; margin-right:auto;" data-en="After repair, delivery at your doorstep." data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी। आपको दुकान तक आने की ज़रूरत नहीं।" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ। ਤੁਹਾਨੂੰ ਦੁਕਾਨ ਤੱਕ ਆਉਣ ਦੀ ਲੋੜ ਨਹੀਂ।">After repair, delivery at your doorstep.</p>
-    
-    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:25px;">
-      <div style="background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); border-radius:12px; padding:12px 20px;">
-        <p style="color:#4ade80; font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:4px;" data-en="MINIMAL CHARGES" data-hi="न्यूनतम शुल्क" data-pa="ਘੱਟੋ-ਘੱਟ ਖਰਚਾ">MINIMAL CHARGES</p>
-        <p style="color:#fff; font-size:18px; font-weight:800;">₹150</p>
-      </div>
-      <div style="background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); border-radius:12px; padding:12px 20px;">
-        <p style="color:#4ade80; font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:4px;" data-en="AREA" data-hi="क्षेत्र" data-pa="ਖੇਤਰ">AREA</p>
-        <p style="color:#fff; font-size:14px; font-weight:700;" data-en="Assandh + 5km" data-hi="असंध + 5 किमी" data-pa="ਅਸੰਧ + 5 ਕਿਮੀ">Assandh + 5km</p>
-      </div>
-      <div style="background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); border-radius:12px; padding:12px 20px;">
-        <p style="color:#4ade80; font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:4px;" data-en="DELIVERY TIME" data-hi="डिलीवरी समय" data-pa="ਡਿਲੀਵਰੀ ਸਮਾਂ">DELIVERY TIME</p>
-        <p style="color:#fff; font-size:14px; font-weight:700;" data-en="Same Day" data-hi="उसी दिन" data-pa="ਉਸੇ ਦਿਨ">Same Day</p>
-      </div>
-    </div>
-    
-    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://wa.me/919720076900?text=Namaste%20Shree%20Sawriya%20Solutions%2C%20mujhe%20Doorstep%20Delivery%20service%20ke%20bare%20mein%20jaankari%20chahiye." target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:10px;" data-en="Book Delivery" data-hi="डिलीवरी बुक करें" data-pa="ਡਿਲੀਵਰੀ ਬੁੱਕ ਕਰੋ">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      </a>
-      <a href="tel:+919720076900" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:10px;" data-en="Call Now" data-hi="कॉल करें" data-pa="ਕਾਲ ਕਰੋ">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      </a>
-    </div>
-    
-  </div>
-</section>
-  
 <!-- SERVICES -->
 <section id="services">
-  <h2 class="section-title" data-en="Our Services" data-hi="हमारी सेवाएं" data-pa="ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ">Our Services</h2>
-  <p class="section-sub" data-en="Professional solutions for all your mobile needs" data-hi="आपकी सभी मोबाइल जरूरतों के लिए प्रोफेशनल समाधान" data-pa="ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਮੋਬਾਈਲ ਲੋੜਾਂ ਲਈ ਪ੍ਰੋਫੈਸ਼ਨਲ ਹੱਲ">Professional solutions for all your mobile needs</p>
-  <div class="services-grid">
-    <a href="iphone-repair.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
-      <div class="service-icon">📱</div>
-      <h3 data-en="iPhone Repair" data-hi="आईफोन रिपेयर" data-pa="ਆਈਫੋਨ ਰਿਪੇਅਰ">iPhone Repair</h3>
-      <p data-en="Screen replacement, Battery, Charging port, Camera and all types of iPhone repair by expert technicians." data-hi="स्क्रीन रिप्लेसमेंट, बैटरी, चार्जिंग पोर्ट, कैमरा और हर तरह की आईफोन रिपेयर एक्सपर्ट टेक्नीशियन द्वारा।" data-pa="ਸਕਰੀਨ ਬਦਲਣਾ, ਬੈਟਰੀ, ਚਾਰਜਿੰਗ ਪੋਰਟ, ਕੈਮਰਾ ਅਤੇ ਹਰ ਤਰ੍ਹਾਂ ਦੀ ਆਈਫੋਨ ਰਿਪੇਅਰ ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ ਦੁਆਰਾ।">Screen replacement, Battery, Charging port, Camera aur har tarah ki iPhone repair.</p>
-      <p style="color:#fff; font-weight:600; margin-top:12px; font-size:13px;" data-en="View Details →" data-hi="विवरण देखें →" data-pa="ਵੇਰਵਾ ਦੇਖੋ →">View Details →</p>
-    </a>
-    <a href="android-repair.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
-      <div class="service-icon">🤖</div>
-      <h3 data-en="Android Repair" data-hi="एंड्रॉयड रिपेयर" data-pa="ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ">Android Repair</h3>
-      <p data-en="All Android phones repair — Display, Battery, Motherboard, Software and Hardware issues." data-hi="सभी एंड्रॉयड फोन की रिपेयर — डिस्प्ले, बैटरी, मदरबोर्ड, सॉफ्टवेयर और हार्डवेयर समस्याएं।" data-pa="ਸਾਰੇ ਐਂਡਰਾਇਡ ਫੋਨਾਂ ਦੀ ਰਿਪੇਅਰ — ਡਿਸਪਲੇ, ਬੈਟਰੀ, ਮਦਰਬੋਰਡ, ਸੌਫਟਵੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆਵਾਂ।">Saare Android phones ki repair.</p>
-      <p style="color:#fff; font-weight:600; margin-top:12px; font-size:13px;" data-en="View Details →" data-hi="विवरण देखें →" data-pa="ਵੇਰਵਾ ਦੇਖੋ →">View Details →</p>
-    </a>
-    <div class="service-card"><div class="service-icon">🔬</div><h3 data-en="Chip-Level Repair" data-hi="चिप-लेवल रिपेयर" data-pa="ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ">Chip-Level Repair</h3><p data-en="Advanced chip-level repair with modern equipment. Dead phone, Water damage, IC replacement." data-hi="आधुनिक उपकरणों के साथ एडवांस्ड चिप-लेवल रिपेयर। डेड फोन, वाटर डैमेज, आईसी रिप्लेसमेंट।" data-pa="ਆਧੁਨਿਕ ਸਾਜ਼ੋ-ਸਮਾਨ ਨਾਲ ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ। ਡੈੱਡ ਫੋਨ, ਪਾਣੀ ਨੁਕਸਾਨ, ਆਈਸੀ ਬਦਲਣਾ।">Advanced chip-level repair with modern equipment.</p></div>
-    <div class="service-card"><div class="service-icon">📦</div><h3 data-en="Second-Hand Smartphones" data-hi="सेकंड-हैंड स्मार्टफोन" data-pa="ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ">Second-Hand Smartphones</h3><p data-en="Quality-checked pre-owned smartphones at best prices with warranty." data-hi="वारंटी के साथ बेस्ट प्राइस पर क्वालिटी-चेक्ड सेकंड-हैंड स्मार्टफोन।" data-pa="ਵਾਰੰਟੀ ਨਾਲ ਸਭ ਤੋਂ ਵਧੀਆ ਕੀਮਤ 'ਤੇ ਕੁਆਲਿਟੀ-ਚੈੱਕਡ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ।">Quality-checked pre-owned smartphones at best prices.</p></div>
-    <div class="service-card"><div class="service-icon">🎧</div><h3 data-en="Accessories" data-hi="एक्सेसरीज़" data-pa="ਐਕਸੈਸਰੀਜ਼">Accessories</h3><p data-en="Original chargers, Earphones, Covers, Tempered glass and premium mobile accessories." data-hi="ओरिजिनल चार्जर, ईयरफोन, कवर, टेम्पर्ड ग्लास और प्रीमियम मोबाइल एक्सेसरीज़।" data-pa="ਅਸਲ ਚਾਰਜਰ, ਈਅਰਫੋਨ, ਕਵਰ, ਟੈਂਪਰਡ ਗਲਾਸ ਅਤੇ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼।">Original chargers, Earphones, Covers, Tempered glass.</p></div>
-    <a href="training.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
-      <div class="service-icon">🎓</div>
-      <h3 data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</h3>
-      <p data-en="Professional chip-level mobile repair training course. Practical knowledge with certification." data-hi="प्रोफेशनल चिप-लेवल मोबाइल रिपेयर ट्रेनिंग कोर्स। सर्टिफिकेशन के साथ प्रैक्टिकल नॉलेज।" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਚਿਪ-ਲੈਵਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟ੍ਰੇਨਿੰਗ ਕੋਰਸ। ਸਰਟੀਫਿਕੇਸ਼ਨ ਨਾਲ ਪ੍ਰੈਕਟੀਕਲ ਗਿਆਨ।">Professional chip-level mobile repair training course.</p>
-      <p style="color:#fff; font-weight:600; margin-top:12px; font-size:13px;" data-en="View Course Details →" data-hi="कोर्स की जानकारी देखें →" data-pa="ਕੋਰਸ ਦੀ ਜਾਣਕਾਰੀ ਦੇਖੋ →">View Course Details →</p>
-    </a>
-    <div class="service-card" style="border:1px solid #4ade80; background:linear-gradient(145deg, #0d1f0d, #0a150a);">
-      <div class="service-icon">🚚</div>
-      <h3 data-en="Doorstep Delivery" data-hi="घर तक डिलीवरी" data-pa="ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">Doorstep Delivery</h3>
-      <p data-en="After repair, delivery at your doorstep. Minimal charges: ₹150. Area: Assandh + 5km. Same day delivery." data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी। न्यूनतम शुल्क: ₹150। क्षेत्र: असंध + 5 किमी। उसी दिन डिलीवरी।" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ। ਘੱਟੋ-ਘੱਟ ਖਰਚਾ: ₹150। ਖੇਤਰ: ਅਸੰਧ + 5 ਕਿਮੀ। ਉਸੇ ਦਿਨ ਡਿਲੀਵਰੀ।">After repair, delivery at your doorstep. Minimal charges: ₹150. Area: Assandh + 5km. Same day delivery.</p>
-      <p style="color:#4ade80; font-weight:600; margin-top:12px; font-size:13px;" data-en="✓ Available" data-hi="✓ उपलब्ध" data-pa="✓ ਉਪਲਬਧ">✓ Available</p>
+  <div class="wrap">
+    <div class="head">
+      <h2 data-en="Our Services" data-hi="हमारी सेवाएं" data-pa="ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ">Our Services</h2>
+      <p class="lede" data-en="Professional solutions for all your mobile needs" data-hi="आपकी सभी मोबाइल जरूरतों के लिए प्रोफेशनल समाधान" data-pa="ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਮੋਬਾਈਲ ਲੋੜਾਂ ਲਈ ਪ੍ਰੋਫੈਸ਼ਨਲ ਹੱਲ">Professional solutions for all your mobile needs</p>
+    </div>
+    <div class="svc glass">
+      <a href="iphone-repair.html"><h3 data-en="iPhone Repair" data-hi="आईफोन रिपेयर" data-pa="ਆਈਫੋਨ ਰਿਪੇਅਰ">iPhone Repair</h3><p data-en="Screen replacement, Battery, Charging port, Camera and all types of iPhone repair by expert technicians." data-hi="स्क्रीन रिप्लेसमेंट, बैटरी, चार्जिंग पोर्ट, कैमरा और हर तरह की आईफोन रिपेयर एक्सपर्ट टेक्नीशियन द्वारा।" data-pa="ਸਕਰੀਨ ਬਦਲਣਾ, ਬੈਟਰੀ, ਚਾਰਜਿੰਗ ਪੋਰਟ, ਕੈਮਰਾ ਅਤੇ ਹਰ ਤਰ੍ਹਾਂ ਦੀ ਆਈਫੋਨ ਰਿਪੇਅਰ ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ ਦੁਆਰਾ।">Screen replacement, Battery, Charging port, Camera and all types of iPhone repair by expert technicians.</p><span class="go" data-en="View Details →" data-hi="विवरण देखें →" data-pa="ਵੇਰਵਾ ਦੇਖੋ →">View Details →</span></a>
+      <a href="android-repair.html"><h3 data-en="Android Repair" data-hi="एंड्रॉयड रिपेयर" data-pa="ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ">Android Repair</h3><p data-en="All Android phones repair — Display, Battery, Motherboard, Software and Hardware issues." data-hi="सभी एंड्रॉयड फोन की रिपेयर — डिस्प्ले, बैटरी, मदरबोर्ड, सॉफ्टवेयर और हार्डवेयर समस्याएं।" data-pa="ਸਾਰੇ ਐਂਡਰਾਇਡ ਫੋਨਾਂ ਦੀ ਰਿਪੇਅਰ — ਡਿਸਪਲੇ, ਬੈਟਰੀ, ਮਦਰਬੋਰਡ, ਸੌਫਟਵੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆਵਾਂ।">All Android phones repair — Display, Battery, Motherboard, Software and Hardware issues.</p><span class="go" data-en="View Details →" data-hi="विवरण देखें →" data-pa="ਵੇਰਵਾ ਦੇਖੋ →">View Details →</span></a>
+      <div class="item"><h3 data-en="Chip-Level Repair" data-hi="चिप-लेवल रिपेयर" data-pa="ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ">Chip-Level Repair</h3><p data-en="Advanced chip-level repair with modern equipment. Dead phone, Water damage, IC replacement." data-hi="आधुनिक उपकरणों के साथ एडवांस्ड चिप-लेवल रिपेयर। डेड फोन, वाटर डैमेज, आईसी रिप्लेसमेंट।" data-pa="ਆਧੁਨਿਕ ਸਾਜ਼ੋ-ਸਮਾਨ ਨਾਲ ਐਡਵਾਂਸਡ ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ। ਡੈੱਡ ਫੋਨ, ਪਾਣੀ ਨੁਕਸਾਨ, ਆਈਸੀ ਬਦਲਣਾ।">Advanced chip-level repair with modern equipment. Dead phone, Water damage, IC replacement.</p><span></span></div>
+      <div class="item"><h3 data-en="Second-Hand Smartphones" data-hi="सेकंड-हैंड स्मार्टफोन" data-pa="ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ">Second-Hand Smartphones</h3><p data-en="Quality-checked pre-owned smartphones at best prices with warranty." data-hi="वारंटी के साथ बेस्ट प्राइस पर क्वालिटी-चेक्ड सेकंड-हैंड स्मार्टफोन।" data-pa="ਵਾਰੰਟੀ ਨਾਲ ਸਭ ਤੋਂ ਵਧੀਆ ਕੀਮਤ &#x27;ਤੇ ਕੁਆਲਿਟੀ-ਚੈੱਕਡ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ।">Quality-checked pre-owned smartphones at best prices with warranty.</p><span></span></div>
+      <div class="item"><h3 data-en="Accessories" data-hi="एक्सेसरीज़" data-pa="ਐਕਸੈਸਰੀਜ਼">Accessories</h3><p data-en="Original chargers, Earphones, Covers, Tempered glass and premium mobile accessories." data-hi="ओरिजिनल चार्जर, ईयरफोन, कवर, टेम्पर्ड ग्लास और प्रीमियम मोबाइल एक्सेसरीज़।" data-pa="ਅਸਲ ਚਾਰਜਰ, ਈਅਰਫੋਨ, ਕਵਰ, ਟੈਂਪਰਡ ਗਲਾਸ ਅਤੇ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼।">Original chargers, Earphones, Covers, Tempered glass and premium mobile accessories.</p><span></span></div>
+      <a href="training.html"><h3 data-en="Chip-Level Training" data-hi="चिप-लेवल ट्रेनिंग" data-pa="ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ">Chip-Level Training</h3><p data-en="Professional chip-level mobile repair training course. Practical knowledge with certification." data-hi="प्रोफेशनल चिप-लेवल मोबाइल रिपेयर ट्रेनिंग कोर्स। सर्टिफिकेशन के साथ प्रैक्टिकल नॉलेज।" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਚਿਪ-ਲੈਵਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟ੍ਰੇਨਿੰਗ ਕੋਰਸ। ਸਰਟੀਫਿਕੇਸ਼ਨ ਨਾਲ ਪ੍ਰੈਕਟੀਕਲ ਗਿਆਨ।">Professional chip-level mobile repair training course. Practical knowledge with certification.</p><span class="go" data-en="View Course Details →" data-hi="कोर्स की जानकारी देखें →" data-pa="ਕੋਰਸ ਦੀ ਜਾਣਕਾਰੀ ਦੇਖੋ →">View Course Details →</span></a>
+      <div class="item"><h3 data-en="Doorstep Delivery" data-hi="घर तक डिलीवरी" data-pa="ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">Doorstep Delivery</h3><p data-en="After repair, delivery at your doorstep. Minimal charges: ₹150. Area: Assandh + 5km. Same day delivery." data-hi="रिपेयर के बाद, आपके घर तक डिलीवरी। न्यूनतम शुल्क: ₹150। क्षेत्र: असंध + 5 किमी। उसी दिन डिलीवरी।" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ, ਤੁਹਾਡੇ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ। ਘੱਟੋ-ਘੱਟ ਖਰਚਾ: ₹150। ਖੇਤਰ: ਅਸੰਧ + 5 ਕਿਮੀ। ਉਸੇ ਦਿਨ ਡਿਲੀਵਰੀ।">After repair, delivery at your doorstep. Minimal charges: ₹150. Area: Assandh + 5km. Same day delivery.</p><span class="ok" data-en="Available" data-hi="उपलब्ध" data-pa="ਉਪਲਬਧ">Available</span></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" style="background:#0d0d0d;">
-  <h2 class="section-title" data-en="About Us" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About Us</h2>
-  <p class="section-sub" data-en="Trusted since years in Assandh" data-hi="असंध में सालों से भरोसेमंद" data-pa="ਅਸੰਧ ਵਿੱਚ ਸਾਲਾਂ ਤੋਂ ਭਰੋਸੇਮੰਦ">Trusted since years in Assandh</p>
-  <div class="about">
-    <p data-en="Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana. We are experts in iPhone, Android, chip-level repair and second-hand smartphone sales. Our goal is to provide customers with quality service, genuine parts and affordable prices." data-hi="श्री सावरिया सॉल्यूशंस असंध, हरियाणा में एक प्रीमियम मोबाइल रिपेयर और ट्रेनिंग सेंटर है। हम आईफोन, एंड्रॉयड, चिप-लेवल रिपेयर और सेकंड-हैंड स्मार्टफोन बिक्री में विशेषज्ञ हैं। हमारा लक्ष्य है ग्राहकों को क्वालिटी सर्विस, असली पार्ट्स और वाजिब कीमतें देना।" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਅਸੰਧ, ਹਰਿਆਣਾ ਵਿੱਚ ਇੱਕ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ ਟ੍ਰੇਨਿੰਗ ਸੈਂਟਰ ਹੈ। ਅਸੀਂ ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ ਵਿਕਰੀ ਵਿੱਚ ਮਾਹਿਰ ਹਾਂ। ਸਾਡਾ ਟੀਚਾ ਹੈ ਗਾਹਕਾਂ ਨੂੰ ਕੁਆਲਿਟੀ ਸੇਵਾ, ਅਸਲੀ ਪਾਰਟਸ ਅਤੇ ਵਾਜਬ ਕੀਮਤਾਂ ਦੇਣਾ।">Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana.</p>
-    <br>
-    <p data-en="We also provide Chip-Level Training for those who want to build a career in the mobile repair field." data-hi="हम उन लोगों के लिए चिप-लेवल ट्रेनिंग भी प्रदान करते हैं जो मोबाइल रिपेयर फील्ड में करियर बनाना चाहते हैं।" data-pa="ਅਸੀਂ ਉਹਨਾਂ ਲੋਕਾਂ ਲਈ ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ ਜੋ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਖੇਤਰ ਵਿੱਚ ਕਰੀਅਰ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ।">We also provide Chip-Level Training for those who want to build a career in the mobile repair field.</p>
-  </div>
-</section>
-
-<script>
-const API_URL = "https://script.google.com/macros/s/REMOVED/exec";
-async function checkStatus() {
-  const phone = document.getElementById('phoneInput').value.trim();
-  const resultDiv = document.getElementById('statusResult');
-  if (phone.length !== 10 || isNaN(phone)) { resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kripya 10-digit ka sahi mobile number daaliye.</div>'; return; }
-  window.location.href = 'track.html?m=' + phone;
-  return;
-  try {
-    const response = await fetch(API_URL + "?phone=" + phone);
-    const data = await response.json();
-    if (data.found) {
-      resultDiv.innerHTML = `<div style="background:#111; border:1px solid #333; border-radius:16px; padding:25px; text-align:left;"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;"><h3 style="font-size:18px; margin:0;">${data.customerName}</h3><span style="background:#fff; color:#000; padding:6px 14px; border-radius:50px; font-size:12px; font-weight:700;">${data.status}</span></div><div style="display:grid; gap:12px; font-size:14px;"><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Phone Model</span><span style="color:#fff; font-weight:600;">${data.phoneModel}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Entry Date</span><span style="color:#fff; font-weight:600;">${data.entryDate}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Estimated Charges</span><span style="color:#fff; font-weight:600;">₹${data.estimateCharge}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #222;"><span style="color:#888;">Estimated Delivery</span><span style="color:#fff; font-weight:600;">${data.estimateDelivery}</span></div><div style="display:flex; justify-content:space-between; padding:10px 0;"><span style="color:#888;">Notes</span><span style="color:#fff; font-weight:600; text-align:right; max-width:60%;">${data.notes}</span></div></div></div>`;
-    } else {
-      resultDiv.innerHTML = '<div style="background:#1a1a2a; border:1px solid #333355; border-radius:12px; padding:20px; color:#9999ff; text-align:center;">Is number ka koi record nahi mila. Kripya shop par sampark kijiye.</div>';
-    }
-  } catch (error) {
-    resultDiv.innerHTML = '<div style="background:#2a1a1a; border:1px solid #553333; border-radius:12px; padding:20px; color:#ff9999; text-align:center;">Kuch technical problem aa gayi. Thodi der baad try kijiye.</div>';
-  }
-}
-</script>
-
-<!-- PHOTO GALLERY SLIDESHOW -->
-<section id="gallery" style="background:#0d0d0d; padding:60px 20px;">
-  <h2 class="section-title" data-en="Our Gallery" data-hi="हमारी चित्रशाला" data-pa="ਸਾਡੀ ਫੋਟੋਆ">Our Gallery</h2>
-  <p class="section-sub" data-en="Real photos" data-hi="असली तस्वीरें" data-pa="ਸਾਡੀ ਅਸਲੀ ਤਸਵੀਰਾਂ">Real photos</p>
-  
-  <div style="max-width:900px; margin:0 auto; position:relative;">
-    <div id="gallerySlider" style="position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 20px 50px rgba(0,0,0,0.6); aspect-ratio:16/10; background:#111;">
-      <div id="gallerySlides" style="display:flex; transition:transform 0.6s ease-in-out; height:100%;">
-        <!-- Photos will load here from gallery.json -->
-      </div>
-      
-      <!-- Left Arrow -->
-      <button onclick="galleryPrev()" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">‹</button>
-      
-      <!-- Right Arrow -->
-      <button onclick="galleryNext()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">›</button>
-      
-      <!-- Dots -->
-      <div id="galleryDots" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;"></div>
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-en="About Us" data-hi="हमारे बारे में" data-pa="ਸਾਡੇ ਬਾਰੇ">About Us</h2>
+      <p class="lede" data-en="Trusted since years in Assandh" data-hi="असंध में सालों से भरोसेमंद" data-pa="ਅਸੰਧ ਵਿੱਚ ਸਾਲਾਂ ਤੋਂ ਭਰੋਸੇਮੰਦ">Trusted since years in Assandh</p>
+    </div>
+    <div class="glass aboutus">
+      <p data-en="Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana. We are experts in iPhone, Android, chip-level repair and second-hand smartphone sales. Our goal is to provide customers with quality service, genuine parts and affordable prices." data-hi="श्री सावरिया सॉल्यूशंस असंध, हरियाणा में एक प्रीमियम मोबाइल रिपेयर और ट्रेनिंग सेंटर है। हम आईफोन, एंड्रॉयड, चिप-लेवल रिपेयर और सेकंड-हैंड स्मार्टफोन बिक्री में विशेषज्ञ हैं। हमारा लक्ष्य है ग्राहकों को क्वालिटी सर्विस, असली पार्ट्स और वाजिब कीमतें देना।" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਅਸੰਧ, ਹਰਿਆਣਾ ਵਿੱਚ ਇੱਕ ਪ੍ਰੀਮੀਅਮ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਅਤੇ ਟ੍ਰੇਨਿੰਗ ਸੈਂਟਰ ਹੈ। ਅਸੀਂ ਆਈਫੋਨ, ਐਂਡਰਾਇਡ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਸੈਕੰਡ-ਹੈਂਡ ਸਮਾਰਟਫੋਨ ਵਿਕਰੀ ਵਿੱਚ ਮਾਹਿਰ ਹਾਂ। ਸਾਡਾ ਟੀਚਾ ਹੈ ਗਾਹਕਾਂ ਨੂੰ ਕੁਆਲਿਟੀ ਸੇਵਾ, ਅਸਲੀ ਪਾਰਟਸ ਅਤੇ ਵਾਜਬ ਕੀਮਤਾਂ ਦੇਣਾ।">Shree Sawriya Solutions is a premium mobile repair and training center in Assandh, Haryana. We are experts in iPhone, Android, chip-level repair and second-hand smartphone sales. Our goal is to provide customers with quality service, genuine parts and affordable prices.</p>
+      <p data-en="We also provide Chip-Level Training for those who want to build a career in the mobile repair field." data-hi="हम उन लोगों के लिए चिप-लेवल ट्रेनिंग भी प्रदान करते हैं जो मोबाइल रिपेयर फील्ड में करियर बनाना चाहते हैं।" data-pa="ਅਸੀਂ ਉਹਨਾਂ ਲੋਕਾਂ ਲਈ ਚਿਪ-ਲੈਵਲ ਟ੍ਰੇਨਿੰਗ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ ਜੋ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਖੇਤਰ ਵਿੱਚ ਕਰੀਅਰ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ।">We also provide Chip-Level Training for those who want to build a career in the mobile repair field.</p>
     </div>
   </div>
 </section>
 
-<script>
-let galleryPhotos = [];
-let galleryIndex = 0;
-let galleryTimer;
-
-fetch('gallery.json')
-  .then(response => response.json())
-  .then(data => {
-    galleryPhotos = data.photos;
-    renderGallery();
-  })
-  .catch(error => console.log('Gallery error:', error));
-
-function renderGallery() {
-  const slidesContainer = document.getElementById('gallerySlides');
-  const dotsContainer = document.getElementById('galleryDots');
-  
-  if (!slidesContainer || galleryPhotos.length === 0) return;
-  
-  slidesContainer.innerHTML = '';
-  dotsContainer.innerHTML = '';
-  
-  galleryPhotos.forEach((photo, i) => {
-    const slide = document.createElement('div');
-    slide.style.cssText = 'min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#0a0a0a;';
-    slide.innerHTML = '<img src="' + photo + '" alt="Shree Sawriya Solutions - Mobile Repair Work in Assandh" style="width:100%; height:100%; object-fit:contain;">';
-    slidesContainer.appendChild(slide);
-    
-    const dot = document.createElement('span');
-    dot.style.cssText = 'width:10px; height:10px; border-radius:50%; background:' + (i === 0 ? '#fff' : 'rgba(255,255,255,0.4)') + '; cursor:pointer; transition:0.3s;';
-    dot.onclick = () => galleryGoTo(i);
-    dotsContainer.appendChild(dot);
-  });
-  
-  galleryGoTo(0);
-  startGalleryAutoSlide();
-}
-
-function galleryGoTo(index) {
-  galleryIndex = index;
-  const slidesContainer = document.getElementById('gallerySlides');
-  if (slidesContainer) {
-    slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
-  }
-  const dots = document.querySelectorAll('#galleryDots span');
-  dots.forEach((dot, i) => {
-    dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)';
-  });
-}
-
-function galleryNext() {
-  if (galleryPhotos.length === 0) return;
-  galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
-  galleryGoTo(galleryIndex);
-  resetGalleryTimer();
-}
-
-function galleryPrev() {
-  if (galleryPhotos.length === 0) return;
-  galleryIndex = (galleryIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
-  galleryGoTo(galleryIndex);
-  resetGalleryTimer();
-}
-
-function startGalleryAutoSlide() {
-  galleryTimer = setInterval(() => {
-    galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
-    galleryGoTo(galleryIndex);
-  }, 4000);
-}
-
-function resetGalleryTimer() {
-  clearInterval(galleryTimer);
-  startGalleryAutoSlide();
-}
-
-// Touch swipe support
-let galleryTouchStart = 0;
-document.addEventListener('DOMContentLoaded', function() {
-  const slider = document.getElementById('gallerySlider');
-  if (slider) {
-    slider.addEventListener('touchstart', e => { galleryTouchStart = e.changedTouches[0].screenX; });
-    slider.addEventListener('touchend', e => {
-      const diff = galleryTouchStart - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) galleryNext();
-        else galleryPrev();
-      }
-    });
-  }
-});
-</script>
-
-<!-- REPAIR STATUS CHECK -->
-<section id="status" style="background:#0d0d0d;">
-  <h2 class="section-title" data-en="Repair Status Check" data-hi="रिपेयर स्टेटस चेक" data-pa="ਰਿਪੇਅਰ ਸਟੇਟਸ ਚੈੱਕ">Repair Status Check</h2>
-  <p class="section-sub" data-en="Enter your mobile number and check your phone's status" data-hi="अपना मोबाइल नंबर डालें और अपने फोन का स्टेटस जानें" data-pa="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ ਅਤੇ ਆਪਣੇ ਫੋਨ ਦਾ ਸਟੇਟਸ ਜਾਣੋ">Enter your mobile number and check your phone's status</p>
-  
-  <div style="max-width:500px; margin:0 auto;">
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <input 
-        type="tel" 
-        id="phoneInput" 
-        placeholder="Enter 10-digit mobile number" 
-        data-placeholder-en="Enter 10-digit mobile number" 
-        data-placeholder-hi="10-अंकों का मोबाइल नंबर डालें" 
-        data-placeholder-pa="10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ" 
-        maxlength="10"
-        style="flex:1; min-width:200px; padding:15px 20px; border-radius:50px; border:1px solid #333; background:#111; color:#fff; font-size:14px; outline:none;">
-      <button 
-        onclick="checkStatus()" 
-        data-en="Check Status" 
-        data-hi="स्टेटस चेक करें" 
-        data-pa="ਸਟੇਟਸ ਚੈੱਕ ਕਰੋ" 
-        style="padding:15px 30px; border-radius:50px; background:#fff; color:#000; font-weight:600; font-size:14px; border:none; cursor:pointer;">Check Status</button>
+<!-- GALLERY -->
+<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-en="Our Gallery" data-hi="हमारी चित्रशाला" data-pa="ਸਾਡੀ ਫੋਟੋਆ">Our Gallery</h2>
+      <p class="lede" data-en="Real photos" data-hi="असली तस्वीरें" data-pa="ਸਾਡੀ ਅਸਲੀ ਤਸਵੀਰਾਂ">Real photos</p>
     </div>
-    <div id="statusResult" style="margin-top:25px;"></div>
+    <div class="carousel glass frame" id="gallerySlider" role="region" aria-roledescription="carousel" aria-label="Gallery">
+      <div class="slides" id="gallerySlides"></div>
+      <button type="button" class="arrow prev" aria-label="Previous photo">‹</button>
+      <button type="button" class="arrow next" aria-label="Next photo">›</button>
+      <div class="dots" id="galleryDots"></div>
+    </div>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" style="background:#0a0a0a;">
-  <h2 class="section-title" data-en="Customer Reviews" data-hi="ग्राहक समीक्षाएं" data-pa="ਗਾਹਕ ਸਮੀਖਿਆਵਾਂ">Customer Reviews</h2>
-  <p class="section-sub" data-en="What our customers say" data-hi="हमारे ग्राहक क्या कहते हैं" data-pa="ਸਾਡੇ ਗਾਹਕ ਕੀ ਕਹਿੰਦੇ ਹਨ">What our customers say</p>
-  
-  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
-    
-    <!-- REVIEW 1 - ANUJ CANDIR (Google) -->
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">A</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Anuj Candir</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Google Review</p>
-        </div>
-      </div>
-      <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Excellent service and professional work. Mobile repair ke baare mein proper guidance mili aur staff ka behaviour bhi bahut achha hai. Work quality se satisfied hoon. Highly recommended for mobile repair."</p>
+<section id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 data-en="Customer Reviews" data-hi="ग्राहक समीक्षाएं" data-pa="ਗਾਹਕ ਸਮੀਖਿਆਵਾਂ">Customer Reviews</h2><p class="lede" data-en="What our customers say" data-hi="हमारे ग्राहक क्या कहते हैं" data-pa="ਸਾਡੇ ਗਾਹਕ ਕੀ ਕਹਿੰਦੇ ਹਨ">What our customers say</p></div>
+    <div class="rev" tabindex="0" aria-label="Customer reviews">
+      <figure class="glass"><div class="who"><span class="av">A</span><div><b>Anuj Candir</b><small>Verified Google Review</small></div></div><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>"Excellent service and professional work. Mobile repair ke baare mein proper guidance mili aur staff ka behaviour bhi bahut achha hai. Work quality se satisfied hoon. Highly recommended for mobile repair."</blockquote></figure>
+      <figure class="glass"><div class="who"><span class="av">S</span><div><b>S Maan</b><small>Verified Google Review</small></div></div><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>"Bahut hi achhi mobile repair service hai. Staff ka behaviour polite aur helpful hai, aur repair ka kaam bhi professional tarike se kiya. Reasonable price mein achhi quality ka kaam mila. Repair ke baad mobile bilkul properly work kar raha hai. Overall service se bahut satisfied hoon. Highly recommended! 👍"</blockquote></figure>
+      <figure class="glass"><div class="who"><span class="av">R</span><div><b>Rahul Sharma</b><small>Verified Customer</small></div></div><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>"iPhone ki screen 1 ghante mein theek kar di. Bahut professional kaam hai. Highly recommended!"</blockquote></figure>
+      <figure class="glass"><div class="who"><span class="av">P</span><div><b>Priya Verma</b><small>Verified Customer</small></div></div><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>"Chip-level repair bahut accha karte hain. Meri dead phone wapas chal padi. Thank you!"</blockquote></figure>
+      <figure class="glass"><div class="who"><span class="av">A</span><div><b>Amit Kumar</b><small>Verified Customer</small></div></div><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>"Honest pricing aur quality service. Mobile accessories bhi genuine milte hain. Best shop in Assandh."</blockquote></figure>
     </div>
-
-    <!-- REVIEW 2 - S MAAN (Google) -->
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">S</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">S Maan</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Google Review</p>
-        </div>
-      </div>
-      <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Bahut hi achhi mobile repair service hai. Staff ka behaviour polite aur helpful hai, aur repair ka kaam bhi professional tarike se kiya. Reasonable price mein achhi quality ka kaam mila. Repair ke baad mobile bilkul properly work kar raha hai. Overall service se bahut satisfied hoon. Highly recommended! 👍"</p>
-    </div>
-
-    <!-- REVIEW 3 - RAHUL SHARMA -->
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">R</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Rahul Sharma</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
-      <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"iPhone ki screen 1 ghante mein theek kar di. Bahut professional kaam hai. Highly recommended!"</p>
-    </div>
-
-    <!-- REVIEW 4 - PRIYA VERMA -->
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">P</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Priya Verma</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
-      <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Chip-level repair bahut accha karte hain. Meri dead phone wapas chal padi. Thank you!"</p>
-    </div>
-
-    <!-- REVIEW 5 - AMIT KUMAR -->
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:20px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #fff, #888); color:#000; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">A</div>
-        <div>
-          <h4 style="color:#fff; font-size:15px; margin:0;">Amit Kumar</h4>
-          <p style="color:#666; font-size:12px; margin:2px 0 0;">Verified Customer</p>
-        </div>
-      </div>
-      <div style="color:#ffb800; font-size:16px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
-      <p style="color:#aaa; font-size:13px; line-height:1.7; margin:0;">"Honest pricing aur quality service. Mobile accessories bhi genuine milte hain. Best shop in Assandh."</p>
-    </div>
-
-  </div>
-
-  <div style="text-align:center; margin-top:40px;">
-    <a href="https://maps.app.goo.gl/r9f8K1coYFswbRP39" target="_blank" class="btn btn-primary" data-en="⭐ Write a Review on Google" data-hi="⭐ Google पर रिव्यू लिखें" data-pa="⭐ Google 'ਤੇ ਸਮੀਖਿਆ ਲਿਖੋ">⭐ Write a Review on Google</a>
+    <a class="btn line" href="https://maps.app.goo.gl/r9f8K1coYFswbRP39" target="_blank" rel="noopener" data-en="Write a Review on Google" data-hi="Google पर रिव्यू लिखें" data-pa="Google &#x27;ਤੇ ਸਮੀਖਿਆ ਲਿਖੋ">Write a Review on Google</a>
   </div>
 </section>
 
 <!-- ABOUT ME -->
-<section id="about-me" style="background:linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); padding:80px 20px;">
-  <h2 class="section-title" data-en="About Me" data-hi="मेरे बारे में" data-pa="ਮੇਰੇ ਬਾਰੇ">About Me</h2>
-  <p class="section-sub" data-en="Meet the expert behind Shree Sawriya Solutions" data-hi="श्री सावरिया सॉल्यूशंस के पीछे के विशेषज्ञ से मिलें" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਪਿੱਛੇ ਮਾਹਿਰ ਨੂੰ ਮਿਲੋ">Meet the expert behind Shree Sawriya Solutions</p>
-  <div style="max-width:1000px; margin:0 auto;">
-    <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #2a2a2a; border-radius:28px; padding:40px; box-shadow:0 20px 60px rgba(0,0,0,0.6); display:flex; gap:40px; align-items:center; flex-wrap:wrap;">
-      <div style="flex:1; min-width:260px; text-align:center;">
-        <!-- YAHAN PHOTO UPDATE KI GAYI HAI -->
-        <img src="owner.jpeg" class="fade-photo" alt="Ankush - Mobile Repair Expert & Chip-Level Technician, Assandh" style="width:100%; max-width:320px; display:block; margin:0 auto; position: relative; z-index: 2;">
-        <div style="margin-top:20px;"><h3 style="font-size:18px; color:#fff; font-weight:700; margin-bottom:5px;" data-en="Expert Technician" data-hi="एक्सपर्ट टेक्नीशियन" data-pa="ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ">Expert Technician</h3><p style="color:#888; font-size:13px;" data-en="10+ Years Experience" data-hi="10+ साल का अनुभव" data-pa="10+ ਸਾਲ ਦਾ ਤਜਰਬਾ">10+ Years Experience</p></div>
+<section id="about-me" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 data-en="About Me" data-hi="मेरे बारे में" data-pa="ਮੇਰੇ ਬਾਰੇ">About Me</h2><p class="lede" data-en="Meet the expert behind Shree Sawriya Solutions" data-hi="श्री सावरिया सॉल्यूशंस के पीछे के विशेषज्ञ से मिलें" data-pa="ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼ ਪਿੱਛੇ ਮਾਹਿਰ ਨੂੰ ਮਿਲੋ">Meet the expert behind Shree Sawriya Solutions</p></div>
+    <div class="aboutme glass">
+      <div class="who-photo">
+        <img src="owner.jpeg" alt="Ankush - Mobile Repair Expert & Chip-Level Technician, Assandh" width="600" height="767" loading="lazy">
+        <h3 data-en="Expert Technician" data-hi="एक्सपर्ट टेक्नीशियन" data-pa="ਮਾਹਿਰ ਟੈਕਨੀਸ਼ੀਅਨ">Expert Technician</h3>
+        <p data-en="10+ Years Experience" data-hi="10+ साल का अनुभव" data-pa="10+ ਸਾਲ ਦਾ ਤਜਰਬਾ">10+ Years Experience</p>
       </div>
-      <div style="flex:1.6; min-width:300px;">
-        <h3 style="font-size:24px; margin-bottom:18px; color:#fff; font-weight:800;" data-en="Professional Mobile Repair Technician" data-hi="प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ">Professional Mobile Repair Technician</h3>
-        <p style="color:#aaa; font-size:14px; margin-bottom:15px; line-height:1.8;" data-en="I am a professional Mobile Repair Technician with 10+ years of experience in the smartphone and consumer electronics industry." data-hi="मैं 10+ साल के अनुभव वाला प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन हूं, स्मार्टफोन और कंज्यूमर इलेक्ट्रॉनिक्स इंडस्ट्री में।" data-pa="ਮੈਂ 10+ ਸਾਲ ਦੇ ਤਜਰਬੇ ਵਾਲਾ ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ ਹਾਂ, ਸਮਾਰਟਫੋਨ ਅਤੇ ਕੰਜ਼ਿਊਮਰ ਇਲੈਕਟ੍ਰੋਨਿਕਸ ਉਦਯੋਗ ਵਿੱਚ।">I am a professional Mobile Repair Technician with 10+ years of experience.</p>
-        <p style="color:#aaa; font-size:14px; margin-bottom:25px; line-height:1.8;" data-en="My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting, chip-level repair, and hardware problem solving." data-hi="मेरी विशेषज्ञता में आईफोन और एंड्रॉयड रिपेयर, एडवांस्ड डायग्नोस्टिक्स, मदरबोर्ड-लेवल ट्रबलशूटिंग, चिप-लेवल रिपेयर और हार्डवेयर समस्या समाधान शामिल है।" data-pa="ਮੇਰੀ ਮੁਹਾਰਤ ਵਿੱਚ ਆਈਫੋਨ ਅਤੇ ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ, ਐਡਵਾਂਸਡ ਡਾਇਗਨੋਸਟਿਕਸ, ਮਦਰਬੋਰਡ-ਲੈਵਲ ਟਰਬਲਸ਼ੂਟਿੰਗ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆ ਹੱਲ ਸ਼ਾਮਲ ਹੈ।">My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting.</p>
-        <h4 style="font-size:15px; margin-bottom:14px; color:#fff; font-weight:700;" data-en="🎓 Training & Certifications" data-hi="🎓 ट्रेनिंग और सर्टिफिकेशन" data-pa="🎓 ਟ੍ਰੇਨਿੰਗ ਅਤੇ ਸਰਟੀਫਿਕੇਸ਼ਨ">🎓 Training & Certifications</h4>
-        <div style="display:grid; gap:10px; margin-bottom:25px;">
-          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #fff; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 iPhone Repair Training — Kewal Mobile</div>
-          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #aaa; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 Android Repair Training — We Fix It</div>
-          <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-left:3px solid #888; padding:12px 16px; border-radius:10px; color:#ccc; font-size:13px;">🎓 Advanced Chip-Level Repair Training</div>
-        </div>
+      <div>
+        <h3 class="big" data-en="Professional Mobile Repair Technician" data-hi="प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन" data-pa="ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ">Professional Mobile Repair Technician</h3>
+        <p class="lede" data-en="I am a professional Mobile Repair Technician with 10+ years of experience in the smartphone and consumer electronics industry." data-hi="मैं 10+ साल के अनुभव वाला प्रोफेशनल मोबाइल रिपेयर टेक्नीशियन हूं, स्मार्टफोन और कंज्यूमर इलेक्ट्रॉनिक्स इंडस्ट्री में।" data-pa="ਮੈਂ 10+ ਸਾਲ ਦੇ ਤਜਰਬੇ ਵਾਲਾ ਪ੍ਰੋਫੈਸ਼ਨਲ ਮੋਬਾਈਲ ਰਿਪੇਅਰ ਟੈਕਨੀਸ਼ੀਅਨ ਹਾਂ, ਸਮਾਰਟਫੋਨ ਅਤੇ ਕੰਜ਼ਿਊਮਰ ਇਲੈਕਟ੍ਰੋਨਿਕਸ ਉਦਯੋਗ ਵਿੱਚ।">I am a professional Mobile Repair Technician with 10+ years of experience in the smartphone and consumer electronics industry.</p>
+        <p class="lede" data-en="My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting, chip-level repair, and hardware problem solving." data-hi="मेरी विशेषज्ञता में आईफोन और एंड्रॉयड रिपेयर, एडवांस्ड डायग्नोस्टिक्स, मदरबोर्ड-लेवल ट्रबलशूटिंग, चिप-लेवल रिपेयर और हार्डवेयर समस्या समाधान शामिल है।" data-pa="ਮੇਰੀ ਮੁਹਾਰਤ ਵਿੱਚ ਆਈਫੋਨ ਅਤੇ ਐਂਡਰਾਇਡ ਰਿਪੇਅਰ, ਐਡਵਾਂਸਡ ਡਾਇਗਨੋਸਟਿਕਸ, ਮਦਰਬੋਰਡ-ਲੈਵਲ ਟਰਬਲਸ਼ੂਟਿੰਗ, ਚਿਪ-ਲੈਵਲ ਰਿਪੇਅਰ ਅਤੇ ਹਾਰਡਵੇਅਰ ਸਮੱਸਿਆ ਹੱਲ ਸ਼ਾਮਲ ਹੈ।">My expertise includes iPhone and Android repair, advanced diagnostics, motherboard-level troubleshooting, chip-level repair, and hardware problem solving.</p>
+        <h4 data-en="Training &amp; Certifications" data-hi="ट्रेनिंग और सर्टिफिकेशन" data-pa="ਟ੍ਰੇਨਿੰਗ ਅਤੇ ਸਰਟੀਫਿਕੇਸ਼ਨ">Training &amp; Certifications</h4>
+        <ul class="certs">
+          <li>iPhone Repair Training — Kewal Mobile</li>
+          <li>Android Repair Training — We Fix It</li>
+          <li>Advanced Chip-Level Repair Training</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OUR WORKS GALLERY -->
-<section id="our-works" style="background:#0a0a0a; padding:60px 20px;">
-  <h2 class="section-title" data-en="Our Works" data-hi="हमारे काम" data-pa="ਸਾਡੇ ਕੰਮ">Our Works</h2>
-  <p class="section-sub" data-en="Real repair work from our shop" data-hi="हमारी दुकान से असली रिपेयर काम" data-pa="ਸਾਡੀ ਦੁਕਾਨ ਤੋਂ ਅਸਲੀ ਰਿਪੇਅਰ ਕੰਮ">Real repair work from our shop</p>
-  
-  <div style="max-width:900px; margin:0 auto; position:relative;">
-    <div id="worksSlider" style="position:relative; border-radius:24px; overflow:hidden; border:1px solid #2a2a2a; box-shadow:0 20px 50px rgba(0,0,0,0.6); aspect-ratio:16/10; background:#111;">
-      <div id="worksSlides" style="display:flex; transition:transform 0.6s ease-in-out; height:100%;"></div>
-      
-      <button onclick="worksPrev()" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">‹</button>
-      <button onclick="worksNext()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); z-index:10;">›</button>
-      
-      <div id="worksDots" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:10;"></div>
+<!-- OUR WORKS -->
+<section id="our-works" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 data-en="Our Works" data-hi="हमारे काम" data-pa="ਸਾਡੇ ਕੰਮ">Our Works</h2><p class="lede" data-en="Real repair work from our shop" data-hi="हमारी दुकान से असली रिपेयर काम" data-pa="ਸਾਡੀ ਦੁਕਾਨ ਤੋਂ ਅਸਲੀ ਰਿਪੇਅਰ ਕੰਮ">Real repair work from our shop</p></div>
+    <div class="carousel glass frame" id="worksSlider" role="region" aria-roledescription="carousel" aria-label="Our works">
+      <div class="slides" id="worksSlides"></div>
+      <button type="button" class="arrow prev" aria-label="Previous photo">‹</button>
+      <button type="button" class="arrow next" aria-label="Next photo">›</button>
+      <div class="dots" id="worksDots"></div>
     </div>
   </div>
 </section>
-
-<script>
-var worksPhotos = [];
-var worksIndex = 0;
-var worksTimer;
-
-fetch('our-works.json')
-  .then(function(response) { return response.json(); })
-  .then(function(data) {
-    worksPhotos = data.photos;
-    renderWorks();
-  })
-  .catch(function(error) { console.log('Our Works error:', error); });
-
-function renderWorks() {
-  var slidesContainer = document.getElementById('worksSlides');
-  var dotsContainer = document.getElementById('worksDots');
-  if (!slidesContainer || worksPhotos.length === 0) return;
-  slidesContainer.innerHTML = '';
-  dotsContainer.innerHTML = '';
-  worksPhotos.forEach(function(photo, i) {
-    var slide = document.createElement('div');
-    slide.style.cssText = 'min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#0a0a0a;';
-    slide.innerHTML = '<img src="' + photo + '" alt="Mobile Repair Work by Shree Sawriya Solutions Assandh" style="width:100%; height:100%; object-fit:contain;">';
-    slidesContainer.appendChild(slide);
-    var dot = document.createElement('span');
-    dot.style.cssText = 'width:10px; height:10px; border-radius:50%; background:' + (i === 0 ? '#fff' : 'rgba(255,255,255,0.4)') + '; cursor:pointer; transition:0.3s;';
-    dot.onclick = (function(idx) { return function() { worksGoTo(idx); }; })(i);
-    dotsContainer.appendChild(dot);
-  });
-  worksGoTo(0);
-  startWorksAutoSlide();
-}
-
-function worksGoTo(index) {
-  worksIndex = index;
-  var slidesContainer = document.getElementById('worksSlides');
-  if (slidesContainer) slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
-  var dots = document.querySelectorAll('#worksDots span');
-  dots.forEach(function(dot, i) { dot.style.background = (i === index) ? '#fff' : 'rgba(255,255,255,0.4)'; });
-}
-function worksNext() { if (worksPhotos.length === 0) return; worksIndex = (worksIndex + 1) % worksPhotos.length; worksGoTo(worksIndex); resetWorksTimer(); }
-function worksPrev() { if (worksPhotos.length === 0) return; worksIndex = (worksIndex - 1 + worksPhotos.length) % worksPhotos.length; worksGoTo(worksIndex); resetWorksTimer(); }
-function startWorksAutoSlide() { worksTimer = setInterval(function() { worksIndex = (worksIndex + 1) % worksPhotos.length; worksGoTo(worksIndex); }, 4000); }
-function resetWorksTimer() { clearInterval(worksTimer); startWorksAutoSlide(); }
-
-var worksTouchStart = 0;
-document.addEventListener('DOMContentLoaded', function() {
-  var slider = document.getElementById('worksSlider');
-  if (slider) {
-    slider.addEventListener('touchstart', function(e) { worksTouchStart = e.changedTouches[0].screenX; });
-    slider.addEventListener('touchend', function(e) {
-      var diff = worksTouchStart - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) { if (diff > 0) worksNext(); else worksPrev(); }
-    });
-  }
-});
-</script>
 
 <!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title" data-en="Contact Us" data-hi="संपर्क करें" data-pa="ਸੰਪਰਕ ਕਰੋ">Contact Us</h2>
-  <p class="section-sub" data-en="Get in touch with us today" data-hi="आज ही हमसे संपर्क करें" data-pa="ਅੱਜ ਹੀ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ">Get in touch with us today</p>
-  <div class="contact-box">
-    <h3 data-en="Get In Touch" data-hi="संपर्क में रहें" data-pa="ਸੰਪਰਕ ਵਿੱਚ ਰਹੋ">Get In Touch</h3>
-    <div class="contact-row"><strong data-en="Phone / WhatsApp" data-hi="फोन / WhatsApp" data-pa="ਫੋਨ / WhatsApp">Phone / WhatsApp</strong><a href="tel:+919720076900">+91 97200 76900</a></div>
-    <div class="contact-row"><strong data-en="Address" data-hi="पता" data-pa="ਪਤਾ">Address</strong>Post Office Wali Gali, Salwan Chowk,<br>Assandh, Karnal</div>
-    <div class="contact-row"><strong data-en="Business Hours" data-hi="बिजनेस आवर्स" data-pa="ਬਿਜ਼ਨਸ ਆਵਰਸ">Business Hours</strong><div style="margin-top:8px; color:#ccc; font-size:14px;"><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Monday" data-hi="सोमवार" data-pa="ਸੋਮਵਾਰ">Monday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Tuesday" data-hi="मंगलवार" data-pa="ਮੰਗਲਵਾਰ">Tuesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Wednesday" data-hi="बुधवार" data-pa="ਬੁੱਧਵਾਰ">Wednesday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Thursday" data-hi="गुरुवार" data-pa="ਵੀਰਵਾਰ">Thursday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Friday" data-hi="शुक्रवार" data-pa="ਸ਼ੁੱਕਰਵਾਰ">Friday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Saturday" data-hi="शनिवार" data-pa="ਸ਼ਨੀਵਾਰ">Saturday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div><div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #222;"><span data-en="Sunday" data-hi="रविवार" data-pa="ਐਤਵਾਰ">Sunday</span><span style="color:#fff; font-weight:600;">09:00 AM – 08:00 PM</span></div></div></div>
-    <div style="margin-top:25px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://wa.me/919720076900" class="btn btn-primary" data-en="💬 WhatsApp" data-hi="💬 WhatsApp" data-pa="💬 WhatsApp">💬 WhatsApp</a>
-      <a href="tel:+919720076900" class="btn btn-outline" data-en="📞 Call" data-hi="📞 कॉल" data-pa="📞 ਕਾਲ">📞 Call</a>
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 data-en="Contact Us" data-hi="संपर्क करें" data-pa="ਸੰਪਰਕ ਕਰੋ">Contact Us</h2><p class="lede" data-en="Get in touch with us today" data-hi="आज ही हमसे संपर्क करें" data-pa="ਅੱਜ ਹੀ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ">Get in touch with us today</p></div>
+    <div class="contact glass">
+      <dl>
+        <div><dt data-en="Phone / WhatsApp" data-hi="फोन / WhatsApp" data-pa="ਫੋਨ / WhatsApp">Phone / WhatsApp</dt><dd><a href="tel:+919720076900">+91 97200 76900</a></dd></div>
+        <div><dt data-en="Address" data-hi="पता" data-pa="ਪਤਾ">Address</dt><dd>Post Office Wali Gali, Salwan Chowk,<br>Assandh, Karnal</dd></div>
+        <div class="cta">
+          <a class="btn wa" href="https://wa.me/919720076900" target="_blank" rel="noopener" data-en="WhatsApp" data-hi="WhatsApp" data-pa="WhatsApp">WhatsApp</a>
+          <a class="btn line" href="tel:+919720076900" data-en="Call" data-hi="कॉल" data-pa="ਕਾਲ">Call</a>
+        </div>
+      </dl>
+      <div>
+        <h3 data-en="Business Hours" data-hi="बिजनेस आवर्स" data-pa="ਬਿਜ਼ਨਸ ਆਵਰਸ">Business Hours</h3>
+        <table class="hours" id="hours">
+          <tr data-day="Monday"><td data-en="Monday" data-hi="सोमवार" data-pa="ਸੋਮਵਾਰ">Monday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Tuesday"><td data-en="Tuesday" data-hi="मंगलवार" data-pa="ਮੰਗਲਵਾਰ">Tuesday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Wednesday"><td data-en="Wednesday" data-hi="बुधवार" data-pa="ਬੁੱਧਵਾਰ">Wednesday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Thursday"><td data-en="Thursday" data-hi="गुरुवार" data-pa="ਵੀਰਵਾਰ">Thursday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Friday"><td data-en="Friday" data-hi="शुक्रवार" data-pa="ਸ਼ੁੱਕਰਵਾਰ">Friday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Saturday"><td data-en="Saturday" data-hi="शनिवार" data-pa="ਸ਼ਨੀਵਾਰ">Saturday</td><td>09:00 AM – 08:00 PM</td></tr>
+          <tr data-day="Sunday"><td data-en="Sunday" data-hi="रविवार" data-pa="ਐਤਵਾਰ">Sunday</td><td>09:00 AM – 08:00 PM</td></tr>
+        </table>
+      </div>
     </div>
-  </div>
-  <div style="max-width:900px; margin:30px auto 0; border-radius:20px; overflow:hidden; border:1px solid #222;">
-    <iframe src="https://maps.google.com/maps?q=Shree%20Sawriya%20Solutions%20Post%20Office%20Wali%20Gali%20Salwan%20Chowk%20Assandh%20Karnal&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0; display:block;" allowfullscreen="" loading="lazy"></iframe>
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://maps.app.goo.gl/r9f8K1coYFswbRP39" target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:10px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        <span data-en="Get Directions" data-hi="दिशा-निर्देश पाएं" data-pa="ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼ ਪਾਓ">Get Directions</span>
-      </a>
+    <div class="mapbox glass">
+      <iframe title="Shree Sawriya Solutions on Google Maps" src="https://maps.google.com/maps?q=Shree%20Sawriya%20Solutions%20Post%20Office%20Wali%20Gali%20Salwan%20Chowk%20Assandh%20Karnal&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="100%" height="340" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
     </div>
+    <div class="cta" style="margin-top:18px"><a class="btn line" href="https://maps.app.goo.gl/r9f8K1coYFswbRP39" target="_blank" rel="noopener" data-en="Get Directions" data-hi="दिशा-निर्देश पाएं" data-pa="ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼ ਪਾਓ">Get Directions</a></div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
-<footer style="text-align:center; padding:40px 20px; border-top:1px solid #222; background:#0a0a0a;">
-  <img src="logo.png" alt="Shree Sawriya Solutions" style="width:70px; height:70px; object-fit:contain; margin-bottom:15px;">
-  <h3 style="color:#fff; font-size:16px; font-weight:700; letter-spacing:1px; margin-bottom:10px;">SHREE SAWRIYA SOLUTIONS</h3>
-  <p style="color:#666; font-size:12px; margin-bottom:5px;">Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</p>
-  <p style="color:#666; font-size:12px; margin-bottom:20px;">📞 +91 97200 76900</p>
-  <p style="color:#666; font-size:12px; margin-bottom:20px;">✉️ <a href="mailto:support@shreesawriyasolutions.in" style="color:#666; text-decoration:none;">support@shreesawriyasolutions.in</a></p>
-  <div style="display:flex; justify-content:center; gap:12px; margin-bottom:25px;">
-    
-    <!-- WhatsApp -->
-    <a href="https://wa.me/919720076900" target="_blank" style="width:40px; height:40px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-    </a>
-    
-    <!-- Call -->
-    <a href="tel:+919720076900" style="width:40px; height:40px; border-radius:50%; background:#fff; color:#000; display:flex; align-items:center; justify-content:center; text-decoration:none;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="black">
-        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-      </svg>
-    </a>
-    
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/shreesawriyasolutions" target="_blank" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-    </a>
-    
-    <!-- YouTube -->
-    <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" style="width:40px; height:40px; border-radius:50%; background:#ff0000; color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-      </svg>
-    </a>
-    
+<footer>
+  <div class="wrap foot">
+    <div class="fb"><img src="logo.png" alt="Shree Sawriya Solutions" width="56" height="56"><div><b>SHREE SAWRIYA SOLUTIONS</b><span>Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</span><span>+91 97200 76900 · <a href="mailto:support@shreesawriyasolutions.in">support@shreesawriyasolutions.in</a></span></div></div>
+    <div class="social">
+      <a href="https://wa.me/919720076900" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+919720076900">Call</a>
+      <a href="https://www.instagram.com/shreesawriyasolutions" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <span class="copy">© 2026 Shree Sawriya Solutions. All Rights Reserved.</span>
   </div>
-  <p style="color:#444; font-size:11px;">© 2026 Shree Sawriya Solutions. All Rights Reserved.</p>
 </footer>
 
+<div class="dock glass" role="group" aria-label="Quick contact">
+  <a class="btn wa" href="https://wa.me/919720076900" target="_blank" rel="noopener" data-en="WhatsApp" data-hi="WhatsApp" data-pa="WhatsApp">WhatsApp</a>
+  <a class="btn line" href="tel:+919720076900" data-en="Call" data-hi="कॉल" data-pa="ਕਾਲ">Call</a>
+</div>
+
 <!-- LANGUAGE POPUP -->
-<div id="langPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:linear-gradient(145deg, #151515, #0d0d0d); border:1px solid #333; border-radius:24px; padding:35px 25px; max-width:380px; width:100%; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,0.8);">
-    <img src="logo.png" alt="Logo" style="width:70px; height:70px; object-fit:contain; margin-bottom:15px;">
-    <h2 style="color:#fff; font-size:20px; font-weight:800; margin-bottom:5px;">SHREE SAWRIYA SOLUTIONS</h2>
-    <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Please select your language<br>कृपया अपनी भाषा चुनें <br>ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ</p>
-    <div style="display:grid; gap:10px;">
-      <button onclick="selectLang('en')" style="padding:16px; border-radius:14px; background:#fff; color:#000; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇬🇧 English</button>
-      <button onclick="selectLang('hi')" style="padding:16px; border-radius:14px; background:linear-gradient(90deg, #ff8800, #ff4444); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇮🇳 हिन्दी</button>
-      <button onclick="selectLang('pa')" style="padding:16px; border-radius:14px; background:linear-gradient(90deg, #138808, #0d5c05); color:#fff; font-weight:700; font-size:15px; border:none; cursor:pointer;">🇮🇳 ਪੰਜਾਬੀ</button>
+<div id="langPopup" role="dialog" aria-modal="true" aria-labelledby="langTitle" hidden>
+  <div class="glass lp">
+    <img src="logo.png" alt="" width="64" height="64">
+    <h2 id="langTitle">SHREE SAWRIYA SOLUTIONS</h2>
+    <p>Please select your language<br>कृपया अपनी भाषा चुनें<br>ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ</p>
+    <div class="choices">
+      <button type="button" class="btn sig" onclick="selectLang('en')">English</button>
+      <button type="button" class="btn line" onclick="selectLang('hi')">हिन्दी</button>
+      <button type="button" class="btn line" onclick="selectLang('pa')">ਪੰਜਾਬੀ</button>
     </div>
   </div>
 </div>
 
 <script>
-// LANGUAGE SYSTEM
+/* ============ LANGUAGE SYSTEM (same keys + behaviour as before) ============ */
 function setLang(lang) {
-  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
   var btn = document.getElementById('btn-' + lang);
   if (btn) btn.classList.add('active');
-  
-  localStorage.setItem('preferredLang', lang);
-  localStorage.setItem('langSelected', 'yes');
-  
+  try { localStorage.setItem('preferredLang', lang); localStorage.setItem('langSelected', 'yes'); } catch (e) {}
   translatePage(lang);
-  
   var popup = document.getElementById('langPopup');
-  if (popup) popup.style.display = 'none';
+  if (popup) popup.hidden = true;
+  renderOpen();
 }
-
-function selectLang(lang) {
-  setLang(lang);
-}
-
+function selectLang(lang) { setLang(lang); }
 function translatePage(lang) {
-  var elements = document.querySelectorAll('[data-en]');
-  elements.forEach(function(el) {
+  document.querySelectorAll('[data-en]').forEach(function (el) {
     var text = el.getAttribute('data-' + lang);
-    if (text) {
-      if (el.children.length === 0) {
-        el.textContent = text;
-      } else {
-        var textNode = Array.from(el.childNodes).find(function(n) { return n.nodeType === 3; });
-        if (textNode) {
-          textNode.textContent = text;
-        } else {
-          el.textContent = text;
-        }
-      }
-    }
+    if (text) el.textContent = text;
   });
-  
-  var inputs = document.querySelectorAll('[data-placeholder-en]');
-  inputs.forEach(function(el) {
-    var placeholder = el.getAttribute('data-placeholder-' + lang);
-    if (placeholder) el.setAttribute('placeholder', placeholder);
+  document.querySelectorAll('[data-placeholder-en]').forEach(function (el) {
+    var p = el.getAttribute('data-placeholder-' + lang);
+    if (p) el.setAttribute('placeholder', p);
   });
-  
   document.documentElement.lang = lang;
 }
+function getLang() { try { return localStorage.getItem('preferredLang') || 'en'; } catch (e) { return 'en'; } }
 
-window.addEventListener('DOMContentLoaded', function() {
-  var savedLang = localStorage.getItem('preferredLang') || 'en';
-  var langSelected = localStorage.getItem('langSelected');
-  
-  document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
-  var btn = document.getElementById('btn-' + savedLang);
-  if (btn) btn.classList.add('active');
-  
-  if (langSelected !== 'yes') {
-    setTimeout(function() {
-      var popup = document.getElementById('langPopup');
-      if (popup) popup.style.display = 'flex';
-    }, 500);
-  } else {
-    translatePage(savedLang);
+/* ============ OPEN / CLOSED BADGE + TODAY'S HOURS (IST, 9 AM - 8 PM) ============ */
+var OPEN_TXT = {
+  en: ['Open now · until 8 PM', 'Closed · opens 9 AM'],
+  hi: ['अभी खुला है · रात 8 बजे तक', 'बंद है · सुबह 9 बजे खुलेगा'],
+  pa: ['ਹੁਣ ਖੁੱਲ੍ਹਾ ਹੈ · ਰਾਤ 8 ਵਜੇ ਤੱਕ', 'ਬੰਦ ਹੈ · ਸਵੇਰੇ 9 ਵਜੇ ਖੁੱਲ੍ਹੇਗਾ']
+};
+function renderOpen() {
+  var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kolkata', weekday: 'long', hour: 'numeric', hour12: false }).formatToParts(new Date());
+  var day = parts.find(function (p) { return p.type === 'weekday'; }).value;
+  var h = parseInt(parts.find(function (p) { return p.type === 'hour'; }).value, 10) % 24;
+  var open = h >= 9 && h < 20, lang = document.documentElement.lang;
+  var el = document.getElementById('open'), t = (OPEN_TXT[lang] || OPEN_TXT.en)[open ? 0 : 1];
+  el.classList.toggle('on', open);
+  document.getElementById('openText').textContent = t;
+  document.querySelectorAll('#hours tr').forEach(function (tr) { tr.classList.toggle('today', tr.dataset.day === day); });
+}
+
+/* ============ REPAIR STATUS CHECK -> track.html?m=<number> ============ */
+document.getElementById('statusForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var phone = document.getElementById('phoneInput').value.trim();
+  var out = document.getElementById('statusResult');
+  if (!/^\d{10}$/.test(phone)) {
+    out.innerHTML = '<div class="status-msg">Kripya 10-digit ka sahi mobile number daaliye.</div>';
+    return;
   }
+  out.innerHTML = '';
+  window.location.href = 'track.html?m=' + phone;
 });
+
+/* ============ CAROUSELS (offers, gallery, our works): arrows, dots, swipe, auto-slide ============ */
+var REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function Carousel(root, auto) {
+  var slides = root.querySelector('.slides'), dots = root.querySelector('.dots');
+  var i = 0, n = 0, timer = null, x0 = 0;
+  function go(k, user) {
+    if (!n) return;
+    i = (k + n) % n;
+    slides.style.transform = 'translateX(-' + (i * 100) + '%)';
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.classList.toggle('on', j === i); d.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+    if (user) restart();
+  }
+  function restart() { clearInterval(timer); if (auto && !REDUCE && n > 1) timer = setInterval(function () { go(i + 1); }, auto); }
+  function build() {
+    n = slides.children.length; dots.innerHTML = '';
+    for (var k = 0; k < n; k++) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Slide ' + (k + 1));
+      b.addEventListener('click', (function (idx) { return function () { go(idx, true); }; })(k));
+      dots.appendChild(b);
+    }
+    root.classList.toggle('single', n < 2);
+    go(0); restart();
+  }
+  root.querySelector('.prev').addEventListener('click', function () { go(i - 1, true); });
+  root.querySelector('.next').addEventListener('click', function () { go(i + 1, true); });
+  root.addEventListener('touchstart', function (e) { x0 = e.changedTouches[0].screenX; }, { passive: true });
+  root.addEventListener('touchend', function (e) {
+    var d = x0 - e.changedTouches[0].screenX;
+    if (Math.abs(d) > 50) go(d > 0 ? i + 1 : i - 1, true);
+  }, { passive: true });
+  root.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') go(i - 1, true); if (e.key === 'ArrowRight') go(i + 1, true); });
+  build();
+  return { build: build };
+}
+Carousel(document.getElementById('offers'), 4000);
+
+function loadPhotoCarousel(json, rootId, slidesId, alt) {
+  fetch(json).then(function (r) { return r.json(); }).then(function (data) {
+    var box = document.getElementById(slidesId);
+    if (!box || !data.photos || !data.photos.length) return;
+    data.photos.forEach(function (src, k) {
+      var s = document.createElement('div'); s.className = 'slide photo';
+      var img = document.createElement('img');
+      img.src = src; img.alt = alt; img.decoding = 'async'; if (k > 0) img.loading = 'lazy';
+      s.appendChild(img); box.appendChild(s);
+    });
+    Carousel(document.getElementById(rootId), 4000);
+  }).catch(function (err) { console.log(json + ' error:', err); });
+}
+loadPhotoCarousel('gallery.json', 'gallerySlider', 'gallerySlides', 'Shree Sawriya Solutions - Mobile Repair Work in Assandh');
+loadPhotoCarousel('our-works.json', 'worksSlider', 'worksSlides', 'Mobile Repair Work by Shree Sawriya Solutions Assandh');
+
+/* ============ INIT: saved language / first-visit popup ============ */
+window.addEventListener('DOMContentLoaded', function () {
+  var saved = getLang(), chosen = null;
+  try { chosen = localStorage.getItem('langSelected'); } catch (e) {}
+  document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+  var b = document.getElementById('btn-' + saved); if (b) b.classList.add('active');
+  if (chosen !== 'yes') {
+    setTimeout(function () {
+      var p = document.getElementById('langPopup');
+      if (p) { p.hidden = false; var f = p.querySelector('button'); if (f) f.focus(); }
+    }, 500);
+  } else { translatePage(saved); }
+  renderOpen(); setInterval(renderOpen, 60000);
+});
+document.addEventListener('keydown', function (e) {
+  var p = document.getElementById('langPopup');
+  if (e.key === 'Escape' && p && !p.hidden) setLang(getLang());
+});
+</script>
+
+<script>
+
+/* ---- water drop: a glass lens that follows the pointer (drifts on its own on touch) ---- */
+(function(){
+  const hero=document.querySelector('.hero'),drop=document.getElementById('drop');
+  if(!hero||!drop)return;
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let w=1,h=1,x=0,y=0,tx=0,ty=0,px=0,py=0,t=0,follow=false,visible=true;
+  function size(){const r=hero.getBoundingClientRect();w=r.width;h=r.height;if(!follow){tx=x=w*.6;ty=y=h*.42}}
+  size();addEventListener('resize',size);
+  hero.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=hero.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;follow=true});
+  const touch=matchMedia('(hover:none)').matches;
+  if(touch){drop.style.opacity='0';drop.style.transition='opacity .45s'}
+  hero.addEventListener('pointerdown',e=>{
+    const r=hero.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;follow=true;
+    clearTimeout(hero._t);hero._t=setTimeout(()=>follow=false,2600);
+    if(touch){x=tx;y=ty;px=x;py=y;drop.style.opacity='1';clearTimeout(hero._o);hero._o=setTimeout(()=>{drop.style.opacity='0'},1900)}
+  });
+  hero.addEventListener('pointerleave',()=>{follow=false});
+  new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(hero);
+  function frame(){
+    if(visible){
+      t+=.012;
+      if(!follow){tx=w*.6+Math.cos(t)*w*.14;ty=h*.42+Math.sin(t*1.3)*h*.16}
+      x+=(tx-x)*.09;y+=(ty-y)*.09;
+      const vx=x-px,vy=y-py;px=x;py=y;
+      const sp=Math.min(Math.hypot(vx,vy)/22,.18),ang=Math.atan2(vy,vx)*180/Math.PI;
+      const wob=Math.sin(t*5)*.025;
+      drop.style.transform=`translate(${x}px,${y}px) rotate(${ang}deg) scale(${1+sp+wob},${1-sp*.7-wob}) rotate(${-ang}deg)`;
+    }
+    requestAnimationFrame(frame);
+  }
+  if(still){drop.style.transform=`translate(${x}px,${y}px)`}else frame();
+})();
+
+/* ---- tap ripple on buttons and glass rows ---- */
+document.addEventListener('pointerdown',e=>{
+  const el=e.target.closest('.btn,form.status button,.svc a');if(!el)return;
+  const r=el.getBoundingClientRect(),s=Math.max(r.width,r.height)*2.2,d=document.createElement('span');
+  d.className='ripple';d.style.cssText=`left:${e.clientX-r.left}px;top:${e.clientY-r.top}px;width:${s}px;height:${s}px`;
+  el.appendChild(d);setTimeout(()=>d.remove(),800);
+});
+
 </script>
 
 <script type="text/javascript">
@@ -895,7 +773,7 @@ var Tawk_API = Tawk_API || {};
 Tawk_API.customStyle = {
   visibility: {
     desktop: { position: 'br', xOffset: 20, yOffset: 20 },
-    mobile: { position: 'br', xOffset: 20, yOffset: 20 }
+    mobile: { position: 'br', xOffset: 14, yOffset: 92 }
   }
 };
 Tawk_API.onLoad = function() {
