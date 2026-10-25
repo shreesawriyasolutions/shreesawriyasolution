@@ -55,59 +55,11 @@
 }
 </script>
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; }
-.logo img { width: 38px; height: 38px; object-fit: contain; }
-.back-btn { color: #aaa; font-size: 13px; display: flex; align-items: center; gap: 6px; }
-.lang-switcher { display: flex; gap: 6px; align-items: center; margin-left: auto; }
-.lang-btn { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; border: 1px solid #333; background: transparent; color: #aaa; }
-.lang-btn.active { background: #fff; color: #000; border: none; }
-
-.hero { padding: 50px 20px 30px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); }
-.hero .tag { display: inline-block; background: linear-gradient(90deg, #555, #aaa); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
-.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
-.hero p { color: #999; font-size: 14px; max-width: 600px; margin: 0 auto; }
-
-section { padding: 40px 20px; }
-.section-title { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 8px; }
-.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 30px; }
-
-.accordion-container { max-width: 800px; margin: 0 auto; display: grid; gap: 12px; }
-
-.acc-item { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 16px; overflow: hidden; transition: 0.3s; }
-.acc-item:hover { border-color: #444; }
-.acc-header { padding: 20px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 15px; user-select: none; }
-.acc-header h3 { font-size: 15px; font-weight: 700; color: #fff; margin: 0; flex: 1; }
-.acc-num { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 8px; font-size: 13px; font-weight: 700; flex-shrink: 0; }
-.acc-arrow { color: #888; font-size: 18px; transition: 0.3s; flex-shrink: 0; }
-.acc-item.open .acc-arrow { transform: rotate(180deg); }
-.acc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-.acc-item.open .acc-body { max-height: 2000px; }
-.acc-body-inner { padding: 0 22px 22px; border-top: 1px solid #222; padding-top: 20px; }
-.acc-body-inner ul { list-style: none; padding: 0; margin: 0 0 18px 0; }
-.acc-body-inner ul li { color: #aaa; font-size: 14px; padding: 8px 0; padding-left: 22px; position: relative; line-height: 1.6; }
-.acc-body-inner ul li::before { content: '→'; position: absolute; left: 0; color: #fff; font-weight: 700; }
-.book-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 50px; background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; font-weight: 700; font-size: 13px; text-decoration: none; transition: 0.3s; }
-.book-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-.cta-section { background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border: 1px solid #2a2a2a; border-radius: 24px; padding: 45px 30px; max-width: 800px; margin: 0 auto; text-align: center; }
-.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
-.cta-section p { color: #aaa; font-size: 14px; margin-bottom: 25px; }
-.cta-section .phone { font-size: 20px; font-weight: 800; color: #fff; margin: 18px 0; letter-spacing: 1px; }
-.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
-.btn-green { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
-.btn-outline { border: 1px solid #333; color: #fff; background: transparent; }
-@media (min-width: 768px) {
-  .hero h1 { font-size: 36px; }
-  .acc-header h3 { font-size: 16px; }
-  .cta-section h2 { font-size: 30px; }
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
@@ -133,7 +85,7 @@ section { padding: 40px 20px; }
 </div>
 
 <!-- DIAGNOSIS ACCORDION -->
-<section style="background:#0d0d0d;">
+<section>
   <h2 class="section-title" data-en="Diagnosis Categories" data-hi="डायग्नोसिस श्रेणियां" data-pa="ਡਾਇਗਨੋਸਿਸ ਸ਼੍ਰੇਣੀਆਂ">Diagnosis Categories</h2>
   <p class="section-sub" data-en="Click on any category to see the list of faults we handle" data-hi="किसी भी श्रेणी पर क्लिक करें और देखें कि हम कौन-कौन से फॉल्ट ठीक करते हैं" data-pa="ਕਿਸੇ ਵੀ ਸ਼੍ਰੇਣੀ 'ਤੇ ਕਲਿੱਕ ਕਰੋ ਅਤੇ ਦੇਖੋ ਕਿ ਅਸੀਂ ਕਿਹੜੇ ਫਾਲਟ ਠੀਕ ਕਰਦੇ ਹਾਂ">Click on any category to see the list of faults we handle</p>
   
@@ -571,6 +523,21 @@ section { padding: 40px 20px; }
     </div>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb"><img src="logo.png" alt="Shree Sawriya Solutions" width="56" height="56"><div><b>SHREE SAWRIYA SOLUTIONS</b><span>Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</span><span>+91 97200 76900 · <a href="mailto:support@shreesawriyasolutions.in">support@shreesawriyasolutions.in</a></span></div></div>
+    <div class="social">
+      <a href="https://wa.me/919720076900" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+919720076900">Call</a>
+      <a href="https://www.instagram.com/shreesawriyasolutions" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <span class="copy">© 2026 Shree Sawriya Solutions. All Rights Reserved.</span>
+  </div>
+</footer>
+
 
 <script>
 // ACCORDION TOGGLE

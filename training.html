@@ -51,100 +51,11 @@
 }
 </script>
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-
-/* NAVBAR */
-.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
-.navbar .logo { display: flex; align-items: center; gap: 10px; }
-.navbar .logo img { width: 38px; height: 38px; object-fit: contain; }
-.navbar .logo span { font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; }
-.nav-links { display: none; gap: 25px; font-size: 14px; color: #aaa; }
-.nav-links a:hover { color: #fff; }
-
-/* HERO */
-.hero { padding: 60px 20px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 400px; height: 400px; background-image: url('logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.04; pointer-events: none; }
-.hero .tag { display: inline-block; background: linear-gradient(90deg, #ff4444, #ff8800); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; }
-.hero h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 15px; position: relative; }
-.hero h1 span { background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero .sub { color: #ffb800; font-size: 15px; font-weight: 600; margin-bottom: 20px; position: relative; }
-.hero p { color: #999; font-size: 14px; max-width: 600px; margin: 0 auto 20px; position: relative; }
-.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
-.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-.btn-primary { background: #fff; color: #000; }
-.btn-primary:hover { background: #ddd; }
-.btn-outline { border: 1px solid #333; color: #fff; }
-.btn-outline:hover { border-color: #fff; }
-.btn-green { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
-.btn-green:hover { opacity: 0.9; }
-
-/* SECTION */
-section { padding: 60px 20px; }
-.section-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; }
-.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
-
-/* ABOUT */
-.about-box { max-width: 800px; margin: 0 auto; background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
-.about-box h3 { color: #fff; font-size: 20px; margin-bottom: 15px; font-weight: 700; }
-.about-box p { color: #aaa; font-size: 14px; margin-bottom: 15px; line-height: 1.8; }
-.about-box ul { color: #aaa; font-size: 14px; line-height: 2; padding-left: 25px; margin-bottom: 15px; }
-.about-box ul li::marker { color: #fff; }
-
-/* COURSES */
-.courses-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1100px; margin: 0 auto; }
-.course-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 28px; transition: 0.3s; position: relative; overflow: hidden; }
-.course-card:hover { border-color: #444; transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
-.course-card .num { position: absolute; top: 20px; right: 20px; font-size: 40px; font-weight: 900; color: #1a1a1a; letter-spacing: -2px; }
-.course-card .icon { font-size: 32px; margin-bottom: 15px; }
-.course-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; color: #fff; }
-.course-card p { color: #999; font-size: 13px; line-height: 1.7; margin-bottom: 15px; }
-.course-card .badge { display: inline-block; background: #111; border: 1px solid #333; padding: 5px 12px; border-radius: 50px; font-size: 11px; color: #ccc; margin-right: 6px; margin-top: 5px; }
-
-/* LEVELS */
-.levels-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1000px; margin: 0 auto; }
-.level-card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 20px; padding: 30px; text-align: center; position: relative; }
-.level-card.l1 { border-top: 3px solid #4ade80; }
-.level-card.l2 { border-top: 3px solid #ffb800; }
-.level-card.l3 { border-top: 3px solid #ff4444; }
-.level-card .level-num { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; padding: 6px 14px; border-radius: 50px; margin-bottom: 15px; }
-.level-card.l1 .level-num { background: rgba(74,222,128,0.15); color: #4ade80; }
-.level-card.l2 .level-num { background: rgba(255,184,0,0.15); color: #ffb800; }
-.level-card.l3 .level-num { background: rgba(255,68,68,0.15); color: #ff4444; }
-.level-card h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-.level-card .for { color: #888; font-size: 13px; margin-bottom: 20px; }
-.level-card ul { text-align: left; color: #aaa; font-size: 13px; line-height: 2; padding-left: 20px; }
-.level-card ul li::marker { color: #fff; }
-
-/* TRAINER */
-.trainer-box { max-width: 800px; margin: 0 auto; background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; }
-.trainer-box h3 { color: #fff; font-size: 20px; margin-bottom: 15px; }
-.trainer-box .cert { background: #111; border: 1px solid #333; border-left: 3px solid #ffb800; padding: 14px 18px; border-radius: 10px; color: #ccc; font-size: 13px; text-align: left; margin-bottom: 10px; }
-
-/* CTA */
-.cta-section { background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border: 1px solid #2a2a2a; border-radius: 24px; padding: 50px 30px; max-width: 900px; margin: 0 auto; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
-.cta-section h2 { font-size: 26px; font-weight: 800; margin-bottom: 15px; }
-.cta-section p { color: #aaa; font-size: 14px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; }
-.cta-section .phone { font-size: 22px; font-weight: 800; color: #fff; margin: 20px 0; letter-spacing: 1px; }
-
-/* FOOTER */
-footer { text-align: center; padding: 40px 20px; border-top: 1px solid #222; background: #0a0a0a; }
-footer img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 12px; }
-footer h4 { color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
-footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
-@media (min-width: 768px) {
-  .nav-links { display: flex; }
-  .hero h1 { font-size: 42px; }
-  .courses-grid { grid-template-columns: repeat(2, 1fr); }
-  .levels-grid { grid-template-columns: repeat(3, 1fr); }
-  .cta-section h2 { font-size: 32px; }
-}
-@media (min-width: 1024px) {
-  .courses-grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
@@ -177,11 +88,11 @@ footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
 </div>
 
 <!-- ABOUT TRAINING -->
-<section style="background:#0d0d0d;">
+<section>
   <h2 class="section-title">About Our Training</h2>
   <p class="section-sub">Practical Knowledge. Real Repair Skills.</p>
   <div class="about-box">
-    <p>At <strong style="color:#fff;">Shree Sawriya Solutions</strong>, our training is focused on developing practical mobile repair and motherboard troubleshooting skills.</p>
+    <p>At <strong>Shree Sawriya Solutions</strong>, our training is focused on developing practical mobile repair and motherboard troubleshooting skills.</p>
     <p>The training combines electronics fundamentals with hands-on practical work so that students can understand:</p>
     <ul>
       <li>How a mobile motherboard works</li>
@@ -240,7 +151,7 @@ footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
 </section>
 
 <!-- TRAINING LEVELS -->
-<section style="background:#0d0d0d;">
+<section>
   <h2 class="section-title">Training Levels</h2>
   <p class="section-sub">Choose the level that fits your experience</p>
   <div class="levels-grid">
@@ -299,7 +210,7 @@ footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
   <p class="section-sub">Professional training by certified technician</p>
   <div class="trainer-box">
     <h3>Professional Training Background</h3>
-    <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Training is provided under <strong style="color:#fff;">Shree Sawriya Solutions</strong> with a focus on practical smartphone repair, motherboard diagnosis and chip-level troubleshooting.</p>
+    <p style="margin-bottom:20px;">Training is provided under <strong>Shree Sawriya Solutions</strong> with a focus on practical smartphone repair, motherboard diagnosis and chip-level troubleshooting.</p>
     <div class="cert">🎓 <strong>iPhone Training:</strong> Certified by Kewal Mobile</div>
     <div class="cert">🎓 <strong>Android Training:</strong> Training by We Fix It, India</div>
     <div class="cert">🎓 <strong>Advanced Training Experience:</strong> Practical exposure to smartphone motherboard diagnosis, microsoldering, iPhone hardware troubleshooting and advanced chip-level repair.</div>
@@ -322,12 +233,16 @@ footer p { color: #666; font-size: 12px; margin-bottom: 5px; }
 
 <!-- FOOTER -->
 <footer>
-  <img src="logo.png" alt="Shree Sawriya Solutions">
-  <h4>SHREE SAWRIYA SOLUTIONS</h4>
-  <p>Mobile Repair | iPhone Repair | Android Repair | Chip-Level Repair | Microsoldering Training</p>
-  <p>Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</p>
-  <p style="margin-top:10px;">📞 +91 97200 76900</p>
-  <p style="color:#333; font-size:11px; margin-top:15px;">© 2026 Shree Sawriya Solutions. All Rights Reserved.</p>
+  <div class="wrap foot">
+    <div class="fb"><img src="logo.png" alt="Shree Sawriya Solutions" width="56" height="56"><div><b>SHREE SAWRIYA SOLUTIONS</b><span>Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</span><span>+91 97200 76900 · <a href="mailto:support@shreesawriyasolutions.in">support@shreesawriyasolutions.in</a></span></div></div>
+    <div class="social">
+      <a href="https://wa.me/919720076900" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+919720076900">Call</a>
+      <a href="https://www.instagram.com/shreesawriyasolutions" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <span class="copy">© 2026 Shree Sawriya Solutions. All Rights Reserved.</span>
+  </div>
 </footer>
 
 <!-- Start of Tawk.to Script -->

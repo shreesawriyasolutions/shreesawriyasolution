@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Bills Register | Shree Sawriya Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="sale.css">
   <link rel="stylesheet" href="bills.css">
   <style>
@@ -12,18 +16,18 @@
     .type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
     .type-card {
       text-align: left; cursor: pointer; font: inherit; color: inherit;
-      background: #fff; border: 2px solid #e2e8f0; border-radius: 12px;
+      background: var(--glass-strong); border: 2px solid var(--edge); border-radius: 16px;
       padding: 12px; transition: border-color .15s, box-shadow .15s;
     }
-    .type-card:hover { border-color: #94a3b8; }
-    .type-card.active { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, .18); }
-    .type-card .tc-name { font-size: 13px; font-weight: 700; color: #475569; }
-    .type-card .tc-amount { font-size: 20px; font-weight: 800; margin-top: 4px; color: #16a34a; }
-    .type-card .tc-count { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .type-card:hover { border-color: var(--green); }
+    .type-card.active { border-color: var(--green); box-shadow: 0 0 0 3px rgba(10, 90, 72, .22); }
+    .type-card .tc-name { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .type-card .tc-amount { font-size: 20px; font-weight: 800; margin-top: 4px; color: var(--ok); }
+    .type-card .tc-count { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .type-card.tc-purchase .tc-amount { color: #c2410c; }
-    .type-card.tc-sale .tc-amount { color: #16a34a; }
-    .type-card.tc-unlock .tc-amount { color: #2563eb; }
-    .type-card.tc-all .tc-amount { color: #0f172a; }
+    .type-card.tc-sale .tc-amount { color: var(--ok); }
+    .type-card.tc-unlock .tc-amount { color: var(--blue); }
+    .type-card.tc-all .tc-amount { color: var(--text); }
   </style>
 </head>
 <body>

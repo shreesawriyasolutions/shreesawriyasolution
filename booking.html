@@ -69,34 +69,11 @@
 }
 </script>
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-.navbar { position: sticky; top: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-wrap: wrap; gap: 10px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #fff; }
-.logo img { width: 38px; height: 38px; object-fit: contain; }
-.back-btn { color: #aaa; font-size: 13px; display: flex; align-items: center; gap: 6px; }
-.lang-switcher { display: flex; gap: 6px; align-items: center; margin-left: auto; }
-.lang-btn { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; border: 1px solid #333; background: transparent; color: #aaa; }
-.lang-btn.active { background: #fff; color: #000; border: none; }
-.hero { padding: 50px 20px 30px; text-align: center; background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 70%); }
-.hero .tag { display: inline-block; background: linear-gradient(90deg, #ff4444, #ff8800); color: #fff; padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
-.hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
-.hero p { color: #999; font-size: 14px; max-width: 500px; margin: 0 auto; }
-section { padding: 40px 20px; }
-.section-title { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 10px; }
-.section-sub { text-align: center; color: #888; font-size: 14px; margin-bottom: 30px; }
-.card { background: linear-gradient(145deg, #151515, #0d0d0d); border: 1px solid #2a2a2a; border-radius: 24px; padding: 30px; max-width: 550px; margin: 0 auto; }
-.card h3 { color: #fff; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
-.check-item { display: flex; align-items: center; gap: 12px; color: #ccc; font-size: 14px; padding: 10px 0; }
-.check-icon { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #fff; color: #000; border-radius: 50%; font-size: 12px; font-weight: 700; flex-shrink: 0; }
-.form-group { display: grid; gap: 14px; }
-.form-group input, .form-group select { padding: 14px 18px; border-radius: 12px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; outline: none; width: 100%; }
-.btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; border: none; }
-.btn-green { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; width: 100%; padding: 16px; font-weight: 700; font-size: 15px; }
-.btn-outline { border: 1px solid #333; color: #fff; background: transparent; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
@@ -122,7 +99,7 @@ section { padding: 40px 20px; }
 </div>
 
 <!-- WHAT WE CHECK -->
-<section style="background:#0d0d0d;">
+<section>
   <h2 class="section-title" data-en="✓ What Will Be Checked?" data-hi="✓ क्या-क्या चेक होगा?" data-pa="✓ ਕੀ-ਕੀ ਚੈੱਕ ਹੋਵੇਗਾ?">✓ What Will Be Checked?</h2>
   <p class="section-sub" data-en="Complete phone checkup — no charges" data-hi="पूरी फोन जांच — कोई शुल्क नहीं" data-pa="ਪੂਰੀ ਫੋਨ ਜਾਂਚ — ਕੋਈ ਖਰਚਾ ਨਹੀਂ">Complete phone checkup — no charges</p>
   <div class="card">
@@ -157,6 +134,21 @@ section { padding: 40px 20px; }
     <button onclick="bookOnWhatsApp()" class="btn btn-green" style="margin-top:20px;" data-en="💬 Book on WhatsApp" data-hi="💬 WhatsApp पर बुक करें" data-pa="💬 WhatsApp 'ਤੇ ਬੁੱਕ ਕਰੋ">💬 Book on WhatsApp</button>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb"><img src="logo.png" alt="Shree Sawriya Solutions" width="56" height="56"><div><b>SHREE SAWRIYA SOLUTIONS</b><span>Post Office Wali Gali, Salwan Chowk, Assandh, Karnal</span><span>+91 97200 76900 · <a href="mailto:support@shreesawriyasolutions.in">support@shreesawriyasolutions.in</a></span></div></div>
+    <div class="social">
+      <a href="https://wa.me/919720076900" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+919720076900">Call</a>
+      <a href="https://www.instagram.com/shreesawriyasolutions" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@shreesawriyasolutions" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <span class="copy">© 2026 Shree Sawriya Solutions. All Rights Reserved.</span>
+  </div>
+</footer>
+
 
 <script>
 function bookOnWhatsApp() {
