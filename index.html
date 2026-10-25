@@ -941,6 +941,26 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!-- End of Tawk.to Script -->
+<script>
+/* Live Google reviews: reads google-reviews.json (auto-updated by GitHub Actions). Falls back to the static reviews above. */
+(function(){
+  var box=document.querySelector('#reviews .rev'); if(!box) return;
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  fetch('google-reviews.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.reviews||!d.reviews.length) return;
+    box.innerHTML=d.reviews.map(function(r){
+      var n=Math.max(1,Math.min(5,Math.round(r.rating||5)));
+      var name=esc(r.author);
+      var who=r.authorUrl?'<a href="'+esc(r.authorUrl)+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">'+name+'</a>':name;
+      return '<figure class="glass"><div class="who"><span class="av">'+esc(r.author.charAt(0).toUpperCase())+'</span><div><b>'+who+'</b><small>Google Review'+(r.when?' · '+esc(r.when):'')+'</small></div></div><div class="stars" aria-label="'+n+' stars">'+'★'.repeat(n)+'☆'.repeat(5-n)+'</div><blockquote>"'+esc(r.text)+'"</blockquote></figure>';
+    }).join('');
+    if(d.rating&&d.total){
+      var lede=document.querySelector('#reviews .lede');
+      if(lede) lede.textContent='★ '+d.rating+' on Google · '+d.total+' reviews';
+    }
+  }).catch(function(){});
+})();
+</script>
 <script src="diwali.js" defer></script>
 <script src="visits.js" defer></script>
 </body>
