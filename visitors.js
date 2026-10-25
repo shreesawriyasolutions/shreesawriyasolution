@@ -76,7 +76,10 @@ async function load() {
     st(data.total_views, 'Kul page views');
   $('lastVisit').textContent = data.last_visit ? 'Aakhri visit: ' + fmtDT(data.last_visit) : 'Abhi tak koi visit nahi.';
 
-  const daily = data.daily || [];
+  // Server din ko "2026-10-12 00:00:00+00" jaisa bhejta hai; sirf date (YYYY-MM-DD) rakho
+  const daily = (data.daily || []).map(function (d) {
+    return { day: String(d.day || '').slice(0, 10), views: d.views || 0, visitors: d.visitors || 0 };
+  });
   const max = Math.max.apply(null, daily.map(function (d) { return d.views; }).concat([1]));
   $('bars').innerHTML = daily.map(function (d) {
     const h = Math.round((d.views / max) * 100);
