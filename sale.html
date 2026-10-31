@@ -136,6 +136,13 @@
               <div id="fProfit" class="profit-preview">₹0</div>
             </div>
           </div>
+          <div class="parts-box">
+            <label for="fPartSearch">Stock se part lagaya? (optional)</label>
+            <input id="fPartSearch" type="text" list="dlStockParts" autocomplete="off" placeholder="Part search karo: ear flex 13 pro, a52 jack...">
+            <datalist id="dlStockParts"></datalist>
+            <div id="partsList"></div>
+            <p id="partsHint" class="parts-hint hidden"></p>
+          </div>
           <label for="fNotes">Notes (optional)</label>
           <textarea id="fNotes" rows="2"></textarea>
           <button type="submit" id="addBtn" class="btn btn-green btn-block">Add Entry</button>

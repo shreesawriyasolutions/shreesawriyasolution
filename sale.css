@@ -284,3 +284,14 @@ option { color: #0B1612; }
   .t-value { font-size: 19px; }
   .topbar { padding: 10px; }
 }
+
+/* ---------- Stock parts in sale entry ---------- */
+.parts-box { margin-top: 4px; }
+.part-row { display: flex; align-items: center; gap: 8px; background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: 8px 10px; margin-top: 8px; }
+.part-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; word-break: break-word; }
+.part-name small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.part-row input { width: 64px; min-height: 40px; padding: 8px; text-align: center; }
+.part-del { background: transparent; border: 1px solid var(--line); color: var(--red); border-radius: 99px; width: 36px; height: 36px; font-size: 18px; cursor: pointer; flex: none; }
+.parts-hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.entry-parts { margin-top: 8px; font-size: 13px; color: var(--muted); word-break: break-word; }
+.entry-parts b { color: var(--text); font-weight: 600; }

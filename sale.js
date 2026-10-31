@@ -48,6 +48,8 @@ function errorMessage(error) {
   if (code === '42501' || m.includes('row-level security') || m.includes('permission')) {
     return "You don't have permission to perform this action.";
   }
+  if (m.includes('itna stock nahi')) return error.message;
+  if (m.includes('stock me nahi mila')) return 'Part stock me nahi mila. Page refresh karo.';
   return 'Something went wrong. Please try again.';
 }
 
@@ -58,6 +60,9 @@ let filterMode = 'today';  // today | single | range | all
 let entries = [];          // screen par loaded entries
 let isAdmin = false;
 let canView = false;
+let stockItems = [];        // stock se part chunne ke liye
+let chosenParts = [];       // [{item, qty}]
+let entryParts = {};        // sale_entry_id -> [parts]
 
 // ==========================================================
 //  LOGIN / LOGOUT
@@ -152,6 +157,7 @@ function showApp() {
     weekday: 'long', day: '2-digit', month: 'short', year: 'numeric'
   });
 
+  loadStockParts();
   $('fDate').value = todayStr();
   $('singleDate').value = todayStr();
   $('startDate').value = todayStr();
@@ -229,6 +235,7 @@ async function loadEntries() {
     return;
   }
   entries = data || [];
+  await loadEntryParts();
   renderTotals();
   renderList();
 }
@@ -320,6 +327,8 @@ function renderList() {
     html += '<div><span>Kharcha</span><b class="x">' + money(r.expense) + '</b></div>';
     html += '<div><span>Profit</span><b class="p">' + money(profit) + '</b></div>';
     html += '</div>';
+    const ps = entryParts[r.id] || [];
+    if (ps.length) html += '<div class="entry-parts">Stock se: ' + ps.map(function (p) { return '<b>' + esc(p.item_label) + '</b> × ' + p.qty; }).join(', ') + '</div>';
     if (r.notes) html += '<div class="entry-note">Notes: ' + esc(r.notes) + '</div>';
     if (isAdmin) {
       html += '<div class="entry-actions">';
@@ -370,15 +379,18 @@ $('entryForm').addEventListener('submit', async function (e) {
   }
 
   $('addBtn').disabled = true;
-  const { error } = await db.from('sales_entries').insert({
-    entry_date: date,
-    sale_description: work,
-    customer_name: $('fCustomer').value.trim() || null,
-    amount_received: Number(amount),
-    expense: Number(expense),
-    payment_mode: $('fPayment').value,
-    staff_name: staff,
-    notes: $('fNotes').value.trim() || null
+  const { error } = await db.rpc('create_sale_with_parts', {
+    p_entry: {
+      entry_date: date,
+      sale_description: work,
+      customer_name: $('fCustomer').value.trim() || null,
+      amount_received: Number(amount),
+      expense: Number(expense),
+      payment_mode: $('fPayment').value,
+      staff_name: staff,
+      notes: $('fNotes').value.trim() || null
+    },
+    p_parts: chosenParts.map(function (p) { return { item_id: p.item.id, qty: p.qty }; })
   });
   $('addBtn').disabled = false;
 
@@ -394,7 +406,11 @@ $('entryForm').addEventListener('submit', async function (e) {
   $('fExpense').value = '';
   $('fNotes').value = '';
   $('fPayment').value = 'Cash';
+  const hadParts = chosenParts.length > 0;
+  chosenParts = [];
+  renderParts();
   updateProfitPreview();
+  if (hadParts) loadStockParts();
 
   if (canView) loadEntries();
 });
@@ -462,7 +478,9 @@ $('editForm').addEventListener('submit', async function (e) {
 //  DELETE ENTRY (sirf Admin)
 // ==========================================================
 async function deleteEntry(id) {
-  if (!confirm('Are you sure you want to delete this entry?')) return;
+  const ps = entryParts[id] || [];
+  const msg = 'Are you sure you want to delete this entry?' + (ps.length ? '\n\nIske parts wapas stock me jud jayenge:\n' + ps.map(function (p) { return p.item_label + ' × ' + p.qty; }).join('\n') : '');
+  if (!confirm(msg)) return;
 
   const { data, error } = await db.from('sales_entries').delete().eq('id', id).select();
 
@@ -474,7 +492,111 @@ async function deleteEntry(id) {
 
   toast('Entry deleted successfully.', 'ok');
   loadEntries();
+  loadStockParts();
 }
+
+// ==========================================================
+//  STOCK SE PART (entry save hote hi stock apne aap kam)
+// ==========================================================
+function partLabel(it) {
+  return [it.product_name, it.brand, it.model].filter(Boolean).join(' · ');
+}
+
+async function loadStockParts() {
+  const { data, error } = await db.from('stock_items')
+    .select('id, product_name, brand, model, quantity, purchase_price')
+    .gt('quantity', 0)
+    .order('product_name').order('brand').order('model')
+    .limit(5000);
+  if (error) return;
+  stockItems = data || [];
+  $('dlStockParts').innerHTML = stockItems.map(function (it) {
+    return '<option value="' + esc(partLabel(it) + ' (' + it.quantity + ' pcs)') + '">';
+  }).join('');
+}
+
+async function loadEntryParts() {
+  entryParts = {};
+  const ids = entries.map(function (r) { return r.id; });
+  for (let i = 0; i < ids.length; i += 200) {
+    const { data } = await db.from('sale_entry_parts')
+      .select('sale_entry_id, item_label, qty')
+      .in('sale_entry_id', ids.slice(i, i + 200));
+    (data || []).forEach(function (p) {
+      (entryParts[p.sale_entry_id] = entryParts[p.sale_entry_id] || []).push(p);
+    });
+  }
+}
+
+$('fPartSearch').addEventListener('change', pickPart);
+$('fPartSearch').addEventListener('input', function () {
+  // datalist se chuna gaya ho to turant add karo
+  if (/\(\d+ pcs\)$/.test($('fPartSearch').value)) pickPart();
+});
+
+function pickPart() {
+  const v = $('fPartSearch').value.trim();
+  if (!v) return;
+  const it = stockItems.find(function (x) { return partLabel(x) + ' (' + x.quantity + ' pcs)' === v; });
+  if (!it) return;
+  $('fPartSearch').value = '';
+  const already = chosenParts.find(function (p) { return p.item.id === it.id; });
+  if (already) {
+    if (already.qty < it.quantity) already.qty++;
+  } else {
+    chosenParts.push({ item: it, qty: 1 });
+  }
+  renderParts();
+  applyPartsCost();
+}
+
+function renderParts() {
+  $('partsList').innerHTML = chosenParts.map(function (p, i) {
+    const cost = p.item.purchase_price == null ? 'rate nahi hai' : money(p.item.purchase_price) + ' / pc';
+    return '<div class="part-row">' +
+      '<div class="part-name">' + esc(partLabel(p.item)) + '<small>' + cost + ' · stock ' + p.item.quantity + ' pcs</small></div>' +
+      '<input type="number" inputmode="numeric" min="1" max="' + p.item.quantity + '" step="1" value="' + p.qty + '" data-pi="' + i + '" aria-label="Kitne piece">' +
+      '<button type="button" class="part-del" data-pdel="' + i + '" aria-label="Hatao">×</button>' +
+    '</div>';
+  }).join('');
+
+  const noRate = chosenParts.filter(function (p) { return p.item.purchase_price == null; });
+  const hint = $('partsHint');
+  if (chosenParts.length) {
+    hint.textContent = 'Entry save karte hi ye parts stock se kam ho jayenge.' +
+      (noRate.length ? ' ' + noRate.length + ' part ka khareed rate stock me nahi hai, uski lagat Kharcha me khud jod do.' : '');
+    hint.classList.remove('hidden');
+  } else {
+    hint.classList.add('hidden');
+  }
+}
+
+function applyPartsCost() {
+  const total = chosenParts.reduce(function (s, p) {
+    return s + (Number(p.item.purchase_price) || 0) * p.qty;
+  }, 0);
+  if (chosenParts.length) $('fExpense').value = Math.round(total * 100) / 100;
+  updateProfitPreview();
+}
+
+$('partsList').addEventListener('input', function (e) {
+  const i = e.target.getAttribute('data-pi');
+  if (i == null) return;
+  const p = chosenParts[Number(i)];
+  let q = parseInt(e.target.value, 10);
+  if (isNaN(q) || q < 1) return;
+  if (q > p.item.quantity) { q = p.item.quantity; e.target.value = q; toast('Stock me sirf ' + q + ' pcs hain.', 'err'); }
+  p.qty = q;
+  applyPartsCost();
+});
+
+$('partsList').addEventListener('click', function (e) {
+  const i = e.target.getAttribute('data-pdel');
+  if (i == null) return;
+  chosenParts.splice(Number(i), 1);
+  renderParts();
+  applyPartsCost();
+});
 
 // ==========================================================
 //  PAGE KHULTE HI: pehle se login hai to seedha app dikhao
