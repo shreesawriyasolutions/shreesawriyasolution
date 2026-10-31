@@ -1,8 +1,8 @@
 // ==========================================================
 //  SHREE SAWRIYA SOLUTIONS - STOCK MANAGEMENT (Supabase)
 //  Login wahi hai jo Sale Register / Repairs page ka hai.
-//  Staff: stock dekh sakta hai, naya add kar sakta hai, qty +/- kar sakta hai.
-//  Admin: upar ka sab + edit, delete, CSV.
+//  Staff: stock search kar sakta hai aur naya stock add kar sakta hai.
+//  Admin: upar ka sab + qty -/+, history, edit, delete, CSV.
 // ==========================================================
 
 const SUPABASE_URL = 'https://bwldelmfkcynfvbqcneb.supabase.co';
@@ -266,13 +266,14 @@ function render() {
         '</div>' +
         (meta.length ? '<div class="item-meta">' + meta.join(' · ') + '</div>' : '') +
         (it.notes ? '<div class="item-note">' + esc(it.notes) + '</div>' : '') +
-        '<div class="item-actions">' +
+        // Staff ko sirf search + naya stock add; baaki buttons sirf Admin ke liye
+        (isAdmin ? '<div class="item-actions">' +
           '<button type="button" class="btn btn-use" data-act="minus" data-id="' + it.id + '"' + (it.quantity <= 0 ? ' disabled' : '') + '>− Use</button>' +
           '<button type="button" class="btn btn-add" data-act="plus" data-id="' + it.id + '">+ Add</button>' +
           '<button type="button" class="btn btn-ghost" data-act="hist" data-id="' + it.id + '">History</button>' +
-          (isAdmin ? '<button type="button" class="btn btn-edit" data-act="edit" data-id="' + it.id + '">Edit</button>' +
-                     '<button type="button" class="btn btn-del" data-act="del" data-id="' + it.id + '">Delete</button>' : '') +
-        '</div>' +
+          '<button type="button" class="btn btn-edit" data-act="edit" data-id="' + it.id + '">Edit</button>' +
+          '<button type="button" class="btn btn-del" data-act="del" data-id="' + it.id + '">Delete</button>' +
+        '</div>' : '') +
       '</div>';
     });
   });
@@ -374,6 +375,7 @@ $('addForm').addEventListener('submit', async function (e) {
 //  QTY +/- (history me record hota hai)
 // ==========================================================
 function openQty(id, sign) {
+  if (!isAdmin) return;
   const it = items.find(function (x) { return x.id === id; });
   if (!it) return;
   qtyMode = { id: id, sign: sign };
@@ -410,6 +412,7 @@ $('qtyForm').addEventListener('submit', async function (e) {
 //  HISTORY
 // ==========================================================
 async function openHistory(id) {
+  if (!isAdmin) return;
   const it = items.find(function (x) { return x.id === id; });
   if (!it) return;
   $('histItem').textContent = itemLabel(it) + ' — abhi ' + it.quantity + ' pcs';
