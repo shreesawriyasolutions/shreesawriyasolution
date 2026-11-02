@@ -2,7 +2,7 @@ name: Sync Google Reviews
 
 on:
   schedule:
-    - cron: '30 2 * * *'   # daily, 8:00 AM IST
+    - cron: '30 18 * * *'  # daily, 12:00 midnight IST
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Fetch reviews from Google
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
