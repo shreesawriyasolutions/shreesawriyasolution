@@ -20,3 +20,7 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Service structured data (Service / OfferCatalog) on iphone-repair and android-repair pages, matching visible content.
 - Hindi and Punjabi versions of the booking FAQ.
 - Owner actions: Google Business Profile weekly photo/post, ask happy customers for Google reviews, consistent name-address-phone on Justdial/IndiaMART.
+
+## 2026-11-02 – Photo framing (Gallery + Our Works)
+- Every gallery/our-works photo is now a 1600x1000 (16:10) JPEG matching the carousel frame. Photos that weren't 16:10 are shown whole on a dimmed, blurred copy of themselves (no text or faces cut off), instead of black bars.
+- New photos should be framed the same way (16:10, about 1600x1000, under about 300 KB) before adding them.
