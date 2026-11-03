@@ -24,3 +24,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 ## 2026-11-02 – Photo framing (Gallery + Our Works)
 - Every gallery/our-works photo is now a 1600x1000 (16:10) JPEG matching the carousel frame. Photos that weren't 16:10 are shown whole on a dimmed, blurred copy of themselves (no text or faces cut off), instead of black bars.
 - New photos should be framed the same way (16:10, about 1600x1000, under about 300 KB) before adding them.
+
+## 2026-11-03 – Service structured data + one business identity
+- Research: searched "iPhone repair Asandh Karnal" and "mobile repair training Karnal Haryana chip level". Results are still mostly unrelated forums and IndiaMART training listings (Delhi/other cities); no strong local repair website ranks for Assandh. Training searches are dominated by IndiaMART, so a consistent IndiaMART/Justdial listing would help.
+- Change: added Service JSON-LD (with an OfferCatalog of the diagnosis categories already shown on the page, no prices) to iphone-repair.html and android-repair.html. Added the same "@id" (https://shreesawriyasolutions.in/#business) to the LocalBusiness block on every public page (and the Course provider on training.html), so Google treats them as one business instead of five separate ones. Service provider points to that @id.
+- Sitemap lastmod updated for iphone-repair and android-repair.
+- Why: helps Google understand exactly which repairs the shop does on each page and connect them to the one business/Maps listing.
+
+### Ideas for future days
+- Mention the "Asandh" spelling once naturally (still pending).
+- postalCode in the address JSON-LD (verify the PIN with the owner first; don't guess).
+- Hindi/Punjabi versions of the booking FAQ.
+- Visible FAQ on training.html (only from facts already on the page) + FAQPage JSON-LD.
