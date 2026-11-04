@@ -36,3 +36,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in the address JSON-LD (verify the PIN with the owner first; don't guess).
 - Hindi/Punjabi versions of the booking FAQ.
 - Visible FAQ on training.html (only from facts already on the page) + FAQPage JSON-LD.
+
+## 2026-11-04 – Training page FAQ
+- Research: searched "mobile repairing course Karnal Assandh chip level training". Results are all IndiaMART, coursetakers.com and institutes in other cities; no local training centre in Assandh/Karnal ranks with its own page. Course pages that rank answer basic questions (who can join, what you learn, how to ask about fees).
+- Change: added a visible "Mobile Repair Training – FAQ" section on training.html (5 questions: location, joining without experience, which level for technicians, iPhone training, how to ask about fees/duration/timings) plus matching FAQPage JSON-LD. Every answer uses only facts already on the site (no fees, durations, batch timings or certificates invented). Location answer mentions "Asandh" spelling once (pending idea done). FAQ links to iphone-repair and android-repair pages.
+- Sitemap lastmod for training.html set to 2026-11-04.
+- Why: gives the thin-on-text training page real answers for "mobile repair course Karnal/Assandh" style searches and helps Google understand the course levels.
+
+### Ideas for future days
+- If the owner shares course duration/fees/batch timings or certificate details, add them to the training page and FAQ (only with his confirmation).
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
+- training.html has no language switcher; consider later only if the owner wants it.
+- Owner action idea: IndiaMART listing for the training (training searches are dominated by IndiaMART), same name-address-phone.
