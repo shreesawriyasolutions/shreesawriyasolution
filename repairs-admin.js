@@ -139,7 +139,10 @@ function balanceOf(r) {
   return Math.max(0, total - Number(r.advance_paid || 0));
 }
 
-function trackUrl(mobile) { return TRACK_LINK + '?m=' + encodeURIComponent(mobile || ''); }
+// # ke baad wala hissa server/logs tak nahi jata, isliye number+ID safe rehte hain
+function trackUrl(mobile, code) {
+  return TRACK_LINK + '#m=' + encodeURIComponent(mobile || '') + (code ? '&c=' + encodeURIComponent(code) : '');
+}
 
 // ==========================================================
 //  LOGIN / LOGOUT
@@ -414,7 +417,7 @@ $('repairForm').addEventListener('submit', async function (e) {
 function showAdded(code, name, mobile, model) {
   const msg = 'Namaste ' + name + ', aapka ' + model + ' Shree Sawriya Solutions me receive ho gaya hai.\n' +
     'Repair ID: ' + code + '\n' +
-    'Status dekhne ke liye: ' + trackUrl(mobile);
+    'Status dekhne ke liye: ' + trackUrl(mobile, code);
   const wa = 'https://wa.me/91' + mobile + '?text=' + encodeURIComponent(msg);
   const box = $('addedBox');
   box.innerHTML =
@@ -610,7 +613,7 @@ function jobsheetText(r, plain) {
   if (bal != null && Number(r.advance_paid) > 0) t += 'Baaki: ' + money(bal) + '\n';
   if (r.estimated_delivery) t += 'Est. Delivery: ' + fmtDate(r.estimated_delivery) + '\n';
   if (r.warranty_days) t += 'Repair Warranty: ' + warrantyLabel(r.warranty_days) + ' (delivery se)\n';
-  t += '\nStatus dekhne ke liye: ' + trackUrl(c.mobile) + '\n' + SHOP.name + ' | ' + SHOP.phone;
+  t += '\nStatus dekhne ke liye: ' + trackUrl(c.mobile, r.repair_code) + '\n' + SHOP.name + ' | ' + SHOP.phone;
   return plain ? t.replace(/\*/g, '') : t;
 }
 
@@ -659,9 +662,10 @@ function jobsheetHtml(r) {
     '<div>2. Repair ke baad final charges badal sakte hain, pehle bataya jayega.</div>' +
     '<div>3. Phone ka data/backup customer ki zimmedari hai.</div>' +
     '<div>4. Pani lage / tute hue phone mein repair ke baad bhi doosri kharabi aa sakti hai.</div>' +
-    '<div>5. Ready hone ke 30 din tak phone na lene par shop zimmedar nahi.</div></div>' +
+    '<div>5. Ready hone ke 30 din tak phone na lene par shop zimmedar nahi.</div>' +
+    '<div>6. Aapka naam, number, IMEI aur ID sirf repair, warranty aur bill ke liye rakhe jaate hain. Privacy: shreesawriyasolutions.in/privacy.html</div></div>' +
     '<div class="sig"><div>Customer Signature</div><div>Authorised Signature</div></div>' +
-    '<div class="trk">' + qrImg(trackUrl(c.mobile)) +
+    '<div class="trk">' + qrImg(trackUrl(c.mobile, r.repair_code)) +
     '<div>Ye QR scan karke apne phone ka status dekhein<br>' + esc(TRACK_LINK) + '</div></div>' +
     '</body></html>';
 }
@@ -771,7 +775,7 @@ function statusMessage(r) {
     default:
       t += 'Aapke ' + r.device_model + ' ka status: ' + r.status;
   }
-  t += '\n\nStatus dekhein: ' + trackUrl(c.mobile) + '\n' + SHOP.name + ' | ' + SHOP.phone;
+  t += '\n\nStatus dekhein: ' + trackUrl(c.mobile, r.repair_code) + '\n' + SHOP.name + ' | ' + SHOP.phone;
   return t;
 }
 
