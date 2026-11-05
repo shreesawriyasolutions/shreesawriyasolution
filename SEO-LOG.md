@@ -49,3 +49,14 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Hindi/Punjabi versions of the booking FAQ.
 - training.html has no language switcher; consider later only if the owner wants it.
 - Owner action idea: IndiaMART listing for the training (training searches are dominated by IndiaMART), same name-address-phone.
+
+## 2026-11-05 – Breadcrumb structured data
+- Research: searched "mobile phone repair shop Assandh Karnal" and "Android mobile repair near Assandh Safidon Jind". Results are still directory pages (Flipkart service pages, explurger, ueni, Google Sites listings) — no strong local repair website. The site already has the best on-page local signals; the gap is off-site (Google Business Profile, reviews, listings).
+- Change: added BreadcrumbList JSON-LD (Home > page) to iphone-repair.html, android-repair.html, training.html and booking.html. Matches the visible Home/back link on each page. No visible content changed, so sitemap lastmod not touched.
+- Why: lets Google show "shreesawriyasolutions.in › iPhone Repair in Assandh" style breadcrumbs in results and makes the site structure clearer.
+
+### Ideas for future days
+- H1 on iphone-repair/android-repair is generic ("Complete iPhone Repair Solutions"); a local H1 like "iPhone Repair in Assandh" would help, but it needs matching data-en/data-hi/data-pa text — only do it carefully (or with owner OK) since it touches the language switcher text.
+- Short visible intro paragraph on android-repair.html naming brands (Samsung, Vivo, Oppo, etc. are already in og:description) — also needs hi/pa translations.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
