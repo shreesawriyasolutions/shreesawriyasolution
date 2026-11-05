@@ -20,18 +20,22 @@ const T = {
     back: '← Home',
     tag: 'REPAIR STATUS',
     h1: 'Check Your Phone Status',
-    sub: 'Enter your registered mobile number. All your phones will show together.',
+    sub: 'Enter your registered mobile number and the Repair ID from your jobsheet or WhatsApp message.',
     label: 'Mobile Number',
     ph: '10-digit mobile number',
     btn: 'Check Status',
-    note: 'Only the mobile number given at the shop will work.',
+    note: 'For your privacy, the Repair ID is needed too. It is printed on your jobsheet (e.g. SSS-0012).',
+    codeLabel: 'Repair ID',
+    codePh: 'e.g. SSS-0012 or 12',
+    errCode: 'Please enter the Repair ID from your jobsheet.',
+    locked: 'Too many wrong tries for this number. Please try again after 1 hour or contact the shop.',
     title: 'Track Your Repair | Shree Sawriya Solutions',
     errInvalid: 'Please enter a valid 10-digit mobile number.',
     wait: 'Please wait a moment and try again.',
     searching: 'Searching...',
     busy: 'Too many people are searching right now. Please try again later.',
     techErr: 'Technical problem. Please check your internet and try again.',
-    none: 'No repair record found for this number. Please contact the shop.',
+    none: 'No repair found for this mobile number and Repair ID. Please check both or contact the shop.',
     hello: 'Hello {name}, we found {n} repair record(s).',
     received: 'Received',
     updated: 'Last updated',
@@ -69,18 +73,22 @@ const T = {
     back: '← होम',
     tag: 'रिपेयर स्टेटस',
     h1: 'अपने फोन का स्टेटस देखें',
-    sub: 'अपना रजिस्टर्ड मोबाइल नंबर डालें। आपके सभी फोन का स्टेटस एक साथ दिखेगा।',
+    sub: 'अपना रजिस्टर्ड मोबाइल नंबर और जॉबशीट या WhatsApp मैसेज वाली Repair ID डालें।',
     label: 'मोबाइल नंबर',
     ph: '10 अंकों का मोबाइल नंबर',
     btn: 'स्टेटस देखें',
-    note: 'सिर्फ वही मोबाइल नंबर चलेगा जो दुकान पर लिखवाया था।',
+    note: 'आपकी प्राइवेसी के लिए Repair ID भी ज़रूरी है। ये आपकी जॉबशीट पर लिखी है (जैसे SSS-0012)।',
+    codeLabel: 'Repair ID',
+    codePh: 'जैसे SSS-0012 या 12',
+    errCode: 'कृपया जॉबशीट वाली Repair ID डालें।',
+    locked: 'इस नंबर पर बहुत बार गलत कोशिश हुई। 1 घंटे बाद कोशिश करें या दुकान पर संपर्क करें।',
     title: 'रिपेयर स्टेटस | श्री सावरिया सॉल्यूशंस',
     errInvalid: 'कृपया 10 अंकों का सही मोबाइल नंबर डालें।',
     wait: 'थोड़ा रुककर दोबारा कोशिश करें।',
     searching: 'खोज रहे हैं...',
     busy: 'अभी बहुत लोग सर्च कर रहे हैं। कृपया थोड़ी देर बाद कोशिश करें।',
     techErr: 'तकनीकी समस्या। कृपया इंटरनेट चेक करके दोबारा कोशिश करें।',
-    none: 'इस नंबर पर कोई रिपेयर रिकॉर्ड नहीं मिला। कृपया दुकान पर संपर्क करें।',
+    none: 'इस मोबाइल नंबर और Repair ID से कोई रिपेयर नहीं मिला। दोनों चेक करें या दुकान पर संपर्क करें।',
     hello: 'नमस्ते {name}, आपके {n} रिपेयर रिकॉर्ड मिले।',
     received: 'जमा हुआ',
     updated: 'आखिरी अपडेट',
@@ -118,18 +126,22 @@ const T = {
     back: '← ਹੋਮ',
     tag: 'ਰਿਪੇਅਰ ਸਟੇਟਸ',
     h1: 'ਆਪਣੇ ਫ਼ੋਨ ਦਾ ਸਟੇਟਸ ਦੇਖੋ',
-    sub: 'ਆਪਣਾ ਰਜਿਸਟਰਡ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ। ਤੁਹਾਡੇ ਸਾਰੇ ਫ਼ੋਨਾਂ ਦਾ ਸਟੇਟਸ ਇਕੱਠਾ ਦਿਖੇਗਾ।',
+    sub: 'ਆਪਣਾ ਰਜਿਸਟਰਡ ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ ਜੌਬਸ਼ੀਟ ਜਾਂ WhatsApp ਮੈਸੇਜ ਵਾਲੀ Repair ID ਪਾਓ।',
     label: 'ਮੋਬਾਈਲ ਨੰਬਰ',
     ph: '10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ',
     btn: 'ਸਟੇਟਸ ਦੇਖੋ',
-    note: 'ਸਿਰਫ਼ ਉਹੀ ਮੋਬਾਈਲ ਨੰਬਰ ਚੱਲੇਗਾ ਜੋ ਦੁਕਾਨ ਤੇ ਲਿਖਵਾਇਆ ਸੀ।',
+    note: 'ਤੁਹਾਡੀ ਪ੍ਰਾਈਵੇਸੀ ਲਈ Repair ID ਵੀ ਜ਼ਰੂਰੀ ਹੈ। ਇਹ ਤੁਹਾਡੀ ਜੌਬਸ਼ੀਟ ਤੇ ਲਿਖੀ ਹੈ (ਜਿਵੇਂ SSS-0012)।',
+    codeLabel: 'Repair ID',
+    codePh: 'ਜਿਵੇਂ SSS-0012 ਜਾਂ 12',
+    errCode: 'ਕਿਰਪਾ ਕਰਕੇ ਜੌਬਸ਼ੀਟ ਵਾਲੀ Repair ID ਪਾਓ।',
+    locked: 'ਇਸ ਨੰਬਰ ਤੇ ਬਹੁਤ ਵਾਰ ਗਲਤ ਕੋਸ਼ਿਸ਼ ਹੋਈ। 1 ਘੰਟੇ ਬਾਅਦ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜਾਂ ਦੁਕਾਨ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।',
     title: 'ਰਿਪੇਅਰ ਸਟੇਟਸ | ਸ਼੍ਰੀ ਸਾਵਰੀਆ ਸੋਲਿਊਸ਼ਨਜ਼',
     errInvalid: 'ਕਿਰਪਾ ਕਰਕੇ 10 ਅੰਕਾਂ ਦਾ ਸਹੀ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ।',
     wait: 'ਥੋੜ੍ਹਾ ਰੁਕ ਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।',
     searching: 'ਖੋਜ ਰਹੇ ਹਾਂ...',
     busy: 'ਇਸ ਵੇਲੇ ਬਹੁਤ ਲੋਕ ਖੋਜ ਰਹੇ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਥੋੜ੍ਹੀ ਦੇਰ ਬਾਅਦ ਕੋਸ਼ਿਸ਼ ਕਰੋ।',
     techErr: 'ਤਕਨੀਕੀ ਸਮੱਸਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਇੰਟਰਨੈੱਟ ਚੈੱਕ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।',
-    none: 'ਇਸ ਨੰਬਰ ਤੇ ਕੋਈ ਰਿਪੇਅਰ ਰਿਕਾਰਡ ਨਹੀਂ ਮਿਲਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਕਾਨ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।',
+    none: 'ਇਸ ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ Repair ID ਨਾਲ ਕੋਈ ਰਿਪੇਅਰ ਨਹੀਂ ਮਿਲਿਆ। ਦੋਵੇਂ ਚੈੱਕ ਕਰੋ ਜਾਂ ਦੁਕਾਨ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।',
     hello: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ {name}, ਤੁਹਾਡੇ {n} ਰਿਪੇਅਰ ਰਿਕਾਰਡ ਮਿਲੇ।',
     received: 'ਜਮ੍ਹਾਂ ਹੋਇਆ',
     updated: 'ਆਖ਼ਰੀ ਅਪਡੇਟ',
@@ -274,6 +286,11 @@ $('trackForm').addEventListener('submit', async function (e) {
     showKey('err', 'errInvalid');
     return;
   }
+  const c = $('code').value.trim();
+  if (!/^\D{0,4}\d{1,6}$/.test(c.replace(/\s/g, ''))) {
+    showKey('err', 'errCode');
+    return;
+  }
 
   // Bar bar tezi se search rokne ke liye
   const now = Date.now();
@@ -287,11 +304,13 @@ $('trackForm').addEventListener('submit', async function (e) {
   showKey('load', 'searching');
 
   try {
-    const { data, error } = await db.rpc('track_repairs', { p_mobile: m });
+    const { data, error } = await db.rpc('track_repairs_v2', { p_mobile: m, p_code: c });
     if (error) throw error;
 
     if (!data || data.ok !== true) {
       if (data && data.error === 'busy') showKey('err', 'busy');
+      else if (data && data.error === 'locked') showKey('err', 'locked');
+      else if (data && data.error === 'invalid_code') showKey('err', 'errCode');
       else showKey('err', 'errInvalid');
     } else if (!data.repairs || data.repairs.length === 0) {
       showKey('info', 'none');
@@ -399,11 +418,21 @@ $('result').addEventListener('click', function (e) {
 // Page khulte hi language lagao
 applyLang(lang);
 
-// Home page se number lekar aaye to apne aap search karo (?m=9876543210)
-(function autoSearch() {
-  const m = new URLSearchParams(window.location.search).get('m');
+// Link se number (aur Repair ID) lekar aaye to form bhar do.
+// Naye links: track.html#m=9876543210&c=SSS-0012 (# wala hissa server tak nahi jata)
+// Purane links: track.html?m=9876543210 (sirf number bharega, ID customer daalega)
+(function autoFill() {
+  const hash = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
+  const query = new URLSearchParams(window.location.search);
+  const m = hash.get('m') || query.get('m');
+  const c = hash.get('c');
   if (!m || !/^\d{10}$/.test(m)) return;
   $('mobile').value = m;
   try { window.history.replaceState({}, '', window.location.pathname); } catch (e) {}
-  $('trackForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  if (c) {
+    $('code').value = c;
+    $('trackForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  } else {
+    $('code').focus();
+  }
 })();
