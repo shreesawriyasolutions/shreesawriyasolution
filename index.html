@@ -120,6 +120,7 @@ nav a:hover{color:var(--ink);background:rgba(255,255,255,.4)}
 .lang button{border:0;background:none;font:inherit;font-size:.85rem;padding:4px 11px;border-radius:99px;cursor:pointer;color:var(--ink-2)}
 .lang button[aria-pressed="true"]{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 @media (max-width:720px){nav{display:none}.lang{margin-left:auto}}
+@media (max-width:380px){.brand{font-size:.86rem;line-height:1.15;gap:8px}.lang button{padding:4px 8px}}
 
 /* buttons */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:99px;font:600 1rem var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
@@ -252,9 +253,25 @@ footer{padding:28px 0 12px;color:var(--ink-2);font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
 footer a{margin-right:14px}
 
-.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:8px;padding:8px;border-radius:99px}
-.dock .btn{flex:1;min-height:48px;padding:0 12px}
+/* mobile liquid-glass tab bar */
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;display:none;align-items:center;gap:6px;padding:6px;border-radius:99px;transform-origin:50% 100%}
 @media (max-width:720px){.dock{display:flex}}
+.dock .tabs{position:relative;flex:1;display:flex;min-width:0}
+.dock .tab{position:relative;z-index:1;flex:1;min-width:0;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  padding:4px 2px;background:none;border-radius:99px;text-decoration:none;color:var(--ink-2);font:600 .66rem/1.1 var(--body);letter-spacing:-.01em;-webkit-tap-highlight-color:transparent;transition:color .3s}
+.dock .tab svg{width:22px;height:22px;transition:transform .5s cubic-bezier(.3,1.8,.5,1)}
+.dock .tab span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dock .tab.on{color:var(--green)}
+.dock .tab.on svg{transform:translateY(-2px) scale(1.16)}
+.dock .tab:focus-visible{outline:2px solid var(--green);outline-offset:-3px}
+.dock .blob{position:absolute;top:0;bottom:0;left:0;width:25%;border-radius:99px;pointer-events:none;
+  --tint:rgba(52,196,157,.22);background-color:var(--tint);background-image:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.12) 55%,rgba(255,255,255,.3));
+  border:1px solid var(--edge);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.9),inset 0 -2px 6px rgba(255,255,255,.25),0 6px 16px -8px rgba(7,61,49,.5);
+  transition:background-color .45s ease}
+@media (prefers-color-scheme:dark){.dock .blob{background-image:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.03) 55%,rgba(255,255,255,.08));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -8px rgba(0,0,0,.7)}}
+.dock .wa-orb{flex:none;width:54px;height:54px;min-height:0;padding:0;border-radius:50%}
+.dock .wa-orb svg{width:26px;height:26px}
+@media (max-width:360px){.dock{left:8px;right:8px;gap:4px;padding:5px}.dock .wa-orb{width:48px;height:48px}.dock .tab{min-height:50px}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 
@@ -622,10 +639,100 @@ footer{padding:36px 0 18px}
   </div>
 </footer>
 
-<div class="dock glass" role="group" aria-label="Quick contact">
-  <a class="btn wa" href="https://wa.me/919720076900" target="_blank" rel="noopener" data-en="WhatsApp" data-hi="WhatsApp" data-pa="WhatsApp">WhatsApp</a>
-  <a class="btn line" href="tel:+919720076900" data-en="Call" data-hi="कॉल" data-pa="ਕਾਲ">Call</a>
-</div>
+<nav class="dock glass" id="dock" aria-label="Quick navigation">
+  <div class="tabs">
+    <span class="blob" aria-hidden="true"></span>
+    <a class="tab on" href="#top" data-target="top" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg><span data-en="Home" data-hi="होम" data-pa="ਹੋਮ">Home</span></a>
+    <a class="tab" href="#services" data-target="services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span data-en="Services" data-hi="सेवाएं" data-pa="ਸੇਵਾਵਾਂ">Services</span></a>
+    <a class="tab" href="#our-works" data-target="our-works"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/></svg><span data-en="Works" data-hi="काम" data-pa="ਕੰਮ">Works</span></a>
+    <a class="tab" href="#contact" data-target="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-en="Contact" data-hi="संपर्क" data-pa="ਸੰਪਰਕ">Contact</span></a>
+  </div>
+  <a class="btn wa wa-orb" href="https://wa.me/919720076900" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3z"/></svg></a>
+</nav>
+<script>
+(function () {
+  var dock = document.getElementById('dock');
+  if (!dock) return;
+  var tabs = Array.prototype.slice.call(dock.querySelectorAll('.tab'));
+  var blob = dock.querySelector('.blob');
+  var tints = ['rgba(52,196,157,.24)', 'rgba(127,214,232,.3)', 'rgba(244,196,48,.28)', 'rgba(244,130,160,.26)'];
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var current = 0, lockUntil = 0;
+
+  function geo(i) { var t = tabs[i]; return { x: t.offsetLeft, w: t.offsetWidth }; }
+  function place(i) { var g = geo(i); blob.style.left = g.x + 'px'; blob.style.width = g.w + 'px'; }
+
+  function activate(i, animate) {
+    if (i === current && animate) return;
+    var from = geo(current), to = geo(i), dir = i > current ? 1 : -1;
+    tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); if (k === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current'); });
+    blob.style.setProperty('--tint', tints[i % tints.length]);
+    current = i;
+    place(i);
+    if (!animate || reduce || !blob.animate) return;
+    var left = Math.min(from.x, to.x), right = Math.max(from.x + from.w, to.x + to.w);
+    var px = function (n) { return n + 'px'; };
+    // jelly stretch: blob spans both tabs, squashes, overshoots, settles
+    blob.animate([
+      { left: px(from.x), width: px(from.w), transform: 'scaleY(1)' },
+      { left: px(left), width: px(right - left), transform: 'scaleY(.8)', offset: .42 },
+      { left: px(to.x + dir * 6), width: px(to.w * 1.04), transform: 'scaleY(1.08)', offset: .72 },
+      { left: px(to.x), width: px(to.w), transform: 'scaleY(1)' }
+    ], { duration: 620, easing: 'cubic-bezier(.3,.7,.3,1)' });
+    // the whole bar wobbles like liquid
+    dock.animate([
+      { transform: 'scale(1,1)' },
+      { transform: 'scale(1.025,.93)', offset: .3 },
+      { transform: 'scale(.99,1.03)', offset: .65 },
+      { transform: 'scale(1,1)' }
+    ], { duration: 520, easing: 'ease-out' });
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function (e) {
+      e.preventDefault();
+      activate(i, true);
+      lockUntil = Date.now() + 1000;
+      var id = t.getAttribute('data-target');
+      var el = id === 'top' ? null : document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+      else window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  // follow the page while scrolling
+  var ticking = false;
+  function spy() {
+    ticking = false;
+    if (Date.now() < lockUntil) return;
+    var line = window.innerHeight * 0.4, idx = 0;
+    tabs.forEach(function (t, i) {
+      var el = document.getElementById(t.getAttribute('data-target'));
+      if (el && el.getBoundingClientRect().top <= line) idx = i;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) idx = tabs.length - 1;
+    activate(idx, true);
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  window.addEventListener('resize', function () { place(current); });
+
+  // keep the Tawk.to chat bubble above this bar on phones (never touch the opened chat window)
+  function liftChat() {
+    if (getComputedStyle(dock).display === 'none') return;
+    var top = dock.getBoundingClientRect().top;
+    document.querySelectorAll('iframe').forEach(function (f) {
+      if (dock.contains(f) || getComputedStyle(f).position !== 'fixed') return;
+      var r = f.getBoundingClientRect();
+      if (!r.width || r.height > 140 || r.width > 200) return; // open chat / large frames
+      if (r.bottom > top - 10) f.style.setProperty('bottom', Math.ceil(window.innerHeight - top + 14) + 'px', 'important');
+    });
+  }
+  setInterval(liftChat, 800);
+  window.addEventListener('resize', liftChat);
+  place(0);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(current); });
+})();
+</script>
 
 <!-- LANGUAGE POPUP -->
 <div id="langPopup" role="dialog" aria-modal="true" aria-labelledby="langTitle" hidden>
@@ -878,7 +985,7 @@ var Tawk_API = Tawk_API || {};
 Tawk_API.customStyle = {
   visibility: {
     desktop: { position: 'br', xOffset: 20, yOffset: 20 },
-    mobile: { position: 'br', xOffset: 14, yOffset: 92 }
+    mobile: { position: 'br', xOffset: 14, yOffset: 100 }
   }
 };
 Tawk_API.onLoad = function() {
