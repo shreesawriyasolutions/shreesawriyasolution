@@ -1,0 +1,2 @@
+# .well-known folder ko publish karne ke liye (Android app ka assetlinks.json)
+include: [".well-known"]

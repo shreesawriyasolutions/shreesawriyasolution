@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "in.shreesawriyasolutions.shopapp",
+        "sha256_cert_fingerprints": ["B9:13:7F:40:B1:5F:29:FB:C1:FA:0B:01:12:2D:23:61:24:79:47:09:A5:A7:21:04:D5:8D:01:98:1C:A4:E4:D6"]
+      }
+    }]
