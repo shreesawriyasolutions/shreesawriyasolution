@@ -60,3 +60,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Short visible intro paragraph on android-repair.html naming brands (Samsung, Vivo, Oppo, etc. are already in og:description) — also needs hi/pa translations.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
+
+## 2026-11-06 – Local H1 headings on repair pages
+- Research: searched "mobile repair shop Assandh Karnal" and "phone screen replacement battery replacement Karnal Panipat". Results are still Flipkart city pages, explurger/ueni/Quikr directory listings and unrelated Assandh service centres (trucks, cars, bikes). No local repair website competes; on-page local signals matter, plus off-site listings.
+- Change: H1 on iphone-repair.html "Complete iPhone Repair Solutions" → "iPhone Repair in Assandh"; on android-repair.html "Complete Android Repair Solutions" → "Android Phone Repair in Assandh". Updated data-en/data-hi/data-pa together (हिंदी: "असंध में आईफोन/एंड्रॉयड फोन रिपेयर", ਪੰਜਾਬੀ: "ਅਸੰਧ ਵਿੱਚ ਆਈਫੋਨ/ਐਂਡਰਾਇਡ ਫੋਨ ਰਿਪੇਅਰ"); switcher code untouched. H1 now matches each page's title tag.
+- Sitemap lastmod for both pages set to 2026-11-06.
+- Why: the H1 is the strongest on-page heading; generic "Complete ... Solutions" said nothing about the place. Now page title, H1 and breadcrumb all point to the same local search.
+
+### Ideas for future days
+- Short visible intro paragraph on android-repair.html naming brands (Samsung, Vivo, Oppo, etc. are in og:description) — needs hi/pa translations.
+- Add width/height to the header logo <img> on subpages (avoids layout shift).
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
