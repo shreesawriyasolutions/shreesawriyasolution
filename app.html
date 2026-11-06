@@ -6,8 +6,13 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0c0d0c">
 <title>Shop App | Shree Sawriya Solutions</title>
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="apple-touch-icon" href="logo.png">
+<link rel="icon" type="image/png" href="icons/app-192.png">
+<link rel="apple-touch-icon" href="icons/app-apple-180.png">
+<link rel="manifest" href="app.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SSS Shop">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&display=swap">
@@ -982,6 +987,9 @@ window.addEventListener('hashchange',()=>{ const h=location.hash.slice(1); S.vie
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden&&S.profile) loadAll(); });
 setInterval(()=>{ if(!document.hidden&&S.profile&&$('#sheet').hidden) loadAll(); },60000);
 db.auth.onAuthStateChange((evt)=>{ if(evt==='SIGNED_OUT'&&S.profile) location.reload(); });
+
+// App install / APK ke liye service worker (sirf /app* par kaam karta hai)
+if('serviceWorker' in navigator){ window.addEventListener('load',()=>{ navigator.serviceWorker.register('/app-sw.js',{scope:'/app'}).catch(e=>console.warn('SW',e)); }); }
 
 (async function init(){
   try{

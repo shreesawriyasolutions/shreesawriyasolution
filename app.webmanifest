@@ -1,0 +1,24 @@
+{
+  "id": "/app.html",
+  "name": "Shree Sawriya Shop App",
+  "short_name": "SSS Shop",
+  "description": "Shree Sawriya Solutions ka shop app: repair status, daily sales, bills, stock aur staff ek jagah.",
+  "start_url": "/app.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0d0c",
+  "theme_color": "#0c0d0c",
+  "lang": "hi",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "/icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Repair status", "url": "/app.html#status", "icons": [{ "src": "/icons/app-192.png", "sizes": "192x192" }] },
+    { "name": "Sales", "url": "/app.html#sales", "icons": [{ "src": "/icons/app-192.png", "sizes": "192x192" }] },
+    { "name": "Stock", "url": "/app.html#stock", "icons": [{ "src": "/icons/app-192.png", "sizes": "192x192" }] }
+  ]
+}
