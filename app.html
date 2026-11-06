@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0c0d0c">
+<title>Shop App | Shree Sawriya Solutions</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hind:wght@400;500;600&display=swap">
+<style>
+/* Shop counter app: dark brand shell (black + gold). Phone = top bar + bottom tabs; desktop = sidebar. */
+:root{
+  --bg:#0c0d0c; --surface:#151715; --surface-2:#1d201d; --line:#2b2f2b;
+  --fg:#f1eee6; --muted:#9c9d95; --gold:#c9a24a; --gold-ink:#16130a; --gold-soft:rgba(201,162,74,.14);
+  --green:#3fb393; --green-soft:rgba(63,179,147,.15); --amber:#e6ad44; --amber-soft:rgba(230,173,68,.15);
+  --blue:#86aee0; --blue-soft:rgba(134,174,224,.15); --red:#e8776a; --red-soft:rgba(232,119,106,.15);
+  --violet:#b69ae6; --violet-soft:rgba(182,154,230,.15);
+  --silver:#c9ccd0; --side:#070807; --overlay:rgba(0,0,0,.62);
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Hind","Segoe UI",system-ui,sans-serif;
+  --r:14px; --nav-h:64px; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--head);font-weight:800;margin:0;letter-spacing:-.01em;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* login */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-left)) 24px max(16px,env(safe-area-inset-right));background:radial-gradient(120% 70% at 50% 0%,#1a170d 0%,var(--bg) 60%)}
+.login-card{width:100%;max-width:380px;display:grid;gap:14px;text-align:center}
+.login-card img{width:170px;margin:0 auto}
+.login-card p{color:var(--muted);margin:0}
+.login-card form{display:grid;gap:10px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+
+/* shell */
+.app{min-height:100vh;display:flex}
+.side{display:none}
+.main{flex:1;min-width:0;padding:0 max(16px,env(safe-area-inset-right)) calc(var(--nav-h) + 28px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.topbar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 0 10px;border-bottom:1px solid var(--line)}
+.topbar img{width:38px;height:38px;object-fit:cover;object-position:50% 30%;border-radius:10px}
+.brand{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand b{font-family:var(--head);font-size:15px;letter-spacing:.06em;color:var(--silver)}
+.brand b span{color:var(--gold)}
+.brand small{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.spacer{flex:1}
+.badge{font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.badge.admin{background:var(--gold);color:var(--gold-ink)}
+.badge.staff{background:var(--blue-soft);color:var(--blue)}
+.wrap{max-width:1080px;margin-inline:auto}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--side);border-top:1px solid rgba(201,162,74,.25);display:grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:var(--nav-h);color:#a9aaa2;text-decoration:none;font-size:11px;font-weight:500}
+.nav a svg{width:22px;height:22px}
+.nav a.on{color:var(--gold)}
+@media (min-width:900px){
+  .side{display:flex;flex-direction:column;gap:22px;width:248px;flex:none;position:sticky;top:0;height:100vh;background:var(--side);padding:26px 16px;border-right:1px solid rgba(201,162,74,.2)}
+  .side .logo{width:150px;align-self:center}
+  .side nav{display:flex;flex-direction:column;gap:3px}
+  .side nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:#b4b5ad;text-decoration:none;font-weight:500}
+  .side nav a svg{width:20px;height:20px}
+  .side nav a:hover{background:rgba(255,255,255,.04)}
+  .side nav a.on{background:var(--gold-soft);color:var(--gold)}
+  .side .foot{margin-top:auto;color:#77786f;font-size:12.5px;display:grid;gap:8px}
+  .side .foot a{color:var(--gold);text-decoration:none}
+  .nav,.topbar img,.topbar .brand{display:none}
+  .topbar{border-bottom:0;padding-top:18px}
+  .main{padding:0 32px 40px}
+}
+
+/* pieces */
+.vhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 14px}
+.vhead h1{font-size:clamp(24px,5vw,32px)}
+.vhead p{margin:2px 0 0;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;text-decoration:none;color:var(--fg);white-space:nowrap}
+.btn:hover{border-color:var(--gold)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.btn.danger{color:var(--red);border-color:transparent;background:var(--red-soft)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:6px 12px;font-size:13px}
+.btn.block{width:100%}
+.btn svg{width:17px;height:17px}
+.btn[disabled]{opacity:.55;cursor:wait}
+.icon-btn{border:0;background:var(--surface-2);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:20px;line-height:1;color:var(--fg)}
+.note{padding:10px 14px;border-radius:10px;font-size:14px;background:var(--blue-soft);color:var(--blue)}
+.note.warn{background:var(--amber-soft);color:var(--amber)}
+.section-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:24px 0 10px}
+.section-t h2{font-size:18px}
+.section-t a{color:var(--gold);text-decoration:none;font-size:14px;font-weight:500}
+.label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:720px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0;text-align:left;color:var(--fg)}
+button.kpi:hover{border-color:var(--gold)}
+button.kpi.on{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.kpi .v{font-family:var(--head);font-size:clamp(19px,4.4vw,25px);font-weight:800;margin-top:2px;overflow-wrap:anywhere}
+.kpi .s{color:var(--muted);font-size:13px}
+.kpi.hero{background:linear-gradient(140deg,#17140b,#0c0d0c 75%);border-color:rgba(201,162,74,.45)}
+.kpi.hero .v{color:#e2bf68}
+.quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+.quick button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:500;color:var(--fg)}
+.quick button span{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--gold-soft);color:var(--gold)}
+.quick button svg{width:21px;height:21px}
+.quick button:hover{border-color:var(--gold)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:0 14px}
+.search input{border:0;background:transparent;outline:0;padding:9px 0;width:100%;min-width:0}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500;color:var(--fg)}
+.chip.on{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.chip i{font-style:normal;opacity:.7;margin-left:4px}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500;color:var(--muted)}
+.seg button.on{background:var(--gold);color:var(--gold-ink)}
+.list{display:grid;gap:10px}
+@media (min-width:720px){.list.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;text-align:left;width:100%;display:block;color:var(--fg);min-width:0}
+button.card:hover{border-color:rgba(201,162,74,.55)}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.t{font-weight:600;font-size:16px;overflow-wrap:anywhere}
+.sub{color:var(--muted);font-size:13.5px;overflow-wrap:anywhere}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted);font-size:12.5px;margin-top:8px}
+.amt{font-family:var(--head);font-weight:800;font-size:17px;white-space:nowrap}
+.code{font-family:var(--head);font-size:12px;color:var(--gold);letter-spacing:.06em}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.s-received{background:var(--blue-soft);color:var(--blue)}
+.s-diagnosing{background:var(--violet-soft);color:var(--violet)}
+.s-progress{background:var(--amber-soft);color:var(--amber)}
+.s-waiting{background:var(--gold-soft);color:var(--gold)}
+.s-ready,.s-ok,.s-admin{background:var(--green-soft);color:var(--green)}
+.s-delivered,.s-staff{background:var(--surface-2);color:var(--muted)}
+.s-returned,.s-out{background:var(--red-soft);color:var(--red)}
+.s-low{background:var(--amber-soft);color:var(--amber)}
+.s-purchase{background:var(--blue-soft);color:var(--blue)}
+.s-sale{background:var(--green-soft);color:var(--green)}
+.s-unlock{background:var(--violet-soft);color:var(--violet)}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:26px 18px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--fg);font-family:var(--head);font-size:17px;margin-bottom:4px}
+.empty .btn{margin-top:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.grid2{display:grid;gap:10px}
+@media (min-width:760px){.grid2{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.bars{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:20px;border-bottom:1px solid var(--line)}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0;position:relative}
+.bars .b i{display:block;width:70%;max-width:36px;border-radius:6px 6px 2px 2px;background:var(--gold-soft);border:1px solid var(--gold);border-bottom:0;min-height:2px}
+.bars .b.today i{background:var(--gold)}
+.bars .b em{font-style:normal;font-size:10.5px;color:var(--muted);position:absolute;transform:translateY(-100%);white-space:nowrap}
+.bars-x{display:flex;gap:8px;margin-top:6px}
+.bars-x span{flex:1;text-align:center;font-size:11.5px;color:var(--muted)}
+.hbar{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13.5px;margin-top:10px}
+.hbar .track{height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden}
+.hbar .track i{display:block;height:100%;background:var(--gold);border-radius:5px}
+.avatar{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-weight:800;color:var(--gold);background:var(--gold-soft);border:1.5px solid var(--gold)}
+.qty{font-family:var(--head);font-weight:800;font-size:22px;line-height:1}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet-bg{position:absolute;inset:0;background:var(--overlay)}
+.sheet-panel{position:relative;width:100%;max-width:640px;max-height:92vh;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:20px 20px 0 0;animation:up .22s ease-out}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px 10px;border-bottom:1px solid var(--line)}
+.sheet-head h2{font-size:20px}
+.sheet-body{overflow-y:auto;padding:16px 18px calc(22px + env(safe-area-inset-bottom))}
+@media (min-width:700px){.sheet{align-items:center;padding:24px}.sheet-panel{border-radius:20px;max-height:88vh}}
+@keyframes up{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet-panel{animation:none}}
+.form{display:grid;gap:12px}
+.f{display:grid;gap:4px;min-width:0}
+.f label{font-size:13px;font-weight:600;color:var(--muted)}
+.f input,.f select,.f textarea{width:100%;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;outline:0}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--gold)}
+.f textarea{min-height:64px;resize:vertical}
+.f small{color:var(--muted);font-size:12px}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:6px}
+.actions .grow{margin-right:auto}
+.confirm{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:var(--red-soft);color:var(--red);font-weight:500;width:100%}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.checks label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--fg);font-weight:500}
+.checks input{accent-color:var(--gold)}
+.steps{display:flex;gap:4px;margin:8px 0 14px}
+.steps div{flex:1;text-align:center;font-size:11px;color:var(--muted)}
+.steps div::before{content:"";display:block;height:5px;border-radius:3px;background:var(--surface-2);margin-bottom:5px}
+.steps div.done::before{background:var(--gold)}
+.steps div.cur{color:var(--gold);font-weight:600}
+.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.timeline{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--line);display:grid;gap:12px}
+.timeline li{position:relative;font-size:14px}
+.timeline li::before{content:"";position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
+.timeline small{color:var(--muted);display:block}
+.status-btns{display:flex;flex-wrap:wrap;gap:6px}
+.status-btns .btn{padding:5px 8px}
+.picker{border:1px solid var(--line);border-radius:10px;max-height:200px;overflow-y:auto}
+.picker button{display:flex;justify-content:space-between;gap:10px;width:100%;border:0;border-bottom:1px solid var(--line);background:var(--surface);padding:8px 12px;text-align:left;font-size:14px;color:var(--fg)}
+.picker button:hover{background:var(--surface-2)}
+.chosen{display:grid;gap:6px}
+.chosen div{display:grid;grid-template-columns:minmax(0,1fr) 70px 34px;gap:6px;align-items:center;font-size:14px}
+.chosen input{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:100%}
+.chosen button{border:0;background:var(--red-soft);color:var(--red);border-radius:8px;height:34px;font-size:18px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom));z-index:60;background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:500;font-size:14px;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+.toast.err{background:var(--red);color:#fff}
+@media (min-width:900px){.toast{bottom:28px}}
+.loading{color:var(--muted);padding:20px 0}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<section class="login" id="loginView" hidden>
+  <div class="login-card">
+    <img src="logo.png" alt="Shree Sawriya Solution">
+    <h1 style="font-size:26px">Shop App</h1>
+    <p>Status, Sales, Bills, Stock aur Staff, sab ek jagah. Ek baar login karein.</p>
+    <form id="loginForm">
+      <div class="f"><label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="username" required></div>
+      <div class="f"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" required></div>
+      <button class="btn gold block" id="loginBtn" type="submit">Login</button>
+      <small style="color:var(--muted);font-size:12.5px">Admin ya Staff, dono isi se login karein. Mode aapke account ke role se apne aap set hoga.</small>
+    </form>
+  </div>
+</section>
+
+<!-- APP -->
+<div class="app" id="appView" hidden>
+  <aside class="side">
+    <img class="logo" src="logo.png" alt="Shree Sawriya Solution">
+    <nav id="sideNav"></nav>
+    <div class="foot">
+      <div id="whoSide"></div>
+      <button class="btn sm ghost" data-act="logout">Logout</button>
+      <a href="/" target="_blank" rel="noopener">shreesawriyasolutions.in</a>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="wrap">
+      <header class="topbar">
+        <img src="logo.png" alt="">
+        <div class="brand"><b>SHREE <span>SAWRIYA</span></b><small>Shop App</small></div>
+        <div class="spacer"></div>
+        <span class="badge" id="modeBadge"></span>
+        <button class="icon-btn" data-act="refresh" aria-label="Refresh" title="Refresh">↻</button>
+        <button class="icon-btn" data-act="logout" aria-label="Logout" title="Logout">⎋</button>
+      </header>
+      <div id="view"></div>
+    </div>
+  </main>
+  <nav class="nav" id="bottomNav"></nav>
+</div>
+
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-bg" data-act="close"></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head"><h2 id="sheetTitle"></h2><button class="icon-btn" data-act="close" aria-label="Band karein">×</button></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+// ==========================================================
+//  SHREE SAWRIYA SOLUTIONS - SHOP APP (Status, Sales, Bills, Stock, Staff)
+//  Wahi Supabase project aur login jo sale.html, bills.html, stock.html use karte hain.
+// ==========================================================
+const SUPABASE_URL = 'https://bwldelmfkcynfvbqcneb.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_GKmljKQOjWzJ54FdZVPk_g_auEFS9VG';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const BUCKET = 'bills';
+const SITE = 'https://shreesawriyasolutions.in';
+
+const ICON = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
+  status:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/><path d="m9.5 10 2 2 3.5-4"/></svg>',
+  sales:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+  bills:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h14v19l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>',
+  stock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/></svg>',
+  staff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.8a3.3 3.3 0 0 1 0 6.4M18.5 14.8c1.7.7 2.8 2.4 3 5.2"/></svg>',
+  search:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>'
+};
+const STATUSES = [
+  {k:'Received',l:'Received',c:'received'},{k:'Diagnosing',l:'Diagnosing',c:'diagnosing'},
+  {k:'Repair in Progress',l:'Repair chalu',c:'progress'},{k:'Waiting for Part',l:'Part ka wait',c:'waiting'},
+  {k:'Ready for Pickup',l:'Ready',c:'ready'},{k:'Delivered',l:'Delivered',c:'delivered'},{k:'Returned',l:'Wapas (bina repair)',c:'returned'}
+];
+const FLOW = ['Received','Repair in Progress','Ready for Pickup','Delivered'];
+const CLOSED = ['Delivered','Returned'];
+const ACCESSORIES = ['SIM','Memory Card','Back Cover','Charger','Cable','Box','Earphone'];
+const CONDITIONS = ['Phone ON hota hai','Phone dead','Screen tooti','Back tooti','Pani laga','Body dent/scratch','Touch theek','Camera theek','Speaker/Mic theek','Charging theek','Face ID/Fingerprint theek'];
+const PAYS = ['Cash','UPI','Card','Other'];
+const BILL_TYPES = [{v:'Purchase Bill',l:'Purchase (Kharid)',c:'purchase'},{v:'Sale Bill',l:'Sale (Bikri)',c:'sale'},{v:'Unlocking Job',l:'Unlocking',c:'unlock'}];
+const WORK_TYPES = ['Software','FRP Unlock','Screen Lock / Pattern','iCloud','Network Unlock','Other'];
+const STOCK_CATS = ['Spare Part','Accessory','Mobile','Other'];
+const STOCK_REASONS = ['Purchase','Used in repair','Sale','Adjust','Return'];
+const ALLOWED_TYPES = ['image/jpeg','image/png','image/webp','application/pdf'];
+
+const S = {
+  user:null, profile:null, isAdmin:false, canView:false,
+  repairs:[], sales:[], bills:[], stock:[], staff:[], loaded:{},
+  view:'home', rFilter:'open', rQ:'', period:'today', from:'', to:'', sQ:'', bType:'', bQ:'', stQ:'', stFilter:'all', stCat:''
+};
+
+/* ---------- helpers ---------- */
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num = v => { const n=parseFloat(v); return isFinite(n)?n:0; };
+const numOrNull = v => (v===''||v==null)?null:Number(v);
+const clean = v => { v=String(v==null?'':v).trim(); return v||null; };
+const inr = n => '₹'+Math.round(num(n)).toLocaleString('en-IN');
+const pad = n => String(n).padStart(2,'0');
+const dstr = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const today = () => dstr(new Date());
+const fmtDate = s => s ? new Date(String(s).slice(0,10)+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '';
+const fmtTime = s => s ? new Date(s).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'}) : '';
+const sum = (a,f) => a.reduce((t,x)=>t+num(typeof f==='function'?f(x):x[f]),0);
+const st = k => STATUSES.find(s=>s.k===k)||{k,l:k,c:'staff'};
+const pill = (c,l) => `<span class="pill s-${esc(c)}">${esc(l)}</span>`;
+const sPill = k => pill(st(k).c, st(k).l);
+const initials = n => String(n||'?').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const shortName = n => { n=String(n||''); return n.includes('@')?n.split('@')[0]:n; };
+const myName = () => shortName(S.profile && S.profile.full_name) || 'Staff';
+const stockLabel = it => [it.product_name,it.brand,it.model].filter(Boolean).join(' · ');
+const stockState = it => it.quantity<=0?'out':(it.min_quantity>0&&it.quantity<=it.min_quantity?'low':'ok');
+
+function toast(msg,kind){ const t=$('#toast'); t.textContent=msg; t.className='toast'+(kind==='err'?' err':''); t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,3200); }
+function errMsg(e){
+  if(e && e.custom) return e.custom;
+  const m=((e&&e.message)||'').toLowerCase();
+  if(m.includes('fetch')||m.includes('network')||m.includes('failed to')) return 'Internet check karein, data save nahi hua.';
+  if(m.includes('staff sirf status')) return 'Staff sirf status badal sakta hai. Baaki badlav Admin karega.';
+  if(m.includes('itna stock nahi')||m.includes('item nahi mila')||m.includes('part ')||m.includes('change 0')) return e.message;
+  if(m.includes('invalid mobile')) return 'Mobile number 10 digit ka hona chahiye.';
+  if(m.includes('imei')) return 'IMEI 14-16 digit ka hona chahiye.';
+  if((e&&e.code)==='42501'||m.includes('row-level security')||m.includes('permission')) return 'Aapke paas yeh karne ki permission nahi hai.';
+  if(m.includes('check constraint')||m.includes('violates')) return 'Kuch value galat hai, form check karein.';
+  return 'Kuch gadbad hui. Dobara try karein.';
+}
+async function q(promise){ const {data,error}=await promise; if(error) throw error; return data; }
+async function run(btn, fn, ok){
+  if(btn) btn.disabled=true;
+  try{ const r=await fn(); if(ok) toast(ok); return r===undefined?true:r; }
+  catch(e){ console.error(e); toast(errMsg(e),'err'); return false; }
+  finally{ if(btn) btn.disabled=false; }
+}
+
+/* ---------- auth ---------- */
+async function loadProfile(uid){
+  const {data,error}=await db.from('profiles').select('role, can_view, full_name').eq('id',uid).maybeSingle();
+  if(error||!data) return false;
+  S.profile=data; S.isAdmin=data.role==='admin'; S.canView=S.isAdmin||data.can_view===true; return true;
+}
+$('#loginForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const btn=$('#loginBtn'); btn.disabled=true; btn.textContent='Login ho raha hai...';
+  const {data,error}=await db.auth.signInWithPassword({email:$('#loginEmail').value.trim(),password:$('#loginPassword').value});
+  btn.disabled=false; btn.textContent='Login';
+  if(error){ toast(((error.message||'').toLowerCase().includes('fetch'))?'Internet check karein.':'Email ya password galat hai.','err'); return; }
+  S.user=data.user;
+  if(!await loadProfile(data.user.id)){ await db.auth.signOut(); toast('Is account ko app ki permission nahi hai. Admin se baat karein.','err'); return; }
+  $('#loginPassword').value=''; startApp();
+});
+async function logout(){ await db.auth.signOut(); location.hash=''; location.reload(); }
+
+/* ---------- data ---------- */
+function periodRange(){
+  const d=new Date(), t=today();
+  if(S.period==='today') return [t,t];
+  if(S.period==='week'){ const s=new Date(d); s.setDate(d.getDate()-6); return [dstr(s),t]; }
+  if(S.period==='month') return [t.slice(0,7)+'-01',t];
+  if(S.period==='range') return [S.from||t,S.to||t];
+  return [null,null];
+}
+async function loadRepairs(){ S.repairs=await q(db.from('repairs').select('*, customers(name, mobile)').order('created_at',{ascending:false}).limit(1000)); S.loaded.repairs=true; }
+async function loadSales(){
+  if(!S.canView){ S.sales=[]; return; }
+  let qq=db.from('sales_entries').select('*').order('entry_date',{ascending:false}).order('created_at',{ascending:false}).limit(3000);
+  // 7 din ka chart hamesha chahiye, isliye kam se kam pichhle 7 din laao
+  const [a,b]=periodRange(); const w=new Date(); w.setDate(w.getDate()-6);
+  const from = a ? (a<dstr(w)?a:dstr(w)) : null;
+  if(from) qq=qq.gte('entry_date',from);
+  if(b && b>today()) qq=qq.lte('entry_date',b);
+  S.sales=await q(qq); S.loaded.sales=true;
+}
+async function loadBills(){ if(!S.isAdmin){ S.bills=[]; return; } S.bills=await q(db.from('bills').select('*').order('bill_date',{ascending:false}).order('created_at',{ascending:false}).limit(2000)); S.loaded.bills=true; }
+async function loadStock(){ S.stock=await q(db.from('stock_items').select('*').order('product_name').limit(3000)); S.loaded.stock=true; }
+async function loadStaff(){ if(!S.isAdmin){ S.staff=[]; return; } S.staff=await q(db.from('profiles').select('*').order('created_at')); S.loaded.staff=true; }
+async function loadAll(){
+  const r=await Promise.allSettled([loadRepairs(),loadSales(),loadBills(),loadStock(),loadStaff()]);
+  const bad=r.find(x=>x.status==='rejected'); if(bad){ console.error(bad.reason); toast(errMsg(bad.reason),'err'); }
+  render();
+}
+async function reload(...which){
+  const map={repairs:loadRepairs,sales:loadSales,bills:loadBills,stock:loadStock,staff:loadStaff};
+  try{ await Promise.all(which.map(w=>map[w]())); }catch(e){ toast(errMsg(e),'err'); }
+  render();
+}
+
+/* ---------- shell ---------- */
+function views(){
+  const v=[{k:'home',l:'Home'},{k:'status',l:'Status'},{k:'sales',l:'Sales'},{k:'bills',l:'Bills'},{k:'stock',l:'Stock'}];
+  if(S.isAdmin) v.push({k:'staff',l:'Staff'});
+  return v;
+}
+function navHtml(){ return views().map(v=>`<a href="#${v.k}" class="${S.view===v.k?'on':''}" ${S.view===v.k?'aria-current="page"':''}>${ICON[v.k]}<span>${v.l}</span></a>`).join(''); }
+function render(){
+  if(!S.profile) return;
+  $('#sideNav').innerHTML=navHtml(); $('#bottomNav').innerHTML=navHtml();
+  $('#modeBadge').textContent=S.isAdmin?'ADMIN':'STAFF'; $('#modeBadge').className='badge '+(S.isAdmin?'admin':'staff');
+  $('#whoSide').innerHTML=`${esc(myName())} · <b style="color:${S.isAdmin?'var(--gold)':'var(--blue)'}">${S.isAdmin?'Admin mode':'Staff mode'}</b>`;
+  const ae=document.activeElement, fid=ae&&ae.id, pos=ae&&ae.selectionStart;
+  const y=window.scrollY;
+  $('#view').innerHTML=({home:vHome,status:vStatus,sales:vSales,bills:vBills,stock:vStock,staff:vStaff}[S.view]||vHome)();
+  if(fid&&$('#view').querySelector('#'+fid)){ const el=$('#'+fid); el.focus(); try{el.setSelectionRange(pos,pos);}catch(e){} }
+  window.scrollTo(0,y);
+}
+const loading = (k,html) => S.loaded[k]?html:'<div class="loading">Load ho raha hai…</div>';
+function startApp(){
+  $('#loginView').hidden=true; $('#appView').hidden=false;
+  const h=location.hash.slice(1); S.view=views().some(v=>v.k===h)?h:'home';
+  render(); loadAll();
+}
+
+/* ---------- HOME ---------- */
+function vHome(){
+  const t=today();
+  const open=S.repairs.filter(r=>!CLOSED.includes(r.status));
+  const ready=S.repairs.filter(r=>r.status==='Ready for Pickup');
+  const waiting=S.repairs.filter(r=>r.status==='Waiting for Part');
+  const todaySales=S.sales.filter(s=>s.entry_date===t);
+  const low=S.stock.filter(i=>stockState(i)!=='ok');
+  const d=new Date();
+  return `
+  <div class="vhead"><div><h1>Namaste, ${esc(myName())} 🙏</h1><p>${d.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'})} · ${S.isAdmin?'Admin mode: sab kuch control':'Staff mode'}</p></div></div>
+  <div class="kpis">
+    ${S.canView?`<div class="kpi hero"><div class="label">Aaj ki sale</div><div class="v num">${inr(sum(todaySales,'amount_received'))}</div><div class="s">${todaySales.length} entries · profit ${inr(sum(todaySales,'profit'))}</div></div>`
+      :`<div class="kpi hero"><div class="label">Chalu repairs</div><div class="v num">${open.length}</div><div class="s">abhi shop me</div></div>`}
+    ${S.canView?`<div class="kpi"><div class="label">Chalu repairs</div><div class="v num">${open.length}</div><div class="s">${waiting.length} part ke wait me</div></div>`:`<div class="kpi"><div class="label">Part ka wait</div><div class="v num">${waiting.length}</div><div class="s">repairs</div></div>`}
+    <div class="kpi"><div class="label">Pickup ready</div><div class="v num">${ready.length}</div><div class="s">customer ko bulao</div></div>
+    <div class="kpi"><div class="label">Stock alert</div><div class="v num" style="color:${low.length?'var(--amber)':'inherit'}">${low.length}</div><div class="s">kam ya khatam items</div></div>
+  </div>
+  <div class="quick">
+    <button data-act="newRepair"><span>${ICON.status}</span>Naya repair</button>
+    <button data-act="newSale"><span>${ICON.sales}</span>Sale entry</button>
+    <button data-act="newBill"><span>${ICON.bills}</span>Bill upload</button>
+    <button data-act="newStock"><span>${ICON.stock}</span>Stock add</button>
+  </div>
+  <div class="section-t"><h2>Pickup ke liye ready</h2><a href="#status" data-act="goFilter" data-f="Ready for Pickup">Sab dekho</a></div>
+  ${loading('repairs', ready.length?`<div class="list two">${ready.slice(0,4).map(repairCard).join('')}</div>`:`<div class="empty">Abhi koi phone ready nahi. Status "Ready" karte hi yahan dikhega.</div>`)}
+  <div class="section-t"><h2>Chalu repairs</h2><a href="#status">Status kholo</a></div>
+  ${loading('repairs', open.length?`<div class="list two">${open.slice(0,6).map(repairCard).join('')}</div>`:`<div class="empty">Koi chalu repair nahi.</div>`)}
+  ${low.length?`<div class="section-t"><h2>Stock khatam / kam</h2><a href="#stock" data-act="goStock" data-f="low">Stock kholo</a></div><div class="list two">${low.slice(0,4).map(stockCard).join('')}</div>`:''}`;
+}
+
+/* ---------- STATUS (repairs) ---------- */
+function repairCard(r){
+  const c=r.customers||{};
+  return `<button class="card" data-act="openRepair" data-id="${esc(r.id)}">
+    <div class="row"><div style="min-width:0"><div class="code">${esc(r.repair_code)}</div><div class="t">${esc(c.name||'—')}</div><div class="sub">${esc(r.device_model)}${r.problem?' · '+esc(r.problem):''}</div></div>${sPill(r.status)}</div>
+    <div class="meta"><span>${esc(fmtDate(r.received_date))}</span>${c.mobile?`<span>${esc(c.mobile)}</span>`:''}${r.estimated_charge!=null?`<span>Est. ${inr(r.estimated_charge)}</span>`:''}${r.estimated_delivery&&!CLOSED.includes(r.status)?`<span>Dena: ${esc(fmtDate(r.estimated_delivery))}</span>`:''}</div>
+  </button>`;
+}
+function vStatus(){
+  const qv=S.rQ.trim().toLowerCase();
+  const cnt=k=>k==='open'?S.repairs.filter(r=>!CLOSED.includes(r.status)).length:k==='all'?S.repairs.length:S.repairs.filter(r=>r.status===k).length;
+  let list=S.repairs.filter(r=>S.rFilter==='all'?true:S.rFilter==='open'?!CLOSED.includes(r.status):r.status===S.rFilter);
+  if(qv) list=list.filter(r=>[r.repair_code,r.device_model,r.problem,r.imei,(r.customers||{}).name,(r.customers||{}).mobile].join(' ').toLowerCase().includes(qv));
+  const chips=[{k:'open',l:'Chalu'},{k:'all',l:'Sab'},...STATUSES];
+  return `
+  <div class="vhead"><div><h1>Repair status</h1><p>Customer yahi status <a href="track.html" target="_blank" style="color:var(--gold)">track page</a> par dekhta hai</p></div><button class="btn gold" data-act="newRepair">+ Naya repair</button></div>
+  <div class="toolbar"><label class="search">${ICON.search}<input id="rQ" type="search" placeholder="Naam, mobile, model, IMEI ya SSS code" value="${esc(S.rQ)}" data-in="rQ"></label></div>
+  <div class="chips">${chips.map(c=>`<button class="chip ${S.rFilter===c.k?'on':''}" data-act="rFilter" data-f="${esc(c.k)}">${esc(c.l)}<i>${cnt(c.k)}</i></button>`).join('')}</div>
+  ${loading('repairs', list.length?`<div class="list two">${list.slice(0,300).map(repairCard).join('')}</div>`:`<div class="empty"><b>Koi repair nahi mila</b>Filter badlein ya naya repair banayein.</div>`)}`;
+}
+function repairForm(r){
+  const e=r||{}, c=(r&&r.customers)||{};
+  const acc=e.accessories||[];
+  openSheet(r?`Edit ${esc(r.repair_code)}`:'Naya repair', `
+  <form class="form" id="repairForm">
+    ${r?`<div class="note">Customer: <b>${esc(c.name)}</b> · ${esc(c.mobile)} (customer badla nahi ja sakta)</div>`:`
+    <div class="frow"><div class="f"><label for="rMobile">Customer mobile *</label><input id="rMobile" inputmode="numeric" maxlength="10" required placeholder="10 digit"><small id="rCustHint"></small></div>
+    <div class="f"><label for="rName">Customer naam *</label><input id="rName" required></div></div>`}
+    <div class="frow"><div class="f"><label for="rModel">Phone model *</label><input id="rModel" required value="${esc(e.device_model)}" placeholder="Jaise: Redmi Note 12"></div>
+    <div class="f"><label for="rImei">IMEI</label><input id="rImei" inputmode="numeric" maxlength="16" value="${esc(e.imei)}"></div></div>
+    <div class="f"><label for="rProblem">Problem</label><input id="rProblem" value="${esc(e.problem)}" placeholder="Jaise: Display toota, charging nahi"></div>
+    <div class="frow"><div class="f"><label for="rEst">Estimate (₹)</label><input id="rEst" type="number" min="0" value="${esc(e.estimated_charge)}"></div>
+    <div class="f"><label for="rAdv">Advance liya (₹)</label><input id="rAdv" type="number" min="0" value="${esc(e.advance_paid||'')}"></div></div>
+    <div class="frow"><div class="f"><label for="rDate">Jama date</label><input id="rDate" type="date" value="${esc(e.received_date||today())}"></div>
+    <div class="f"><label for="rDue">Dene ki date</label><input id="rDue" type="date" value="${esc(e.estimated_delivery)}"></div></div>
+    ${r?`<div class="frow"><div class="f"><label for="rFinal">Final charge (₹)</label><input id="rFinal" type="number" min="0" value="${esc(e.final_charge)}"></div>
+    <div class="f"><label for="rWarr">Warranty (din)</label><input id="rWarr" type="number" min="0" max="365" value="${esc(e.warranty_days)}"></div></div>`:
+    `<div class="f"><label for="rStatus">Status</label><select id="rStatus">${STATUSES.slice(0,4).map(s=>`<option value="${s.k}">${s.l}</option>`).join('')}</select></div>`}
+    <div class="f"><label for="rLock">Lock / password</label><input id="rLock" maxlength="40" value="${esc(e.lock_code)}"></div>
+    <div class="f"><label>Saath me aaya</label><div class="checks">${ACCESSORIES.map(a=>`<label><input type="checkbox" name="acc" value="${a}" ${acc.includes(a)?'checked':''}>${a}</label>`).join('')}</div></div>
+    <div class="f"><label>Phone ki halat</label><div class="checks">${CONDITIONS.map(a=>`<label><input type="checkbox" name="cond" value="${a}" ${(e.condition_checks||[]).includes(a)?'checked':''}>${a}</label>`).join('')}</div></div>
+    <div class="f"><label for="rPublic">Customer ke liye note <small>(track page par dikhega)</small></label><input id="rPublic" value="${esc(e.public_note)}"></div>
+    <div class="f"><label for="rInternal">Andar ka note <small>(sirf shop ke liye)</small></label><textarea id="rInternal">${esc(e.internal_note)}</textarea></div>
+    <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">${r?'Save karein':'Repair banao'}</button></div>
+  </form>`, ()=>{
+    if(!r){
+      $('#rMobile').addEventListener('input', async ev=>{
+        const m=ev.target.value.replace(/\D/g,''); ev.target.value=m; $('#rCustHint').textContent='';
+        if(m.length!==10) return;
+        const {data}=await db.from('customers').select('name').eq('mobile',m).maybeSingle();
+        if(data){ $('#rName').value=data.name; $('#rCustHint').textContent='Purana customer: '+data.name; }
+        else $('#rCustHint').textContent='Naya customer';
+      });
+    }
+    $('#repairForm').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const imei=$('#rImei').value.replace(/\s/g,'');
+      if(imei && !/^\d{14,16}$/.test(imei)){ toast('IMEI 14-16 digit ka hona chahiye.','err'); return; }
+      const o={ device_model:$('#rModel').value.trim(), problem:clean($('#rProblem').value), imei:imei||null,
+        estimated_charge:numOrNull($('#rEst').value), advance_paid:num($('#rAdv').value), received_date:$('#rDate').value||today(),
+        estimated_delivery:$('#rDue').value||null, lock_code:clean($('#rLock').value),
+        accessories:[...document.querySelectorAll('input[name=acc]:checked')].map(i=>i.value),
+        condition_checks:[...document.querySelectorAll('input[name=cond]:checked')].map(i=>i.value),
+        public_note:clean($('#rPublic').value), internal_note:clean($('#rInternal').value) };
+      const btn=ev.submitter;
+      if(r){
+        o.final_charge=numOrNull($('#rFinal').value); o.warranty_days=numOrNull($('#rWarr').value);
+        const ok=await run(btn,()=>q(db.from('repairs').update(o).eq('id',r.id).select('id')).then(d=>{ if(!d.length) throw {custom:'Sirf Admin edit kar sakta hai.'}; }),'Repair update ho gaya');
+        if(ok){ await reload('repairs'); openRepair(r.id); }
+      } else {
+        const mobile=$('#rMobile').value.replace(/\D/g,''), name=$('#rName').value.trim();
+        if(!/^\d{10}$/.test(mobile)){ toast('Mobile number 10 digit ka hona chahiye.','err'); return; }
+        o.status=$('#rStatus').value;
+        const row=await run(btn, async()=>{
+          const cust=await q(db.rpc('add_customer_or_get',{p_mobile:mobile,p_name:name}));
+          o.customer_id=cust[0].out_customer_id;
+          return (await q(db.from('repairs').insert(o).select('id, repair_code')))[0];
+        });
+        if(row){ toast('Repair '+row.repair_code+' ban gaya'); await reload('repairs'); openRepair(row.id); }
+      }
+    });
+  });
+}
+async function openRepair(id){
+  const r=S.repairs.find(x=>x.id===id); if(!r){ closeSheet(); return; }
+  const c=r.customers||{}, fi=FLOW.indexOf(r.status);
+  const due=num(r.final_charge!=null?r.final_charge:r.estimated_charge)-num(r.advance_paid);
+  const waText=`Namaste ${c.name||''} ji, Shree Sawriya Solutions se. Aapke ${r.device_model} (${r.repair_code}) ka status: ${st(r.status).l}.${r.public_note?' '+r.public_note:''} Track karein: ${SITE}/track.html`;
+  openSheet(`${esc(r.repair_code)} · ${esc(c.name||'')}`, `
+    <div class="row" style="align-items:center">${sPill(r.status)}<span class="sub">Update: ${esc(fmtTime(r.updated_at))}</span></div>
+    ${r.status==='Returned'?'':`<div class="steps">${FLOW.map((k,i)=>`<div class="${fi>=i?'done':''} ${fi===i?'cur':''}">${esc(st(k).l)}</div>`).join('')}</div>`}
+    <dl class="kv">
+      <dt>Customer</dt><dd>${esc(c.name)} · ${esc(c.mobile)}</dd>
+      <dt>Phone</dt><dd>${esc(r.device_model)}${r.imei?' · IMEI '+esc(r.imei):''}</dd>
+      ${r.problem?`<dt>Problem</dt><dd>${esc(r.problem)}</dd>`:''}
+      <dt>Jama date</dt><dd>${esc(fmtDate(r.received_date))}${r.estimated_delivery?' · Dena: '+esc(fmtDate(r.estimated_delivery)):''}</dd>
+      <dt>Charge</dt><dd class="num">${r.estimated_charge!=null?'Est. '+inr(r.estimated_charge):'—'}${r.final_charge!=null?' · Final '+inr(r.final_charge):''}${num(r.advance_paid)?' · Advance '+inr(r.advance_paid):''} · <b>Baaki ${inr(due)}</b></dd>
+      ${r.lock_code?`<dt>Lock</dt><dd>${esc(r.lock_code)}</dd>`:''}
+      ${(r.accessories||[]).length?`<dt>Saath me</dt><dd>${esc(r.accessories.join(', '))}</dd>`:''}
+      ${(r.condition_checks||[]).length?`<dt>Halat</dt><dd>${esc(r.condition_checks.join(', '))}</dd>`:''}
+      ${r.public_note?`<dt>Customer note</dt><dd>${esc(r.public_note)}</dd>`:''}
+      ${r.internal_note?`<dt>Andar ka note</dt><dd>${esc(r.internal_note)}</dd>`:''}
+      ${r.delivered_on?`<dt>Delivered</dt><dd>${esc(fmtDate(r.delivered_on))}${r.warranty_days?' · '+esc(r.warranty_days)+' din warranty':''}</dd>`:''}
+    </dl>
+    <div class="section-t" style="margin-top:18px"><h2>Status badlo</h2></div>
+    <div class="status-btns">${STATUSES.filter(s=>s.k!==r.status).map(s=>`<button class="btn sm" data-act="setStatus" data-id="${esc(r.id)}" data-s="${esc(s.k)}">${pill(s.c,s.l)}</button>`).join('')}</div>
+    <div class="actions" style="justify-content:flex-start;margin-top:12px">
+      ${c.mobile?`<a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/91${esc(c.mobile)}?text=${encodeURIComponent(waText)}">WhatsApp par status bhejo</a>`:''}
+      <button class="btn sm" data-act="saleFromRepair" data-id="${esc(r.id)}">Sale entry banao</button>
+    </div>
+    <div class="section-t"><h2>History</h2></div>
+    <ul class="timeline" id="hist"><li>Load ho raha hai…</li></ul>
+    ${S.isAdmin?`<div class="actions" style="margin-top:18px">
+      <button class="btn danger grow" data-act="askDel" data-kind="repair" data-id="${esc(r.id)}">Delete</button>
+      <button class="btn gold" data-act="editRepair" data-id="${esc(r.id)}">Edit</button></div>`
+      :`<p class="sub" style="margin-top:14px">Staff mode: aap status badal sakte hain. Baaki details Admin badlega.</p>`}`);
+  try{
+    const h=await q(db.from('repair_status_history').select('status, changed_at, changed_by').eq('repair_id',id).order('changed_at',{ascending:false}));
+    const names={}; S.staff.forEach(p=>names[p.id]=shortName(p.full_name)); if(S.user) names[S.user.id]=myName();
+    const el=$('#hist'); if(el) el.innerHTML=h.map(x=>`<li><b>${esc(st(x.status).l)}</b>${names[x.changed_by]?' · '+esc(names[x.changed_by]):''}<small>${esc(fmtTime(x.changed_at))}</small></li>`).join('')||'<li>Koi history nahi</li>';
+  }catch(e){ const el=$('#hist'); if(el) el.innerHTML='<li>History load nahi hui</li>'; }
+}
+
+/* ---------- SALES ---------- */
+function salesInRange(){ const [a,b]=periodRange(); return S.sales.filter(s=>(!a||s.entry_date>=a)&&(!b||s.entry_date<=b)); }
+function vSales(){
+  const head=`<div class="vhead"><div><h1>Daily sales</h1><p>Har sale ki entry, parts stock se apne aap kam honge</p></div><button class="btn gold" data-act="newSale">+ Sale entry</button></div>`;
+  if(!S.canView) return head+`<div class="note">Staff mode: aap nayi sale entry kar sakte hain. Sales ki list sirf Admin (ya jinhe Admin ne permission di) dekh sakte hain.</div>`;
+  const qv=S.sQ.trim().toLowerCase();
+  let list=salesInRange();
+  if(qv) list=list.filter(s=>[s.sale_description,s.customer_name,s.staff_name,s.notes].join(' ').toLowerCase().includes(qv));
+  const rec=sum(list,'amount_received'), exp=sum(list,'expense');
+  const byPay={}; list.forEach(s=>byPay[s.payment_mode]=(byPay[s.payment_mode]||0)+num(s.amount_received));
+  const byStaff={}; list.forEach(s=>byStaff[s.staff_name]=(byStaff[s.staff_name]||0)+num(s.amount_received));
+  const days=[]; for(let i=6;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); const k=dstr(d); days.push({k,l:i===0?'Aaj':d.toLocaleDateString('en-IN',{weekday:'short'}),v:sum(S.sales.filter(s=>s.entry_date===k),'amount_received')}); }
+  const max=Math.max(1,...days.map(d=>d.v));
+  const hb=o=>{ const e=Object.entries(o).sort((a,b)=>b[1]-a[1]); const m=Math.max(1,...e.map(x=>x[1])); return e.length?e.map(([k,v])=>`<div class="hbar"><span>${esc(k)}</span><div class="track"><i style="width:${(v/m*100).toFixed(1)}%"></i></div><b class="num">${inr(v)}</b></div>`).join(''):'<p class="sub">Is period me koi sale nahi.</p>'; };
+  const P=[['today','Aaj'],['week','7 din'],['month','Is mahine'],['all','Sab'],['range','Date range']];
+  return head+`
+  <div class="toolbar"><div class="seg">${P.map(([k,l])=>`<button class="${S.period===k?'on':''}" data-act="period" data-p="${k}">${l}</button>`).join('')}</div>
+  ${S.period==='range'?`<input type="date" id="sFrom" value="${esc(S.from||today())}" class="chip"> <input type="date" id="sTo" value="${esc(S.to||today())}" class="chip"><button class="btn sm gold" data-act="applyRange">Dikhao</button>`:''}</div>
+  <div class="kpis">
+    <div class="kpi hero"><div class="label">Total received</div><div class="v num">${inr(rec)}</div><div class="s">${list.length} entries</div></div>
+    <div class="kpi"><div class="label">Kharcha</div><div class="v num">${inr(exp)}</div><div class="s">parts / expense</div></div>
+    <div class="kpi"><div class="label">Profit</div><div class="v num" style="color:var(--green)">${inr(rec-exp)}</div><div class="s">received − kharcha</div></div>
+    <div class="kpi"><div class="label">Cash / UPI</div><div class="v num" style="font-size:18px">${inr(byPay.Cash||0)} / ${inr(byPay.UPI||0)}</div><div class="s">Card ${inr(byPay.Card||0)}</div></div>
+  </div>
+  <div class="grid2" style="margin-top:10px">
+    <div class="panel"><div class="label">Pichhle 7 din</div>
+      <div class="bars">${days.map(d=>`<div class="b ${d.k===today()?'today':''}"><i style="height:${(d.v/max*100).toFixed(1)}%"></i>${d.v?`<em style="bottom:${(d.v/max*100).toFixed(1)}%">${inr(d.v)}</em>`:''}</div>`).join('')}</div>
+      <div class="bars-x">${days.map(d=>`<span>${d.l}</span>`).join('')}</div></div>
+    <div class="panel"><div class="label">Staff ke hisaab se</div>${hb(byStaff)}</div>
+  </div>
+  <div class="toolbar" style="margin-top:16px"><label class="search">${ICON.search}<input id="sQ" type="search" placeholder="Kaam, customer ya staff" value="${esc(S.sQ)}" data-in="sQ"></label>${S.isAdmin?`<button class="btn sm" data-act="csvSales">CSV download</button>`:''}</div>
+  ${loading('sales', list.length?`<div class="list">${list.map(s=>`<button class="card" data-act="openSale" data-id="${esc(s.id)}"><div class="row"><div style="min-width:0"><div class="t">${esc(s.sale_description)}</div><div class="sub">${esc(s.payment_mode)} · ${esc(s.staff_name)}${s.customer_name?' · '+esc(s.customer_name):''}</div></div><div style="text-align:right"><div class="amt num">${inr(s.amount_received)}</div><div class="sub" style="font-size:12.5px">${num(s.expense)?'Kharcha '+inr(s.expense)+' · ':''}${esc(fmtDate(s.entry_date))}</div></div></div></button>`).join('')}</div>`
+    :`<div class="empty"><b>Is period me koi sale nahi</b>Upar se period badlein ya nayi entry karein.</div>`)}`;
+}
+function saleForm(prefill){
+  const e=prefill||{}; let chosen=[];
+  openSheet('Nayi sale entry', `
+  <form class="form" id="saleForm">
+    <div class="f"><label for="fDesc">Kya kaam / kya becha *</label><input id="fDesc" required value="${esc(e.sale_description)}" placeholder="Jaise: Vivo Y20 display change"></div>
+    <div class="frow"><div class="f"><label for="fAmt">Amount mila (₹) *</label><input id="fAmt" type="number" min="0" step="0.01" required value="${esc(e.amount_received)}"></div>
+    <div class="f"><label for="fExp">Kharcha (₹)</label><input id="fExp" type="number" min="0" step="0.01" placeholder="0"></div></div>
+    <div class="frow"><div class="f"><label for="fPay">Payment</label><select id="fPay">${PAYS.map(p=>`<option>${p}</option>`).join('')}</select></div>
+    <div class="f"><label for="fDate">Date</label><input id="fDate" type="date" value="${today()}"></div></div>
+    <div class="frow"><div class="f"><label for="fCust">Customer</label><input id="fCust" value="${esc(e.customer_name)}"></div>
+    <div class="f"><label for="fStaff">Staff naam *</label><input id="fStaff" required value="${esc(myName())}"></div></div>
+    <div class="f"><label for="fPartQ">Stock se part laga? (optional)</label><input id="fPartQ" placeholder="Part ka naam ya model likho"><div class="picker" id="fPicker" hidden></div><div class="chosen" id="fChosen"></div><small>Chune hue parts stock se apne aap kam ho jayenge.</small></div>
+    <div class="f"><label for="fNotes">Notes</label><input id="fNotes" value="${esc(e.notes)}"></div>
+    <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">Sale save karo</button></div>
+  </form>`, ()=>{
+    const drawChosen=()=>{ $('#fChosen').innerHTML=chosen.map((p,i)=>`<div><span>${esc(stockLabel(p.item))} <span class="sub">(${p.item.quantity} pcs)</span></span><input type="number" min="1" max="${p.item.quantity}" value="${p.qty}" data-i="${i}" aria-label="Qty"><button type="button" data-rm="${i}" aria-label="Hatao">×</button></div>`).join(''); };
+    $('#fPartQ').addEventListener('input', ev=>{
+      const t=ev.target.value.trim().toLowerCase(), pk=$('#fPicker');
+      if(t.length<2){ pk.hidden=true; return; }
+      const m=S.stock.filter(i=>i.quantity>0&&stockLabel(i).toLowerCase().includes(t)&&!chosen.some(c=>c.item.id===i.id)).slice(0,12);
+      pk.innerHTML=m.map(i=>`<button type="button" data-pick="${esc(i.id)}"><span>${esc(stockLabel(i))}</span><span class="sub">${i.quantity} pcs</span></button>`).join('')||'<div class="sub" style="padding:8px 12px">Stock me nahi mila</div>'; pk.hidden=false;
+    });
+    $('#fPicker').addEventListener('click', ev=>{ const b=ev.target.closest('[data-pick]'); if(!b) return; chosen.push({item:S.stock.find(i=>i.id===b.dataset.pick),qty:1}); $('#fPartQ').value=''; $('#fPicker').hidden=true; drawChosen(); });
+    $('#fChosen').addEventListener('click', ev=>{ const b=ev.target.closest('[data-rm]'); if(b){ chosen.splice(+b.dataset.rm,1); drawChosen(); } });
+    $('#fChosen').addEventListener('input', ev=>{ const i=ev.target.dataset.i; if(i!=null) chosen[+i].qty=Math.max(1,parseInt(ev.target.value,10)||1); });
+    $('#saleForm').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const p_entry={ entry_date:$('#fDate').value||today(), sale_description:$('#fDesc').value.trim(), customer_name:$('#fCust').value.trim(),
+        amount_received:num($('#fAmt').value), expense:num($('#fExp').value), payment_mode:$('#fPay').value, staff_name:$('#fStaff').value.trim(), notes:$('#fNotes').value.trim() };
+      const ok=await run(ev.submitter,()=>q(db.rpc('create_sale_with_parts',{p_entry,p_parts:chosen.map(c=>({item_id:c.item.id,qty:c.qty}))})),'Sale save ho gayi: '+inr(p_entry.amount_received));
+      if(ok){ closeSheet(); reload('sales','stock'); }
+    });
+  });
+}
+async function openSale(id){
+  const s=S.sales.find(x=>x.id===id); if(!s) return;
+  openSheet('Sale entry', `
+  <form class="form" id="saleEdit">
+    <div class="f"><label for="eDesc">Kaam / item</label><input id="eDesc" value="${esc(s.sale_description)}" ${S.isAdmin?'':'readonly'}></div>
+    <div class="frow"><div class="f"><label for="eAmt">Amount (₹)</label><input id="eAmt" type="number" min="0" step="0.01" value="${esc(s.amount_received)}" ${S.isAdmin?'':'readonly'}></div>
+    <div class="f"><label for="eExp">Kharcha (₹)</label><input id="eExp" type="number" min="0" step="0.01" value="${esc(s.expense)}" ${S.isAdmin?'':'readonly'}></div></div>
+    <div class="frow"><div class="f"><label for="ePay">Payment</label><select id="ePay" ${S.isAdmin?'':'disabled'}>${PAYS.map(p=>`<option ${p===s.payment_mode?'selected':''}>${p}</option>`).join('')}</select></div>
+    <div class="f"><label for="eDate">Date</label><input id="eDate" type="date" value="${esc(s.entry_date)}" ${S.isAdmin?'':'readonly'}></div></div>
+    <div class="frow"><div class="f"><label for="eCust">Customer</label><input id="eCust" value="${esc(s.customer_name)}" ${S.isAdmin?'':'readonly'}></div>
+    <div class="f"><label for="eStaff">Staff</label><input id="eStaff" value="${esc(s.staff_name)}" ${S.isAdmin?'':'readonly'}></div></div>
+    <div class="f"><label for="eNotes">Notes</label><input id="eNotes" value="${esc(s.notes)}" ${S.isAdmin?'':'readonly'}></div>
+    <div class="f"><label>Stock se lage parts</label><div class="sub" id="eParts">Load ho raha hai…</div></div>
+    ${S.isAdmin?`<div class="actions"><button type="button" class="btn danger grow" data-act="askDel" data-kind="sale" data-id="${esc(s.id)}">Delete</button><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">Save karein</button></div>`
+      :`<p class="sub">Staff mode: entry badalne ya delete karne ke liye Admin se kahein.</p>`}
+  </form>`, ()=>{
+    $('#saleEdit').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const o={ sale_description:$('#eDesc').value.trim(), amount_received:num($('#eAmt').value), expense:num($('#eExp').value), payment_mode:$('#ePay').value,
+        entry_date:$('#eDate').value, customer_name:clean($('#eCust').value), staff_name:$('#eStaff').value.trim(), notes:clean($('#eNotes').value) };
+      const ok=await run(ev.submitter,()=>q(db.from('sales_entries').update(o).eq('id',id).select('id')).then(d=>{ if(!d.length) throw {custom:'Sirf Admin edit kar sakta hai.'}; }),'Sale update ho gayi');
+      if(ok){ closeSheet(); reload('sales'); }
+    });
+  });
+  try{ const p=await q(db.from('sale_entry_parts').select('item_label, qty').eq('sale_entry_id',id)); const el=$('#eParts'); if(el) el.textContent=p.length?p.map(x=>x.item_label+' × '+x.qty).join(', '):'Koi part nahi'; }catch(e){}
+}
+
+/* ---------- BILLS ---------- */
+function vBills(){
+  const head=`<div class="vhead"><div><h1>Bills register</h1><p>Kharid, bikri aur unlocking ke bill photo/PDF ke saath</p></div><button class="btn gold" data-act="newBill">+ Bill upload</button></div>`;
+  if(!S.isAdmin) return head+`<div class="note">Staff mode: aap bill upload kar sakte hain. Uploaded bills ki list sirf Admin dekh sakta hai.</div><div style="margin-top:12px"><button class="btn gold block" data-act="newBill">Bill upload karo</button></div>`;
+  const qv=S.bQ.trim().toLowerCase();
+  let list=S.bills.filter(b=>!S.bType||b.bill_type===S.bType);
+  if(qv) list=list.filter(b=>[b.party_name,b.mobile_number,b.imei,b.phone_model,b.work_type,b.notes,b.uploaded_by_name].join(' ').toLowerCase().includes(qv));
+  return head+`
+  <div class="kpis">${BILL_TYPES.map(t=>{ const l=S.bills.filter(b=>b.bill_type===t.v); return `<button class="kpi ${S.bType===t.v?'on':''}" data-act="bType" data-t="${esc(t.v)}"><div class="label">${esc(t.l)}</div><div class="v num">${inr(sum(l,'amount'))}</div><div class="s">${l.length} bills</div></button>`; }).join('')}
+    <button class="kpi ${!S.bType?'on':''}" data-act="bType" data-t=""><div class="label">Sab bills</div><div class="v num">${inr(sum(S.bills,'amount'))}</div><div class="s">${S.bills.length} bills</div></button></div>
+  <div class="toolbar" style="margin-top:12px"><label class="search">${ICON.search}<input id="bQ" type="search" placeholder="Party, mobile, IMEI, model" value="${esc(S.bQ)}" data-in="bQ"></label><button class="btn sm" data-act="csvBills">CSV download</button></div>
+  ${loading('bills', list.length?`<div class="list two">${list.slice(0,400).map(b=>{ const t=BILL_TYPES.find(x=>x.v===b.bill_type)||BILL_TYPES[0]; return `<button class="card" data-act="openBill" data-id="${esc(b.id)}"><div class="row"><div style="min-width:0"><div class="t">${esc(b.party_name)}</div><div class="sub">${esc(fmtDate(b.bill_date))} · ${esc(b.uploaded_by_name)}${b.phone_model?' · '+esc(b.phone_model):''}</div></div><div style="display:grid;gap:4px;justify-items:end">${b.amount!=null?`<div class="amt num">${inr(b.amount)}</div>`:''}${pill(t.c,t.l)}</div></div></button>`; }).join('')}</div>`
+    :`<div class="empty"><b>Koi bill nahi mila</b>Type card dobara dabakar sab bills dekhein.</div>`)}`;
+}
+function billForm(){
+  openSheet('Bill upload', `
+  <form class="form" id="billForm">
+    <div class="frow"><div class="f"><label for="bType">Bill type</label><select id="bType">${BILL_TYPES.map(t=>`<option value="${esc(t.v)}">${esc(t.l)}</option>`).join('')}</select></div>
+    <div class="f"><label for="bDate">Date</label><input id="bDate" type="date" value="${today()}"></div></div>
+    <div class="frow"><div class="f"><label for="bParty" id="bPartyL">Supplier / party naam *</label><input id="bParty" required></div>
+    <div class="f"><label for="bMobile">Mobile</label><input id="bMobile" inputmode="numeric" maxlength="10"></div></div>
+    <div id="unlockBox" class="form" hidden>
+      <div class="frow"><div class="f"><label for="bModel">Phone model *</label><input id="bModel"></div>
+      <div class="f"><label for="bImei">IMEI (15 digit) *</label><input id="bImei" inputmode="numeric" maxlength="15"></div></div>
+      <div class="f"><label for="bWork">Kaam</label><select id="bWork">${WORK_TYPES.map(w=>`<option>${w}</option>`).join('')}</select></div>
+    </div>
+    <div class="frow"><div class="f"><label for="bAmount">Amount (₹)</label><input id="bAmount" type="number" min="0" step="0.01"></div>
+    <div class="f"><label for="bStaff">Upload karne wala *</label><input id="bStaff" required value="${esc(myName())}"></div></div>
+    <div class="f"><label for="bFile">Bill photo / PDF * <small>(max 10 files, 10 MB har ek)</small></label><input id="bFile" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple required></div>
+    <div class="f" id="idBox" hidden><label for="bIdFile">Customer ID photo <small>(max 4)</small></label><input id="bIdFile" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple></div>
+    <div class="f"><label for="bNotes">Notes</label><input id="bNotes"></div>
+    <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit" id="uploadBtn">Upload karo</button></div>
+  </form>`, ()=>{
+    const upd=()=>{ const t=$('#bType').value, u=t==='Unlocking Job'; $('#unlockBox').hidden=!u; $('#idBox').hidden=!u; $('#bPartyL').textContent=t==='Purchase Bill'?'Supplier / party naam *':'Customer naam *'; };
+    $('#bType').addEventListener('change',upd); upd();
+    $('#billForm').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const type=$('#bType').value, unlock=type==='Unlocking Job', mobile=$('#bMobile').value.replace(/\s/g,'');
+      const billFiles=[...$('#bFile').files], idFiles=unlock?[...$('#bIdFile').files]:[];
+      if(!billFiles.length){ toast('Bill ki photo ya PDF chuniye.','err'); return; }
+      if(billFiles.length>10){ toast('Maximum 10 bill files.','err'); return; }
+      if(idFiles.length>4){ toast('Maximum 4 ID files.','err'); return; }
+      if(mobile && !/^\d{10}$/.test(mobile)){ toast('Mobile number 10 digit ka hona chahiye.','err'); return; }
+      let model=null, imei=null, work=null;
+      if(unlock){ model=$('#bModel').value.trim(); imei=$('#bImei').value.replace(/\s/g,''); work=$('#bWork').value;
+        if(!model||!/^\d{15}$/.test(imei)){ toast('Model aur 15 digit IMEI daaliye.','err'); return; } }
+      const btn=$('#uploadBtn');
+      const ok=await run(btn, async()=>{
+        const items=billFiles.map(f=>({f,k:'bill'})).concat(idFiles.map(f=>({f,k:'id'})));
+        const bp=[], ip=[];
+        for(let i=0;i<items.length;i++){ btn.textContent='Uploading '+(i+1)+' / '+items.length+'...'; const p=await uploadOne(items[i].f,items[i].k); (items[i].k==='id'?ip:bp).push(p); }
+        await q(db.from('bills').insert({ bill_date:$('#bDate').value||today(), bill_type:type, party_name:$('#bParty').value.trim(), mobile_number:mobile||null,
+          phone_model:model, imei, work_type:work, amount:numOrNull($('#bAmount').value), notes:clean($('#bNotes').value),
+          bill_file_path:bp[0], id_file_path:ip[0]||null, extra_file_paths:bp.slice(1).concat(ip.slice(1)), uploaded_by_name:$('#bStaff').value.trim() }));
+      },'Bill upload ho gaya');
+      btn.textContent='Upload karo';
+      if(ok){ closeSheet(); reload('bills'); }
+    });
+  });
+}
+function compressImage(file){
+  return new Promise(res=>{
+    if(!file.type.startsWith('image/')){ res(file); return; }
+    const img=new Image(), url=URL.createObjectURL(file);
+    img.onload=()=>{ let w=img.width,h=img.height; const m=1600; if(w>m||h>m){ const r=Math.min(m/w,m/h); w=Math.round(w*r); h=Math.round(h*r); }
+      const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); URL.revokeObjectURL(url); c.toBlob(b=>res(b||file),'image/jpeg',0.8); };
+    img.onerror=()=>{ URL.revokeObjectURL(url); res(file); }; img.src=url;
+  });
+}
+async function uploadOne(file,kind){
+  if(!ALLOWED_TYPES.includes(file.type)) throw {custom:'Sirf JPG, PNG, WEBP ya PDF file allowed hai.'};
+  const blob=await compressImage(file), ct=blob.type||file.type;
+  if(blob.size>10*1024*1024) throw {custom:'File 10 MB se badi hai.'};
+  const ext=ct==='application/pdf'?'pdf':ct==='image/png'?'png':ct==='image/webp'?'webp':'jpg';
+  const rid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(16).slice(2);
+  const path=S.user.id+'/'+kind+'-'+rid+'.'+ext;
+  const {error}=await db.storage.from(BUCKET).upload(path,blob,{contentType:ct,upsert:false}); if(error) throw error;
+  return path;
+}
+function billFiles(b){ let bn=0,idn=0; return [b.bill_file_path,b.id_file_path].concat(b.extra_file_paths||[]).filter(Boolean).map(p=>{ const id=p.split('/').pop().startsWith('id-'); return {p,l:id?'ID '+(++idn):'Bill '+(++bn)}; }); }
+function openBill(id){
+  const b=S.bills.find(x=>x.id===id); if(!b) return;
+  const t=BILL_TYPES.find(x=>x.v===b.bill_type)||BILL_TYPES[0];
+  openSheet(esc(b.party_name), `
+    <div class="row" style="align-items:center">${pill(t.c,t.l)}<span class="sub">${esc(fmtDate(b.bill_date))}</span></div>
+    <dl class="kv" style="margin-top:12px">
+      ${b.amount!=null?`<dt>Amount</dt><dd><b>${inr(b.amount)}</b></dd>`:''}
+      ${b.mobile_number?`<dt>Mobile</dt><dd>${esc(b.mobile_number)}</dd>`:''}
+      ${b.phone_model?`<dt>Model</dt><dd>${esc(b.phone_model)}</dd>`:''}
+      ${b.imei?`<dt>IMEI</dt><dd>${esc(b.imei)}</dd>`:''}
+      ${b.work_type?`<dt>Kaam</dt><dd>${esc(b.work_type)}</dd>`:''}
+      ${b.notes?`<dt>Notes</dt><dd>${esc(b.notes)}</dd>`:''}
+      <dt>Upload by</dt><dd>${esc(b.uploaded_by_name)} · ${esc(fmtTime(b.created_at))}</dd>
+    </dl>
+    <div class="section-t"><h2>Files</h2></div>
+    <div class="actions" style="justify-content:flex-start">${billFiles(b).map(f=>`<button class="btn sm" data-act="viewFile" data-p="${esc(f.p)}">${esc(f.l)} dekho</button>`).join('')}</div>
+    <div class="actions" style="margin-top:18px"><button class="btn danger grow" data-act="askDel" data-kind="bill" data-id="${esc(b.id)}">Delete (files bhi)</button></div>`);
+}
+async function viewFile(path){
+  const w=window.open('','_blank');
+  const {data,error}=await db.storage.from(BUCKET).createSignedUrl(path,60);
+  if(error||!data){ if(w) w.close(); toast(errMsg(error),'err'); return; }
+  if(w) w.location.href=data.signedUrl; else location.href=data.signedUrl;
+}
+
+/* ---------- STOCK ---------- */
+function stockCard(it){
+  const s=stockState(it);
+  return `<button class="card" data-act="openStock" data-id="${esc(it.id)}"><div class="row"><div style="min-width:0"><div class="t">${esc(it.product_name)}</div><div class="sub">${esc([it.brand,it.model].filter(Boolean).join(' · ')||it.category)}</div></div><div style="text-align:right;display:grid;gap:4px;justify-items:end"><span class="qty num" style="color:${s==='out'?'var(--red)':s==='low'?'var(--amber)':'var(--fg)'}">${it.quantity}</span>${s==='ok'?'<span class="sub">pcs</span>':pill(s,s==='out'?'Khatam':'Kam')}</div></div>
+  <div class="meta"><span>${esc(it.category)}</span>${S.isAdmin&&it.purchase_price!=null?`<span>Kharid ${inr(it.purchase_price)}</span>`:''}${it.selling_price!=null?`<span>Bikri ${inr(it.selling_price)}</span>`:''}${it.min_quantity?`<span>Min ${it.min_quantity}</span>`:''}</div></button>`;
+}
+function vStock(){
+  const qv=S.stQ.trim().toLowerCase();
+  let list=S.stock.filter(i=>(S.stFilter==='all'||(S.stFilter==='low'?stockState(i)!=='ok':stockState(i)==='out'))&&(!S.stCat||i.category===S.stCat));
+  if(qv) list=list.filter(i=>[i.product_name,i.brand,i.model,i.supplier,i.notes].join(' ').toLowerCase().includes(qv));
+  const low=S.stock.filter(i=>stockState(i)==='low').length, out=S.stock.filter(i=>stockState(i)==='out').length;
+  return `
+  <div class="vhead"><div><h1>Stock</h1><p>${S.isAdmin?'Parts, accessories aur mobiles ka hisaab':'Staff mode: naya maal jod sakte hain, kam sirf Admin karega'}</p></div><button class="btn gold" data-act="newStock">+ Stock add</button></div>
+  <div class="kpis">
+    <button class="kpi ${S.stFilter==='all'?'on':''}" data-act="stFilter" data-f="all"><div class="label">Items</div><div class="v num">${S.stock.length}</div><div class="s">${sum(S.stock,'quantity')} pcs</div></button>
+    <button class="kpi ${S.stFilter==='low'?'on':''}" data-act="stFilter" data-f="low"><div class="label">Kam stock</div><div class="v num" style="color:var(--amber)">${low+out}</div><div class="s">min se kam ya khatam</div></button>
+    <button class="kpi ${S.stFilter==='out'?'on':''}" data-act="stFilter" data-f="out"><div class="label">Khatam</div><div class="v num" style="color:var(--red)">${out}</div><div class="s">0 pcs</div></button>
+    ${S.isAdmin?`<div class="kpi"><div class="label">Stock value</div><div class="v num">${inr(sum(S.stock,i=>num(i.quantity)*num(i.purchase_price)))}</div><div class="s">kharid rate se</div></div>`:''}
+  </div>
+  <div class="toolbar" style="margin-top:12px"><label class="search">${ICON.search}<input id="stQ" type="search" placeholder="Part, brand, model, supplier" value="${esc(S.stQ)}" data-in="stQ"></label></div>
+  <div class="chips">${['',...STOCK_CATS].map(c=>`<button class="chip ${S.stCat===c?'on':''}" data-act="stCat" data-c="${esc(c)}">${c||'Sab category'}</button>`).join('')}</div>
+  ${loading('stock', list.length?`<div class="list two">${list.slice(0,400).map(stockCard).join('')}</div>`:`<div class="empty"><b>Koi item nahi mila</b>Search ya filter badlein.</div>`)}`;
+}
+function findSame(p,b,m){ const n=x=>String(x||'').trim().toLowerCase(); return S.stock.find(i=>n(i.product_name)===n(p)&&n(i.brand)===n(b)&&n(i.model)===n(m)); }
+function stockForm(){
+  openSheet('Stock add', `
+  <form class="form" id="stockForm">
+    <div class="f"><label for="kProduct">Product naam *</label><input id="kProduct" required placeholder="Jaise: Display, Battery, Charger"><small id="kHint"></small></div>
+    <div class="frow"><div class="f"><label for="kBrand">Brand</label><input id="kBrand"></div><div class="f"><label for="kModel">Model</label><input id="kModel"></div></div>
+    <div class="frow"><div class="f"><label for="kCat">Category</label><select id="kCat">${STOCK_CATS.map(c=>`<option>${c}</option>`).join('')}</select></div>
+    <div class="f"><label for="kQty">Quantity *</label><input id="kQty" type="number" min="0" step="1" required></div></div>
+    <div class="frow"><div class="f"><label for="kBuy">Kharid rate (₹)</label><input id="kBuy" type="number" min="0" step="0.01"></div><div class="f"><label for="kSell">Bikri rate (₹)</label><input id="kSell" type="number" min="0" step="0.01"></div></div>
+    <div class="frow"><div class="f"><label for="kSupplier">Supplier</label><input id="kSupplier"></div><div class="f"><label for="kDate">Date</label><input id="kDate" type="date" value="${today()}"></div></div>
+    <div class="f"><label for="kNotes">Notes</label><input id="kNotes"></div>
+    <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">Save karo</button></div>
+  </form>`, ()=>{
+    const hint=()=>{ const s=findSame($('#kProduct').value,$('#kBrand').value,$('#kModel').value); $('#kHint').textContent=s&&$('#kProduct').value.trim()?`Yeh item pehle se hai (${s.quantity} pcs). Quantity usi me jud jayegi.`:''; };
+    ['#kProduct','#kBrand','#kModel'].forEach(i=>$(i).addEventListener('input',hint));
+    $('#stockForm').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const product=clean($('#kProduct').value), qty=parseInt($('#kQty').value,10);
+      if(!product||isNaN(qty)||qty<0){ toast('Product naam aur quantity daaliye.','err'); return; }
+      const same=findSame(product,$('#kBrand').value,$('#kModel').value);
+      if(same&&qty===0){ toast('Yeh item pehle se hai. Quantity 1 ya zyada daaliye.','err'); return; }
+      const ok=await run(ev.submitter, ()=> same
+        ? q(db.rpc('adjust_stock',{p_item_id:same.id,p_change:qty,p_reason:'Purchase',p_repair_id:null,p_note:[clean($('#kSupplier').value),$('#kBuy').value?'₹'+$('#kBuy').value+'/pc':null,clean($('#kNotes').value)].filter(Boolean).join(' · ')||null}))
+        : q(db.from('stock_items').insert({product_name:product,category:$('#kCat').value,brand:clean($('#kBrand').value),model:clean($('#kModel').value),quantity:qty,
+            purchase_price:numOrNull($('#kBuy').value),selling_price:numOrNull($('#kSell').value),supplier:clean($('#kSupplier').value),entry_date:$('#kDate').value||null,notes:clean($('#kNotes').value),updated_by_name:myName()})),
+        same?'Quantity jod di':'Stock add ho gaya');
+      if(ok){ closeSheet(); reload('stock'); }
+    });
+  });
+}
+async function openStock(id){
+  const it=S.stock.find(x=>x.id===id); if(!it) return;
+  openSheet(esc(stockLabel(it)), `
+    <div class="row" style="align-items:center"><span class="qty num">${it.quantity} <span class="sub" style="font-size:14px">pcs</span></span>${pill(stockState(it),stockState(it)==='ok'?'Stock theek':stockState(it)==='low'?'Kam stock':'Khatam')}</div>
+    <div class="section-t"><h2>Quantity badlo</h2></div>
+    <form class="form" id="qtyForm">
+      <div class="frow"><div class="f"><label for="qN">Kitne pcs</label><input id="qN" type="number" min="1" step="1" value="1"></div>
+      <div class="f"><label for="qR">Wajah</label><select id="qR">${(S.isAdmin?STOCK_REASONS:['Purchase']).map(r=>`<option>${r}</option>`).join('')}</select></div></div>
+      <div class="f"><label for="qNote">Note</label><input id="qNote" placeholder="Jaise: SSS-0123 me laga"></div>
+      <div class="actions" style="justify-content:flex-start">
+        <button class="btn gold" type="button" data-act="qty" data-id="${esc(it.id)}" data-sign="1">+ Jodo</button>
+        ${S.isAdmin?`<button class="btn" type="button" data-act="qty" data-id="${esc(it.id)}" data-sign="-1">− Ghatao</button>`:''}
+      </div>
+    </form>
+    ${S.isAdmin?`<div class="section-t"><h2>Details</h2></div>
+    <form class="form" id="stockEdit">
+      <div class="f"><label for="eProduct">Product</label><input id="eProduct" required value="${esc(it.product_name)}"></div>
+      <div class="frow"><div class="f"><label for="eBrand">Brand</label><input id="eBrand" value="${esc(it.brand)}"></div><div class="f"><label for="eModel">Model</label><input id="eModel" value="${esc(it.model)}"></div></div>
+      <div class="frow"><div class="f"><label for="eCat">Category</label><select id="eCat">${STOCK_CATS.map(c=>`<option ${c===it.category?'selected':''}>${c}</option>`).join('')}</select></div><div class="f"><label for="eMin">Min quantity (alert)</label><input id="eMin" type="number" min="0" value="${esc(it.min_quantity||0)}"></div></div>
+      <div class="frow"><div class="f"><label for="eBuy">Kharid rate</label><input id="eBuy" type="number" min="0" step="0.01" value="${esc(it.purchase_price)}"></div><div class="f"><label for="eSell">Bikri rate</label><input id="eSell" type="number" min="0" step="0.01" value="${esc(it.selling_price)}"></div></div>
+      <div class="f"><label for="eSupplier">Supplier</label><input id="eSupplier" value="${esc(it.supplier)}"></div>
+      <div class="f"><label for="eNotes2">Notes</label><input id="eNotes2" value="${esc(it.notes)}"></div>
+      <div class="actions"><button type="button" class="btn danger grow" data-act="askDel" data-kind="stock" data-id="${esc(it.id)}">Delete</button><button class="btn gold" type="submit">Save karein</button></div>
+    </form>
+    <div class="section-t"><h2>History</h2></div><ul class="timeline" id="sHist"><li>Load ho raha hai…</li></ul>`:''}`, ()=>{
+    const f=$('#stockEdit'); if(!f) return;
+    f.addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const o={product_name:$('#eProduct').value.trim(),brand:clean($('#eBrand').value),model:clean($('#eModel').value),category:$('#eCat').value,min_quantity:parseInt($('#eMin').value,10)||0,
+        purchase_price:numOrNull($('#eBuy').value),selling_price:numOrNull($('#eSell').value),supplier:clean($('#eSupplier').value),notes:clean($('#eNotes2').value),updated_by_name:myName()};
+      const ok=await run(ev.submitter,()=>q(db.from('stock_items').update(o).eq('id',id).select('id')),'Item update ho gaya');
+      if(ok){ await reload('stock'); openStock(id); }
+    });
+  });
+  if(S.isAdmin){ try{ const h=await q(db.from('stock_movements').select('change, qty_after, reason, note, changed_by_name, changed_at').eq('item_id',id).order('changed_at',{ascending:false}).limit(50));
+    const el=$('#sHist'); if(el) el.innerHTML=h.map(x=>`<li><b style="color:${x.change>0?'var(--green)':'var(--red)'}">${x.change>0?'+':''}${x.change}</b> → ${x.qty_after} pcs · ${esc(x.reason==='Opening'?'Shuruaati stock':x.reason)}${x.note?' · '+esc(x.note):''}<small>${esc(fmtTime(x.changed_at))}${x.changed_by_name?' · '+esc(x.changed_by_name):''}</small></li>`).join('')||'<li>Koi history nahi</li>'; }catch(e){} }
+}
+
+/* ---------- STAFF (admin) ---------- */
+function vStaff(){
+  if(!S.isAdmin) return `<div class="note warn" style="margin-top:18px">Yeh section sirf Admin ke liye hai.</div>`;
+  return `
+  <div class="vhead"><div><h1>Staff</h1><p>Kaun login kar sakta hai, kiska kya role hai</p></div><button class="btn gold" data-act="newStaff">+ Naya staff</button></div>
+  <div class="note" style="margin-bottom:12px"><b>Admin</b>: sab dekh/badal/delete sakta hai. <b>Staff</b>: repair status badal sakta hai, sale entry, bill upload aur naya stock jod sakta hai. "Sales dekh sakta hai" on karne par staff sales list bhi dekhega.</div>
+  ${loading('staff', `<div class="list two">${S.staff.map(p=>`<button class="card" data-act="openStaff" data-id="${esc(p.id)}"><div class="row" style="align-items:center"><div class="avatar">${esc(initials(shortName(p.full_name)))}</div><div style="flex:1;min-width:0"><div class="t">${esc(shortName(p.full_name))}${p.id===S.user.id?' <span class="sub">(aap)</span>':''}</div><div class="sub">${p.role==='admin'?'Admin':'Staff'}${p.role!=='admin'?' · '+(p.can_view?'Sales dekh sakta hai':'Sales list nahi dikhegi'):''}</div></div>${pill(p.role,p.role==='admin'?'Admin':'Staff')}</div><div class="meta"><span>Joined ${esc(fmtDate(p.created_at))}</span></div></button>`).join('')}</div>`)}`;
+}
+function staffForm(){
+  openSheet('Naya staff', `
+  <form class="form" id="staffNew">
+    <div class="f"><label for="nName">Naam *</label><input id="nName" required></div>
+    <div class="f"><label for="nEmail">Login email *</label><input id="nEmail" type="email" required autocomplete="off"></div>
+    <div class="f"><label for="nPass">Password * <small>(kam se kam 6 akshar)</small></label><input id="nPass" type="text" minlength="6" required autocomplete="new-password"></div>
+    <div class="note">Account banne ke baad woh is app aur sale/bills/stock pages par isi email-password se login karega. Role yahan list me badal sakte hain.</div>
+    <div class="actions"><button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">Account banao</button></div>
+  </form>`, ()=>{
+    $('#staffNew').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      // Alag client taaki Admin ka apna login na badle
+      const tmp=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'sss-signup-tmp'}});
+      const ok=await run(ev.submitter, async()=>{
+        const {data,error}=await tmp.auth.signUp({email:$('#nEmail').value.trim(),password:$('#nPass').value,options:{data:{full_name:$('#nName').value.trim()}}});
+        if(error){ const m=(error.message||'').toLowerCase();
+          if(m.includes('registered')) throw {custom:'Yeh email pehle se registered hai.'};
+          if(m.includes('signup')&&m.includes('disabled')) throw {custom:'Supabase me naye signup band hain. Supabase dashboard → Authentication → Users → "Add user" se banayein.'};
+          throw error; }
+        return data;
+      });
+      if(ok){ toast(ok.session?'Staff account ban gaya':'Account ban gaya. Staff ko email confirm karna hoga.'); closeSheet(); reload('staff'); }
+    });
+  });
+}
+function openStaff(id){
+  const p=S.staff.find(x=>x.id===id); if(!p) return; const me=p.id===S.user.id;
+  openSheet(esc(shortName(p.full_name)), `
+  <form class="form" id="staffEdit">
+    <div class="f"><label for="pName">Naam</label><input id="pName" value="${esc(p.full_name)}"></div>
+    <div class="f"><label for="pRole">Role</label><select id="pRole" ${me?'disabled':''}><option value="staff" ${p.role==='staff'?'selected':''}>Staff</option><option value="admin" ${p.role==='admin'?'selected':''}>Admin</option></select>${me?'<small>Apna role khud nahi badal sakte.</small>':''}</div>
+    <div class="checks"><label><input type="checkbox" id="pView" ${p.can_view?'checked':''}> Sales list dekh sakta hai</label></div>
+    <div class="actions">${me?'':`<button type="button" class="btn danger grow" data-act="askDel" data-kind="staff" data-id="${esc(p.id)}">Access hatao</button>`}<button type="button" class="btn ghost" data-act="close">Cancel</button><button class="btn gold" type="submit">Save karein</button></div>
+  </form>`, ()=>{
+    $('#staffEdit').addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      const o={full_name:clean($('#pName').value),can_view:$('#pView').checked}; if(!me) o.role=$('#pRole').value;
+      const ok=await run(ev.submitter,()=>q(db.from('profiles').update(o).eq('id',id).select('id')),'Staff update ho gaya');
+      if(ok){ if(me){ S.profile.full_name=o.full_name; } closeSheet(); reload('staff'); }
+    });
+  });
+}
+
+/* ---------- CSV ---------- */
+function csvCell(v){ let s=String(v==null?'':v); if(/^[=+\-@]/.test(s)) s="'"+s; return '"'+s.replace(/"/g,'""')+'"'; }
+function downloadCsv(name,head,rows){
+  const csv='﻿'+[head.map(csvCell).join(',')].concat(rows.map(r=>r.map(csvCell).join(','))).join('\r\n');
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})), a=document.createElement('a');
+  a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); toast('CSV download ho gayi');
+}
+
+/* ---------- sheet + events ---------- */
+function openSheet(title,html,after){ $('#sheetTitle').innerHTML=title; $('#sheetBody').innerHTML=html; $('#sheet').hidden=false; $('#sheetBody').scrollTop=0; document.body.style.overflow='hidden'; if(after) after(); }
+function closeSheet(){ $('#sheet').hidden=true; document.body.style.overflow=''; }
+const DEL={
+  repair:{t:'Yeh repair (history ke saath)',fn:id=>q(db.from('repairs').delete().eq('id',id).select('id')),re:['repairs']},
+  sale:{t:'Yeh sale entry (lage parts stock me wapas jayenge)',fn:id=>q(db.from('sales_entries').delete().eq('id',id).select('id')),re:['sales','stock']},
+  bill:{t:'Yeh bill aur uski files',fn:async id=>{ const b=S.bills.find(x=>x.id===id); const d=await q(db.from('bills').delete().eq('id',id).select('id')); if(d.length&&b){ const ps=billFiles(b).map(f=>f.p); if(ps.length) await db.storage.from(BUCKET).remove(ps); } return d; },re:['bills']},
+  stock:{t:'Yeh stock item (history ke saath)',fn:id=>q(db.from('stock_items').delete().eq('id',id).select('id')),re:['stock']},
+  staff:{t:'Is staff ka app access',fn:id=>q(db.from('profiles').delete().eq('id',id).select('id')),re:['staff']}
+};
+const ACT={
+  close:closeSheet, logout, refresh:()=>{ toast('Refresh ho raha hai…'); loadAll(); },
+  newRepair:()=>repairForm(), editRepair:el=>repairForm(S.repairs.find(r=>r.id===el.dataset.id)), openRepair:el=>openRepair(el.dataset.id),
+  setStatus:async el=>{ const id=el.dataset.id; const ok=await run(el,()=>q(db.from('repairs').update({status:el.dataset.s}).eq('id',id).select('id')).then(d=>{ if(!d.length) throw {custom:'Status update nahi hua.'}; }),'Status: '+st(el.dataset.s).l); if(ok){ await reload('repairs'); openRepair(id); } },
+  rFilter:el=>{ S.rFilter=el.dataset.f; render(); },
+  goFilter:el=>{ S.rFilter=el.dataset.f; },
+  goStock:el=>{ S.stFilter=el.dataset.f; },
+  saleFromRepair:el=>{ const r=S.repairs.find(x=>x.id===el.dataset.id); const c=r.customers||{}; saleForm({sale_description:`${r.repair_code} ${r.device_model}${r.problem?' - '+r.problem:''}`,customer_name:c.name,amount_received:r.final_charge!=null?r.final_charge:(r.estimated_charge!=null?num(r.estimated_charge)-num(r.advance_paid):'')}); },
+  newSale:()=>saleForm(), openSale:el=>openSale(el.dataset.id),
+  period:el=>{ S.period=el.dataset.p; if(S.period!=='range') reload('sales'); else render(); },
+  applyRange:()=>{ S.from=$('#sFrom').value; S.to=$('#sTo').value; if(S.from>S.to){ toast('Start date pehle honi chahiye.','err'); return; } reload('sales'); },
+  newBill:()=>billForm(), openBill:el=>openBill(el.dataset.id), viewFile:el=>viewFile(el.dataset.p),
+  bType:el=>{ S.bType=el.dataset.t===S.bType?'':el.dataset.t; render(); },
+  newStock:()=>stockForm(), openStock:el=>openStock(el.dataset.id),
+  stFilter:el=>{ S.stFilter=el.dataset.f; render(); }, stCat:el=>{ S.stCat=el.dataset.c; render(); },
+  qty:async el=>{ const id=el.dataset.id, n=parseInt($('#qN').value,10), sign=+el.dataset.sign;
+    if(!n||n<1){ toast('Kitne pcs, yeh daaliye.','err'); return; }
+    let reason=sign>0&&!S.isAdmin?'Purchase':$('#qR').value;
+    if(sign<0&&reason==='Purchase') reason='Adjust';
+    const ok=await run(el,()=>q(db.rpc('adjust_stock',{p_item_id:id,p_change:sign*n,p_reason:reason,p_repair_id:null,p_note:clean($('#qNote').value)})),sign>0?n+' pcs jode':n+' pcs ghataye');
+    if(ok){ await reload('stock'); openStock(id); } },
+  newStaff:()=>staffForm(), openStaff:el=>openStaff(el.dataset.id),
+  askDel:el=>{ const {kind,id}=el.dataset; el.closest('.actions').innerHTML=`<div class="confirm">${DEL[kind].t} pakka delete karein? Wapas nahi aayega.<span style="flex:1"></span><button type="button" class="btn sm ghost" data-act="close">Nahi</button><button type="button" class="btn sm danger" data-act="doDel" data-kind="${kind}" data-id="${esc(id)}">Haan, delete</button></div>`; },
+  doDel:async el=>{ const {kind,id}=el.dataset; const ok=await run(el,async()=>{ const d=await DEL[kind].fn(id); if(!d||!d.length) throw {custom:'Delete nahi hua. Sirf Admin delete kar sakta hai.'}; },'Delete ho gaya'); if(ok){ closeSheet(); reload(...DEL[kind].re); } },
+  csvSales:()=>{ const l=salesInRange(); if(!l.length){ toast('Download ke liye koi entry nahi.','err'); return; } downloadCsv('daily-sales-'+today()+'.csv',['Date','Kaam','Customer','Amount','Kharcha','Profit','Payment','Staff','Notes'],l.map(s=>[s.entry_date,s.sale_description,s.customer_name,s.amount_received,s.expense,s.profit,s.payment_mode,s.staff_name,s.notes])); },
+  csvBills:()=>{ const l=S.bills.filter(b=>!S.bType||b.bill_type===S.bType); if(!l.length){ toast('Download ke liye koi bill nahi.','err'); return; } downloadCsv('bills-register-'+today()+'.csv',['Date','Type','Party','Mobile','Model','IMEI','Kaam','Amount','Notes','Uploaded By'],l.map(b=>[b.bill_date,b.bill_type,b.party_name,b.mobile_number,b.phone_model,b.imei,b.work_type,b.amount,b.notes,b.uploaded_by_name])); }
+};
+document.addEventListener('click',ev=>{
+  const el=ev.target.closest('[data-act]'); if(!el) return; const fn=ACT[el.dataset.act]; if(!fn) return;
+  if(el.tagName!=='A') ev.preventDefault();
+  fn(el);
+});
+document.addEventListener('input',ev=>{ const k=ev.target.dataset&&ev.target.dataset.in; if(!k) return; S[k]=ev.target.value; render(); });
+document.addEventListener('keydown',ev=>{ if(ev.key==='Escape'&&!$('#sheet').hidden) closeSheet(); });
+window.addEventListener('hashchange',()=>{ const h=location.hash.slice(1); S.view=views().some(v=>v.k===h)?h:'home'; closeSheet(); render(); window.scrollTo(0,0); });
+// Doosre staff ke badlav dikhane ke liye: tab par wapas aate hi aur har 60 second me refresh
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden&&S.profile) loadAll(); });
+setInterval(()=>{ if(!document.hidden&&S.profile&&$('#sheet').hidden) loadAll(); },60000);
+db.auth.onAuthStateChange((evt)=>{ if(evt==='SIGNED_OUT'&&S.profile) location.reload(); });
+
+(async function init(){
+  try{
+    const {data}=await db.auth.getSession();
+    if(data&&data.session){ S.user=data.session.user; if(await loadProfile(S.user.id)){ startApp(); return; } await db.auth.signOut(); }
+  }catch(e){ toast('Internet check karein.','err'); }
+  $('#loginView').hidden=false;
+})();
+</script>
+</body>
+</html>
