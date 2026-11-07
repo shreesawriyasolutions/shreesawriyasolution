@@ -1,2 +1,4 @@
 # .well-known folder ko publish karne ke liye (Android app ka assetlinks.json)
 include: [".well-known"]
+# Flutter app ka source code website par publish nahi hona chahiye
+exclude: ["flutter_app"]

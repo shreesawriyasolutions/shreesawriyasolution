@@ -1,0 +1,42 @@
+name: sss_shop
+description: "Shree Sawriya Solutions shop app: repair status, daily sales, bills, stock aur staff ek jagah."
+publish_to: 'none'
+version: 2.0.0+20
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  supabase_flutter: ^2.10.0
+  hooks_riverpod: ^3.1.0
+  flutter_hooks: ^0.21.3+1
+  go_router: ^17.1.0
+  google_fonts: ^8.0.2
+  intl: any
+  image_picker: ^1.2.0
+  file_picker: ^10.3.0
+  url_launcher: ^6.3.2
+  share_plus: ^12.0.1
+  flutter_animate: ^4.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  mocktail: ^1.0.4
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app-512.png"
+  adaptive_icon_background: "#0A0B0A"
+  adaptive_icon_foreground: "assets/icon/app-maskable-512.png"
+  remove_alpha_ios: true
