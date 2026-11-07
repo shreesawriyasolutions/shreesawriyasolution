@@ -114,7 +114,7 @@ jobs:
           } > ci/summary.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add android web screenshots ci 2>/dev/null || true
+          for d in android web screenshots; do [ -e "$d" ] && git add "$d"; done
           git add -f ci
           if git diff --cached --quiet; then echo "Nothing to commit"; else
             git commit -m "Flutter CI: platform files, screenshots, report"

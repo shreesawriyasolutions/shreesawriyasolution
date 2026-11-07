@@ -28,7 +28,7 @@ Future<void> main() async {
   if (demoMode) {
     repo = DemoShopRepository();
   } else {
-    await Supabase.initialize(url: AppConfig.supabaseUrl, anonKey: AppConfig.supabaseKey);
+    await Supabase.initialize(url: AppConfig.supabaseUrl, publishableKey: AppConfig.supabaseKey);
     repo = SupabaseShopRepository(Supabase.instance.client);
   }
 
