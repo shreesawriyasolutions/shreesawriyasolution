@@ -72,3 +72,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Add width/height to the header logo <img> on subpages (avoids layout shift).
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
+
+## 2026-11-07 – Brand names visible on Android page
+- Research: searched "mobile repair shop Assandh Karnal" and "Samsung Vivo Oppo mobile repair Karnal Assandh". Results are still Flipkart city pages, Cashify Karnal stores, brand service-centre lists (gsmspecs) and directory listings (explurger, ueni, Quikr). Brand + town searches ("Vivo repair Karnal") are a real pattern, but our page only named the brands in og/twitter meta (not visible to Google as page text).
+- Change: added one short visible line under the hero on android-repair.html: "We repair Samsung, OnePlus, Xiaomi, Vivo, Oppo and Realme phones at our shop in Assandh, Karnal." with data-en/data-hi/data-pa translations (same brand list already in the page's og:description; nothing new claimed). Switcher code untouched.
+- Sitemap lastmod for android-repair.html set to 2026-11-07.
+- Why: brand names in visible text let the page match "Samsung/Vivo/Oppo repair Assandh/Karnal" searches.
+
+### Ideas for future days
+- Add width/height to the header logo <img> on subpages (avoids layout shift) — still pending.
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
