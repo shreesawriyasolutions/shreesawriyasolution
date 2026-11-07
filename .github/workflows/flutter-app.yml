@@ -89,7 +89,7 @@ jobs:
           mkdir -p screenshots
           (cd build/web && python3 -m http.server 8765 >/dev/null 2>&1 &)
           sleep 2
-          for p in home status sales bills stock staff; do
+          for p in login home status sales bills stock staff; do
             google-chrome --headless=new --no-sandbox --disable-gpu --enable-unsafe-swiftshader --hide-scrollbars \
               --window-size=412,915 --force-device-scale-factor=2 --virtual-time-budget=20000 \
               --screenshot="screenshots/$p.png" "http://localhost:8765/#/$p" || true

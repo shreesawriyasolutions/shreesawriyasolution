@@ -35,6 +35,8 @@ class AppTheme {
         onPrimary: AppColors.goldInk,
         secondary: AppColors.silver,
         onSecondary: AppColors.bg,
+        secondaryContainer: Color(0x2EC9A24A),
+        onSecondaryContainer: AppColors.gold,
         surface: AppColors.surface,
         onSurface: AppColors.fg,
         error: AppColors.red,

@@ -87,18 +87,20 @@ class HeroKpi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Ink(
-        decoration: BoxDecoration(
-          gradient: AppColors.goldGradient,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [BoxShadow(color: AppColors.gold.withValues(alpha: .25), blurRadius: 30, offset: const Offset(0, 12))],
-        ),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: AppColors.goldGradient,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [BoxShadow(color: AppColors.gold.withValues(alpha: .22), blurRadius: 28, offset: const Offset(0, 10))],
+      ),
+      child: Material(
+        type: MaterialType.transparency,
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(24),
-          child: Stack(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(24),
+            child: Stack(
             children: [
               Positioned(
                 right: -18,
@@ -134,6 +136,7 @@ class HeroKpi extends StatelessWidget {
                 ),
               ),
             ],
+            ),
           ),
         ),
       ),

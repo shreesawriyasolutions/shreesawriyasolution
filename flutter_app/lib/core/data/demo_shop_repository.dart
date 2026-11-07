@@ -104,7 +104,11 @@ class DemoShopRepository implements ShopRepository {
   String? get currentUserId => 'u1';
 
   @override
-  Future<Profile?> restoreSession() async => _me;
+  Future<Profile?> restoreSession() async {
+    // Web preview me .../#/login kholo to login screen dikhe.
+    if (Uri.base.fragment.contains('login')) return null;
+    return _me;
+  }
 
   @override
   Future<Profile> signIn(String email, String password) async => _me;
