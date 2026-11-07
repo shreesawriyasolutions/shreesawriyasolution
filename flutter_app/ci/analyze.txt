@@ -1,0 +1,9 @@
+Analyzing flutter_app...                                        
+
+   info • The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart'. Try removing the import directive • lib/core/theme/app_theme.dart:1:8 • unnecessary_import
+  error • Invalid constant value • lib/core/theme/app_theme.dart:148:31 • invalid_constant
+  error • The method 'CupertinoPageTransitionsBuilder' isn't defined for the type 'AppTheme'. Try correcting the name to the name of an existing method, or defining a method named 'CupertinoPageTransitionsBuilder' • lib/core/theme/app_theme.dart:148:31 • undefined_method
+  error • The values in a const map literal must be constant. Try removing the keyword 'const' from the map literal • lib/core/theme/app_theme.dart:148:31 • non_constant_map_value
+   info • 'anonKey' is deprecated and shouldn't be used. Use publishableKey instead. anonKey will be removed in a future major version. Try replacing the use of the deprecated member with the replacement • lib/main.dart:31:59 • deprecated_member_use
+
+5 issues found. (ran in 19.0s)

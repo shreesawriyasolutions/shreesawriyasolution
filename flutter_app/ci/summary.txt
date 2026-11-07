@@ -1,0 +1,4 @@
+analyze=failure
+test=failure
+apk=failure
+web=failure
