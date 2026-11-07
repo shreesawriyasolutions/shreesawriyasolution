@@ -898,17 +898,20 @@ function staffForm(){
   </form>`, ()=>{
     $('#staffNew').addEventListener('submit', async ev=>{
       ev.preventDefault();
-      // Alag client taaki Admin ka apna login na badle
-      const tmp=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'sss-signup-tmp'}});
+      // Public signup band hai (security), isliye account server function "create-staff" banata hai.
+      // Woh function check karta hai ki bulane wala Admin hai.
       const ok=await run(ev.submitter, async()=>{
-        const {data,error}=await tmp.auth.signUp({email:$('#nEmail').value.trim(),password:$('#nPass').value,options:{data:{full_name:$('#nName').value.trim()}}});
-        if(error){ const m=(error.message||'').toLowerCase();
-          if(m.includes('registered')) throw {custom:'Yeh email pehle se registered hai.'};
-          if(m.includes('signup')&&m.includes('disabled')) throw {custom:'Supabase me naye signup band hain. Supabase dashboard → Authentication → Users → "Add user" se banayein.'};
-          throw error; }
-        return data;
+        const {data:s}=await db.auth.getSession();
+        const token=s&&s.session&&s.session.access_token;
+        if(!token) throw {custom:'Login expire ho gaya. Dobara login karein.'};
+        const res=await fetch(SUPABASE_URL+'/functions/v1/create-staff',{method:'POST',
+          headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+token},
+          body:JSON.stringify({name:$('#nName').value.trim(),email:$('#nEmail').value.trim(),password:$('#nPass').value})});
+        let out={}; try{ out=await res.json(); }catch(e){}
+        if(!res.ok) throw {custom:out.error||'Account nahi bana. Dobara try karein.'};
+        return out;
       });
-      if(ok){ toast(ok.session?'Staff account ban gaya':'Account ban gaya. Staff ko email confirm karna hoga.'); closeSheet(); reload('staff'); }
+      if(ok){ toast('Staff account ban gaya. Ab woh isi email-password se login kar sakta hai.'); closeSheet(); reload('staff'); }
     });
   });
 }
