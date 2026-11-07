@@ -10,3 +10,4 @@ build/
 /coverage/
 android/key.properties
 *.jks
+ci/

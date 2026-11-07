@@ -103,21 +103,14 @@ jobs:
           name: sss-shop-apk
           path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
 
-      - name: Save generated files, screenshots and CI report to branch
+      - name: Save generated files and screenshots to branch
         if: github.event_name == 'push' && github.ref != 'refs/heads/main'
         run: |
-          {
-            echo "analyze=${{ steps.analyze.outcome }}"
-            echo "test=${{ steps.test.outcome }}"
-            echo "apk=${{ steps.apk.outcome }}"
-            echo "web=${{ steps.web.outcome }}"
-          } > ci/summary.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for d in android web screenshots; do [ -e "$d" ] && git add "$d"; done
-          git add -f ci
           if git diff --cached --quiet; then echo "Nothing to commit"; else
-            git commit -m "Flutter CI: platform files, screenshots, report"
+            git commit -m "Flutter CI: platform files and screenshots"
             git push
           fi
 

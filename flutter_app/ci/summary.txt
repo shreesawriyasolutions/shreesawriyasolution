@@ -1,4 +1,0 @@
-analyze=success
-test=success
-apk=success
-web=success
