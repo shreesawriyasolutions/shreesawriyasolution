@@ -1,4 +1,4 @@
-analyze=failure
-test=failure
-apk=failure
-web=failure
+analyze=success
+test=success
+apk=success
+web=success

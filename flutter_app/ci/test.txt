@@ -1,36 +1,8 @@
 
-lib/core/theme/app_theme.dart:148:31: Error: Method not found: 'CupertinoPageTransitionsBuilder'.
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::group::❌ loading /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart (failed)
-Failed to load "/home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart":
-Compilation failed for testPath=/home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart: lib/core/theme/app_theme.dart:148:31: Error: Method not found: 'CupertinoPageTransitionsBuilder'.
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.
-
-::endgroup::
-::group::❌ loading /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart (failed after test completion)
-Error: The Dart compiler exited unexpectedly.
-package:flutter_tools/src/base/common.dart 34:3  throwToolExit
-package:flutter_tools/src/compile.dart 1024:11   DefaultResidentCompiler._compile.<fn>
-dart:async/zone_root.dart 48:47                  _rootRunUnary
-dart:async/zone.dart 816:35                      _CustomZone.runUnary
-dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
-dart:async/future_impl.dart 977:13               Future._propagateToListeners
-dart:async/future_impl.dart 862:9                Future._propagateToListeners
-dart:async/future_impl.dart 720:5                Future._completeWithValue
-dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
-dart:async/zone_root.dart 35:13                  _rootRun
-dart:async/zone.dart 810:35                      _CustomZone.run
-dart:async/zone.dart 702:7                       _CustomZone.runGuarded
-dart:async/zone.dart 743:23                      _CustomZone.bindCallbackGuarded.<fn>
-dart:async/schedule_microtask.dart 40:35         _microtaskLoop
-dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
-dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
-dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
-::endgroup::
 ::group::✅ Passing tests
+✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart: StatusPill shows Hinglish label
+✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart: EmptyState shows title and message
+✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/widgets_test.dart: KvList renders all rows
 ✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/providers_test.dart: SalesFilter today range is a single day
 ✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/providers_test.dart: SalesFilter all has no limits
 ✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/providers_test.dart: SalesFilter custom range
@@ -50,4 +22,4 @@ dart:isolate-patch/isolate_patch.dart 193:5      _RawReceivePort._handleMessage
 ✅ /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/test/core/models_test.dart: csv escapes quotes and formula injection
 ::endgroup::
 
-::error::17 tests passed, 1 failed.
+🎉 20 tests passed.
