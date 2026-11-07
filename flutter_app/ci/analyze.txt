@@ -2,4 +2,4 @@ Analyzing flutter_app...
 
    info • The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart'. Try removing the import directive • lib/core/theme/app_theme.dart:1:8 • unnecessary_import
 
-1 issue found. (ran in 15.3s)
+1 issue found. (ran in 19.1s)

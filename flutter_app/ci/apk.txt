@@ -56,5 +56,5 @@ Installing CMake 3.22.1 in /usr/local/lib/android/sdk/cmake/3.22.1
 "Install CMake 3.22.1 v.3.22.1" complete.
 "Install CMake 3.22.1 v.3.22.1" finished.
 Caught exception: Already watching path: /home/runner/work/shreesawriyasolution/shreesawriyasolution/flutter_app/android
-Running Gradle task 'assembleRelease'...                          318.6s
+Running Gradle task 'assembleRelease'...                          342.3s
 ✓ Built build/app/outputs/flutter-apk/app-release.apk (91.6MB)
