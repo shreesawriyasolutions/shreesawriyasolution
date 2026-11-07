@@ -1,0 +1,128 @@
+name: Flutter Shop App
+
+on:
+  push:
+    paths:
+      - 'flutter_app/**'
+      - '.github/workflows/flutter-app.yml'
+  pull_request:
+    paths:
+      - 'flutter_app/**'
+      - '.github/workflows/flutter-app.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flutter-app-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: flutter_app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Create Android/web folders (first run only)
+        run: |
+          flutter --version
+          if [ ! -d android ]; then
+            flutter create --org in.shreesawriyasolutions --project-name sss_shop --platforms android,web .
+            rm -f test/widget_test.dart
+            python3 tool/patch_platforms.py
+          fi
+
+      - name: Install packages
+        run: flutter pub get
+
+      - name: Analyze
+        id: analyze
+        continue-on-error: true
+        run: |
+          mkdir -p ci
+          set -o pipefail
+          flutter analyze --no-fatal-infos 2>&1 | tee ci/analyze.txt
+
+      - name: Test
+        id: test
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          flutter test 2>&1 | tee ci/test.txt
+
+      - name: App icon
+        continue-on-error: true
+        run: dart run flutter_launcher_icons
+
+      - name: Build APK
+        id: apk
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          flutter build apk --release 2>&1 | tail -n 60 | tee ci/apk.txt
+
+      - name: Build web preview (demo data)
+        id: web
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          flutter build web --release --dart-define=DEMO=true 2>&1 | tail -n 60 | tee ci/web.txt
+
+      - name: Screenshots
+        if: steps.web.outcome == 'success'
+        continue-on-error: true
+        run: |
+          mkdir -p screenshots
+          (cd build/web && python3 -m http.server 8765 >/dev/null 2>&1 &)
+          sleep 2
+          for p in home status sales bills stock staff; do
+            google-chrome --headless=new --no-sandbox --disable-gpu --enable-unsafe-swiftshader --hide-scrollbars \
+              --window-size=412,915 --force-device-scale-factor=2 --virtual-time-budget=20000 \
+              --screenshot="screenshots/$p.png" "http://localhost:8765/#/$p" || true
+          done
+          ls -la screenshots
+
+      - name: Upload APK
+        if: steps.apk.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sss-shop-apk
+          path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Save generated files, screenshots and CI report to branch
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          {
+            echo "analyze=${{ steps.analyze.outcome }}"
+            echo "test=${{ steps.test.outcome }}"
+            echo "apk=${{ steps.apk.outcome }}"
+            echo "web=${{ steps.web.outcome }}"
+          } > ci/summary.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add android web screenshots ci 2>/dev/null || true
+          git add -f ci
+          if git diff --cached --quiet; then echo "Nothing to commit"; else
+            git commit -m "Flutter CI: platform files, screenshots, report"
+            git push
+          fi
+
+      - name: Fail if a check failed
+        if: steps.analyze.outcome != 'success' || steps.test.outcome != 'success' || steps.apk.outcome != 'success'
+        run: |
+          echo "analyze=${{ steps.analyze.outcome }} test=${{ steps.test.outcome }} apk=${{ steps.apk.outcome }}"
+          exit 1
