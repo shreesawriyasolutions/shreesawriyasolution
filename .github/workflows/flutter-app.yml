@@ -46,6 +46,15 @@ jobs:
             python3 tool/patch_platforms.py
           fi
 
+      - name: Smoke test create-staff function (temporary)
+        continue-on-error: true
+        run: |
+          U=https://bwldelmfkcynfvbqcneb.supabase.co/functions/v1/create-staff
+          K=sb_publishable_GKmljKQOjWzJ54FdZVPk_g_auEFS9VG
+          curl -s -w ' %{http_code}\n' -X POST $U -H "apikey: $K" -H "Content-Type: application/json" -d '{"name":"x"}'
+          curl -s -w ' %{http_code}\n' -X POST $U -H "apikey: $K" -H "Authorization: Bearer $K" -H "Content-Type: application/json" -d '{"name":"x"}'
+          curl -s -o /dev/null -w 'preflight %{http_code}\n' -X OPTIONS $U
+
       - name: Install packages
         run: flutter pub get
 

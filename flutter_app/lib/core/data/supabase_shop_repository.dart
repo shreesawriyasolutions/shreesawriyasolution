@@ -211,24 +211,15 @@ class SupabaseShopRepository implements ShopRepository {
   // ---------- staff ----------
   @override
   Future<bool> createStaff({required String name, required String email, required String password}) async {
-    // Alag client taaki Admin ka apna login na badle.
-    final tmp = SupabaseClient(
-      AppConfig.supabaseUrl,
-      AppConfig.supabaseKey,
-      authOptions: const AuthClientOptions(autoRefreshToken: false),
-    );
+    // Public signup band hai (security), isliye account server function "create-staff"
+    // banata hai. Woh check karta hai ki bulane wala Admin hai.
     try {
-      final res = await tmp.auth.signUp(email: email, password: password, data: {'full_name': name});
-      return res.session != null;
-    } on AuthException catch (e) {
-      final m = e.message.toLowerCase();
-      if (m.contains('registered')) throw const AppException('Yeh email pehle se registered hai.');
-      if (m.contains('signup') && m.contains('disabled')) {
-        throw const AppException('Supabase me naye signup band hain. Dashboard → Authentication → Users → "Add user" se banayein.');
-      }
-      rethrow;
-    } finally {
-      tmp.dispose();
+      await db.functions.invoke('create-staff', body: {'name': name, 'email': email, 'password': password});
+      return true;
+    } on FunctionException catch (e) {
+      final d = e.details;
+      final msg = d is Map ? d['error']?.toString() : null;
+      throw AppException(msg ?? 'Account nahi bana. Dobara try karein.');
     }
   }
 
