@@ -84,3 +84,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
+
+## 2026-11-08 – Page speed: small logo file
+- Research: searched "mobile repair shop Assandh Karnal" again. Same picture as before: Flipkart city pages, explurger/ueni/Quikr/Google Sites listings and unrelated Assandh vehicle service centres. No local repair website competes, so speed and off-site listings are the main levers.
+- Change: logo.png is 500x500 / 97 KB but is shown at only 34–64 px. Added logo-128.png (128x128, about 12 KB, sharp on 2x screens) and used it for every visible logo <img> (navbar, footer, index splash) on the 5 public pages. Added width="36" height="36" to the navbar logo on the 4 subpages (pending idea; avoids layout shift). logo.png kept as-is for favicon, og:image, twitter:image and JSON-LD logo/image.
+- No visible text changed, so sitemap lastmod not touched.
+- Why: saves about 85 KB on every page load on mobile data; faster first paint helps mobile rankings.
+
+### Ideas for future days
+- Favicon/apple-touch-icon still point to the 97 KB logo.png; a small favicon (e.g. 48px/180px) could be added later.
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
