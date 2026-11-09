@@ -96,3 +96,14 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
+
+## 2026-11-09 – Small favicon and apple-touch-icon
+- Research: searched "mobile repair Panipat Kaithal Assandh shop". Same picture: Flipkart city pages, IndiaMART directory, Cashify stores, explurger/ueni/bino.bot listings. No local repair website competes; speed and off-site listings remain the main levers.
+- Change: favicon and apple-touch-icon on the 5 public pages pointed to the 97 KB, 500x500 logo.png. Added favicon-48.png (48x48, ~3 KB; Google wants favicons in multiples of 48px) and apple-touch-icon.png (180x180 on white, ~13 KB), and pointed the <link rel="icon"> / <link rel="apple-touch-icon"> tags to them with sizes. logo.png kept for og:image, twitter:image and JSON-LD. Admin pages untouched.
+- No visible text changed, so sitemap lastmod not touched.
+- Why: saves another ~85 KB download per new visitor on mobile data and gives Google a correctly sized favicon for search results.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
