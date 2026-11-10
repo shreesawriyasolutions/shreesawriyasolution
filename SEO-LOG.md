@@ -119,3 +119,8 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
 - Owner action idea: IndiaMART/Justdial listing for the training with the same name-address-phone.
+
+## 2026-11-10 (later, owner request) – Google Business Profile link
+- Owner says the Google Business Profile is now verified and shared its link: https://g.page/r/CcHxO3bTgz8UEBE/
+- Change: index.html "Write a Review on Google" button now opens the direct review form (https://g.page/r/CcHxO3bTgz8UEBE/review) instead of the Maps place page, so customers get the star/review box in one tap. Added the g.page link to LocalBusiness "sameAs" JSON-LD. Button text, translations and the live reviews script untouched.
+- Owner told what to fill in the profile (categories, services, description from site facts, photos, review link to customers, weekly posts).
