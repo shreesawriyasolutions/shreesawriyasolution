@@ -107,3 +107,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
+
+## 2026-11-10 – Local title and meta description on training page
+- Research: searched "mobile repair shop Assandh Karnal iPhone repair" and "mobile repairing course Karnal". Repair results are the same Flipkart city pages and explurger/ueni/Google Sites listings. Course results are coursetakers.com, careers360 and Udemy pages; no local Karnal/Assandh training page ranks. People search "mobile repairing course + city", but training.html was the only public page whose title had no place name.
+- Change: training.html title/og:title/twitter:title "Chip-Level Mobile Repair Training | Shree Sawriya Solutions" → "Mobile Repairing Course in Assandh, Karnal | Shree Sawriya Solutions". Meta description rewritten to name Assandh, Karnal and the four courses already shown on the page (basic, Android, iPhone hardware, advanced chip-level). Nothing new claimed; H1, visible text and JSON-LD unchanged.
+- Sitemap lastmod not touched (no visible content change).
+- Why: title is the strongest ranking/click signal; it now matches the real search wording ("mobile repairing course", page already uses "Basic Mobile Repairing Course") plus the town.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere (index mentions iPhone 12 in a review/text only).
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
+- Owner action idea: IndiaMART/Justdial listing for the training with the same name-address-phone.
