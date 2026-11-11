@@ -124,3 +124,14 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Owner says the Google Business Profile is now verified and shared its link: https://g.page/r/CcHxO3bTgz8UEBE/
 - Change: index.html "Write a Review on Google" button now opens the direct review form (https://g.page/r/CcHxO3bTgz8UEBE/review) instead of the Maps place page, so customers get the star/review box in one tap. Added the g.page link to LocalBusiness "sameAs" JSON-LD. Button text, translations and the live reviews script untouched.
 - Owner told what to fill in the profile (categories, services, description from site facts, photos, review link to customers, weekly posts).
+
+## 2026-11-11 – FAQPage structured data on booking page
+- Research: searched "mobile repair shop Assandh Karnal screen replacement". Same picture as before: Flipkart city pages (Karnal, Panipat), explurger/ueni/Google Sites listings and unrelated shops; no local repair website competes. Off-site signals (Google Business Profile, reviews, listings) remain the main lever.
+- Change: booking.html already had a visible 5-question "Free Phone Diagnosis – FAQ" (added 2026-11-02) but no FAQPage JSON-LD. Added FAQPage JSON-LD generated directly from the visible questions/answers (same wording, links stripped). No visible content changed; form, WhatsApp buttons and switcher untouched; sitemap lastmod not touched.
+- Why: helps Google understand the page's answers (free diagnosis, brands, timings, location in Assandh, Karnal) and makes the booking page consistent with training.html, which already has FAQPage markup. Note: Google shows FAQ rich results only for a few site types now, so this is mainly for understanding, not a guaranteed snippet.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
