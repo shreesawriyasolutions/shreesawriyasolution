@@ -135,3 +135,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-12 – Local title and meta description on booking page
+- Research: searched "mobile repair shop Assandh Karnal". Same picture: Flipkart city pages (Karnal), Quikr Karnal, explurger/ueni/Google Sites listings and unrelated Assandh vehicle service centres. No local repair website competes; on-page local signals plus Google Business Profile/reviews remain the levers.
+- Change: booking.html was the only public page whose title had no place name ("Book a Mobile Repair Appointment"). Title/og:title/twitter:title → "Free Phone Diagnosis & Repair Booking in Assandh | Shree Sawriya Solutions" (matches the page's H1 "FREE Phone Diagnosis"). Meta description rewritten from page facts (free diagnosis, Salwan Chowk, Assandh, Karnal, date/time slot, WhatsApp booking); og/twitter descriptions "Assandh, Haryana" → "Assandh, Karnal". Nothing new claimed; visible text, form, WhatsApp button, switcher and JSON-LD untouched.
+- Sitemap lastmod not touched (no visible content change).
+- Why: all 5 public pages now carry a local keyword in the title; "free phone diagnosis Assandh" / "mobile repair booking Assandh" now match the title.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi versions of the booking FAQ.
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
