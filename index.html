@@ -119,14 +119,14 @@ nav a{padding:8px 14px;border-radius:99px;text-decoration:none;color:var(--ink-2
 nav a:hover{color:var(--ink);background:rgba(255,255,255,.4)}
 .lang{display:flex;border-radius:99px;padding:3px;background:rgba(255,255,255,.35);border:1px solid var(--edge)}
 .lang button{border:0;background:none;font:inherit;font-size:.85rem;padding:4px 11px;border-radius:99px;cursor:pointer;color:var(--ink-2)}
-.lang button[aria-pressed="true"]{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.lang button[aria-pressed="true"]{background:var(--green);color:var(--paper);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 @media (max-width:720px){nav{display:none}.lang{margin-left:auto}}
 @media (max-width:380px){.brand{font-size:.86rem;line-height:1.15;gap:8px}.lang button{padding:4px 8px}}
 
 /* buttons */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:99px;font:600 1rem var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
 .btn:active{transform:scale(.96)}
-.btn.wa{background:linear-gradient(180deg,#34C46C,#1A9A4D);color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 12px 24px -12px rgba(26,154,77,.8)}
+.btn.wa{background:linear-gradient(180deg,#17803F,#126B34);color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 12px 24px -12px rgba(26,154,77,.8)}
 .btn.line{background:var(--glass);border-color:var(--edge);color:var(--ink);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6)}
 .btn.line:hover{background:var(--glass-strong)}
 .btn.sig{background:linear-gradient(180deg,#FFD84F,#F0B90F);color:#1b1500;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.7),0 12px 24px -12px rgba(240,185,15,.9)}
@@ -196,7 +196,7 @@ nav a:hover{color:var(--ink);background:rgba(255,255,255,.4)}
 .panel .row{padding:18px;position:relative}
 .panel .row+.row{border-top:1px solid var(--line)}
 .tag{display:inline-block;background:var(--signal);color:#1b1500;font-weight:600;font-size:.8rem;padding:2px 11px;border-radius:99px;margin-bottom:8px}
-.panel h3{font-size:1.25rem;font-weight:600;margin-bottom:2px}
+.panel h2{font-size:1.25rem;font-weight:600;margin-bottom:2px}
 .panel p{font-size:.95rem;margin:0;color:var(--ink-2)}
 .panel .price{font-family:var(--head);font-weight:800;font-size:1.6rem}
 form.status{display:flex;gap:8px;margin-top:12px}
@@ -259,7 +259,7 @@ footer a{margin-right:14px}
 @media (max-width:720px){.dock{display:flex}}
 .dock .tabs{position:relative;flex:1;display:flex;min-width:0}
 .dock .tab{position:relative;z-index:1;flex:1;min-width:0;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
-  padding:4px 2px;background:none;border-radius:99px;text-decoration:none;color:var(--ink-2);font:600 .66rem/1.1 var(--body);letter-spacing:-.01em;-webkit-tap-highlight-color:transparent;transition:color .3s}
+  padding:4px 2px;background:none;border-radius:99px;text-decoration:none;color:var(--ink-2);font:600 .72rem/1.1 var(--body);letter-spacing:-.01em;-webkit-tap-highlight-color:transparent;transition:color .3s}
 .dock .tab svg{width:22px;height:22px;transition:transform .5s cubic-bezier(.3,1.8,.5,1)}
 .dock .tab span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dock .tab.on{color:var(--green)}
@@ -278,7 +278,7 @@ footer a{margin-right:14px}
 
 /* ---------- additions for the live site ---------- */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.lang button.active{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.lang button.active{background:var(--green);color:var(--paper);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 section.tight{padding:0 0 clamp(36px,6vw,64px)}
 .status-msg{margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(255,80,80,.14);border:1px solid rgba(255,80,80,.35);color:#b3261e;font-size:.92rem}
 @media (prefers-color-scheme:dark){.status-msg{color:#ff9d96}}
@@ -300,6 +300,7 @@ section.tight{padding:0 0 clamp(36px,6vw,64px)}
 .slide:not(.photo){padding:clamp(28px,5vw,56px) clamp(60px,8vw,96px) clamp(54px,7vw,76px);min-height:300px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px}
 .slide h2{font-size:clamp(1.8rem,4.4vw,2.8rem);max-width:20ch}
 .slide p{color:var(--ink-2);max-width:44ch}
+@media (prefers-color-scheme:dark){.slide:not(.photo){--ink-2:var(--ink)}}
 .slide.s1{background:linear-gradient(120deg,rgba(244,196,48,.42),rgba(255,255,255,0) 72%)}
 .slide.s2{background:linear-gradient(120deg,rgba(52,196,157,.40),rgba(255,255,255,0) 72%)}
 .slide.s3{background:linear-gradient(120deg,rgba(127,214,232,.45),rgba(255,255,255,0) 72%)}
@@ -342,7 +343,7 @@ section.tight{padding:0 0 clamp(36px,6vw,64px)}
 
 /* reviews */
 .rev .who{display:flex;align-items:center;gap:12px;position:relative}
-.rev .av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:linear-gradient(135deg,var(--green),#34C49D);color:#fff}
+.rev .av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:var(--green);color:var(--paper)}
 .rev .who b{display:block;font-size:.98rem}
 .rev .who small{color:var(--ink-2)}
 .rev .stars{margin-top:12px}
@@ -419,17 +420,17 @@ footer{padding:36px 0 18px}
     <aside class="panel glass" aria-label="Offers and repair status">
       <div class="row">
         <span class="tag" data-en="Limited time" data-hi="सीमित समय" data-pa="ਸੀਮਤ ਸਮਾਂ">Limited time</span>
-        <h3 data-en="Free phone diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫ਼ੋਨ ਜਾਂਚ">Free phone diagnosis</h3>
+        <h2 data-en="Free phone diagnosis" data-hi="फ्री फोन डायग्नोसिस" data-pa="ਮੁਫ਼ਤ ਫ਼ੋਨ ਜਾਂਚ">Free phone diagnosis</h2>
         <p data-en="We check your phone completely. No charge." data-hi="आपका फोन पूरा चेक करेंगे। कोई चार्ज नहीं।" data-pa="ਤੁਹਾਡਾ ਫ਼ੋਨ ਪੂਰਾ ਚੈੱਕ ਕਰਾਂਗੇ। ਕੋਈ ਚਾਰਜ ਨਹੀਂ।">We check your phone completely. No charge.</p>
         <a class="btn sig" style="margin-top:14px;min-height:44px" href="booking.html" data-en="Book a slot" data-hi="स्लॉट बुक करें" data-pa="ਸਲਾਟ ਬੁੱਕ ਕਰੋ">Book a slot</a>
       </div>
       <div class="row">
-        <h3 data-en="Doorstep delivery after repair" data-hi="रिपेयर के बाद घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">Doorstep delivery after repair</h3>
+        <h2 data-en="Doorstep delivery after repair" data-hi="रिपेयर के बाद घर तक डिलीवरी" data-pa="ਰਿਪੇਅਰ ਤੋਂ ਬਾਅਦ ਘਰ ਤੱਕ ਡਿਲੀਵਰੀ">Doorstep delivery after repair</h2>
         <p data-en="Same day, within Assandh + 5 km." data-hi="उसी दिन, असंध + 5 किमी में।" data-pa="ਉਸੇ ਦਿਨ, ਅਸੰਧ + 5 ਕਿਮੀ ਵਿੱਚ।">Same day, within Assandh + 5 km.</p>
         <span class="price">₹150</span>
       </div>
       <div class="row" id="status">
-        <h3 data-en="Check your repair status" data-hi="रिपेयर स्टेटस जाँचें" data-pa="ਰਿਪੇਅਰ ਦੀ ਸਥਿਤੀ ਵੇਖੋ">Check your repair status</h3>
+        <h2 data-en="Check your repair status" data-hi="रिपेयर स्टेटस जाँचें" data-pa="ਰਿਪੇਅਰ ਦੀ ਸਥਿਤੀ ਵੇਖੋ">Check your repair status</h2>
         <form class="status" id="statusForm" novalidate>
           <label class="sr-only" for="phoneInput">Mobile number</label>
           <input type="tel" id="phoneInput" inputmode="numeric" autocomplete="tel-national" maxlength="10" pattern="[0-9]{10}"
