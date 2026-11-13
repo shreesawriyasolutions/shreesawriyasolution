@@ -147,3 +147,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi versions of the booking FAQ.
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-13 – Hindi/Punjabi translations for the booking FAQ
+- Research: searched "iPhone battery replacement Karnal Assandh shop". Results are Flipkart's Karnal repair page, Apple support pages and shops in other countries/cities; no local repair website competes. On-page basics (local titles on all 5 pages, JSON-LD, small images) are done, so today went to a long-pending usability item for local Hindi/Punjabi-speaking visitors.
+- Change: the visible "Free Phone Diagnosis – FAQ" on booking.html (heading, 5 questions, 5 answers) was English-only, so the page's हिंदी/ਪੰਜਾਬੀ switcher left it in English. Added data-en/data-hi/data-pa to each element (same facts as the English text; site's existing spellings for असंध/ਅਸੰਧ and brand names used). The answer with links was split into small spans so the iPhone/Android repair links stay working after switching. English text is byte-for-byte the same on screen (checked in headless Chromium: EN identical, HI/PA translate, links kept). Switcher code, form, WhatsApp button and FAQPage JSON-LD untouched.
+- Sitemap lastmod not touched (default English content unchanged).
+- Why: visitors who read Hindi/Punjabi now get the whole booking page in their language, which helps them book instead of bouncing.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Check other public pages for English-only blocks the switcher misses (training FAQ?).
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
