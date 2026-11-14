@@ -159,3 +159,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Check other public pages for English-only blocks the switcher misses (training FAQ?).
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-14 – Course structured data matches the 4 visible courses
+- Research: searched "mobile repairing course Assandh Karnal Panipat chip level training institute". Results are IndiaMART seller pages, coursetakers.com, careers360, MRMTTI and Delhi institutes; no Karnal/Assandh training website ranks. Also checked whether training.html could get Hindi/Punjabi text like booking.html: the page has no language switcher at all, so that would be a big change (and touches the switcher) — skipped.
+- Change: training.html had one Course JSON-LD named "Advanced Chip-Level Mobile Repair & Microsoldering Course" that does not match any course name on the page (and mentioned BGA in its description). Replaced it with an ItemList of the 4 courses shown on the page (Basic Mobile Repairing, Android Mobile Repairing, iPhone Hardware Repair, Advanced Chip-Level Repair), names and descriptions copied word-for-word from the visible course cards, provider = the same LocalBusiness (@id #business, url now the home page). No fees, duration or dates added (not on the site). FAQPage and Breadcrumb JSON-LD and all visible content untouched.
+- Sitemap lastmod not touched (no visible content change).
+- Why: structured data should match visible content; now Google sees each real course by its real name, which helps "android mobile repairing course" / "iPhone repair course" searches connect to this page.
+
+### Ideas for future days
+- Similar visible model line on iphone-repair.html only if the site already names iPhone models somewhere.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi for training.html would need a switcher there — ask owner first; it is a bigger job.
+- Owner action idea: IndiaMART/Justdial listing for the training with the same name-address-phone (IndiaMART course listings show up for course searches).
