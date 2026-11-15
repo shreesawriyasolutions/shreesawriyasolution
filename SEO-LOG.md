@@ -171,3 +171,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Hindi/Punjabi for training.html would need a switcher there — ask owner first; it is a bigger job.
 - Owner action idea: IndiaMART/Justdial listing for the training with the same name-address-phone (IndiaMART course listings show up for course searches).
+
+## 2026-11-15 – Local meta description on home page
+- Research: searched "mobile phone repair Jind Safidon Assandh shop". Results are explurger/ueni/Google Sites/IndiaMART listings and a Samsung service centre page; no local repair website competes. Checked all 5 public pages: every <img> has alt text and size, internal links between pages are in place, so on-page basics are done.
+- Change: index.html meta description still read "…in Assandh, Haryana. Explore phone repair, accessories…" (no Karnal, no address, no free diagnosis, no hours). Rewrote it from facts already visible on the page: "Mobile repair shop at Salwan Chowk, Assandh (Karnal): iPhone, Android & chip-level repair, free diagnosis, accessories, repair training. Open daily 9 AM–8 PM." (158 chars). og:description/twitter:description updated the same way (Assandh, Haryana → Salwan Chowk, Assandh, Karnal; free phone diagnosis added). Title, visible text, JSON-LD, switcher, WhatsApp and reviews untouched.
+- Sitemap lastmod not touched (no visible content change).
+- Why: the home page is the page Google shows for brand and "mobile repair Assandh" searches; the snippet now matches the subpages (which already name Karnal) and gives the searcher the address, free diagnosis and daily hours, which should lift clicks.
+
+### Ideas for future days
+- postalCode in address JSON-LD (verify PIN with owner).
+- Hindi/Punjabi for training.html would need a switcher there — ask owner first; it is a bigger job.
+- Home "About Us" lede "Trusted since years in Assandh" is awkward English, but it is visible text with translations; only fix with owner OK.
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
