@@ -183,3 +183,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Hindi/Punjabi for training.html would need a switcher there — ask owner first; it is a bigger job.
 - Home "About Us" lede "Trusted since years in Assandh" is awkward English, but it is visible text with translations; only fix with owner OK.
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-16 – Home page services in structured data
+- Research: searched "mobile repair shop Assandh Karnal" and "mobile repairing near Assandh Gharaunda Nissing Karnal shop". Same picture: Flipkart city pages (Karnal, Panipat), dnb.com/explurger/ueni/Google Sites/bino.bot listings and unrelated Assandh vehicle service centres. No local repair website competes.
+- Checked the gallery photos as a possible LocalBusiness "image": they are training/certificate photos at other institutes, not the shop, so NOT used. A real shop-front/counter photo would be a good addition later.
+- Change: index.html LocalBusiness JSON-LD now has a "hasOfferCatalog" listing the 7 services shown in the visible "Our Services" section (iPhone Repair, Android Repair, Chip-Level Repair, Second-Hand Smartphones, Accessories, Chip-Level Training, Doorstep Delivery). Names and descriptions were generated straight from the visible data-en text (word-for-word); url added for the three that link to their own page. No price fields added. LocalBusiness description "Assandh, Haryana" → "Salwan Chowk, Assandh, Karnal (Haryana)". Visible content, switcher, WhatsApp, reviews untouched; sitemap lastmod not touched.
+- Why: the main business entity (@id #business) now tells Google all its services in one place and links to the service pages, so searches like "second hand phone Assandh" or "chip level repair Karnal" connect to the business.
+- Note: the home page "Get Directions" button uses maps.app.goo.gl/BjYoa9JeiDTkPhtt6 while JSON-LD uses maps.app.goo.gl/r9f8K1coYFswbRP39. Could not open Google Maps from this run to check both go to the same pin; verify with the owner before changing anything.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → use as LocalBusiness image + og:image.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
