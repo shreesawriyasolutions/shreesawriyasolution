@@ -196,3 +196,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Confirm the two Google Maps links point to the same place.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-17 – Local meta descriptions on the iPhone and Android repair pages
+- Research: searched "iPhone screen repair Karnal Assandh shop". Results are Flipkart city pages (Karnal, Panipat), a Cashify store in Karnal, bino.bot/ueni/Google Sites listings and out-of-area shops; no local repair website competes.
+- Change: iphone-repair.html and android-repair.html were the last public pages whose meta description had no Karnal, no Salwan Chowk and no "free diagnosis" (iPhone one said "Assandh, Haryana… Contact us to discuss"). Rewrote meta description + og/twitter description on both from facts already visible on each page (fault categories shown in the diagnosis grid, brand list, address in footer, "Book your free diagnosis" CTA). Lengths 152/160 chars. Title, visible text, JSON-LD, switcher, WhatsApp untouched; sitemap lastmod not touched.
+- Why: all 5 public pages now have snippets naming Salwan Chowk, Assandh, Karnal and the free diagnosis, so "iPhone repair Karnal" / "Samsung repair Assandh" searchers see the place and a reason to click.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- On-page basics are now largely complete; future days may often be "no change" unless the owner sends photos/facts.
+- Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
