@@ -205,48 +205,6 @@ nav a:hover{color:var(--ink);background:rgba(255,255,255,.4)}
 .hero .wrap>*{min-width:0}
 .cracks{position:absolute;right:-6%;top:-8%;width:min(680px,92%);z-index:0;pointer-events:none;fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.2}
 
-/* Enhanced Realistic Water Drop Styling */
-.drop {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 170px;
-  height: 170px;
-  margin: -85px 0 0 -85px;
-  border-radius: 51% 49% 48% 52% / 52% 47% 53% 48%;
-  pointer-events: none;
-  z-index: 10;
-  will-change: transform;
-  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0) 55%);
-  backdrop-filter: blur(0.8px) saturate(190%) contrast(110%);
-  -webkit-backdrop-filter: blur(0.8px) saturate(190%) contrast(110%);
-  box-shadow: 
-    inset 2px 3px 6px rgba(255, 255, 255, 0.9),
-    inset -4px -6px 14px rgba(7, 61, 49, 0.28),
-    inset 0 0 20px rgba(255, 255, 255, 0.35),
-    0 18px 30px -8px rgba(7, 61, 49, 0.35),
-    0 4px 10px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  transition: opacity 0.4s ease;
-}
-
-/* Drop ke upar sharp reflection dot */
-.drop::after {
-  content: "";
-  position: absolute;
-  top: 18%;
-  left: 22%;
-  width: 22px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  transform: rotate(-35deg);
-  filter: blur(0.5px);
-}
-
-@media (max-width:640px){
-  .drop{width:120px;height:120px;margin:-60px 0 0 -60px}
-}
 
 .open{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:500;padding:7px 16px 7px 13px;border-radius:99px;margin-bottom:22px}
 .open i{width:9px;height:9px;border-radius:50%;background:#8da39a}
@@ -470,7 +428,6 @@ footer{padding:36px 0 18px}
 <!-- HERO -->
 <section class="hero">
   <svg class="cracks" viewBox="0 0 600 600" aria-hidden="true"><path d="M400 230 120 40M400 230 40 260M400 230 180 520M400 230 430 590M400 230 590 470M400 230 600 150M400 230 330 0M400 230 560 0M280 135 310 60M200 90 150 135M170 380 90 420M300 400 370 470M500 350 560 330M470 120 520 60"/><path d="M360 190 440 205 450 270 380 285Z" opacity=".7"/><path d="M320 150 470 170 500 300 400 330 300 270Z" opacity=".45"/><path d="M250 100 520 110 560 330 410 400 250 300Z" opacity=".25"/></svg>
-  <div class="drop" id="drop" aria-hidden="true"></div>
   <div class="wrap">
     <div>
       <div class="open glass" id="open"><i></i><span id="openText">Assandh, Haryana</span></div>
@@ -934,95 +891,6 @@ document.addEventListener('keydown', function (e) {
 </script>
 
 <script>
-/* ============ ENHANCED REALISTIC WATER DROP PHYSICS ============ */
-(function () {
-  const hero = document.querySelector('.hero');
-  const drop = document.getElementById('drop');
-  if (!hero || !drop) return;
-
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (still) return;
-
-  let mouseX = 0, mouseY = 0;
-  let posX = 0, posY = 0;
-  let velX = 0, velY = 0;
-  let isMoving = false;
-  let idleTimer = null;
-
-  function initPos() {
-    const r = hero.getBoundingClientRect();
-    posX = mouseX = r.width * 0.65;
-    posY = mouseY = r.height * 0.45;
-  }
-  initPos();
-  window.addEventListener('resize', initPos);
-
-  hero.addEventListener('pointermove', function (e) {
-    if (e.pointerType === 'touch') return;
-    const r = hero.getBoundingClientRect();
-    mouseX = e.clientX - r.left;
-    mouseY = e.clientY - r.top;
-    isMoving = true;
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(function () { isMoving = false; }, 2200);
-  });
-
-  const touch = matchMedia('(hover:none)').matches;
-  if (touch) {
-    drop.style.opacity = '0';
-    hero.addEventListener('pointerdown', function (e) {
-      const r = hero.getBoundingClientRect();
-      posX = mouseX = e.clientX - r.left;
-      posY = mouseY = e.clientY - r.top;
-      drop.style.opacity = '1';
-      clearTimeout(idleTimer);
-      idleTimer = setTimeout(function () { drop.style.opacity = '0'; }, 2200);
-    });
-  }
-
-  hero.addEventListener('pointerleave', function () {
-    isMoving = false;
-  });
-
-  let t = 0;
-  function animate() {
-    t += 0.025;
-
-    let targetX = mouseX;
-    let targetY = mouseY;
-
-    // Soft organic drift when cursor is idle
-    if (!isMoving && !touch) {
-      targetX += Math.sin(t * 1.2) * 45;
-      targetY += Math.cos(t * 1.5) * 28;
-    }
-
-    // Smooth spring follow
-    velX = (targetX - posX) * 0.085;
-    velY = (targetY - posY) * 0.085;
-
-    posX += velX;
-    posY += velY;
-
-    const speed = Math.hypot(velX, velY);
-    const angle = Math.atan2(velY, velX) * (180 / Math.PI);
-
-    // Liquid stretch ratio
-    const stretch = Math.min(speed / 12, 0.32);
-    const scaleX = 1 + stretch;
-    const scaleY = 1 - stretch * 0.6;
-
-    // Organic idle liquid wobble
-    const wobble = Math.sin(t * 4.5) * 0.02;
-
-    drop.style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0) rotate(' + angle + 'deg) scale(' + (scaleX + wobble) + ', ' + (scaleY - wobble) + ') rotate(' + (-angle) + 'deg)';
-
-    requestAnimationFrame(animate);
-  }
-
-  requestAnimationFrame(animate);
-})();
-
 /* ---- tap ripple on buttons and glass rows ---- */
 document.addEventListener('pointerdown', function (e) {
   const el = e.target.closest('.btn,form.status button,.svc a');
