@@ -1,0 +1,50 @@
+/* Shree Sawriya Solutions — phone-screen fixes shared by the public pages.
+   Loaded last, so these rules win over each page's own styles. */
+
+/* never let anything push the page sideways */
+html,body{max-width:100%;overflow-x:clip}
+img,video,iframe{max-width:100%}
+
+/* links and buttons react instantly on touch, without the grey flash */
+a,button,summary,label{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+
+@media (max-width:720px){
+  /* language switch: bigger buttons that are easy to hit with a thumb */
+  .lang button,.lang-btn,.lb{min-width:36px;min-height:40px}
+  .lang-btn,.lb{padding-left:6px;padding-right:6px}
+
+  /* carousel dots: same look, larger invisible touch area */
+  .dots button::after{inset:-14px -6px}
+
+  /* footer phone / e-mail links: taller tap area without moving the text */
+  footer .fb a,footer .fb span a{display:inline-block;padding:9px 0;margin:-9px 0}
+  footer .social a{min-height:44px;display:inline-flex;align-items:center}
+
+  /* bottom tab bar labels a little larger */
+  .dock .tab span{font-size:12px}
+
+  /* home: repair-status box — number field and button on their own rows */
+  form.status{flex-wrap:wrap}
+  form.status input{flex:1 1 100%;height:50px}
+  form.status button{flex:1 1 100%;height:48px}
+
+  /* home: business hours stay on one line */
+  table.hours td{font-size:.95rem}
+  table.hours td:last-child{white-space:nowrap;padding-left:12px}
+
+  /* home: owner photo no longer fills the whole screen */
+  .who-photo img{max-height:380px;width:100%;object-fit:cover;object-position:50% 18%}
+
+  /* long words / e-mail addresses wrap instead of overflowing */
+  p,li,h1,h2,h3,footer a{overflow-wrap:break-word}
+
+  /* digital card page: small labels readable */
+  .info-label,.qr-label,.footer-text{font-size:12px}
+
+  /* form fields: 16px text stops iPhone from zooming in */
+  input,select,textarea{font-size:16px}
+}
+
+@media (max-width:380px){
+  table.hours td{font-size:.88rem}
+}
