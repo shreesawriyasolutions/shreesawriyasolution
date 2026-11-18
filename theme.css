@@ -37,3 +37,9 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     radial-gradient(420px 420px at 96% 40%,var(--blob-b),transparent 70%),
     radial-gradient(520px 520px at 38% 104%,var(--blob-c),transparent 70%);
   opacity:var(--blob-o)}
+
+/* brand logo watermark (sits behind everything, never blocks clicks) */
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("/logo.png") no-repeat center/min(72vmin,560px);opacity:.11}
+@media (prefers-color-scheme:dark){body::after{opacity:.08}}
+@media print{body::after{display:none}}
