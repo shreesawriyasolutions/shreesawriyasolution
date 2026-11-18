@@ -786,19 +786,6 @@ footer{padding:36px 0 18px}
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
   window.addEventListener('resize', function () { place(current); });
 
-  // keep the Tawk.to chat bubble above this bar on phones (never touch the opened chat window)
-  function liftChat() {
-    if (getComputedStyle(dock).display === 'none') return;
-    var top = dock.getBoundingClientRect().top;
-    document.querySelectorAll('iframe').forEach(function (f) {
-      if (dock.contains(f) || getComputedStyle(f).position !== 'fixed') return;
-      var r = f.getBoundingClientRect();
-      if (!r.width || r.height > 140 || r.width > 200) return; // open chat / large frames
-      if (r.bottom > top - 10) f.style.setProperty('bottom', Math.ceil(window.innerHeight - top + 14) + 'px', 'important');
-    });
-  }
-  setInterval(liftChat, 800);
-  window.addEventListener('resize', liftChat);
   place(0);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(current); });
 })();
@@ -1050,82 +1037,7 @@ document.addEventListener('pointerdown', function (e) {
 });
 </script>
 
-<script type="text/javascript">
-var Tawk_API = Tawk_API || {};
-Tawk_API.customStyle = {
-  visibility: {
-    desktop: { position: 'br', xOffset: 20, yOffset: 20 },
-    mobile: { position: 'br', xOffset: 14, yOffset: 100 }
-  }
-};
-Tawk_API.onLoad = function() {
-  setTimeout(function() {
-    var iframes = document.querySelectorAll('iframe');
-    iframes.forEach(function(iframe) {
-      try {
-        var doc = iframe.contentDocument || iframe.contentWindow.document;
-        if (doc) {
-          var style = doc.createElement('style');
-          style.innerHTML = `
-            .tawk-text-truncate,
-            .tawk-min-text,
-            .tawk-teaser-text,
-            .tawk-overlay,
-            .tawk-card__teaser,
-            .tawk-chat-teaser,
-            .tawk-message-window,
-            .tawk-card--welcome,
-            .tawk-welcome-message,
-            .tawk-message-bubble,
-            .tawk-conversation-starter,
-            [class*="welcome"],
-            [class*="Welcome"],
-            [class*="conversation-starter"] {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-            }
-            .tawk-chat-widget-open,
-            [class*="proactive"],
-            [class*="Proactive"] {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-            }
-            [class*="teaser"],
-            [class*="Teaser"] {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-            }
-            .tawk-min-container .tawk-min-text::after {
-              content: "Live Chat";
-              display: block;
-              visibility: visible;
-              font-weight: 600;
-            }
-          `;
-          doc.head.appendChild(style);
-        }
-      } catch(e) {}
-    });
-  }, 2000);
-};
-</script>
 
-<!-- Start of Tawk.to Script -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6ab961b6329071344198f064/1k3i2bcfh';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!-- End of Tawk.to Script -->
 <script>
 /* Live Google reviews: reads google-reviews.json (auto-updated by GitHub Actions). Falls back to the static reviews above. */
 (function(){
