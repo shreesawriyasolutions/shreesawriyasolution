@@ -208,3 +208,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - On-page basics are now largely complete; future days may often be "no change" unless the owner sends photos/facts.
 - Owner action idea: Justdial/IndiaMART listing with the same name-address-phone.
+
+## 2026-11-18 – One business URL in structured data on all pages
+- Research: searched "mobile repair Assandh Karnal shop". Same picture as before: Flipkart city pages (Karnal, Panipat), dnb.com/explurger/ueni/Google Sites/bino.bot listings; no local repair website competes.
+- Found: iphone-repair.html, android-repair.html and booking.html each declare the same LocalBusiness (@id #business) as index.html, but gave it a different "url" (the subpage itself) and said "Assandh, Haryana" without Karnal/Salwan Chowk. One business with 4 different URLs is a mixed signal.
+- Change: on those 3 pages the LocalBusiness "url" is now the home page (same as index.html and training.html), and the JSON-LD description location reads "Salwan Chowk, Assandh, Karnal (Haryana)", matching index.html and the footer address. Service JSON-LD, visible text, switcher, form, WhatsApp untouched. Sitemap lastmod not touched (no visible change).
+- Why: Google now sees one consistent business entity (same name, address, phone, URL) across the site, which supports the Google Business Profile match for local searches.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Home "About" text and the hero chip say "Assandh, Haryana" (visible, translated) — only change with owner OK.
+- On-page basics are done; many future days should be "no change".
