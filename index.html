@@ -409,6 +409,8 @@ footer{padding:36px 0 18px}
 .lp p{color:var(--ink-2);margin-bottom:20px;font-size:.95rem}
 .choices{display:grid;gap:10px}
 </style>
+<link rel="stylesheet" href="motion.css">
+<script>(function(d){if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('mo');setTimeout(function(){if(!window.SSMotion)d.classList.remove('mo')},3000)})(document.documentElement)</script>
 </head>
 <body>
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -932,6 +934,7 @@ document.addEventListener('pointerdown', function (e) {
   }).catch(function(){});
 })();
 </script>
+<script src="motion.js" defer></script>
 <script src="diwali.js" defer></script>
 <script src="visits.js" defer></script>
 </body>
