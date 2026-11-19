@@ -221,3 +221,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Home "About" text and the hero chip say "Assandh, Haryana" (visible, translated) — only change with owner OK.
 - On-page basics are done; many future days should be "no change".
+
+## 2026-11-19 – Smaller owner photo on the home page (page speed)
+- Research: searched "mobile repair training institute Karnal Panipat Kaithal chip level course". Results are IndiaMART category/seller pages, coursetakers.com, careers360, MRMTTI and out-of-state institutes; still no Karnal/Assandh training website competing. On-page text/structured data is done (see earlier entries), so today went to speed.
+- Found: the new "About Me" photo (owner.jpeg, added 2026-11-18) was 886×1132 px and 187 KB, but it is shown at most 340 px wide (CSS max-width) on index.html and 130 px round on card.html. It was the heaviest image on any public page.
+- Change: re-saved owner.jpeg at 680×869 px (2× the 340 px display width, same aspect ratio as the width/height attributes 600×767), progressive JPEG quality 84 → 50 KB (−73%). Checked visually: sharp, same crop. No HTML change; alt text, lazy loading, switcher, WhatsApp, reviews untouched. Sitemap lastmod not touched.
+- Why: smaller page weight on mobile data helps Core Web Vitals / mobile speed, which Google uses for local mobile results.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image.
+- Owner photo could later go into JSON-LD as founder (Person "Ankush") — visible on the page; small, safe structured-data add.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Owner action idea: IndiaMART listing for the training (IndiaMART dominates course searches) with the same name-address-phone.
