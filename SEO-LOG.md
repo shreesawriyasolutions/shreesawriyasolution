@@ -234,3 +234,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Confirm the two Google Maps links point to the same place.
 - postalCode in address JSON-LD (verify PIN with owner).
 - Owner action idea: IndiaMART listing for the training (IndiaMART dominates course searches) with the same name-address-phone.
+
+## 2026-11-20 – Founder (Ankush) in home page structured data
+- Research: searched "mobile repair Assandh Salwan Chowk". Results are IndiaMART seller pages, Flipkart city pages (Panipat, Chandigarh), Cashify, ueni/Google Sites/github.io shop sites from other towns; still no local Assandh repair website competing.
+- Change: index.html LocalBusiness JSON-LD (@id #business) now has a "founder" Person: name "Ankush" (owner photo alt text + card.html "FOUNDER & EXPERT TECHNICIAN"), jobTitle "Professional Mobile Repair Technician" (visible About Me heading), image owner.jpeg, knowsAbout = the six skills listed word-for-word in the visible About Me text. No years/certificates/awards added to JSON-LD. Visible content, switcher, WhatsApp, reviews untouched; sitemap lastmod not touched.
+- Why: ties the real expert to the business entity (E-E-A-T), and helps searches for "Ankush mobile repair Assandh" connect to the site and the Google Business Profile.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- Structured data and on-page basics are now done on all 5 public pages; expect mostly "no change" days unless the owner sends new photos/facts.
+- Owner action idea: IndiaMART listing for the training with the same name-address-phone.
