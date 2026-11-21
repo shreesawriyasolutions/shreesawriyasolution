@@ -246,3 +246,15 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - postalCode in address JSON-LD (verify PIN with owner).
 - Structured data and on-page basics are now done on all 5 public pages; expect mostly "no change" days unless the owner sends new photos/facts.
 - Owner action idea: IndiaMART listing for the training with the same name-address-phone.
+
+## 2026-11-21 – "Karnal" in home, iPhone and Android page titles
+- Research: searched "mobile repairing course Assandh Karnal". Results are careers360/collegedunia/coursetakers/Udemy, IndiaMART category pages and the Flipkart Karnal repair page; no local repair or training website competes. Reviewed structured data on all 5 public pages: complete (LocalBusiness, Service catalogues, Course, FAQPage, Breadcrumbs).
+- Found: training.html title already says "Assandh, Karnal", but index.html, iphone-repair.html and android-repair.html titles said only "Assandh". People in the district search "iPhone repair Karnal" / "mobile repair Karnal"; Assandh is in Karnal district and the footer/meta descriptions already say "Assandh, Karnal".
+- Change: title + og:title + twitter:title on those 3 pages → "Mobile Repair Shop in Assandh, Karnal | …", "iPhone Repair in Assandh, Karnal | …", "Android Phone Repair in Assandh, Karnal | …". H1s, visible text, JSON-LD, switcher, WhatsApp, reviews untouched. Sitemap lastmod not touched (no visible content change).
+- Why: the title is the strongest on-page signal; all 5 public page titles now carry the same "Assandh, Karnal" location as the address, so they can match district-level searches without any doorway page.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image.
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
+- On-page work is essentially complete; expect mostly "no change" days unless the owner sends new photos/facts.
