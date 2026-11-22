@@ -258,3 +258,13 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Confirm the two Google Maps links point to the same place.
 - postalCode in address JSON-LD (verify PIN with owner).
 - On-page work is essentially complete; expect mostly "no change" days unless the owner sends new photos/facts.
+
+## 2026-11-22 – No site change (audit only)
+- Research: searched "mobile repair shop Assandh". Same picture: Flipkart city pages (Panipat, Chandigarh, Gurgaon), IndiaMART seller pages, ueni/Google Sites/dnb listings, Cashify; no local Assandh repair website competes.
+- Audit: all 5 public pages have local titles (Assandh, Karnal), local meta descriptions, canonical, one H1, JSON-LD (LocalBusiness/Service/Course/FAQPage/Breadcrumb), alt text and width/height on images; internal links all resolve; robots.txt points to sitemap. Only images without loading="lazy" are the small above-the-fold logos (correct).
+- Change: none — nothing clearly worthwhile left without new facts/photos from the owner.
+
+### Ideas for future days
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png on all pages).
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
