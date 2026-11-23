@@ -1,9 +1,24 @@
 {
   "photos": [
-    "our-works/Flip5_Touch_Fix_Website_Work.jpg",
-    "our-works/work1.jpg",
-    "our-works/work2.jpg",
-    "our-works/IMG_5725.jpeg",
-    "our-works/i-PHONE 13 pm Display Green.jpg"
+    {
+      "src": "our-works/Flip5_Touch_Fix_Website_Work.jpg",
+      "alt": "Samsung Galaxy Z Flip 5 touch not working – middle flex replaced at Shree Sawriya Solutions, Assandh"
+    },
+    {
+      "src": "our-works/work1.jpg",
+      "alt": "Front camera water damage repair – before and after, Shree Sawriya Solutions Assandh"
+    },
+    {
+      "src": "our-works/work2.jpg",
+      "alt": "Apple A15 chip being worked on during chip-level iPhone repair, Shree Sawriya Solutions"
+    },
+    {
+      "src": "our-works/IMG_5725.jpeg",
+      "alt": "AirPods opened for repair on the Shree Sawriya Solutions work bench"
+    },
+    {
+      "src": "our-works/i-PHONE 13 pm Display Green.jpg",
+      "alt": "iPhone 13 Pro Max green display – before and after repair at Shree Sawriya Solutions, Assandh"
+    }
   ]
 }

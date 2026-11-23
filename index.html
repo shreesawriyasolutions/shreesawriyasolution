@@ -874,16 +874,16 @@ function loadPhotoCarousel(json, rootId, slidesId, alt) {
   fetch(json).then(function (r) { return r.json(); }).then(function (data) {
     var box = document.getElementById(slidesId);
     if (!box || !data.photos || !data.photos.length) return;
-    data.photos.forEach(function (src, k) {
+    data.photos.forEach(function (p, k) {
       var s = document.createElement('div'); s.className = 'slide photo';
       var img = document.createElement('img');
-      img.src = src; img.alt = alt; img.decoding = 'async'; if (k > 0) img.loading = 'lazy';
+      img.src = typeof p === 'string' ? p : p.src; img.alt = (p && p.alt) || alt; img.decoding = 'async'; if (k > 0) img.loading = 'lazy';
       s.appendChild(img); box.appendChild(s);
     });
     Carousel(document.getElementById(rootId), 4000);
   }).catch(function (err) { console.log(json + ' error:', err); });
 }
-loadPhotoCarousel('gallery.json', 'gallerySlider', 'gallerySlides', 'Shree Sawriya Solutions - Mobile Repair Work in Assandh');
+loadPhotoCarousel('gallery.json', 'gallerySlider', 'gallerySlides', 'Shree Sawriya Solutions, Assandh – mobile repair training photo');
 loadPhotoCarousel('our-works.json', 'worksSlider', 'worksSlides', 'Mobile Repair Work by Shree Sawriya Solutions Assandh');
 
 /* ============ INIT ============ */

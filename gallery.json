@@ -1,9 +1,24 @@
 {
   "photos": [
-    "gallery/IMG_1796.jpeg",
-    "gallery/IMG_5401.jpeg",
-    "gallery/IMG_5402.jpeg",
-    "gallery/IMG_5403.jpeg",
-    "gallery/IMG_8579.jpeg"
+    {
+      "src": "gallery/IMG_1796.jpeg",
+      "alt": "Ankush receiving a mobile repair training certificate at Kewal Mobile"
+    },
+    {
+      "src": "gallery/IMG_5401.jpeg",
+      "alt": "Ankush, owner of Shree Sawriya Solutions Assandh, at the We FixIt repair and training centre"
+    },
+    {
+      "src": "gallery/IMG_5402.jpeg",
+      "alt": "We FixIt Mobile Repair & Training certificate of completion being presented"
+    },
+    {
+      "src": "gallery/IMG_5403.jpeg",
+      "alt": "At the We FixIt Mobile Repair & Training centre"
+    },
+    {
+      "src": "gallery/IMG_8579.jpeg",
+      "alt": "Mobile repair training batch with certificates at Kewal Mobile"
+    }
   ]
 }

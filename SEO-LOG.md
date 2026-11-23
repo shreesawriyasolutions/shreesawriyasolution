@@ -268,3 +268,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png on all pages).
 - Confirm the two Google Maps links point to the same place.
 - postalCode in address JSON-LD (verify PIN with owner).
+
+## 2026-11-23 – Descriptive alt text for each Gallery and Our Works photo
+- Research: searched "mobile repair shop near Assandh Jind Safidon". Same picture: IndiaMART seller pages, dnb.com listings, Flipkart city pages, explurger; no local repair website competes.
+- Found: all 10 carousel photos on the home page (5 Gallery, 5 Our Works) got the same generic alt text from JS ("…Mobile Repair Work in Assandh"), even the training/certificate photos. Google Images and screen readers could not tell what each photo shows.
+- Change: gallery.json and our-works.json entries can now be {"src","alt"} objects (plain strings still work, with the old fallback alt). Wrote one alt per photo describing only what is visible: Z Flip 5 touch fix (middle flex), front camera water-damage before/after, A15 chip work, AirPods opened on the bench, iPhone 13 Pro Max green display before/after, and the Kewal Mobile / We FixIt training photos. Named "Ankush" only on the 2 photos where he is clearly the owner from owner.jpeg (one certificate reads "Mr. Ankush"); the others are not named. Gallery fallback alt now says "training photo". Tested in Chromium: all 10 alts render, carousels and dots work, no JS errors. Images, lazy loading, switcher, WhatsApp, reviews untouched. Sitemap lastmod not touched (no visible content change).
+- Why: real work photos with specific alt text (model + fault + Assandh) can show in Google Images for searches like "iPhone 13 Pro Max green display repair" and add relevance to the home page.
+- Note for the owner: when adding new photos to gallery.json/our-works.json, use {"src": "...", "alt": "what the photo shows"}; a plain filename still works.
+
+### Ideas for future days
+- Carousel photos are 1600×1000 at 125–240 KB; could re-encode (same size, progressive, q≈80) to save ~30–40% on mobile data.
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png).
+- Confirm the two Google Maps links point to the same place.
+- postalCode in address JSON-LD (verify PIN with owner).
