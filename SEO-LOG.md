@@ -281,3 +281,16 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png).
 - Confirm the two Google Maps links point to the same place.
 - postalCode in address JSON-LD (verify PIN with owner).
+
+## 2026-11-24 – No site change (checked image weight and carousel layout shift)
+- Research: searched "iPhone repair Karnal Panipat chip level repair shop". Results are Flipkart city pages (Karnal, Panipat), Cashify stores (Kunjpura Rd Karnal, Panipat), IndiaMART chip-level category pages, ueni/github.io/Google Business sites from other towns; still no Assandh/Karnal repair website competing.
+- Checked the idea from 2026-11-23 (re-encode carousel photos): the 10 photos are already progressive JPEG at about quality 80; re-encoding at q80 saves only 1.8% (1869 → 1836 KB). Not worth a commit.
+- Checked layout shift: `.frame .slides{aspect-ratio:16/10}` already reserves carousel space before gallery.json/our-works.json load (measured in Chromium with slowed JSON/images: carousel height is set before photos arrive, CLS ≈ 0.01 on mobile, 0 on desktop; #contact anchor lands correctly).
+- Tried to confirm the two Google Maps short links (r9f8K1… in JSON-LD/hasMap vs BjYoa9… on the home contact button) point to the same place; maps.app.goo.gl is blocked from this environment, so still unverified.
+- Change: none.
+
+### Ideas for future days
+- Optional: smaller 800 px copies + srcset for the carousel photos (would roughly halve mobile image bytes), only if it can be done without making the owner's gallery.json workflow harder.
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png).
+- Confirm the two Google Maps links point to the same place (needs owner or a browser).
+- postalCode in address JSON-LD (verify PIN with owner).
