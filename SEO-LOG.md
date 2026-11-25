@@ -294,3 +294,14 @@ Running log of SEO work, so the same thing isn't done twice. Newest at the botto
 - Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png).
 - Confirm the two Google Maps links point to the same place (needs owner or a browser).
 - postalCode in address JSON-LD (verify PIN with owner).
+
+## 2026-11-25 – No site change (audit: structured data fields, lazy loading, noindex)
+- Research: searched "mobile screen replacement Assandh Karnal" and "shreesawriyasolutions.in". Results are Flipkart city pages (Karnal, Panipat), Cashify, Quikr Karnal, IndiaMART, and small shop sites from other towns (vercel/odoo/github.io/Google Sites); no Assandh repair website competes. The site's own domain did not show in this (non-Google) search index — not something an on-page change fixes; Google Search Console / Business Profile are the levers there.
+- Audit: every public page has JSON-LD that parses; all admin pages and 404 still noindex; robots.txt + sitemap fine; carousel photos already lazy-load after the first; owner photo and map iframe lazy. Checked possible JSON-LD additions: `geo` needs exact coordinates (Maps links can't be opened from here, so not verifiable); `areaServed` towns beyond Assandh/Karnal are not on the visible site, so adding them would be invented.
+- Change: none.
+
+### Ideas for future days
+- `geo` (lat/long) in LocalBusiness JSON-LD once the owner confirms the exact pin from his Google Business Profile.
+- Shop photo (front/counter, 16:10, <300 KB) from the owner → LocalBusiness image + og:image (currently logo.png).
+- postalCode in address JSON-LD (verify PIN with owner).
+- If the owner confirms nearby towns he serves (e.g. customers from Safidon/Jind/Panipat side), add one honest visible line + matching areaServed — no town pages.
